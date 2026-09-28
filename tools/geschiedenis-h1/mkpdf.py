@@ -40,11 +40,11 @@ st+=[P('Ezelsbruggetje',H3),P(' '.join('<font color="#B07800"><b>%s</b></font>%s
      P('De namen komen uit de standaardindeling. Controleer ze met het kaartjesblad van de leraar.',sm)]
 st.append(PageBreak())
 # --- begrippen
-st+=[P('Begrippen (p. 60-61)',H1),P('Dit zijn de 32 begrippen van de begrippenlijst in je boek, met de omschrijving uit het boek. Op de toets krijg je de omschrijving en noem jij het begrip. Dek de linkerkolom af en probeer het begrip te noemen. Onder elke omschrijving staat een steuntje om het te onthouden.',sm),Spacer(1,6)]
+st+=[P('Begrippen (p. 60-61)',H1),P('Dit zijn de 32 begrippen van de begrippenlijst in je boek, met de omschrijving uit het boek. Op de toets krijg je de omschrijving en noem jij het begrip. <b>Vouw het blad dubbel langs de stippellijn</b>: dan zie je alleen de omschrijvingen. Noem het begrip, klap open en kijk. Onder elk begrip staat een steuntje om het te onthouden.',sm),Spacer(1,6)]
 for p,tt in [('1.1','De eerste mensen'),('1.2','Jagers worden boeren'),('1.3','Denken en doen'),('1.4','Leven langs de Nijl')]:
-    rows=[[P('<b>%s</b>'%x['t']),P('%s<br/><font size="8" color="#526A6E">%s</font>'%(x['d'].replace('&','&amp;'),x['h']))] for x in D['begrippen'] if x['p']==p and not x.get('x')]
-    T=Table(rows,colWidths=[52*mm,W-52*mm])
-    T.setStyle(TableStyle([('LINEBELOW',(0,0),(-1,-1),.4,colors.HexColor('#CBDAD8')),('VALIGN',(0,0),(-1,-1),'TOP'),('TOPPADDING',(0,0),(-1,-1),4),('BOTTOMPADDING',(0,0),(-1,-1),4),('BACKGROUND',(0,0),(0,-1),colors.HexColor('#EEF4F3'))]))
+    rows=[[P(x['d'].replace('&','&amp;')),P('<b>%s</b><br/><font size="8" color="#526A6E">%s</font>'%(x['t'],x['h']))] for x in D['begrippen'] if x['p']==p and not x.get('x')]
+    T=Table(rows,colWidths=[W/2,W/2])
+    T.setStyle(TableStyle([('LINEBELOW',(0,0),(-1,-1),.4,colors.HexColor('#CBDAD8')),('VALIGN',(0,0),(-1,-1),'TOP'),('TOPPADDING',(0,0),(-1,-1),4),('BOTTOMPADDING',(0,0),(-1,-1),4),('LEFTPADDING',(1,0),(1,-1),10),('RIGHTPADDING',(0,0),(0,-1),10),('LINEAFTER',(0,0),(0,-1),1,MUT,None,(3,3)),('BACKGROUND',(1,0),(1,-1),colors.HexColor('#EEF4F3'))]))
     st+=[KeepTogether([P('%s %s'%(p,tt),H2),T])]
 ext=[x for x in D['begrippen'] if x.get('x')]
 rows=[[P('<b>%s</b>'%x['t']),P(x['d'])] for x in ext]
@@ -119,17 +119,10 @@ st.append(Spacer(1,6));st.append(P('Cijfer ter indicatie: 1 + 9 × (aantal goed 
 st.append(PageBreak())
 # --- kaartjes (voorkant / achterkant)
 tv=D['tijdvakken']
-def cards(kind):
-    rows=[];
-    for r in range(5):
-        row=[]
-        for c in range(2):
-            t=tv[r*2+c]
-            if kind=='f': row.append(P('<font size=8 color="#526A6E">Tijdvak %d</font><br/><b>%s</b>'%(t['n'],t['name']),ParagraphStyle('c',parent=B,fontSize=14,leading=19,alignment=1)))
-            else: row.append(P('<b>%s</b><br/><font size=9 color="#526A6E">%s</font>'%(t['yrs'],t['tag']),ParagraphStyle('c',parent=B,fontSize=16,leading=22,alignment=1)))
-        rows.append(row)
-    if kind=='b': rows=[r[::-1] for r in rows]   # spiegelen voor dubbelzijdig printen
-    T=Table(rows,colWidths=[W/2]*2,rowHeights=[42*mm]*5)
-    T.setStyle(TableStyle([('GRID',(0,0),(-1,-1),.8,MUT),('VALIGN',(0,0),(-1,-1),'MIDDLE')]));return T
-st+=[P('Kaartjes: voorkant (naam)',H1),P('Knip uit. Print dubbelzijdig (kort of lang draaien): de achterkant staat gespiegeld op de volgende pagina, zodat naam en jaartallen achter elkaar zitten.',sm),Spacer(1,6),cards('f'),PageBreak(),P('Kaartjes: achterkant (jaartallen)',H1),Spacer(1,6),cards('b')]
+CF=ParagraphStyle('cf',parent=B,fontSize=13,leading=17,alignment=1)
+CBK=ParagraphStyle('cb',parent=B,fontSize=15,leading=20,alignment=1)
+rows=[[P('<font size=8 color="#526A6E">Tijdvak %d</font><br/><b>%s</b>'%(t['n'],t['name']),CF),P('<b>%s</b><br/><font size=9 color="#526A6E">%s</font>'%(t['yrs'],t['tag']),CBK)] for t in tv]
+T=Table(rows,colWidths=[W/2]*2,rowHeights=[22.5*mm]*10)
+T.setStyle(TableStyle([('BOX',(0,0),(-1,-1),.8,MUT),('LINEBELOW',(0,0),(-1,-2),.8,MUT),('LINEAFTER',(0,0),(0,-1),1.2,MUT,None,(4,3)),('VALIGN',(0,0),(-1,-1),'MIDDLE'),('BACKGROUND',(1,0),(1,-1),colors.HexColor('#EEF4F3'))]))
+st+=[P('Kaartjes: tijdvakken om te vouwen',H1),P('Print enkelzijdig. <b>Vouw het blad dubbel langs de stippellijn</b> (links naam, rechts jaartallen). Zie je de naam, noem dan de jaartallen, en draai om. Wil je losse kaartjes? Knip dan na het vouwen langs de dichte lijnen: dan heb je tien kaartjes met voor- en achterkant.',sm),Spacer(1,6),T]
 doc.build(st,onFirstPage=foot,onLaterPages=foot)
