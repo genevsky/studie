@@ -18,7 +18,7 @@ var h='';
 CATALOG.forEach(function(v){
  h+='<div class="vak"><h2><span>'+v.emoji+'</span>'+v.vak+'</h2><div class="stack">';
  v.toetsen.forEach(function(t){var p=pct(t.id);
-  h+='<div class="card ex"><h3>'+t.titel+'</h3><p class="mut small">'+t.sub+(p!==null?' · klaar voor de toets: '+p+'%':'')+'</p><div class="r"><a class="pill main" href="'+t.url+'">Open studie-app</a>'+(t.pdf?'<a class="pill" href="'+t.pdf+'" target="_blank" rel="noopener">Spiekbrief (PDF)</a>':'')+'</div></div>'});
+  h+='<div class="card ex"><h3>'+t.titel+'</h3><p class="mut small">'+t.sub+(p!==null?' · klaar voor de toets: '+p+'%':'')+'</p><div class="r"><a class="pill main" href="'+t.url+'">Open studie-app</a>'+(t.pdf?'<a class="pill" href="'+t.pdf+'" target="_blank" rel="noopener">'+(t.pdfLabel||'Spiekbrief')+' (PDF)</a>':'')+'</div></div>'});
  h+='</div></div>'});
 document.getElementById('list').innerHTML=h;
 })();

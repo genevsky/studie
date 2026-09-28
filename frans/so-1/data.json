@@ -1,0 +1,570 @@
+{
+ "meta": {
+  "id": "frans-so1",
+  "type": "vocab",
+  "lang": "fr-FR",
+  "brand": "Voilà Frans",
+  "sub": "SO 1 · Vocabulaire A, B, E",
+  "title": "Frans SO 1",
+  "levels": [
+   [
+    0,
+    "Débutant"
+   ],
+   [
+    80,
+    "Touriste"
+   ],
+   [
+    220,
+    "Campeur"
+   ],
+   [
+    400,
+    "Voyageur"
+   ],
+   [
+    650,
+    "Parisien"
+   ],
+   [
+    950,
+    "Champion"
+   ]
+  ]
+ },
+ "lists": [
+  {
+   "id": "A",
+   "title": "Vocabulaire A",
+   "sub": "Écouter · Au camping",
+   "blocks": [
+    [
+     {
+      "fr": "la France",
+      "nl": "Frankrijk",
+      "c": 1
+     },
+     {
+      "fr": "les vacances",
+      "nl": "de vakantie",
+      "na": [
+       "vakantie",
+       "de vakanties"
+      ],
+      "h": "Altijd meervoud in het Frans: **les** vacances (v mv = vrouwelijk meervoud)."
+     },
+     {
+      "fr": "la piscine",
+      "nl": "het zwembad",
+      "na": [
+       "zwembad"
+      ],
+      "h": "De **sc** spreek je uit als een s: pi-sien."
+     },
+     {
+      "fr": "un peu",
+      "nl": "een beetje",
+      "na": [
+       "beetje"
+      ]
+     },
+     {
+      "fr": "attention",
+      "nl": "pas op",
+      "na": [
+       "let op",
+       "opgelet"
+      ],
+      "h": "Lijkt op **attentie**. Let op: tt en -tion.",
+      "c": 1
+     }
+    ],
+    [
+     {
+      "fr": "je suis",
+      "nl": "ik ben"
+     },
+     {
+      "fr": "tu parles",
+      "nl": "jij spreekt",
+      "na": [
+       "je spreekt",
+       "jij praat",
+       "je praat"
+      ],
+      "h": "Denk aan het **parlement**: daar wordt veel gesproken."
+     },
+     {
+      "fr": "français",
+      "nl": "Frans",
+      "h": "Met **ç** (c met een staartje) en een kleine letter f."
+     },
+     {
+      "fr": "salut",
+      "nl": "hoi",
+      "na": [
+       "hallo",
+       "doei",
+       "dag"
+      ],
+      "h": "Lijkt op **saluut**: zo groet je een vriend."
+     },
+     {
+      "fr": "bonjour",
+      "nl": "hallo, goedendag",
+      "na": [
+       "hallo",
+       "goedendag",
+       "goedemorgen",
+       "dag",
+       "goeiedag"
+      ],
+      "h": "**bon** = goed + **jour** = dag: letterlijk goede-dag."
+     }
+    ],
+    [
+     {
+      "fr": "petit(e)",
+      "nl": "klein",
+      "fa": [
+       "petit",
+       "petite"
+      ],
+      "h": "Denk aan een **petitfour**: een klein gebakje."
+     },
+     {
+      "fr": "grand(e)",
+      "nl": "groot",
+      "fa": [
+       "grand",
+       "grande"
+      ],
+      "h": "Denk aan **grandioos**."
+     },
+     {
+      "fr": "d'accord",
+      "nl": "oké",
+      "na": [
+       "oke",
+       "ok",
+       "okay",
+       "akkoord",
+       "goed"
+      ],
+      "h": "Klinkt als **akkoord**. Let op de apostrof: d’accord."
+     },
+     {
+      "fr": "mais",
+      "nl": "maar",
+      "h": "Niet verwarren met **la mer** (de zee)."
+     },
+     {
+      "fr": "pour",
+      "nl": "voor",
+      "na": [
+       "om"
+      ]
+     }
+    ],
+    [
+     {
+      "fr": "et",
+      "nl": "en",
+      "h": "De t spreek je niet uit."
+     },
+     {
+      "fr": "bien",
+      "nl": "goed"
+     },
+     {
+      "fr": "j'aime",
+      "nl": "ik vind (het) leuk",
+      "na": [
+       "ik vind het leuk",
+       "ik vind leuk",
+       "ik hou van",
+       "ik houd van"
+      ]
+     },
+     {
+      "fr": "on joue",
+      "nl": "wij spelen",
+      "na": [
+       "we spelen"
+      ]
+     },
+     {
+      "fr": "j'habite",
+      "nl": "ik woon",
+      "h": "Denk aan **habitat**: de plek waar een dier woont."
+     }
+    ]
+   ]
+  },
+  {
+   "id": "B",
+   "title": "Vocabulaire B",
+   "sub": "Lire · Soirée BBQ au camping",
+   "blocks": [
+    [
+     {
+      "fr": "la famille",
+      "nl": "de familie, het gezin",
+      "na": [
+       "familie",
+       "gezin",
+       "de familie",
+       "het gezin"
+      ],
+      "c": 1
+     },
+     {
+      "fr": "le frère",
+      "nl": "de broer",
+      "na": [
+       "broer"
+      ],
+      "h": "Denk aan het liedje **Frère Jacques** (Vader Jacob)."
+     },
+     {
+      "fr": "la sœur",
+      "nl": "de zus",
+      "na": [
+       "zus",
+       "de zuster",
+       "zuster"
+      ],
+      "h": "Met de letter **œ** (o en e aan elkaar). Typ je oe, dan is dat ook goed."
+     },
+     {
+      "fr": "le chien",
+      "nl": "de hond",
+      "na": [
+       "hond"
+      ]
+     },
+     {
+      "fr": "le chat",
+      "nl": "de kat",
+      "na": [
+       "kat",
+       "de poes",
+       "poes"
+      ],
+      "h": "Een **chat** met je kat."
+     }
+    ],
+    [
+     {
+      "fr": "le poisson",
+      "nl": "de vis",
+      "na": [
+       "vis"
+      ],
+      "h": "**poisson** (ss) = vis, maar poison (één s) = gif!"
+     },
+     {
+      "fr": "le jour",
+      "nl": "de dag",
+      "na": [
+       "dag"
+      ],
+      "h": "Een **journaal** is het nieuws van de dag."
+     },
+     {
+      "fr": "la fille",
+      "nl": "het meisje",
+      "na": [
+       "meisje",
+       "de dochter",
+       "dochter"
+      ]
+     },
+     {
+      "fr": "le garçon",
+      "nl": "de jongen",
+      "na": [
+       "jongen"
+      ],
+      "h": "Met **ç**. In een café is een garçon ook de ober."
+     },
+     {
+      "fr": "le copain",
+      "nl": "de vriend",
+      "na": [
+       "vriend",
+       "het vriendje",
+       "vriendje",
+       "de maat"
+      ]
+     }
+    ],
+    [
+     {
+      "fr": "la tente",
+      "nl": "de tent",
+      "na": [
+       "tent"
+      ],
+      "c": 1
+     },
+     {
+      "fr": "il y a",
+      "nl": "er is, er zijn",
+      "na": [
+       "er is",
+       "er zijn"
+      ],
+      "h": "Drie losse woordjes: **il y a**."
+     },
+     {
+      "fr": "ici",
+      "nl": "hier",
+      "h": "Niet verwarren met **aussi** (ook)."
+     },
+     {
+      "fr": "aussi",
+      "nl": "ook"
+     },
+     {
+      "fr": "pourquoi",
+      "nl": "waarom",
+      "h": "**pour quoi** = voor wat? Dus: waarom?"
+     }
+    ],
+    [
+     {
+      "fr": "donc",
+      "nl": "dus"
+     },
+     {
+      "fr": "on reste",
+      "nl": "wij blijven",
+      "na": [
+       "we blijven"
+      ],
+      "h": "Denk aan een **restje**: dat blijft over."
+     },
+     {
+      "fr": "c'est",
+      "nl": "het is",
+      "na": [
+       "dat is",
+       "dit is"
+      ]
+     },
+     {
+      "fr": "bon appétit",
+      "nl": "eet smakelijk",
+      "h": "Lijkt op **appetijt**. Let op: é en één p aan het eind."
+     },
+     {
+      "fr": "et toi?",
+      "nl": "en jij?",
+      "na": [
+       "en jij",
+       "en jou",
+       "en met jou"
+      ],
+      "fa": [
+       "et toi"
+      ],
+      "h": "Spreek uit als: é twa."
+     }
+    ]
+   ]
+  },
+  {
+   "id": "E",
+   "title": "Vocabulaire E",
+   "sub": "Regarder · Jeunes Détectives",
+   "blocks": [
+    [
+     {
+      "fr": "la plage",
+      "nl": "het strand",
+      "na": [
+       "strand"
+      ]
+     },
+     {
+      "fr": "la mer",
+      "nl": "de zee",
+      "na": [
+       "zee"
+      ],
+      "h": "Denk aan een **meer**, maar dan heel groot: de zee."
+     },
+     {
+      "fr": "le problème",
+      "nl": "het probleem",
+      "na": [
+       "probleem"
+      ],
+      "h": "Met **è**. En let op: **le** problème.",
+      "c": 1
+     },
+     {
+      "fr": "le message",
+      "nl": "het bericht",
+      "na": [
+       "bericht",
+       "het berichtje",
+       "berichtje"
+      ],
+      "h": "Net als het Engelse **message**.",
+      "c": 1
+     },
+     {
+      "fr": "le truc",
+      "nl": "het ding",
+      "na": [
+       "ding",
+       "het dingetje",
+       "dingetje"
+      ],
+      "h": "Een **trucje** is ook een ding."
+     }
+    ],
+    [
+     {
+      "fr": "regarde",
+      "nl": "kijk",
+      "h": "Zonder s aan het eind: regarde."
+     },
+     {
+      "fr": "aider",
+      "nl": "helpen",
+      "h": "Denk aan **aid** (Engels: hulp)."
+     },
+     {
+      "fr": "on adore",
+      "nl": "wij zijn gek op",
+      "na": [
+       "we zijn gek op",
+       "wij houden van",
+       "we houden van"
+      ],
+      "h": "Denk aan **adoreren**."
+     },
+     {
+      "fr": "merci",
+      "nl": "bedankt",
+      "na": [
+       "dank je",
+       "dankjewel",
+       "dank u",
+       "dank je wel"
+      ]
+     },
+     {
+      "fr": "de rien",
+      "nl": "niets te danken",
+      "na": [
+       "graag gedaan"
+      ],
+      "h": "**rien** = niets."
+     }
+    ],
+    [
+     {
+      "fr": "aujourd'hui",
+      "nl": "vandaag",
+      "h": "Lang woord met een apostrof in het midden: aujourd’hui."
+     },
+     {
+      "fr": "demain",
+      "nl": "morgen"
+     },
+     {
+      "fr": "voilà",
+      "nl": "hier is, hier zijn",
+      "na": [
+       "hier is",
+       "hier zijn",
+       "alsjeblieft"
+      ],
+      "h": "Met **à** (streepje naar links)."
+     },
+     {
+      "fr": "alors",
+      "nl": "dan",
+      "na": [
+       "nou",
+       "dus"
+      ]
+     },
+     {
+      "fr": "peut-être",
+      "nl": "misschien",
+      "h": "Met een **streepje** en een **ê**: peut-être."
+     }
+    ],
+    [
+     {
+      "fr": "beaucoup",
+      "nl": "veel",
+      "h": "**beau** = mooi, **beaucoup** = veel. Een “coup” meer!"
+     },
+     {
+      "fr": "dans",
+      "nl": "in",
+      "h": "Heeft niets met dansen te maken: **dans** = in."
+     },
+     {
+      "fr": "quelque chose",
+      "nl": "iets",
+      "h": "Twee woorden. **chose** = ding."
+     },
+     {
+      "fr": "beau",
+      "nl": "mooi",
+      "na": [
+       "knap"
+      ]
+     },
+     {
+      "fr": "super",
+      "nl": "super",
+      "na": [
+       "geweldig"
+      ],
+      "c": 1
+     }
+    ]
+   ]
+  }
+ ],
+ "instructie": "Leren: Vocabulaire A, B en E (boek p. 52-53). Let op: alleen de woorden, geen zinnen.",
+ "tips": [
+  {
+   "h": "Zo leer je woordjes (stappenplan uit je boek)",
+   "p": [
+    "**Overkijken:** luister naar de uitspraak (tik op 🔊) en lees mee.",
+    "**Oplezen:** lees de Franse woorden hardop.",
+    "**Opschrijven:** typ of schrijf elk woord één keer. Let goed op de spelling.",
+    "**Overhoren:** overhoor jezelf. Leer per **blokje van vijf** en begin pas aan het volgende blokje als je deze vijf kent.",
+    "Leer **beide kanten op**: Frans → Nederlands én Nederlands → Frans."
+   ]
+  },
+  {
+   "h": "Hier verlies je punten",
+   "p": [
+    "**Le, la of les** hoort bij het woord. Leer het altijd mee: **le** problème, **la** piscine, **les** vacances.",
+    "Een **het-woord** in het Nederlands zegt niets over het Frans: het strand = **la** plage, het probleem = **le** problème.",
+    "**Accenten** tellen mee: é, è, ê, à, ç. Bijvoorbeeld français, garçon, voilà, peut-être, bon appétit.",
+    "Let op **apostrofs**: d’accord, j’aime, j’habite, c’est, aujourd’hui.",
+    "Pas op voor **lijkt-op-woorden**: poisson (vis) ≠ poison (gif), beau (mooi) ≠ beaucoup (veel), ici (hier) ≠ aussi (ook)."
+   ]
+  },
+  {
+   "h": "Slim plannen",
+   "p": [
+    "Liever **elke dag 15 minuten** dan één keer twee uur. Je hoofd onthoudt meer als je het verspreidt.",
+    "Oefen vooral **Nederlands → Frans typen**: dat is het moeilijkst, en dan weet je het de andere kant op ook.",
+    "De dag voor de toets: doe de **oefentoets** en oefen daarna je **fouten**."
+   ]
+  }
+ ]
+}

@@ -161,3 +161,26 @@ input[type=text]{width:100%;font:inherit;font-size:1.1rem;padding:13px 14px;bord
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media (max-width:420px){.hero h1{font-size:1.6rem}.lvl .bar{width:90px}.face .big{font-size:1.45rem}}
 .hublink{color:var(--muted);text-decoration:none;font-weight:700;font-size:.85rem;display:inline-block;margin-bottom:2px}
+
+/* woordjes-app */
+.spk{border:0;background:var(--soft);border-radius:99px;width:34px;height:34px;display:inline-grid;place-items:center;font-size:1rem;flex:0 0 auto;align-self:center}
+.face .spk{width:46px;height:46px;font-size:1.3rem}
+.wl{display:grid;gap:6px}
+.wr{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.wf,.wn{border:1px solid var(--line);border-radius:12px;padding:8px 10px;font-weight:700;display:flex;align-items:center;justify-content:space-between;gap:6px;min-height:48px;overflow-wrap:anywhere}
+.wf{font-family:var(--font-d);font-size:1.08rem;font-weight:600}
+.wn{color:var(--muted)}
+.cov{background:var(--soft);color:transparent;cursor:pointer;user-select:none}
+.cov *{visibility:hidden}
+.cov::after{content:'tik om te kijken';color:var(--muted);font-size:.78rem;font-weight:700;font-family:var(--font-b,inherit);position:absolute;visibility:visible}
+.wf.cov,.wn.cov{position:relative;justify-content:center}
+.wh{font-size:.84rem;color:var(--muted);padding:0 4px 4px}
+.accbar{display:flex;flex-wrap:wrap;gap:6px}
+.accbar button{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;min-width:40px;height:40px;font-size:1.05rem;font-weight:700}
+.built{min-height:56px;display:flex;flex-wrap:wrap;justify-content:center;gap:4px;padding:8px;border-bottom:3px solid var(--accent)}
+.built span{font-family:var(--font-d);font-size:1.6rem;font-weight:600;min-width:.6em}
+.built .ph{font-family:inherit;font-size:.9rem;color:var(--muted);align-self:center}
+.tiles{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.tiles button{min-width:46px;height:50px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--ink);font-family:var(--font-d);font-size:1.35rem;font-weight:600}
+.tiles button:disabled{opacity:.25}
+.tipl{padding-left:18px;display:grid;gap:6px}
