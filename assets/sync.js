@@ -57,7 +57,13 @@ function status(){return{enabled:ENABLED,code:get(CODEKEY),last:+get(LASTKEY)||n
 const WORDS=['tijger','kaas','raket','panda','wolk','draak','appel','zebra','koala','pizza','ster','maan','vos','uil','taart','komeet','pinguin','kikker','ananas','vulkaan','robot','ridder','piraat','dolfijn','cactus','regenboog','mango','haai','orka','lama','egel','bever'];
 function newCode(){const r=n=>{const a=new Uint32Array(1);crypto.getRandomValues(a);return a[0]%n};return WORDS[r(WORDS.length)]+'-'+String(1000+r(9000))+'-'+WORDS[r(WORDS.length)]+'-'+String(10+r(90))}
 const clean=c=>String(c||'').trim().toLowerCase().replace(/\s+/g,'-');
-async function setCode(c){c=clean(c);if(c.length<8)throw new Error('Deze code is te kort.');set(CODEKEY,c);set(ERRKEY,null);emit();return syncNow()}
+const valid=c=>/^[a-z0-9-]{8,40}$/.test(c);
+async function setCode(c,mode){c=clean(c);
+  if(!valid(c))throw new Error('Een code heeft minstens 8 tekens: alleen letters, cijfers en streepjes.');
+  if(mode==='new'||mode==='join'){let ex;try{ex=await rpc('get_progress',{p_code:c})}catch(e){throw new Error('Kan de sync nu niet bereiken. Ben je online? Probeer het zo nog eens.')}
+    if(mode==='new'&&ex!=null)throw new Error('Deze code is al in gebruik. Kies een andere. Is het jouw eigen code? Gebruik dan “Ik heb al een code”.');
+    if(mode==='join'&&ex==null)throw new Error('Deze code bestaat nog niet. Controleer de spelling.')}
+  set(CODEKEY,c);set(ERRKEY,null);emit();return syncNow()}
 function forget(){set(CODEKEY,null);set(LASTKEY,null);set(ERRKEY,null);emit()}
 
 window.StudieSync={enabled:ENABLED,status,syncNow,changed,setCode,newCode,forget,onChange:f=>listeners.push(f),_merge:{mergeApp,mergeDoc}};

@@ -7,7 +7,7 @@
 .ex .r{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.pill{padding:8px 14px;border-radius:999px;font-weight:800;text-decoration:none;font-size:.9rem;background:var(--soft);color:var(--ink)}
 .pill.main{background:var(--accent);color:var(--on-accent)}</style></head><body>
 <header class="top"><div class="wrap row"><div class="brand"><b>Studiehub</b><span>Al je toetsen op één plek</span></div></div><div class="strata" id="strata" aria-hidden="true"></div></header>
-<main class="wrap" id="view"><section class="hero"><h1>Waar ga je vandaag mee aan de slag?</h1><p>Kies een vak en een toets. Je voortgang wordt bewaard in deze browser.</p></section><div id="list"></div><section class="card stack" id="sync" style="margin-top:24px" hidden></section></main>
+<main class="wrap" id="view"><section class="hero"><h1>Waar ga je vandaag mee aan de slag?</h1><p>Kies een vak en een toets. Je voortgang wordt bewaard in deze browser. Met sync (onderaan) gaat hij mee naar je andere apparaten.</p></section><div id="list"></div><section class="card stack" id="sync" style="margin-top:24px" hidden></section></main>
 <script src="assets/sync-config.js"></script>
 <script src="assets/sync.js"></script>
 <script src="catalog.js"></script>
@@ -28,11 +28,17 @@ var SY=window.StudieSync,box=document.getElementById('sync');
 function ago(t){if(!t)return 'nog niet';var m=Math.round((Date.now()-t)/60000);return m<1?'net':m<60?m+' min geleden':Math.round(m/60)+' uur geleden'}
 function drawSync(){if(!SY||!SY.enabled){box.hidden=true;return}box.hidden=false;var s=SY.status();
  if(!s.code){box.innerHTML='<h2>🔄 Voortgang op al je apparaten</h2><p class="mut small">Met een sync-code gaat je voortgang mee naar je telefoon, laptop of tablet.</p>'+
-  '<div class="btns"><button class="btn" id="sNew">Nieuwe code maken</button></div>'+
-  '<p class="small"><b>Heb je al een code</b> van een ander apparaat? Typ hem hier:</p><div class="btns"><input type="text" id="sIn" placeholder="bijv. tijger-4829-kaas-17" autocapitalize="off" autocomplete="off" spellcheck="false" style="flex:1 1 200px"><button class="btn ghost" id="sGo">Koppelen</button></div><p class="small" id="sMsg"></p>';
-  document.getElementById('sNew').onclick=function(){SY.setCode(SY.newCode()).then(drawSync)};
-  var go=function(){var v=document.getElementById('sIn').value;SY.setCode(v).then(function(){drawSync()}).catch(function(e){document.getElementById('sMsg').textContent=e.message})};
-  document.getElementById('sGo').onclick=go;document.getElementById('sIn').addEventListener('keydown',function(e){if(e.key==='Enter')go()});return}
+  '<p class="small"><b>Eerste keer?</b> Kies zelf een code of laat er een maken. Minstens 8 tekens (letters, cijfers, streepjes). Kies iets dat anderen niet raden, dus niet alleen je naam.</p>'+
+  '<div class="btns"><input type="text" id="sOwn" placeholder="bijv. zonnebloem-2014-x" autocapitalize="off" autocomplete="off" spellcheck="false" style="flex:1 1 200px"><button class="btn" id="sMine">Deze code gebruiken</button></div>'+
+  '<div class="btns"><button class="btn ghost" id="sNew">Maak een code voor mij</button></div>'+
+  '<p class="small" style="margin-top:6px"><b>Heb je al een code</b> van een ander apparaat? Typ hem hier:</p><div class="btns"><input type="text" id="sIn" placeholder="jouw code" autocapitalize="off" autocomplete="off" spellcheck="false" style="flex:1 1 200px"><button class="btn ghost" id="sGo">Koppelen</button></div><p class="small" id="sMsg" style="color:var(--bad);font-weight:700"></p>';
+  var msg=function(e){document.getElementById('sMsg').textContent=e.message};
+  var use=function(v,mode){document.getElementById('sMsg').textContent='';SY.setCode(v,mode).then(drawSync).catch(msg)};
+  document.getElementById('sMine').onclick=function(){use(document.getElementById('sOwn').value,'new')};
+  document.getElementById('sOwn').addEventListener('keydown',function(e){if(e.key==='Enter')use(this.value,'new')});
+  document.getElementById('sNew').onclick=function(){use(SY.newCode(),'new')};
+  document.getElementById('sGo').onclick=function(){use(document.getElementById('sIn').value,'join')};
+  document.getElementById('sIn').addEventListener('keydown',function(e){if(e.key==='Enter')use(this.value,'join')});return}
  var st=s.busy?'Bezig met synchroniseren…':s.error?'⚠️ Sync lukt nu niet. Je voortgang is veilig in deze browser en gaat mee zodra het weer lukt.':'✓ Gesynchroniseerd '+ago(s.last);
  box.innerHTML='<h2>🔄 Sync staat aan</h2><p class="small">Jouw code: <b style="font-size:1.1rem;letter-spacing:.02em">'+s.code+'</b></p><p class="mut small">Schrijf deze code op! Typ hem op een ander apparaat in om daar verder te gaan. Deel hem niet met anderen: met jouw code zien ze jouw voortgang.</p><p class="small"><b>'+st+'</b></p>'+
   '<div class="btns"><button class="btn ghost" id="sNow">Nu synchroniseren</button><button class="btn ghost" id="sOff">Ontkoppel dit apparaat</button></div>';
