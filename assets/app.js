@@ -14,7 +14,7 @@ let V_start,V_leer,V_kaart,V_spel,V_toets;
 /* ---- voortgang (alleen in deze browser) ---- */
 const store={get(){try{return JSON.parse(localStorage.getItem('studie:'+M.id))||{}}catch(e){return{}}},set(v){try{localStorage.setItem('studie:'+M.id,JSON.stringify(v))}catch(e){}if(window.StudieSync)StudieSync.changed()}};
 let S=Object.assign({xp:0,lb:{},exam:null,best:{},chk:{}},store.get());
-const save=()=>{try{S.pct=ready().pct}catch(e){}S.ts=Date.now();store.set(S)};
+const save=()=>{try{S.pct=ready().pct;S.stats={seen:BEG.filter(b=>S.lb['b:'+b.t]).length+TV.filter(t=>S.lb['t:'+t.n]).length,total:BEG.length+TV.length,unit:'kaartjes'}}catch(e){}S.ts=Date.now();store.set(S)};
 const BEG=D.begrippen.filter(b=>!b.x),EXT=D.begrippen.filter(b=>b.x);
 /* ---- Leitner: kaartjes komen terug na 1, 3, 7 en 14 dagen ---- */
 const DAYMS=864e5,INT=[0,1,3,7,14];
@@ -49,7 +49,10 @@ function go(t){CUR=t;cleanup();cleanup=()=>{};$$('.tab').forEach(b=>b.setAttribu
 const on=(sel,fn,root=view)=>$$(sel,root).forEach(e=>e.addEventListener('click',()=>fn(e)));
 
 /* ---- START ---- */
-function ready(){const kn=BEG.filter(b=>mastered('b:'+b.t)).length/BEG.length,tk=TV.filter(t=>mastered('t:'+t.n)).length/TV.length,q=S.best.oefen||0;return{kn,tk,q,pct:Math.round(100*(.4*kn+.3*tk+.3*q))}}
+const sc=k=>{const e=S.lb[k];return !e?0:e.b>=2?1:e.b===1?.5:.2};
+const cnt=ks=>({seen:ks.filter(k=>S.lb[k]).length,sure:ks.filter(mastered).length,tot:ks.length,sc:ks.reduce((a,k)=>a+sc(k),0)/(ks.length||1)});
+const played=g=>{const n=(S.played||{})[g];return n?`<span class="donel">✓ ${n}× gespeeld</span>`:''};
+function ready(){const B=cnt(BEG.map(b=>'b:'+b.t)),T=cnt(TV.map(t=>'t:'+t.n)),q=S.best.oefen||0;return{B,T,kn:B.sc,tk:T.sc,q,pct:Math.round(100*(.4*B.sc+.3*T.sc+.3*q))}}
 const CHK=["Leerpagina's gelezen: p. 17, 20-23, 29-32, 38-41 en 47-49","De begrippen van p. 60-61: bij de omschrijving het begrip kunnen noemen","De tien tijdvakken in de goede volgorde, zoals in je boek","Bij elk tijdvak de jaartallen (achterkant van het kaartje)","De tijdlijn van tijdvak 1 met de vijf jaartallen"];
 function planText(){const n=S.exam?S.exam-today():null;
   if(n==null)return 'Vul hieronder de datum van je toets in. Dan zet de app je kaartjes slim verspreid over de dagen.';
@@ -76,6 +79,9 @@ V_start=function(){
       <div><span>Tijdvakken</span><span class="bar"><i style="width:${Math.round(r.tk*100)}%"></i></span></div>
       <div><span>Oefentoets</span><span class="bar"><i style="width:${Math.round(r.q*100)}%"></i></span></div>
     </div></div></section>
+  <section class="card stack"><div class="eyebrow">Wat heb je al gedaan?</div>
+    <div class="tally"><div><b>${r.B.seen}/${BEG.length}</b><span>Begrippen geoefend</span><small>${r.B.sure} zitten erin</small></div><div><b>${r.T.seen}/${TV.length}</b><span>Tijdvakken geoefend</span><small>${r.T.sure} zitten erin</small></div><div><b>${S.best.oefen!=null?Math.round(S.best.oefen*100)+'%':'–'}</b><span>Beste oefentoets</span><small>${Object.keys(S.played||{}).length} spellen gespeeld</small></div></div>
+    <p class="small mut">Een kaartje “zit erin” als je het op twee verschillende dagen goed had.</p></section>
   <section class="stack"><h2>Jouw route</h2><div class="route">
     <button data-go="leer"><b>1. Lees</b><span>Samenvatting, tijdlijn en tips</span></button>
     <button data-go="kaart"><b>2. Kaartjes</b><span>32 begrippen uit je boek en de tien tijdvakken</span></button>
@@ -148,7 +154,7 @@ function kDraw(){
   if(modeLbl)h+=`<div class="seg">${modeLbl.map(x=>`<button data-m="${x[0]}" aria-pressed="${K.mode===x[0]}">${x[1]}</button>`).join('')}</div>`;
   if(K.deck==='beg')h+=`<div class="seg">${['all','1.1','1.2','1.3','1.4'].map(p=>`<button data-p="${p}" aria-pressed="${K.para===p}">${p==='all'?'Alle paragrafen':'Par. '+p}</button>`).join('')}</div>`;
   if(K.deck==='ext')h+=`<p class="small mut">Deze woorden staan in de tekst, maar niet op de begrippenlijst van p. 60-61. Eerst de 32 begrippen leren.</p>`;
-  h+=`<label class="chk" style="padding:0"><input type="checkbox" id="only" ${K.only?'checked':''}><span class="small">Alleen kaartjes die vandaag aan de beurt zijn (${dueN} van ${all.length}, ${masN} zitten er al goed in)</span></label>`;
+  h+=`<label class="chk" style="padding:0"><input type="checkbox" id="only" ${K.only?'checked':''}><span class="small">Alleen kaartjes die vandaag aan de beurt zijn (${dueN} van ${all.length}, ${all.filter(c=>S.lb[c.k]).length} geoefend, ${masN} zitten erin)</span></label>`;
   const c=K.q[K.i];
   if(!c){
     h+=`<div class="card stack" style="text-align:center"><h2>${K.q.length?'Stapel klaar!':'Voor vandaag ben je klaar met deze stapel'}</h2><p class="mut">${K.q.length?`Je kende ${K.good} van ${K.q.length} beurten. Kaartjes die je kent komen later terug: morgen, over 3, 7 en 14 dagen.`:'Alle kaartjes die aan de beurt waren zijn gedaan. Kom morgen terug, of oefen alles nog eens.'}</p><div class="btns"><button class="btn" id="again">${K.q.length?'Nog een ronde':'Alles nog eens oefenen'}</button><button class="btn ghost" id="reset">Voortgang wissen</button></div></div>`;
@@ -172,14 +178,14 @@ function kDraw(){
 /* ---- SPELLEN ---- */
 V_spel=function(){
   view.innerHTML=`<h2>Spellen</h2><div class="games">
-  <button class="gm" data-g="trein"><em>Tijdvakken</em><b>Tijdvakkentrein</b><span>Zet de tien tijdvakken in de goede volgorde.</span></button>
-  <button class="gm" data-g="jaar"><em>Tijdvakken</em><b>Welk tijdvak?</b><span>Jaartallen erbij, naam eronder. En andersom.</span></button>
-  <button class="gm" data-g="tl5"><em>Tijdlijn</em><b>Tijdlijn bouwen</b><span>Zet de vijf gebeurtenissen van je boek op volgorde.</span></button>
-  <button class="gm" data-g="tl10"><em>Tijdlijn, extra</em><b>Tijdlijn bouwen XL</b><span>Tien gebeurtenissen: nu met de jaartallen door elkaar.</span></button>
-  <button class="gm" data-g="snel"><em>Begrippen</em><b>Snelle ronde</b><span>60 seconden. Zoveel mogelijk begrippen raden.</span></button>
-  <button class="gm" data-g="koppel"><em>Begrippen</em><b>Koppel</b><span>Verbind elk begrip met de goede omschrijving.</span></button>
-  <button class="gm" data-g="jb"><em>Leefwijze</em><b>Jager of boer?</b><span>Hoort deze zin bij jager-verzamelaars of boeren?</span></button></div>`;
-  on('[data-g]',e=>G[e.dataset.g]());
+  <button class="gm" data-g="trein"><em>Tijdvakken</em><b>Tijdvakkentrein</b><span>Zet de tien tijdvakken in de goede volgorde.</span>${played('trein')}</button>
+  <button class="gm" data-g="jaar"><em>Tijdvakken</em><b>Welk tijdvak?</b><span>Jaartallen erbij, naam eronder. En andersom.</span>${played('jaar')}</button>
+  <button class="gm" data-g="tl5"><em>Tijdlijn</em><b>Tijdlijn bouwen</b><span>Zet de vijf gebeurtenissen van je boek op volgorde.</span>${played('tl5')}</button>
+  <button class="gm" data-g="tl10"><em>Tijdlijn, extra</em><b>Tijdlijn bouwen XL</b><span>Tien gebeurtenissen: nu met de jaartallen door elkaar.</span>${played('tl10')}</button>
+  <button class="gm" data-g="snel"><em>Begrippen</em><b>Snelle ronde</b><span>60 seconden. Zoveel mogelijk begrippen raden.</span>${played('snel')}</button>
+  <button class="gm" data-g="koppel"><em>Begrippen</em><b>Koppel</b><span>Verbind elk begrip met de goede omschrijving.</span>${played('koppel')}</button>
+  <button class="gm" data-g="jb"><em>Leefwijze</em><b>Jager of boer?</b><span>Hoort deze zin bij jager-verzamelaars of boeren?</span>${played('jb')}</button></div>`;
+  on('[data-g]',e=>{const g=e.dataset.g;S.played=S.played||{};S.played[g]=(S.played[g]||0)+1;save();G[g]()});
 };
 function gShell(title){view.innerHTML=`<button class="back-link" id="bk">← Alle spellen</button><h2>${title}</h2><div id="g" class="stack"></div>`;$('#bk').addEventListener('click',()=>go('spel'));return $('#g')}
 function gEnd(box,txt,xp,again){addXP(xp);box.innerHTML=`<div class="card stack" style="text-align:center"><div class="score">${txt}</div><p class="mut">+${xp} XP</p><div class="btns"><button class="btn" id="ag">Nog een keer</button><button class="btn ghost" id="bk2">Andere spellen</button></div></div>`;$('#ag').addEventListener('click',again);$('#bk2').addEventListener('click',()=>go('spel'))}

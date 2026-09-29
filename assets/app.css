@@ -184,3 +184,16 @@ input[type=text]{width:100%;font:inherit;font-size:1.1rem;padding:13px 14px;bord
 .tiles button{min-width:46px;height:50px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--ink);font-family:var(--font-d);font-size:1.35rem;font-weight:600}
 .tiles button:disabled{opacity:.25}
 .tipl{padding-left:18px;display:grid;gap:6px}
+
+/* voortgang zichtbaar */
+.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tally div{background:var(--soft);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:2px;text-align:center}
+.tally b{font-family:var(--font-d);font-size:1.35rem;color:var(--accent)}
+.tally span{font-size:.78rem;font-weight:800;line-height:1.2}
+.tally small{font-size:.74rem;color:var(--muted)}
+.donel{font-size:.8rem;font-weight:800;color:var(--good)}
+.dt{display:inline-block;width:10px;height:10px;border-radius:50%;border:2px solid var(--line);vertical-align:middle}
+.dt.l{background:var(--sun);border-color:var(--sun)}
+.dt.ok{background:var(--good);border-color:var(--good)}
+.dts{display:flex;flex-direction:column;gap:4px;justify-content:center}
+.wr{grid-template-columns:auto 1fr 1fr}

@@ -24,6 +24,8 @@ function mergeApp(a,b){if(!a)return b;if(!b)return a;const newer=num(a.ts)>=num(
   o.xp=Math.max(num(a.xp),num(b.xp));o.lb=mergeLb(a.lb,b.lb);o.best=mergeMax(a.best,b.best);
   if(a.chk||b.chk)o.chk=mergeOr(a.chk,b.chk);if(a.wrong||b.wrong)o.wrong=mergeStamp(a.wrong,b.wrong);
   const ea=num(a.examT),eb=num(b.examT);o.exam=ea||eb?(ea>=eb?a.exam:b.exam):(a.exam!=null?a.exam:b.exam);o.examT=Math.max(ea,eb)||undefined;
+  if(a.played||b.played)o.played=mergeMax(a.played,b.played);
+  o.pct=Math.max(num(a.pct),num(b.pct));if(a.stats||b.stats){const x=a.stats||{},y=b.stats||{};o.stats=Object.assign({},x,y,{seen:Math.max(num(x.seen),num(y.seen)),total:Math.max(num(x.total),num(y.total))})}
   o.ts=Math.max(num(a.ts),num(b.ts));return o}
 function mergeDoc(local,remote){const apps=Object.assign({},(remote&&remote.apps)||{});Object.entries(local.apps).forEach(([id,s])=>{apps[id]=mergeApp(s,apps[id])});return{v:1,apps}}
 

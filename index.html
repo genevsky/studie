@@ -15,12 +15,12 @@
 (function(){
 var HUE=[28,12,352,322,285,240,205,172,140,95];
 var st=document.getElementById('strata');st.innerHTML=HUE.map(function(h){return '<i style="background:hsl('+h+' 60% 55%)"></i>'}).join('');
-function pct(id){try{var s=JSON.parse(localStorage.getItem('studie:'+id));return s&&typeof s.pct==='number'?s.pct:null}catch(e){return null}}
+function pct(id){try{var s=JSON.parse(localStorage.getItem('studie:'+id));if(!s)return null;var t=[];if(s.stats&&s.stats.total)t.push(s.stats.seen+'/'+s.stats.total+' '+(s.stats.unit||'')+' geoefend');if(typeof s.pct==='number')t.push('klaar voor de toets: '+s.pct+'%');return t.length?t.join(' · '):null}catch(e){return null}}
 function renderList(){var h='';
 CATALOG.forEach(function(v){
  h+='<div class="vak"><h2><span>'+v.emoji+'</span>'+v.vak+'</h2><div class="stack">';
  v.toetsen.forEach(function(t){var p=pct(t.id);
-  h+='<div class="card ex"><h3>'+t.titel+'</h3><p class="mut small">'+t.sub+(p!==null?' · klaar voor de toets: '+p+'%':'')+'</p><div class="r"><a class="pill main" href="'+t.url+'">Open studie-app</a>'+(t.pdf?'<a class="pill" href="'+t.pdf+'" target="_blank" rel="noopener">'+(t.pdfLabel||'Spiekbrief')+' (PDF)</a>':'')+'</div></div>'});
+  h+='<div class="card ex"><h3>'+t.titel+'</h3><p class="mut small">'+t.sub+(p?'<br><b style="color:var(--good)">'+p+'</b>':'')+'</p><div class="r"><a class="pill main" href="'+t.url+'">Open studie-app</a>'+(t.pdf?'<a class="pill" href="'+t.pdf+'" target="_blank" rel="noopener">'+(t.pdfLabel||'Spiekbrief')+' (PDF)</a>':'')+'</div></div>'});
  h+='</div></div>'});
 document.getElementById('list').innerHTML=h}
 renderList();

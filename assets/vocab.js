@@ -20,7 +20,7 @@ const NOUNS=W.filter(w=>gender(w));
 /* ---- voortgang (alleen in deze browser) ---- */
 const store={get(){try{return JSON.parse(localStorage.getItem('studie:'+M.id))||{}}catch(e){return{}}},set(v){try{localStorage.setItem('studie:'+M.id,JSON.stringify(v))}catch(e){}if(window.StudieSync)StudieSync.changed()}};
 let S=Object.assign({xp:0,lb:{},exam:null,best:{},wrong:{}},store.get());
-const save=()=>{S.pct=ready().pct;S.ts=Date.now();store.set(S)};
+const save=()=>{S.pct=ready().pct;S.stats={seen:W.filter(w=>S.lb[kF(w)]||S.lb[kN(w)]).length,total:W.length,unit:'woorden'};S.ts=Date.now();store.set(S)};
 const DAYMS=864e5,INT=[0,1,3,7,14];
 const today=()=>Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/DAYMS);
 const isDue=k=>{const e=S.lb[k];return !e||e.d<=today()};
@@ -93,7 +93,11 @@ const on=(sel,fn,root=view)=>$$(sel,root).forEach(e=>e.addEventListener('click',
 const listSeg=(cur,attr,extra=true)=>`<div class="seg">${D.lists.map(l=>`<button data-${attr}="${l.id}" aria-pressed="${cur===l.id}">${esc(l.id)}</button>`).join('')}${extra?`<button data-${attr}="all" aria-pressed="${cur==='all'}">Alles</button>`:''}${extra&&nWrong()?`<button data-${attr}="fout" aria-pressed="${cur==='fout'}">Mijn fouten (${nWrong()})</button>`:''}</div>`;
 
 /* ---- START ---- */
-function ready(){const f=W.filter(w=>mastered(kF(w))).length/W.length,n=W.filter(w=>mastered(kN(w))).length/W.length,q=S.best.oefen||0;return{f,n,q,pct:Math.round(100*(.3*f+.4*n+.3*q))}}
+const sc=k=>{const e=S.lb[k];return !e?0:e.b>=2?1:e.b===1?.5:.2};
+const cnt=ks=>({seen:ks.filter(k=>S.lb[k]).length,sure:ks.filter(mastered).length,tot:ks.length,sc:ks.reduce((a,k)=>a+sc(k),0)/(ks.length||1)});
+const dot=k=>{const e=S.lb[k];return `<i class="dt ${!e?'':e.b>=2?'ok':'l'}"></i>`};
+const played=g=>{const n=(S.played||{})[g];return n?`<span class="donel">✓ ${n}× gespeeld</span>`:''};
+function ready(){const F=cnt(W.map(kF)),N=cnt(W.map(kN)),q=S.best.oefen||0;return{F,N,q,f:F.sc,n:N.sc,pct:Math.round(100*(.3*F.sc+.4*N.sc+.3*q))}}
 function planText(){const n=S.exam?S.exam-today():null;
   if(n==null)return 'Vul hieronder de datum van je SO in. Dan verdeelt de app je kaartjes slim over de dagen.';
   if(n<0)return 'De SO is geweest. Goed gedaan!';
@@ -113,6 +117,9 @@ V.start=function(){const r=ready();const due=W.filter(w=>isDue(kF(w))||isDue(kN(
     <div class="mini"><div><span>Frans → NL</span><span class="bar"><i style="width:${Math.round(r.f*100)}%"></i></span></div>
     <div><span>NL → Frans</span><span class="bar"><i style="width:${Math.round(r.n*100)}%"></i></span></div>
     <div><span>Oefentoets</span><span class="bar"><i style="width:${Math.round(r.q*100)}%"></i></span></div></div></div></section>
+  <section class="card stack"><div class="eyebrow">Wat heb je al gedaan?</div>
+    <div class="tally"><div><b>${r.F.seen}/${W.length}</b><span>Frans → NL geoefend</span><small>${r.F.sure} zitten erin</small></div><div><b>${r.N.seen}/${W.length}</b><span>NL → Frans geoefend</span><small>${r.N.sure} zitten erin</small></div><div><b>${S.best.oefen!=null?grade(S.best.oefen):'–'}</b><span>Beste oefentoets</span><small>${nWrong()} woorden bij je fouten</small></div></div>
+    <p class="small mut">Een woord “zit erin” als je het op twee verschillende dagen goed had. Bij <b>Woorden</b> zie je per woord een bolletje: <i class="dt"></i> nog niet · <i class="dt l"></i> geoefend · <i class="dt ok"></i> zit erin.</p></section>
   <section class="stack"><h2>Jouw route</h2><div class="route">
     <button data-go="leer"><b>1. Luister en lees</b><span>De woorden per blokje van vijf</span></button>
     <button data-go="kaart"><b>2. Kaartjes</b><span>Beide kanten op, tot je ze kent</span></button>
@@ -131,9 +138,10 @@ V.leer=function(){
   const L=D.lists.find(l=>l.id===lTab);
   b.innerHTML=`<div class="card stack"><h2>${esc(L.title)}</h2><p class="mut small">${esc(L.sub)} · ${L.blocks.length} blokjes van vijf. Tik op 🔊 voor de uitspraak.</p>
     <div class="seg"><button data-h="" aria-pressed="${hide===''}">Alles zien</button><button data-h="fr" aria-pressed="${hide==='fr'}">Verstop Frans</button><button data-h="nl" aria-pressed="${hide==='nl'}">Verstop Nederlands</button></div>
+    <p class="small mut">Bolletjes: <i class="dt"></i> nog niet · <i class="dt l"></i> geoefend · <i class="dt ok"></i> zit erin (links Frans → NL, rechts NL → Frans).</p>
     ${hide?'<p class="small mut">Overhoor jezelf: zeg het antwoord hardop en tik dan op het vakje om te kijken.</p>':''}</div>
     ${L.blocks.map((bl,i)=>`<div class="card stack"><div class="eyebrow">Blokje ${i+1}</div><div class="wl">${bl.map(w=>`
-      <div class="wr"><div class="wf ${hide==='fr'?'cov':''}" tabindex="0"><span>${esc(w.fr)}</span>${spk(w.fr)}</div><div class="wn ${hide==='nl'?'cov':''}" tabindex="0">${esc(w.nl)}</div></div>
+      <div class="wr"><span class="dts" title="links: Frans → NL, rechts: NL → Frans">${dot(kF(w))}${dot(kN(w))}</span><div class="wf ${hide==='fr'?'cov':''}" tabindex="0"><span>${esc(w.fr)}</span>${spk(w.fr)}</div><div class="wn ${hide==='nl'?'cov':''}" tabindex="0">${esc(w.nl)}</div></div>
       ${w.h?`<div class="wh">💡 ${md(w.h)}</div>`:''}`).join('')}</div></div>`).join('')}
     <button class="btn" data-go="kaart">Oefen ${esc(L.title)} met kaartjes</button>`;
   on('[data-h]',e=>{hide=e.dataset.h;V.leer()},b);
@@ -157,7 +165,7 @@ V.kaart=function(){
       <div class="btns" style="justify-content:center">${pool.some(w=>isDue(dirKey(w)))?'<button class="btn" id="more">Volgend rondje</button>':''}<button class="btn ghost" id="again">Toch alles oefenen</button><button class="btn ghost" id="other">${kDir==='f'?'Nu NL → Frans':'Nu Frans → NL'}</button></div></div>`;
       wire();$('#again').onclick=()=>{kAll=true;V.kaart()};if($('#more'))$('#more').onclick=()=>V.kaart();$('#other').onclick=()=>{kDir=kDir==='f'?'n':'f';kAll=false;V.kaart()};return}
     const w=deck[i],front=kDir==='f'?w.fr:w.nl,back=kDir==='f'?w.nl:w.fr;const bx=(S.lb[dirKey(w)]||{b:0}).b;
-    view.innerHTML=`${top}<div class="prog"><span>${i+1}/${deck.length}</span><div class="bar"><i style="width:${100*i/deck.length}%"></i></div><span>vak ${bx}</span></div>
+    view.innerHTML=`${top}<p class="small mut">Deze stapel, ${kDir==='f'?'Frans → NL':'NL → Frans'}: ${cnt(pool.map(dirKey)).seen} van ${pool.length} geoefend, ${cnt(pool.map(dirKey)).sure} zitten erin.</p><div class="prog"><span>${i+1}/${deck.length}</span><div class="bar"><i style="width:${100*i/deck.length}%"></i></div><span>vak ${bx}</span></div>
      <div class="card3d" id="c3"><div class="in">
       <div class="face"><div class="hint">${kDir==='f'?'Wat betekent':'Hoe zeg je in het Frans'}</div><div class="big">${esc(front)}</div>${kDir==='f'?spk(w.fr):''}<div class="sub">Zeg het antwoord hardop en tik om te draaien</div></div>
       <div class="face back"><div class="hint">${kDir==='f'?'Nederlands':'Frans'}</div><div class="big">${esc(back)}</div>${spk(w.fr)}${w.h?`<div class="sub">💡 ${md(w.h)}</div>`:''}</div></div></div>
@@ -172,13 +180,13 @@ V.kaart=function(){
 let gList='all';
 V.spel=function(){
   view.innerHTML=`<h2>Spellen</h2>${listSeg(gList,'gl')}<div class="games">
-   <button class="gm" data-g="koppel"><em>Rustig</em><b>Koppel</b><span>Zoek de paartjes Frans en Nederlands.</span></button>
-   <button class="gm" data-g="lela"><em>Punten pakken</em><b>Le, la of les?</b><span>Kies het goede lidwoord. Dit kost vaak punten op de SO!</span></button>
-   <button class="gm" data-g="spell"><em>Spelling</em><b>Letterbouwer</b><span>Bouw het Franse woord met letterblokjes, accenten inbegrepen.</span></button>
-   <button class="gm" data-g="snel"><em>60 seconden</em><b>Snelle ronde</b><span>Hoeveel woorden haal jij in een minuut?</span></button>
-   ${TTS?'<button class="gm" data-g="dictee"><em>Luisteren</em><b>Dictee</b><span>Luister naar het woord en typ het in het Frans.</span></button>':''}
+   <button class="gm" data-g="koppel"><em>Rustig</em><b>Koppel</b><span>Zoek de paartjes Frans en Nederlands.</span>${played('koppel')}</button>
+   <button class="gm" data-g="lela"><em>Punten pakken</em><b>Le, la of les?</b><span>Kies het goede lidwoord. Dit kost vaak punten op de SO!</span>${played('lela')}</button>
+   <button class="gm" data-g="spell"><em>Spelling</em><b>Letterbouwer</b><span>Bouw het Franse woord met letterblokjes, accenten inbegrepen.</span>${played('spell')}</button>
+   <button class="gm" data-g="snel"><em>60 seconden</em><b>Snelle ronde</b><span>Hoeveel woorden haal jij in een minuut?</span>${played('snel')}${S.best.snel?`<span class="donel">🏆 record ${S.best.snel}</span>`:''}</button>
+   ${TTS?'<button class="gm" data-g="dictee"><em>Luisteren</em><b>Dictee</b><span>Luister naar het woord en typ het in het Frans.</span>'+played('dictee')+'</button>':''}
   </div>`;
-  on('[data-gl]',e=>{gList=e.dataset.gl;V.spel()});on('[data-g]',e=>G[e.dataset.g]())};
+  on('[data-gl]',e=>{gList=e.dataset.gl;V.spel()});on('[data-g]',e=>{const g=e.dataset.g;S.played=S.played||{};S.played[g]=(S.played[g]||0)+1;save();G[g]()})};
 const back='<button class="back-link" id="bk">‹ Terug naar spellen</button>';
 function endCard(title,sub){view.innerHTML=`<div class="card stack" style="text-align:center"><div class="score">${title}</div><p><b>${sub}</b></p><div class="btns" style="justify-content:center"><button class="btn" id="ag">Nog een keer</button><button class="btn ghost" id="bk2">Andere spellen</button></div></div>`;$('#bk2').onclick=()=>V.spel()}
 const G={};
@@ -239,8 +247,8 @@ G.dictee=function(){const qs=sample(byList(gList),8);let i=0,ok=0;
 /* ---- TOETS ---- */
 V.toets=function(){const b=S.best;
   view.innerHTML=`<h2>Toetsen</h2><p class="mut small">Hier typ je de antwoorden, net als op de SO. Accenten en le/la/les tellen mee. Een fout accent of lidwoord geeft hier een half punt; een spelfout is fout. Je docent kan strenger nakijken.</p><div class="games">
-   <button class="gm" data-t="oefen"><em>Zoals de SO</em><b>Oefentoets</b><span>20 woorden uit A, B en E: 10 Nederlands → Frans en 10 Frans → Nederlands. Met cijfer.${b.oefen!=null?' Beste: '+grade(b.oefen):''}</span></button>
-   ${D.lists.map(l=>`<button class="gm" data-t="L${l.id}"><em>Hele lijst</em><b>${esc(l.title)}</b><span>Alle ${byList(l.id).length} woorden, Nederlands → Frans.${b['L'+l.id]!=null?' Beste: '+grade(b['L'+l.id]):''}</span></button>`).join('')}
+   <button class="gm" data-t="oefen"><em>Zoals de SO</em><b>Oefentoets</b><span>20 woorden uit A, B en E: 10 Nederlands → Frans en 10 Frans → Nederlands. Met cijfer.</span>${b.oefen!=null?'<span class="donel">✓ Beste cijfer: '+grade(b.oefen)+'</span>':''}</button>
+   ${D.lists.map(l=>`<button class="gm" data-t="L${l.id}"><em>Hele lijst</em><b>${esc(l.title)}</b><span>Alle ${byList(l.id).length} woorden, Nederlands → Frans.</span>${b['L'+l.id]!=null?'<span class="donel">✓ Beste cijfer: '+grade(b['L'+l.id])+'</span>':''}</button>`).join('')}
    ${nWrong()?`<button class="gm" data-t="fout"><em>Slim herhalen</em><b>Mijn fouten (${nWrong()})</b><span>Typ de woorden die je eerder fout had. Goed = van de lijst af.</span></button>`:''}
   </div>`;
   on('[data-t]',e=>{const t=e.dataset.t;
