@@ -8,13 +8,13 @@ const md=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const sample=(a,n)=>shuffle(a).slice(0,n);
 const view=$('#view');document.title=M.title;$('#brand').textContent=M.brand;$('#sub').textContent=M.sub;
-let cleanup=()=>{};
+let cleanup=()=>{},CUR='start';
 let V_start,V_leer,V_kaart,V_spel,V_toets;
 
 /* ---- voortgang (alleen in deze browser) ---- */
-const store={get(){try{return JSON.parse(localStorage.getItem('studie:'+M.id))||{}}catch(e){return{}}},set(v){try{localStorage.setItem('studie:'+M.id,JSON.stringify(v))}catch(e){}}};
+const store={get(){try{return JSON.parse(localStorage.getItem('studie:'+M.id))||{}}catch(e){return{}}},set(v){try{localStorage.setItem('studie:'+M.id,JSON.stringify(v))}catch(e){}if(window.StudieSync)StudieSync.changed()}};
 let S=Object.assign({xp:0,lb:{},exam:null,best:{},chk:{}},store.get());
-const save=()=>{try{S.pct=ready().pct}catch(e){}store.set(S)};
+const save=()=>{try{S.pct=ready().pct}catch(e){}S.ts=Date.now();store.set(S)};
 const BEG=D.begrippen.filter(b=>!b.x),EXT=D.begrippen.filter(b=>b.x);
 /* ---- Leitner: kaartjes komen terug na 1, 3, 7 en 14 dagen ---- */
 const DAYMS=864e5,INT=[0,1,3,7,14];
@@ -22,8 +22,8 @@ const today=()=>Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/DAYMS
 const isDue=k=>{const e=S.lb[k];return !e||e.d<=today()};
 const mastered=k=>{const e=S.lb[k];return !!e&&e.b>=2};
 function mark(k,ok,force){const e=S.lb[k],t0=today();
-  if(ok){if(!force&&e&&e.d>t0)return;const b=Math.min(4,(e?e.b:0)+1);let d=t0+INT[b];if(S.exam&&S.exam>t0)d=Math.min(d,Math.max(t0,S.exam-1));S.lb[k]={b,d}}
-  else S.lb[k]={b:0,d:t0};save()}
+  if(ok){if(!force&&e&&e.d>t0)return;const b=Math.min(4,(e?e.b:0)+1);let d=t0+INT[b];if(S.exam&&S.exam>t0)d=Math.min(d,Math.max(t0,S.exam-1));S.lb[k]={b,d,t:Date.now()}}
+  else S.lb[k]={b:0,d:t0,t:Date.now()};save()}
 
 const LV=[[0,'Neanderthaler'],[80,'Verzamelaar'],[220,'Jager'],[400,'Boer'],[650,'Archeoloog'],[950,'Farao']];
 function lvl(){let i=0;LV.forEach((l,k)=>{if(S.xp>=l[0])i=k});const n=LV[i+1];return{i,name:LV[i][1],from:LV[i][0],next:n?n[0]:null}}
@@ -45,7 +45,7 @@ const ICON={
 const TABS=[['start','Start'],['leer','Leren'],['kaart','Kaartjes'],['spel','Spellen'],['toets','Toets']];
 $('#tabs').innerHTML=TABS.map(t=>`<button class="tab" data-tab="${t[0]}"><svg viewBox="0 0 24 24" aria-hidden="true">${ICON[t[0]]}</svg>${t[1]}</button>`).join('');
 $$('.tab').forEach(b=>b.addEventListener('click',()=>go(b.dataset.tab)));
-function go(t){cleanup();cleanup=()=>{};$$('.tab').forEach(b=>b.setAttribute('aria-current',b.dataset.tab===t?'page':'false'));V[t]();window.scrollTo(0,0);try{history.replaceState(null,'','#'+t)}catch(e){}}
+function go(t){CUR=t;cleanup();cleanup=()=>{};$$('.tab').forEach(b=>b.setAttribute('aria-current',b.dataset.tab===t?'page':'false'));V[t]();window.scrollTo(0,0);try{history.replaceState(null,'','#'+t)}catch(e){}}
 const on=(sel,fn,root=view)=>$$(sel,root).forEach(e=>e.addEventListener('click',()=>fn(e)));
 
 /* ---- START ---- */
@@ -88,7 +88,7 @@ V_start=function(){
   <details class="card small"><summary><b>Waar komt dit vandaan?</b></summary><p style="margin-top:8px">De 32 begrippen en hun omschrijvingen komen letterlijk uit de begrippenlijst (p. 60-61) en de tijdlijn van tijdvak 1 uit dezelfde pagina's. De samenvatting is gemaakt uit de boekpagina's van paragraaf 1.1 t/m 1.4. Woorden met het label <span class="tag" style="margin:0">extra</span> staan in de tekst maar niet op de begrippenlijst. De namen van de tien tijdvakken zijn de standaardnamen; alleen de eerste twee heb ik in het boek gezien. Vergelijk de rest met het kaartjesblad van de leraar.</p></details>`;
   on('[data-go]',e=>go(e.dataset.go));
   $$('[data-c]',view).forEach(e=>e.addEventListener('change',()=>{S.chk[e.dataset.c]=e.checked;save()}));
-  const ex=$('#exam');ex.addEventListener('change',()=>{S.exam=ex.value?Math.floor(Date.parse(ex.value)/DAYMS):null;save();V_start()});
+  const ex=$('#exam');ex.addEventListener('change',()=>{S.exam=ex.value?Math.floor(Date.parse(ex.value)/DAYMS):null;S.examT=Date.now();save();V_start()});
 };
 
 /* ---- LEREN ---- */
@@ -307,6 +307,7 @@ function quiz(title,key,qs){
 function V_toets_start(key){go('toets');const b=$(`[data-t="${key==='oefen'?'oefen':key}"]`);if(b)b.click()}
 
 const V={start:()=>V_start(),leer:()=>V_leer(),kaart:()=>V_kaart(),spel:()=>V_spel(),toets:()=>V_toets()};
+window.__studieReload=ids=>{if(!ids.includes(M.id))return;S=Object.assign({xp:0,lb:{},exam:null,best:{},chk:{}},store.get());header();if(CUR==='start')go('start')};
 header();
 let h0='start';try{const h=location.hash.slice(1);if(V[h])h0=h}catch(e){}
 go(h0);

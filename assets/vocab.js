@@ -8,29 +8,30 @@ const md=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const sample=(a,n)=>shuffle(a).slice(0,n);
 const view=$('#view');document.title=M.title;$('#brand').textContent=M.brand;$('#sub').textContent=M.sub;
-let cleanup=()=>{};
+let cleanup=()=>{},CUR='start';
 
 /* ---- woorden ---- */
 const W=[];D.lists.forEach(l=>l.blocks.forEach((b,bi)=>b.forEach(w=>{w.list=l.id;w.block=bi;w.key=w.fr;W.push(w)})));
-const byList=id=>id==='all'?W:id==='fout'?W.filter(w=>S.wrong[w.key]):W.filter(w=>w.list===id);
+const byList=id=>id==='all'?W:id==='fout'?W.filter(w=>S.wrong[w.key]>0):W.filter(w=>w.list===id);
 const ART=/^(le |la |les |l'|l’|un |une )/i;
 const gender=w=>{const m=w.fr.match(/^(le|la|les|l'|l’) ?/i);return m?m[1].toLowerCase().replace('’',"'"):null};
 const NOUNS=W.filter(w=>gender(w));
 
 /* ---- voortgang (alleen in deze browser) ---- */
-const store={get(){try{return JSON.parse(localStorage.getItem('studie:'+M.id))||{}}catch(e){return{}}},set(v){try{localStorage.setItem('studie:'+M.id,JSON.stringify(v))}catch(e){}}};
+const store={get(){try{return JSON.parse(localStorage.getItem('studie:'+M.id))||{}}catch(e){return{}}},set(v){try{localStorage.setItem('studie:'+M.id,JSON.stringify(v))}catch(e){}if(window.StudieSync)StudieSync.changed()}};
 let S=Object.assign({xp:0,lb:{},exam:null,best:{},wrong:{}},store.get());
-const save=()=>{S.pct=ready().pct;store.set(S)};
+const save=()=>{S.pct=ready().pct;S.ts=Date.now();store.set(S)};
 const DAYMS=864e5,INT=[0,1,3,7,14];
 const today=()=>Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/DAYMS);
 const isDue=k=>{const e=S.lb[k];return !e||e.d<=today()};
 const mastered=k=>{const e=S.lb[k];return !!e&&e.b>=2};
 function mark(k,ok){const e=S.lb[k],t0=today();
-  if(ok){if(e&&e.d>t0)return;const b=Math.min(4,(e?e.b:0)+1);let d=t0+INT[b];if(S.exam&&S.exam>t0)d=Math.min(d,Math.max(t0+1,S.exam-1));S.lb[k]={b,d}}
-  else S.lb[k]={b:0,d:t0};save()}
+  if(ok){if(e&&e.d>t0)return;const b=Math.min(4,(e?e.b:0)+1);let d=t0+INT[b];if(S.exam&&S.exam>t0)d=Math.min(d,Math.max(t0+1,S.exam-1));S.lb[k]={b,d,t:Date.now()}}
+  else S.lb[k]={b:0,d:t0,t:Date.now()};save()}
 const kF=w=>'f:'+w.key,kN=w=>'n:'+w.key; /* f = Frans→NL, n = NL→Frans */
-function wrongAdd(w){S.wrong[w.key]=1}
-function wrongDel(w){delete S.wrong[w.key]}
+function wrongAdd(w){S.wrong[w.key]=Date.now()}
+const nWrong=()=>Object.values(S.wrong).filter(v=>v>0).length;
+function wrongDel(w){if(S.wrong[w.key]>0)S.wrong[w.key]=-Date.now()}
 
 const LV=M.levels||[[0,'Beginner'],[80,'Leerling'],[220,'Kenner'],[400,'Expert'],[650,'Meester'],[950,'Kampioen']];
 function lvl(){let i=0;LV.forEach((l,k)=>{if(S.xp>=l[0])i=k});const n=LV[i+1];return{i,name:LV[i][1],from:LV[i][0],next:n?n[0]:null}}
@@ -87,9 +88,9 @@ const TABS=[['start','Start'],['leer','Woorden'],['kaart','Kaartjes'],['spel','S
 $('#tabs').innerHTML=TABS.map(t=>`<button class="tab" data-tab="${t[0]}"><svg viewBox="0 0 24 24" aria-hidden="true">${ICON[t[0]]}</svg>${t[1]}</button>`).join('');
 $$('.tab').forEach(b=>b.addEventListener('click',()=>go(b.dataset.tab)));
 const V={};
-function go(t){cleanup();cleanup=()=>{};if(TTS)try{speechSynthesis.cancel()}catch(e){}$$('.tab').forEach(b=>b.setAttribute('aria-current',b.dataset.tab===t?'page':'false'));V[t]();window.scrollTo(0,0);try{history.replaceState(null,'','#'+t)}catch(e){}}
+function go(t){CUR=t;cleanup();cleanup=()=>{};if(TTS)try{speechSynthesis.cancel()}catch(e){}$$('.tab').forEach(b=>b.setAttribute('aria-current',b.dataset.tab===t?'page':'false'));V[t]();window.scrollTo(0,0);try{history.replaceState(null,'','#'+t)}catch(e){}}
 const on=(sel,fn,root=view)=>$$(sel,root).forEach(e=>e.addEventListener('click',()=>fn(e)));
-const listSeg=(cur,attr,extra=true)=>`<div class="seg">${D.lists.map(l=>`<button data-${attr}="${l.id}" aria-pressed="${cur===l.id}">${esc(l.id)}</button>`).join('')}${extra?`<button data-${attr}="all" aria-pressed="${cur==='all'}">Alles</button>`:''}${extra&&Object.keys(S.wrong).length?`<button data-${attr}="fout" aria-pressed="${cur==='fout'}">Mijn fouten (${Object.keys(S.wrong).length})</button>`:''}</div>`;
+const listSeg=(cur,attr,extra=true)=>`<div class="seg">${D.lists.map(l=>`<button data-${attr}="${l.id}" aria-pressed="${cur===l.id}">${esc(l.id)}</button>`).join('')}${extra?`<button data-${attr}="all" aria-pressed="${cur==='all'}">Alles</button>`:''}${extra&&nWrong()?`<button data-${attr}="fout" aria-pressed="${cur==='fout'}">Mijn fouten (${nWrong()})</button>`:''}</div>`;
 
 /* ---- START ---- */
 function ready(){const f=W.filter(w=>mastered(kF(w))).length/W.length,n=W.filter(w=>mastered(kN(w))).length/W.length,q=S.best.oefen||0;return{f,n,q,pct:Math.round(100*(.3*f+.4*n+.3*q))}}
@@ -118,7 +119,7 @@ V.start=function(){const r=ready();const due=W.filter(w=>isDue(kF(w))||isDue(kN(
     <button data-go="spel"><b>3. Spellen</b><span>Le of la, spelling en snelheid</span></button>
     <button data-go="toets"><b>4. Oefentoets</b><span>Typen zoals op de SO, met cijfer</span></button></div></section>`;
   on('[data-go]',e=>go(e.dataset.go));
-  $('#exam').addEventListener('change',e=>{const v=e.target.value;S.exam=v?Math.floor(Date.parse(v)/DAYMS):null;save();V.start()})};
+  $('#exam').addEventListener('change',e=>{const v=e.target.value;S.exam=v?Math.floor(Date.parse(v)/DAYMS):null;S.examT=Date.now();save();V.start()})};
 
 /* ---- WOORDEN ---- */
 let lTab=D.lists[0].id,hide='';
@@ -240,7 +241,7 @@ V.toets=function(){const b=S.best;
   view.innerHTML=`<h2>Toetsen</h2><p class="mut small">Hier typ je de antwoorden, net als op de SO. Accenten en le/la/les tellen mee. Een fout accent of lidwoord geeft hier een half punt; een spelfout is fout. Je docent kan strenger nakijken.</p><div class="games">
    <button class="gm" data-t="oefen"><em>Zoals de SO</em><b>Oefentoets</b><span>20 woorden uit A, B en E: 10 Nederlands → Frans en 10 Frans → Nederlands. Met cijfer.${b.oefen!=null?' Beste: '+grade(b.oefen):''}</span></button>
    ${D.lists.map(l=>`<button class="gm" data-t="L${l.id}"><em>Hele lijst</em><b>${esc(l.title)}</b><span>Alle ${byList(l.id).length} woorden, Nederlands → Frans.${b['L'+l.id]!=null?' Beste: '+grade(b['L'+l.id]):''}</span></button>`).join('')}
-   ${Object.keys(S.wrong).length?`<button class="gm" data-t="fout"><em>Slim herhalen</em><b>Mijn fouten (${Object.keys(S.wrong).length})</b><span>Typ de woorden die je eerder fout had. Goed = van de lijst af.</span></button>`:''}
+   ${nWrong()?`<button class="gm" data-t="fout"><em>Slim herhalen</em><b>Mijn fouten (${nWrong()})</b><span>Typ de woorden die je eerder fout had. Goed = van de lijst af.</span></button>`:''}
   </div>`;
   on('[data-t]',e=>{const t=e.dataset.t;
     if(t==='oefen'){const s=shuffle(W);quiz('Oefentoets','oefen',s.slice(0,10).map(w=>({w,d:'n'})).concat(s.slice(10,20).map(w=>({w,d:'f'}))))}
@@ -263,10 +264,11 @@ function quiz(title,key,qs){let i=0,pts=0;const res=[];
     view.innerHTML=`<div class="card stack" style="text-align:center"><div class="eyebrow">${esc(title)}</div><div class="score">${key==='fout'?String(pts).replace('.',',')+'/'+qs.length:grade(p)}</div><p><b>${String(pts).replace('.',',')} van de ${qs.length} punten.</b> ${p>=.8?'Très bien!':p>=.55?'Voldoende! Oefen je fouten nog even.':'Oefen eerst de kaartjes en probeer het dan opnieuw.'}</p>
     ${key!=='fout'?'<p class="small mut">Dit cijfer is een indicatie: 1 + 9 × je score.</p>':''}</div>
     ${wrong.length?`<div class="card stack"><h3>Om nog te oefenen</h3><div class="miss">${wrong.map(r=>`<div><b>${esc(r.d==='n'?r.w.nl:r.w.fr)}</b> → ${esc(r.d==='n'?r.w.fr:r.w.nl)} ${spk(r.w.fr)}<br><span class="small mut">Jij: ${esc(r.a||'(leeg)')}${r.p?' · half punt':''}</span></div>`).join('')}</div></div>`:''}
-    <div class="btns"><button class="btn" id="ag">Nog een keer</button>${Object.keys(S.wrong).length&&key!=='fout'?'<button class="btn ghost" id="fo">Oefen mijn fouten</button>':''}<button class="btn ghost" id="bk">Andere toetsen</button></div>`;
+    <div class="btns"><button class="btn" id="ag">Nog een keer</button>${nWrong()&&key!=='fout'?'<button class="btn ghost" id="fo">Oefen mijn fouten</button>':''}<button class="btn ghost" id="bk">Andere toetsen</button></div>`;
     $('#ag').onclick=()=>{if(key==='oefen'){const s=shuffle(W);quiz(title,key,s.slice(0,10).map(w=>({w,d:'n'})).concat(s.slice(10,20).map(w=>({w,d:'f'}))))}else if(key==='fout')quiz(title,key,shuffle(byList('fout')).map(w=>({w,d:'n'})));else quiz(title,key,shuffle(qs.map(x=>x.w)).map(w=>({w,d:'n'})))};
     $('#bk').onclick=()=>V.toets();const fo=$('#fo');if(fo)fo.onclick=()=>quiz('Mijn fouten','fout',shuffle(byList('fout')).map(w=>({w,d:'n'})))}
   draw()}
 
+window.__studieReload=ids=>{if(!ids.includes(M.id))return;S=Object.assign({xp:0,lb:{},exam:null,best:{},wrong:{}},store.get());header();if(CUR==='start')go('start')};
 header();const h=(location.hash||'').slice(1);go(V[h]?h:'start');
 })();

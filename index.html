@@ -7,19 +7,38 @@
 .ex .r{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.pill{padding:8px 14px;border-radius:999px;font-weight:800;text-decoration:none;font-size:.9rem;background:var(--soft);color:var(--ink)}
 .pill.main{background:var(--accent);color:var(--on-accent)}</style></head><body>
 <header class="top"><div class="wrap row"><div class="brand"><b>Studiehub</b><span>Al je toetsen op één plek</span></div></div><div class="strata" id="strata" aria-hidden="true"></div></header>
-<main class="wrap" id="view"><section class="hero"><h1>Waar ga je vandaag mee aan de slag?</h1><p>Kies een vak en een toets. Je voortgang wordt bewaard in deze browser.</p></section><div id="list"></div></main>
+<main class="wrap" id="view"><section class="hero"><h1>Waar ga je vandaag mee aan de slag?</h1><p>Kies een vak en een toets. Je voortgang wordt bewaard in deze browser.</p></section><div id="list"></div><section class="card stack" id="sync" style="margin-top:24px" hidden></section></main>
+<script src="assets/sync-config.js"></script>
+<script src="assets/sync.js"></script>
 <script src="catalog.js"></script>
 <script>
 (function(){
 var HUE=[28,12,352,322,285,240,205,172,140,95];
 var st=document.getElementById('strata');st.innerHTML=HUE.map(function(h){return '<i style="background:hsl('+h+' 60% 55%)"></i>'}).join('');
 function pct(id){try{var s=JSON.parse(localStorage.getItem('studie:'+id));return s&&typeof s.pct==='number'?s.pct:null}catch(e){return null}}
-var h='';
+function renderList(){var h='';
 CATALOG.forEach(function(v){
  h+='<div class="vak"><h2><span>'+v.emoji+'</span>'+v.vak+'</h2><div class="stack">';
  v.toetsen.forEach(function(t){var p=pct(t.id);
   h+='<div class="card ex"><h3>'+t.titel+'</h3><p class="mut small">'+t.sub+(p!==null?' · klaar voor de toets: '+p+'%':'')+'</p><div class="r"><a class="pill main" href="'+t.url+'">Open studie-app</a>'+(t.pdf?'<a class="pill" href="'+t.pdf+'" target="_blank" rel="noopener">'+(t.pdfLabel||'Spiekbrief')+' (PDF)</a>':'')+'</div></div>'});
  h+='</div></div>'});
-document.getElementById('list').innerHTML=h;
+document.getElementById('list').innerHTML=h}
+renderList();
+var SY=window.StudieSync,box=document.getElementById('sync');
+function ago(t){if(!t)return 'nog niet';var m=Math.round((Date.now()-t)/60000);return m<1?'net':m<60?m+' min geleden':Math.round(m/60)+' uur geleden'}
+function drawSync(){if(!SY||!SY.enabled){box.hidden=true;return}box.hidden=false;var s=SY.status();
+ if(!s.code){box.innerHTML='<h2>🔄 Voortgang op al je apparaten</h2><p class="mut small">Met een sync-code gaat je voortgang mee naar je telefoon, laptop of tablet.</p>'+
+  '<div class="btns"><button class="btn" id="sNew">Nieuwe code maken</button></div>'+
+  '<p class="small"><b>Heb je al een code</b> van een ander apparaat? Typ hem hier:</p><div class="btns"><input type="text" id="sIn" placeholder="bijv. tijger-4829-kaas-17" autocapitalize="off" autocomplete="off" spellcheck="false" style="flex:1 1 200px"><button class="btn ghost" id="sGo">Koppelen</button></div><p class="small" id="sMsg"></p>';
+  document.getElementById('sNew').onclick=function(){SY.setCode(SY.newCode()).then(drawSync)};
+  var go=function(){var v=document.getElementById('sIn').value;SY.setCode(v).then(function(){drawSync()}).catch(function(e){document.getElementById('sMsg').textContent=e.message})};
+  document.getElementById('sGo').onclick=go;document.getElementById('sIn').addEventListener('keydown',function(e){if(e.key==='Enter')go()});return}
+ var st=s.busy?'Bezig met synchroniseren…':s.error?'⚠️ Sync lukt nu niet. Je voortgang is veilig in deze browser en gaat mee zodra het weer lukt.':'✓ Gesynchroniseerd '+ago(s.last);
+ box.innerHTML='<h2>🔄 Sync staat aan</h2><p class="small">Jouw code: <b style="font-size:1.1rem;letter-spacing:.02em">'+s.code+'</b></p><p class="mut small">Schrijf deze code op! Typ hem op een ander apparaat in om daar verder te gaan. Deel hem niet met anderen: met jouw code zien ze jouw voortgang.</p><p class="small"><b>'+st+'</b></p>'+
+  '<div class="btns"><button class="btn ghost" id="sNow">Nu synchroniseren</button><button class="btn ghost" id="sOff">Ontkoppel dit apparaat</button></div>';
+ document.getElementById('sNow').onclick=function(){SY.syncNow().then(drawSync)};
+ document.getElementById('sOff').onclick=function(){if(document.getElementById('sOff').dataset.sure){SY.forget();drawSync()}else{document.getElementById('sOff').dataset.sure=1;document.getElementById('sOff').textContent='Zeker? Tik nog een keer'}}}
+if(SY){SY.onChange(drawSync);window.__studieReload=function(){renderList()}}
+drawSync();
 })();
 </script></body></html>
