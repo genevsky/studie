@@ -189,7 +189,7 @@ G.koppel=function(){const pool=byList(gList);const set=sample(pool,Math.min(6,po
     if(!sel||sel.s===s){$$('.pairs .sel').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');sel={b,s,w};if(s==='fr')say(w.fr);return}
     if(sel.w===w){b.classList.add('done');sel.b.classList.add('done');sel.b.classList.remove('sel');sel=null;done++;addXP(1);if(done===set.length){addXP(3);confetti();setTimeout(()=>{endCard(miss===0?'Perfect!':'Klaar!',miss+' keer mis. '+(miss===0?'Knap!':''));$('#ag').onclick=G.koppel},700)}}
     else{b.classList.add('shake');sel.b.classList.add('shake');miss++;setTimeout(()=>$$('.shake').forEach(x=>x.classList.remove('shake')),400)}}))};
-G.lela=function(){let pool=byList(gList).filter(w=>gender(w));if(pool.length<3)pool=NOUNS;const qs=shuffle(pool);let i=0,ok=0;
+G.lela=function(){const pool=byList(gList).filter(w=>gender(w));if(!pool.length){toast('Geen woorden met le/la/les in deze keuze.');return V.spel()}const qs=shuffle(pool);let i=0,ok=0;
   function draw(){if(i>=qs.length){addXP(ok);if(ok===qs.length)confetti();endCard(ok+'/'+qs.length,'Tip: leer het lidwoord altijd mee met het woord.');$('#ag').onclick=G.lela;return}
     const w=qs[i],g=gender(w),rest=w.fr.replace(/^(le|la|les|l'|l’) ?/i,'');
     view.innerHTML=`${back}<div class="prog"><span>${i+1}/${qs.length}</span><div class="bar"><i style="width:${100*i/qs.length}%"></i></div><span>${ok} goed</span></div>
@@ -216,8 +216,8 @@ G.spell=function(){const qs=sample(byList(gList),8);let i=0,ok=0;
       $('#sk').onclick=()=>{wrongAdd(w);save();say(w.fr);$('#fb').innerHTML=`<div class="fb bad">Het is <b>${esc(w.fr)}</b></div><button class="btn" id="nx" style="margin-top:10px">Volgende</button>`;$('#nx').onclick=()=>{i++;draw()}}}
     paint()}
   draw()};
-G.snel=function(){const pool=byList(gList).length>=4?byList(gList):W;let score=0,left=60,cur;
-  function q(){const w=pool[Math.floor(Math.random()*pool.length)],d=Math.random()<.5?'f':'n';const others=sample(W.filter(x=>x!==w),3);return{w,d,opts:shuffle([w].concat(others))}}
+G.snel=function(){const pool=byList(gList);if(pool.length<4){toast('Kies A, B, E of Alles: hier zijn te weinig woorden voor dit spel.');return V.spel()}let score=0,left=60,cur;
+  function q(){const w=pool[Math.floor(Math.random()*pool.length)],d=Math.random()<.5?'f':'n';const others=sample(pool.filter(x=>x!==w&&x.fr!==w.fr&&x.nl!==w.nl),3);return{w,d,opts:shuffle([w].concat(others))}}
   function draw(){const{w,d,opts}=cur;view.innerHTML=`${back}<div class="timer"><span>⏱ ${left}s</span><div class="bar sun"><i style="width:${left/60*100}%"></i></div><span>${score} punten</span></div>
     <div class="card stack"><div class="q">${esc(d==='f'?w.fr:w.nl)}</div><div class="opts">${opts.map((o,k)=>`<button class="opt" data-o="${k}">${esc(d==='f'?o.nl:o.fr)}</button>`).join('')}</div></div>`;
     $('#bk').onclick=()=>V.spel();
