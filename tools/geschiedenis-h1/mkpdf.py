@@ -29,7 +29,7 @@ st=[]
 # --- p1 tijdvakken
 st+=[P('Tijdreis Geschiedenis',H1),P('Hoofdstuk 1 · Jagers en boeren · spiekbrief en oefentoets',sm),Spacer(1,8)]
 st+=[P('De tien tijdvakken',H2),P('Leer de naam (voorkant) en de jaartallen (achterkant). Dek de rechterkolom af en test jezelf.',sm),Spacer(1,4)]
-rows=[[P('<b>Nr</b>'),P('<b>Tijdvak</b>'),P('<b>Jaartallen</b>'),P('<b>Denk aan</b>')]]
+rows=[[P('<b>Nr</b>'),P('<b>Tijdvak</b>'),P('<b>Jaartallen</b>'),P('<b>Kenmerkende aspecten</b>')]]
 for t in D['tijdvakken']: rows.append([P(str(t['n'])),P('<b>%s</b>'%t['name']),P(t['yrs']),P(t['tag'],sm)])
 T=Table(rows,colWidths=[10*mm,62*mm,38*mm,W-110*mm],repeatRows=1)
 T.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,0),SOFT),('LINEBELOW',(0,0),(-1,-1),.4,colors.HexColor('#CBDAD8')),('VALIGN',(0,0),(-1,-1),'MIDDLE'),('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5)]))
@@ -37,11 +37,11 @@ st+=[T,Spacer(1,10)]
 w=D['eezelsbrug'].split(' ')
 st+=[P('Ezelsbruggetje',H3),P(' '.join('<font color="#B07800"><b>%s</b></font>%s'%(x[0],x[1:]) for x in w),ParagraphStyle('m',parent=B,fontSize=13,leading=19)),
      P(' · '.join('%s = %s'%(w[i][0],D['eezelsbrugUitleg'][i]) for i in range(10)),sm),Spacer(1,4),
-     P('De namen komen uit de standaardindeling. Controleer ze met het kaartjesblad van de leraar.',sm)]
-st+=[P('Tijdlijn van tijdvak 1 (p. 60-61)',H2),P('Let op: bij v.C. loopt het getal terug, dus 10.000 v.C. is ouder dan 9000 v.C. Vouw of dek de rechterkolom af en test jezelf.',sm),Spacer(1,4)]
-rows=[[P('<b>%s</b>'%e['w']),P(e['l'])] for e in D['timeline'] if e.get('core')]
+     P('Namen en jaartallen uit het Overzicht tijdvakken in je boek (p. 376-379).',sm)]
+TP=[P('Tijdperken (Overzicht tijdvakken, p. 376-379)',H2),Spacer(1,4)]
+rows=[[P('<b>%s</b>'%e['l']),P('%s <font color="#526A6E">(%s)</font>'%(e['w'],e['tv']))] for e in D['timeline'] if e.get('core')]
 T=Table(rows,colWidths=[40*mm,W-40*mm]);T.setStyle(TableStyle([('LINEBELOW',(0,0),(-1,-1),.4,colors.HexColor('#CBDAD8')),('VALIGN',(0,0),(-1,-1),'TOP'),('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5),('BACKGROUND',(0,0),(0,-1),colors.HexColor('#FBE7A8'))]))
-st+=[T]
+st+=[KeepTogether(TP+[T])]
 st.append(PageBreak())
 # --- begrippen
 st+=[P('Begrippen (p. 60-61)',H1),P('Dit zijn de 33 begrippen van de begrippenlijst in je boek, met de omschrijving uit het boek. Op de toets krijg je de omschrijving en noem jij het begrip. <b>Vouw het blad dubbel langs de stippellijn</b>: dan zie je alleen de omschrijvingen. Noem het begrip, klap open en kijk. Onder elk begrip staat een steuntje om het te onthouden.',sm),Spacer(1,6)]
@@ -72,7 +72,7 @@ n=13
 for t in tvs: st+=[P('<b>%d.</b> Welke jaartallen horen bij: <b>%s</b>?  ____________________'%(n,t['name'])),Spacer(1,6)];n+=1
 for t in tvn: st+=[P('<b>%d.</b> Welk tijdvak is <b>%s</b>?  ______________________________________'%(n,t['yrs'])),Spacer(1,6)];n+=1
 core=[e for e in D['timeline'] if e.get('core')];cs=random.sample(core,3)
-for e in cs: st+=[P('<b>%d.</b> Wat gebeurde er in <b>%s</b>?  ______________________________________'%(n,e['w'])),Spacer(1,6)];n+=1
+for e in cs: st+=[P('<b>%d.</b> Welk tijdperk is <b>%s</b>?  ______________________________________'%(n,e['w'])),Spacer(1,6)];n+=1
 opens=[v for v in random.sample(D['vragen'],4)]
 st+=[P('Deel C. Vragen uit de paragrafen (4 vragen)',H2)]
 for i,o in enumerate(opens,n):
@@ -92,7 +92,7 @@ st.append(PageBreak())
 tv=D['tijdvakken']
 CF=ParagraphStyle('cf',parent=B,fontSize=13,leading=17,alignment=1)
 CBK=ParagraphStyle('cb',parent=B,fontSize=15,leading=20,alignment=1)
-rows=[[P('<font size=8 color="#526A6E">Tijdvak %d</font><br/><b>%s</b>'%(t['n'],t['name']),CF),P('<b>%s</b><br/><font size=9 color="#526A6E">%s</font>'%(t['yrs'],t['tag']),CBK)] for t in tv]
+rows=[[P('<font size=8 color="#526A6E">Tijdvak %d</font><br/><b>%s</b>'%(t['n'],t['name']),CF),P('<b>%s</b>'%t['yrs'],CBK)] for t in tv]
 T=Table(rows,colWidths=[W/2]*2,rowHeights=[22.5*mm]*10)
 T.setStyle(TableStyle([('BOX',(0,0),(-1,-1),.8,MUT),('LINEBELOW',(0,0),(-1,-2),.8,MUT),('LINEAFTER',(0,0),(0,-1),1.2,MUT,None,(4,3)),('VALIGN',(0,0),(-1,-1),'MIDDLE'),('BACKGROUND',(1,0),(1,-1),colors.HexColor('#EEF4F3'))]))
 st+=[P('Kaartjes: tijdvakken om te vouwen',H1),P('Print enkelzijdig. <b>Vouw het blad dubbel langs de stippellijn</b> (links naam, rechts jaartallen). Zie je de naam, noem dan de jaartallen, en draai om. Wil je losse kaartjes? Knip dan na het vouwen langs de dichte lijnen: dan heb je tien kaartjes met voor- en achterkant.',sm),Spacer(1,6),T]

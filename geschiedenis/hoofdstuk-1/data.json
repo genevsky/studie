@@ -238,70 +238,122 @@
    "name": "Tijd van jagers en boeren",
    "yrs": "tot 3000 v.C.",
    "emoji": "🏹",
-   "tag": "jager-verzamelaars, eerste boeren, hunebedden"
+   "tag": "Jager-verzamelaars, De landbouwrevolutie",
+   "asp": [
+    "Jager-verzamelaars",
+    "De landbouwrevolutie"
+   ]
   },
   {
    "n": 2,
    "name": "Tijd van Grieken en Romeinen",
-   "yrs": "3000 v.C. – 500 n.C.",
+   "yrs": "3000 v.C. tot 500",
    "emoji": "🏛️",
-   "tag": "Egypte, Grieken, Romeinen"
+   "tag": "Het Griekse denken, De opkomst van het christendom, De Grieks-Romeinse en Germaanse culturen",
+   "asp": [
+    "Het Griekse denken",
+    "De opkomst van het christendom",
+    "De Grieks-Romeinse en Germaanse culturen"
+   ]
   },
   {
    "n": 3,
    "name": "Tijd van monniken en ridders",
-   "yrs": "500 – 1000",
+   "yrs": "500 tot 1000",
    "emoji": "🏰",
-   "tag": "kloosters, ridders, Vikingen"
+   "tag": "De opkomst van de islam, Het leenstelsel, De verspreiding van het christendom, Hofstelsel en horigheid",
+   "asp": [
+    "De opkomst van de islam",
+    "Het leenstelsel",
+    "De verspreiding van het christendom",
+    "Hofstelsel en horigheid"
+   ]
   },
   {
    "n": 4,
    "name": "Tijd van steden en staten",
-   "yrs": "1000 – 1500",
+   "yrs": "1000 tot 1500",
    "emoji": "🏙️",
-   "tag": "steden groeien, handel, kastelen"
+   "tag": "De opkomst van handel en steden, De burgerij in zelfstandige steden, Staatsvorming en centralisatie, Strijd tussen kerk en staat",
+   "asp": [
+    "De opkomst van handel en steden",
+    "De burgerij in zelfstandige steden",
+    "Staatsvorming en centralisatie",
+    "Strijd tussen kerk en staat"
+   ]
   },
   {
    "n": 5,
    "name": "Tijd van ontdekkers en hervormers",
-   "yrs": "1500 – 1600",
+   "yrs": "1500 tot 1600",
    "emoji": "⛵",
-   "tag": "Columbus, Reformatie, Opstand"
+   "tag": "Het begin van de Europese expansie, De renaissance, De Reformatie, De Nederlandse Opstand",
+   "asp": [
+    "Het begin van de Europese expansie",
+    "De renaissance",
+    "De Reformatie",
+    "De Nederlandse Opstand"
+   ]
   },
   {
    "n": 6,
    "name": "Tijd van regenten en vorsten",
-   "yrs": "1600 – 1700",
+   "yrs": "1600 tot 1700",
    "emoji": "🎨",
-   "tag": "Gouden Eeuw, VOC"
+   "tag": "Handelskapitalisme en wereldeconomie, Bestuur en cultuur in de Republiek, Het absolutisme, Wetenschappelijke revolutie",
+   "asp": [
+    "Handelskapitalisme en wereldeconomie",
+    "Bestuur en cultuur in de Republiek",
+    "Het absolutisme",
+    "Wetenschappelijke revolutie"
+   ]
   },
   {
    "n": 7,
    "name": "Tijd van pruiken en revoluties",
-   "yrs": "1700 – 1800",
+   "yrs": "1700 tot 1800",
    "emoji": "👑",
-   "tag": "Verlichting, Franse Revolutie"
+   "tag": "De democratische revoluties, Europese overheersing en abolitionisme",
+   "asp": [
+    "De democratische revoluties",
+    "Europese overheersing en abolitionisme"
+   ]
   },
   {
    "n": 8,
    "name": "Tijd van burgers en stoommachines",
-   "yrs": "1800 – 1900",
+   "yrs": "1800 tot 1900",
    "emoji": "🚂",
-   "tag": "fabrieken, spoorwegen"
+   "tag": "Industriële revolutie en emancipatiebewegingen, De democratisering, Het imperialisme",
+   "asp": [
+    "Industriële revolutie en emancipatiebewegingen",
+    "De democratisering",
+    "Het imperialisme"
+   ]
   },
   {
    "n": 9,
-   "name": "Tijd van wereldoorlogen",
-   "yrs": "1900 – 1950",
+   "name": "Tijd van de wereldoorlogen",
+   "yrs": "1900 tot 1950",
    "emoji": "✈️",
-   "tag": "Eerste en Tweede Wereldoorlog"
+   "tag": "De wereldcrisis, Het nationaalsocialisme, Duitse bezetting en Jodenvervolging",
+   "asp": [
+    "De wereldcrisis",
+    "Het nationaalsocialisme",
+    "Duitse bezetting en Jodenvervolging"
+   ]
   },
   {
    "n": 10,
    "name": "Tijd van televisie en computer",
-   "yrs": "1950 – nu",
+   "yrs": "vanaf 1950",
    "emoji": "📺",
-   "tag": "tv, computer, internet"
+   "tag": "De dekolonisatie, De Koude Oorlog, De jaren 1960",
+   "asp": [
+    "De dekolonisatie",
+    "De Koude Oorlog",
+    "De jaren 1960"
+   ]
   }
  ],
  "eezelsbrug": "Jip Geeft Mama Sappige Oranje Rozijnen, Pap Bakt Wafels Thuis.",
@@ -571,41 +623,39 @@
  ],
  "timeline": [
   {
-   "w": "10.000 v.C.",
-   "l": "De laatste ijstijd eindigt",
-   "y": -10000,
-   "core": true
-  },
-  {
-   "w": "9000 v.C.",
-   "l": "In het Midden-Oosten ontstaat de landbouw",
-   "y": -9000,
-   "core": true
-  },
-  {
-   "w": "8000-3000 v.C.",
-   "l": "In het Midden-Oosten ontstaan de eerste steden",
-   "y": -8000,
-   "core": true
-  },
-  {
-   "w": "5300 v.C.",
-   "l": "Landbouw in Nederland",
-   "y": -5300,
-   "core": true
-  },
-  {
-   "w": "3400-3200 v.C.",
-   "l": "Bouw van de hunebedden",
-   "y": -3400,
-   "core": true
-  },
-  {
-   "w": "3000 v.C.",
-   "l": "Einde van de prehistorie. Begin van de Tijd van Grieken en Romeinen (3000 v.C. – 500 n.C.)",
-   "y": -3000,
+   "w": "tot 3000 v.C.",
+   "l": "Prehistorie",
+   "y": 1,
    "core": true,
-   "g": "cut"
+   "tv": "tijdvak 1"
+  },
+  {
+   "w": "3000 v.C. tot 500",
+   "l": "Oudheid",
+   "y": 2,
+   "core": true,
+   "tv": "tijdvak 2"
+  },
+  {
+   "w": "500 tot 1500",
+   "l": "Middeleeuwen",
+   "y": 3,
+   "core": true,
+   "tv": "tijdvak 3 en 4"
+  },
+  {
+   "w": "1500 tot 1800",
+   "l": "Vroegmoderne tijd",
+   "y": 4,
+   "core": true,
+   "tv": "tijdvak 5, 6 en 7"
+  },
+  {
+   "w": "vanaf 1800",
+   "l": "Moderne tijd",
+   "y": 5,
+   "core": true,
+   "tv": "tijdvak 8, 9 en 10"
   }
  ],
  "sort": [
@@ -1557,5 +1607,44 @@
   "1.2": "Geen vaste woonplaats",
   "1.3": "Leven van de landbouw",
   "1.4": "Cultuur in de prehistorie"
- }
+ },
+ "timeline_h1": [
+  {
+   "w": "10.000 v.C.",
+   "l": "De laatste ijstijd eindigt",
+   "y": -10000,
+   "core": true
+  },
+  {
+   "w": "9000 v.C.",
+   "l": "In het Midden-Oosten ontstaat de landbouw",
+   "y": -9000,
+   "core": true
+  },
+  {
+   "w": "8000-3000 v.C.",
+   "l": "In het Midden-Oosten ontstaan de eerste steden",
+   "y": -8000,
+   "core": true
+  },
+  {
+   "w": "5300 v.C.",
+   "l": "Landbouw in Nederland",
+   "y": -5300,
+   "core": true
+  },
+  {
+   "w": "3400-3200 v.C.",
+   "l": "Bouw van de hunebedden",
+   "y": -3400,
+   "core": true
+  },
+  {
+   "w": "3000 v.C.",
+   "l": "Einde van de prehistorie. Begin van de Tijd van Grieken en Romeinen (3000 v.C. – 500 n.C.)",
+   "y": -3000,
+   "core": true,
+   "g": "cut"
+  }
+ ]
 }

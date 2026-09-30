@@ -209,3 +209,10 @@ details.vq summary::before{content:'▸ ';color:var(--accent)}
 details.vq[open] summary::before{content:'▾ '}
 details.vq ul{margin:8px 0 0 18px;display:grid;gap:4px}
 details.vq p{margin-top:6px}
+
+.era{border:1px solid var(--line);border-radius:14px;padding:10px 12px;display:grid;gap:6px}
+.era .eh{display:flex;justify-content:space-between;gap:8px;align-items:baseline;flex-wrap:wrap}
+.era .eh b{font-family:var(--font-d);font-size:1.15rem;color:var(--accent)}
+.era .eh span{font-weight:800}
+.era .ev{display:flex;gap:8px;align-items:center;font-weight:700;font-size:.92rem;flex-wrap:wrap}
+.era .no{width:24px;height:24px;border-radius:50%;display:inline-grid;place-items:center;color:var(--on-tv);font-size:.8rem;font-weight:800}

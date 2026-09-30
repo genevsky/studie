@@ -71,8 +71,8 @@ V_start=function(){
   ${tile(1,'De vragen van 1.1 t/m 1.4','De vragen bij het begin van elke paragraaf. Lees de antwoorden en oefen ze dan.',
     B('leer:vr','Lees vragen en antwoorden',1)+B('toets:vraag','Oefen de vragen'),
     r.Q.seen?`${r.Q.seen} van de ${VR.length} geoefend, ${VR.filter(v=>S.lb[v.k]&&S.lb[v.k].b>=1).length} goed`:'')}
-  ${tile(2,'Tijdlijn en tijdvakken','De tien tijdvakken met naam en jaartallen, en de jaartallen van de tijdlijn van tijdvak 1 (p. 60-61).',
-    B('leer:tv','Bekijk de tijdvakken',1)+B('spel:trein','Tijdvakkentrein')+B('spel:jaar','Welk tijdvak?')+B('spel:tl5','Tijdlijn bouwen'),
+  ${tile(2,'Tijdvakken en tijdperken','Overzicht tijdvakken (p. 376-379): de tien tijdvakken met naam en jaartallen, en de vijf tijdperken (Prehistorie, Oudheid, Middeleeuwen, Vroegmoderne tijd, Moderne tijd).',
+    B('leer:tv','Bekijk de tijdvakken',1)+B('spel:trein','Tijdvakkentrein')+B('spel:jaar','Welk tijdvak?')+B('leer:tl','Bekijk de tijdperken',1)+B('spel:tl5','Tijdperken op volgorde'),
     r.T.seen||(S.played||{}).trein?`Tijdvakken: ${r.T.seen}/10 geoefend · Trein ${(S.played||{}).trein||0}× · Tijdlijn ${(S.played||{}).tl5||0}×`:'')}
   ${tile(3,'Begrippen (p. 60-61)','Op de toets krijg je de omschrijving en schrijf jij het begrip op.',
     B('leer:bg','Bekijk de begrippen',1)+B('kaart:beg','Kaartjes')+B('toets:typ','Typ het begrip'),
@@ -94,7 +94,7 @@ V_start=function(){
 /* ---- LEREN ---- */
 let leerTab='vr';
 V_leer=function(){
-  view.innerHTML=`<div class="seg" id="seg">${[['vr','Vragen 1.1-1.4'],['tv','Tijdvakken'],['tl','Tijdlijn'],['bg','Begrippen']].map(x=>`<button data-l="${x[0]}" aria-pressed="${leerTab===x[0]}">${x[1]}</button>`).join('')}</div><div id="lbody" class="stack"></div>`;
+  view.innerHTML=`<div class="seg" id="seg">${[['vr','Vragen 1.1-1.4'],['tv','Tijdvakken'],['tl','Tijdperken'],['bg','Begrippen']].map(x=>`<button data-l="${x[0]}" aria-pressed="${leerTab===x[0]}">${x[1]}</button>`).join('')}</div><div id="lbody" class="stack"></div>`;
   on('[data-l]',e=>{leerTab=e.dataset.l;V_leer()});
   const b=$('#lbody');
   if(leerTab==='vr'){
@@ -112,7 +112,8 @@ V_leer=function(){
   }else if(leerTab==='tl'){
     const li=e=>`<li class="${e.g==='cut'?'cut':''}"><div class="lab"><span class="when">${esc(e.w)}</span>${esc(e.l)}</div></li>`;
     const core=D.timeline.filter(e=>e.core),more=D.timeline.filter(e=>!e.core);
-    b.innerHTML=`<div class="card stack"><h3>De tijdlijn uit je boek</h3><p class="mut small">Dit staat op de tijdlijn van tijdvak 1 (bij de begrippen, p. 60-61). Let op: bij v.C. loopt het getal terug. 10.000 v.C. is dus ouder dan 9000 v.C.</p><ol class="tl">${core.map(li).join('')}</ol></div><button class="btn" id="gotl">Oefen: tijdlijn bouwen</button>`;$('#gotl').onclick=()=>{go('spel');$('[data-g="tl5"]').click()};
+    b.innerHTML=`<div class="card stack"><h3>Tijdperken (Overzicht tijdvakken, p. 376-379)</h3><p class="mut small">De tien tijdvakken vallen in vijf grote tijdperken. Leer de naam en de jaartallen van elk tijdperk, en welke tijdvakken erbij horen.</p>
+    ${core.map(e=>{const nums=(e.tv.match(/\d+/g)||[]).map(Number);return `<div class="era"><div class="eh"><b>${esc(e.l)}</b><span>${esc(e.w)}</span></div>${TV.filter(t=>nums.includes(t.n)).map(t=>`<div class="ev"><span class="no" style="background:hsl(${HUE[t.n-1]} 60% var(--tvl))">${t.n}</span>${esc(t.name)} <span class="mut small">${esc(t.yrs)}</span></div>`).join('')}</div>`}).join('')}</div><button class="btn" id="gotl">Oefen: tijdperken op volgorde</button>`;$('#gotl').onclick=()=>{go('spel');$('[data-g="tl5"]').click()};
   }else if(leerTab==='tip'){
     b.innerHTML=`<div class="card stack"><h2>Ken je de leerdoelen?</h2><p class="mut small">Vink af als je het kunt uitleggen zonder in het boek te kijken.</p>${D.summary.map(s=>`<div><h4 style="color:var(--accent);margin-bottom:2px">Paragraaf ${s.id} · ${esc(s.title)}</h4>${D.leerdoelen[s.id].map((g,i)=>`<label class="chk"><input type="checkbox" data-g="${s.id}-${i}" ${S.chk['g'+s.id+i]?'checked':''}><span>${esc(g.replace('Je kunt ',''))}</span></label>`).join('')}</div>`).join('')}</div>
     <div class="card stack"><h2>Vergelijk: jager of boer</h2><div style="overflow-x:auto"><table class="cmp">${D.compare.map((r,i)=>`<tr>${r.map(c=>i===0?`<th>${esc(c)}</th>`:`<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</table></div></div>
@@ -178,7 +179,7 @@ V_spel=function(){
   view.innerHTML=`<h2>Spellen</h2><div class="games">
   <button class="gm" data-g="trein"><em>Tijdvakken</em><b>Tijdvakkentrein</b><span>Zet de tien tijdvakken in de goede volgorde.</span>${played('trein')}</button>
   <button class="gm" data-g="jaar"><em>Tijdvakken</em><b>Welk tijdvak?</b><span>Jaartallen erbij, naam eronder. En andersom.</span>${played('jaar')}</button>
-  <button class="gm" data-g="tl5"><em>Tijdlijn</em><b>Tijdlijn bouwen</b><span>Zet de gebeurtenissen van de tijdlijn in je boek op volgorde.</span>${played('tl5')}</button>
+  <button class="gm" data-g="tl5"><em>Tijdlijn</em><b>Tijdperken op volgorde</b><span>Zet de vijf tijdperken van oud naar nieuw.</span>${played('tl5')}</button>
   <button class="gm" data-g="snel"><em>Begrippen</em><b>Snelle ronde</b><span>60 seconden. Zoveel mogelijk begrippen raden.</span>${played('snel')}</button>
   <button class="gm" data-g="koppel"><em>Begrippen</em><b>Koppel</b><span>Verbind elk begrip met de goede omschrijving.</span>${played('koppel')}</button></div>`;
   on('[data-g]',e=>{const g=e.dataset.g;S.played=S.played||{};S.played[g]=(S.played[g]||0)+1;save();G[g]()});
@@ -208,11 +209,11 @@ G.jaar=function(){
 };
 G.tl5=()=>tlGame(5);G.tl10=()=>tlGame(10);
 function tlGame(n){
-  const box=gShell(n===5?'Tijdlijn bouwen':'Tijdlijn bouwen XL');
+  const box=gShell(n===5?'Tijdperken op volgorde':'Tijdlijn bouwen XL');
   const items=(n===5?D.timeline.filter(e=>e.core):D.timeline.filter(e=>e.y)).slice().sort((a,b)=>a.y-b.y);
   let next=0,mist=0,pool=shuffle(items),bad=null;
   (function draw(){
-    box.innerHTML=`<p class="mut">Tik de gebeurtenissen van oud naar nieuw. Let op: bij v.C. loopt het getal terug, dus 10.000 v.C. komt vóór 9000 v.C. Fouten: <b>${mist}</b></p>
+    box.innerHTML=`<p class="mut">Tik de tijdperken van oud naar nieuw. Fouten: <b>${mist}</b></p>
     <ol class="wagons" style="grid-template-columns:1fr">${items.map((e,i)=>i<next?`<li class="wagon ok" style="--h:${HUE[i%10]}"><b>${esc(e.w)}</b><small>${esc(e.l)}</small></li>`:`<li class="wagon ${i===next?'now':''}"><b>${i+1}</b><small>?</small></li>`).join('')}</ol>
     <div class="chips">${pool.map((e,i)=>`<button class="chip ${bad===e.y?'shake':''}" data-y="${e.y}">${esc(e.l.replace(/\. Begin van.*$/,''))}</button>`).join('')}</div>`;
     bad=null;
@@ -260,8 +261,11 @@ function judge(ans,t){const n=norm(ans);if(!n)return 0;const c=[norm(t),...(ALT[
 function qBegrip(b){const pool=BEG.filter(x=>x.t!==b.t);const opts=shuffle([b.t,...shuffle(pool.filter(x=>x.p===b.p)).concat(shuffle(pool.filter(x=>x.p!==b.p))).slice(0,3).map(x=>x.t)]);return{k:'mc',q:'Welk begrip hoort bij deze omschrijving?',quote:b.d,opts,a:opts.indexOf(b.t),why:'Het begrip is: '+b.t+'.',begrip:b.t}}
 function qTv(){const t=TV[Math.floor(Math.random()*10)],rev=Math.random()<.5;const o=shuffle([t,...sample(TV.filter(x=>x.n!==t.n),3)]);return{k:'mc',q:rev?'Welke jaartallen horen bij "'+t.name+'"?':'Welk tijdvak hoort bij '+t.yrs+'?',opts:o.map(x=>rev?x.yrs:x.name),a:o.indexOf(t),why:t.name+' · '+t.yrs}}
 function qMc(m){const o=shuffle(m.o.map((x,i)=>({x,i})));return{k:'mc',q:m.q,opts:o.map(z=>z.x),a:o.findIndex(z=>z.i===m.a),why:m.w}}
-function qTl(){const core=D.timeline.filter(e=>e.core),e=core[Math.floor(Math.random()*core.length)],rev=Math.random()<.5;const o=shuffle(core.slice());
-  return rev?{k:'mc',q:'Wanneer was dit? '+e.l,opts:o.map(x=>x.w),a:o.indexOf(e),why:e.w+': '+e.l}:{k:'mc',q:'Wat gebeurde er in '+e.w+'?',opts:o.map(x=>x.l),a:o.indexOf(e),why:e.w+': '+e.l}}
+function qTl(){const core=D.timeline.filter(e=>e.core),e=core[Math.floor(Math.random()*core.length)],k=Math.floor(Math.random()*3);const o=shuffle(core.slice());
+  if(k===0)return{k:'mc',q:'Welk tijdperk is '+e.w+'?',opts:o.map(x=>x.l),a:o.indexOf(e),why:e.l+': '+e.w+' ('+e.tv+')'};
+  if(k===1)return{k:'mc',q:'Wanneer was de '+e.l+'?',opts:o.map(x=>x.w),a:o.indexOf(e),why:e.l+': '+e.w};
+  const t=TV[Math.floor(Math.random()*10)],ee=core.find(x=>x.tv.includes(String(t.n))&&(x.tv.match(/\d+/g)||[]).includes(String(t.n)));return{k:'mc',q:'In welk tijdperk valt de '+t.name+'?',opts:o.map(x=>x.l),a:o.indexOf(ee),why:t.name+' ('+t.yrs+') hoort bij de '+ee.l+'.'}}
+function qAsp(){const t=TV[Math.floor(Math.random()*10)],a=t.asp[Math.floor(Math.random()*t.asp.length)],o=shuffle([t,...sample(TV.filter(x=>x.n!==t.n),3)]);return{k:'mc',q:'Bij welk tijdvak hoort: '+a+'?',opts:o.map(x=>x.name),a:o.indexOf(t),why:a+' hoort bij de '+t.name+' ('+t.yrs+').'}}
 const vq=v=>({k:'open',o:v});
 V_toets=function(){
   const best=k=>S.best[k]!=null?`Beste: ${Math.round(S.best[k]*100)}%`:'Nog niet gemaakt';
@@ -269,11 +273,11 @@ V_toets=function(){
   <button class="gm" data-t="vraag"><em>${best('vraag')}</em><b>Vragen 1.1 t/m 1.4</b><span>De ${VR.length} vragen bij de paragrafen. Zeg of schrijf je antwoord en kijk het zelf na.</span></button>
   <div class="btns">${['1.1','1.2','1.3','1.4'].map(p=>`<button class="btn ghost" data-t="vraag:${p}">Alleen ${p} (${VR.filter(v=>v.p===p).length})</button>`).join('')}</div>
   <button class="gm" data-t="typ"><em>${best('typ')}</em><b>Typ het begrip</b><span>Zoals op de toets: je krijgt de omschrijving en schrijft het begrip op.</span></button>
-  <button class="gm" data-t="tvt"><em>${best('tvt')}</em><b>Tijdvakken en tijdlijn</b><span>12 vragen over de namen, de jaartallen en de tijdlijn.</span></button>
-  <button class="gm" data-t="oefen"><em>${best('oefen')}</em><b>Oefentoets</b><span>20 vragen door elkaar: 8 begrippen, 8 tijdvakken en tijdlijn, 4 vragen uit de paragrafen. Met cijfer.</span></button></div>`;
+  <button class="gm" data-t="tvt"><em>${best('tvt')}</em><b>Tijdvakken en tijdperken</b><span>13 vragen over de namen en jaartallen van de tijdvakken en tijdperken (p. 376-379).</span></button>
+  <button class="gm" data-t="oefen"><em>${best('oefen')}</em><b>Oefentoets</b><span>20 vragen door elkaar: 8 begrippen, 8 tijdvakken en tijdperken, 4 vragen uit de paragrafen. Met cijfer.</span></button></div>`;
   on('[data-t]',e=>{const t=e.dataset.t;
-    if(t==='oefen')quiz('Oefentoets','oefen',[...shuffle([...sample(BEG,8).map(b=>({k:'typ',b})),qTv(),qTv(),qTv(),qTv(),qTv(),qTv(),qTl(),qTl()]),...sample(VR,4).map(vq)]);
-    if(t==='tvt')quiz('Tijdvakken en tijdlijn','tvt',shuffle([...Array.from({length:8},qTv),qTl(),qTl(),qTl(),qTl()]));
+    if(t==='oefen')quiz('Oefentoets','oefen',[...shuffle([...sample(BEG,8).map(b=>({k:'typ',b})),qTv(),qTv(),qTv(),qTv(),qTv(),qTl(),qTl(),qAsp()]),...sample(VR,4).map(vq)]);
+    if(t==='tvt')quiz('Tijdvakken en tijdperken','tvt',shuffle([...Array.from({length:8},qTv),qTl(),qTl(),qTl(),qAsp(),qAsp()]));
     if(t==='vraag')quiz('Vragen 1.1 t/m 1.4','vraag',VR.map(vq));
     if(t.startsWith('vraag:')){const p=t.slice(6);quiz('Vragen '+p,'vraag'+p,VR.filter(v=>v.p===p).map(vq))}
     if(t==='typ')quiz('Typ het begrip','typ',sample(BEG,10).map(b=>({k:'typ',b})))});
