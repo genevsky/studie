@@ -1,53 +1,46 @@
 {
  "begrippen": [
   {
-   "t": "archeoloog",
+   "t": "Bijbel",
    "p": "1.1",
-   "d": "Iemand die opgravingen doet en vondsten bestudeert",
-   "e": "Iemand die opgravingen doet en de vondsten uit het verleden bestudeert.",
-   "h": "Denk aan graven: een archeoloog graaft en onderzoekt wat er in de grond zit."
+   "d": "Heilig boek van christenen",
+   "e": "heilig boek van christenen",
+   "h": "Bijbel = het heilige boek van christenen, met ook een scheppingsverhaal."
   },
   {
-   "t": "feit",
+   "t": "cultuur",
    "p": "1.1",
-   "d": "Iets dat werkelijk zo is, iets waarvoor bewijs bestaat",
-   "e": "Iets dat werkelijk zo is en waarvoor bewijs bestaat.",
-   "h": "Een feit kun je bewijzen. Een mening kun je alleen vinden."
+   "d": "Denken en doen van een groep mensen",
+   "e": "Het denken en doen van groepen mensen, bijvoorbeeld hun kunst, eetgewoonten en godsdienst.",
+   "h": "Hoe een groep denkt en doet: kunst, eten, geloof."
   },
   {
-   "t": "middel van bestaan",
+   "t": "evolutie",
    "p": "1.1",
-   "d": "Manier om aan voedsel te komen",
-   "e": "De manier waarop mensen aan eten (en het nodige om te leven) komen.",
-   "h": "Middel = manier, bestaan = leven. Hoe kom je aan eten om te leven?"
-  },
-  {
-   "t": "nomade",
-   "p": "1.1",
-   "d": "Iemand die rondtrekt zonder vaste woonplaats",
-   "e": "Mensen die rondtrekken zonder vaste woonplaats.",
-   "h": "Een nomade heeft geen vast adres. Hij trekt met zijn spullen rond."
+   "d": "Langzame verandering",
+   "e": "langzame verandering",
+   "h": "Evolutie: soorten veranderen héél langzaam, in miljoenen jaren."
   },
   {
    "t": "prehistorie",
    "p": "1.1",
-   "d": "(voorgeschiedenis, tijd van jagers en boeren) eerste periode: de tijd waaruit we geen geschreven bronnen hebben (tot 3000 v.C.)",
+   "d": "(voorgeschiedenis, tijd van jagers en boeren) periode tot 3000 v.C., de tijd waaruit we geen geschreven bronnen hebben",
    "e": "De tijd waaruit we geen geschreven bronnen hebben (tot 3000 v.C.). Een ander woord is voorgeschiedenis.",
    "h": "Pre = voor. De tijd voor de geschreven geschiedenis."
   },
   {
-   "t": "samenleving",
+   "t": "scheppingsverhaal",
    "p": "1.1",
-   "d": "(maatschappij) hoe een grote groep mensen samenleeft",
-   "e": "Een grote groep mensen die samenleeft. Een ander woord is maatschappij.",
-   "h": "Samen + leven: hoe een grote groep mensen samen leeft."
+   "d": "Verhaal over het ontstaan van de wereld en het leven daarop",
+   "e": "verhaal over het ontstaan van de wereld en het leven daarop",
+   "h": "Scheppen = maken. Een verhaal over hoe de wereld gemaakt is."
   },
   {
-   "t": "samenleving van jager-verzamelaars",
+   "t": "werktuig",
    "p": "1.1",
-   "d": "Samenleving waarin mensen als nomaden leven van wat ze vangen en vinden in de natuur",
-   "e": "Een samenleving waarin mensen als nomaden leven van wat ze vangen en vinden in de natuur.",
-   "h": "Jagers en verzamelaars halen hun eten uit de natuur en trekken rond."
+   "d": "Voorwerp waarmee je iets doet of maakt",
+   "e": "voorwerp waarmee je iets doet of maakt",
+   "h": "Werk + tuig: een voorwerp om mee te werken, zoals een vuistbijl."
   },
   {
    "t": "wetenschap",
@@ -57,39 +50,39 @@
    "h": "Weten + schap: alles wat je doet om meer te weten te komen."
   },
   {
-   "t": "akkerbouw",
+   "t": "archeoloog",
    "p": "1.2",
-   "d": "Plantaardig voedsel verbouwen",
-   "e": "Het verbouwen van plantaardig voedsel, zoals graan.",
-   "h": "Akker + bouw: je bouwt (verbouwt) planten op een akker."
-  },
-  {
-   "t": "continuïteit",
-   "p": "1.2",
-   "d": "Als iets niet of bijna niet verandert",
-   "e": "Er verandert bijna niets: lange tijd blijft alles hetzelfde.",
-   "h": "Continu = doorgaan zoals het was. Er verandert (bijna) niets."
+   "d": "Iemand die opgravingen doet en vondsten bestudeert",
+   "e": "Iemand die opgravingen doet en de vondsten uit het verleden bestudeert.",
+   "h": "Denk aan graven: een archeoloog graaft en onderzoekt wat er in de grond zit."
   },
   {
    "t": "gevolg",
    "p": "1.2",
-   "d": "Iets dat door iets anders gebeurt",
+   "d": "Iets wat door iets anders gebeurt",
    "e": "Iets dat gebeurt doordat er iets anders is gebeurd.",
    "h": "Het gevolg volgt erop. Eerst de oorzaak, dan het gevolg."
   },
   {
-   "t": "landbouwrevolutie",
+   "t": "macht",
    "p": "1.2",
-   "d": "Ontstaan van de landbouw",
-   "e": "De grote verandering toen mensen van jagen en verzamelen overgingen op akkerbouw en veeteelt.",
-   "h": "Land + bouw + revolutie: de grote verandering toen landbouw ontstond."
+   "d": "Als je anderen kunt laten doen wat je wilt",
+   "e": "Anderen kunnen laten doen wat jij wilt.",
+   "h": "Jij zegt het, en anderen doen het."
   },
   {
-   "t": "landbouwsamenleving",
+   "t": "middel van bestaan",
    "p": "1.2",
-   "d": "Samenleving waarin mensen in dorpen leven van landbouw",
-   "e": "Een samenleving waarin mensen in dorpen wonen en van landbouw leven.",
-   "h": "Land + bouw + samenleving: dorpen die leven van landbouw."
+   "d": "Manier om aan voedsel te komen",
+   "e": "De manier waarop mensen aan eten (en het nodige om te leven) komen.",
+   "h": "Middel = manier, bestaan = leven. Hoe kom je aan eten om te leven?"
+  },
+  {
+   "t": "nomade",
+   "p": "1.2",
+   "d": "Iemand die rondtrekt zonder vaste woonplaats",
+   "e": "Mensen die rondtrekken zonder vaste woonplaats.",
+   "h": "Een nomade heeft geen vast adres. Hij trekt met zijn spullen rond."
   },
   {
    "t": "oorzaak",
@@ -99,53 +92,81 @@
    "h": "Vraag jezelf: waardoor gebeurde dit? Dat is de oorzaak."
   },
   {
-   "t": "revolutie",
+   "t": "samenleving",
    "p": "1.2",
+   "d": "(maatschappij) hoe een grote groep mensen samenleeft",
+   "e": "Een grote groep mensen die samenleeft. Een ander woord is maatschappij.",
+   "h": "Samen + leven: hoe een grote groep mensen samen leeft."
+  },
+  {
+   "t": "samenleving van jager-verzamelaars",
+   "p": "1.2",
+   "d": "Samenleving van nomaden die leven van wat ze vangen en vinden in de natuur",
+   "e": "Een samenleving waarin mensen als nomaden leven van wat ze vangen en vinden in de natuur.",
+   "h": "Jagers en verzamelaars halen hun eten uit de natuur en trekken rond."
+  },
+  {
+   "t": "standpunt",
+   "p": "1.2",
+   "d": "Mening, zienswijze",
+   "e": "mening, zienswijze",
+   "h": "Het punt waar je staat: hoe jij ergens over denkt."
+  },
+  {
+   "t": "steentijd",
+   "p": "1.2",
+   "d": "Tijd waarin steen een belangrijk materiaal was om voorwerpen van te maken",
+   "e": "tijd waarin steen een belangrijk materiaal was om voorwerpen van te maken",
+   "h": "Steen + tijd: de tijd van stenen werktuigen."
+  },
+  {
+   "t": "akkerbouw",
+   "p": "1.3",
+   "d": "Plantaardig voedsel verbouwen",
+   "e": "Het verbouwen van plantaardig voedsel, zoals graan.",
+   "h": "Akker + bouw: je bouwt (verbouwt) planten op een akker."
+  },
+  {
+   "t": "continuïteit",
+   "p": "1.3",
+   "d": "Als iets niet of bijna niet verandert",
+   "e": "Er verandert bijna niets: lange tijd blijft alles hetzelfde.",
+   "h": "Continu = doorgaan zoals het was. Er verandert (bijna) niets."
+  },
+  {
+   "t": "economie",
+   "p": "1.3",
+   "d": "Inkomsten en uitgaven, handel en productie van een gebied",
+   "e": "inkomsten en uitgaven, handel en productie van een gebied",
+   "h": "Economie gaat over geld en spullen: verdienen, uitgeven, maken en handelen."
+  },
+  {
+   "t": "landbouw",
+   "p": "1.3",
+   "d": "Akkerbouw en veeteelt",
+   "e": "akkerbouw en veeteelt",
+   "h": "Landbouw = akkerbouw + veeteelt."
+  },
+  {
+   "t": "landbouwrevolutie",
+   "p": "1.3",
+   "d": "Ontstaan van de landbouw",
+   "e": "De grote verandering toen mensen van jagen en verzamelen overgingen op akkerbouw en veeteelt.",
+   "h": "Land + bouw + revolutie: de grote verandering toen landbouw ontstond."
+  },
+  {
+   "t": "landbouwsamenleving",
+   "p": "1.3",
+   "d": "Samenleving waarin mensen in dorpen leven van landbouw",
+   "e": "Een samenleving waarin mensen in dorpen wonen en van landbouw leven.",
+   "h": "Land + bouw + samenleving: dorpen die leven van landbouw."
+  },
+  {
+   "t": "revolutie",
+   "p": "1.3",
    "d": "Grote verandering",
    "e": "Een grote verandering in de geschiedenis.",
    "h": "Revolutie = omwenteling: alles wordt anders."
-  },
-  {
-   "t": "veeteelt",
-   "p": "1.2",
-   "d": "Fokken en houden van tamme dieren",
-   "e": "Het tam maken en fokken van dieren, zoals geiten, schapen en varkens.",
-   "h": "Vee = dieren, telen = kweken. Je kweekt en houdt tamme dieren."
-  },
-  {
-   "t": "aanzien",
-   "p": "1.3",
-   "d": "Waardering, de betekenis die iemand heeft voor een groep",
-   "e": "Waardering: de betekenis die iemand heeft voor een groep.",
-   "h": "Aan-zien: mensen kijken naar je op. Je wordt gewaardeerd."
-  },
-  {
-   "t": "cultuur",
-   "p": "1.3",
-   "d": "Denken en doen van een groep mensen",
-   "e": "Het denken en doen van groepen mensen, bijvoorbeeld hun kunst, eetgewoonten en godsdienst.",
-   "h": "Hoe een groep denkt en doet: kunst, eten, geloof."
-  },
-  {
-   "t": "kunst",
-   "p": "1.3",
-   "d": "Iets moois of bijzonders dat door mensen is gemaakt",
-   "e": "Iets moois of bijzonders dat door mensen is gemaakt.",
-   "h": "Mooi of bijzonder en door mensen gemaakt, zoals de leeuwmens."
-  },
-  {
-   "t": "macht",
-   "p": "1.3",
-   "d": "Als je anderen kunt laten doen wat je wilt",
-   "e": "Anderen kunnen laten doen wat jij wilt.",
-   "h": "Jij zegt het, en anderen doen het."
-  },
-  {
-   "t": "natuurgodsdienst",
-   "p": "1.3",
-   "d": "Geloof waarbij natuurverschijnselen vereerd worden",
-   "e": "Een geloof waarbij natuurverschijnselen (zoals storm en bliksem), dieren, bergen en bomen worden vereerd.",
-   "h": "Natuur + godsdienst: je vereert storm, dieren, bergen en bomen."
   },
   {
    "t": "sociaal",
@@ -155,138 +176,60 @@
    "h": "Sociaal gaat over mensen samen, niet over één persoon."
   },
   {
-   "t": "ambacht",
-   "p": "1.4",
-   "d": "Beroep waarbij iemand producten maakt",
-   "e": "Beroepen waarbij iemand producten maakt, zoals timmerman, pottenbakker en smid.",
-   "h": "Iets maken met je handen: pottenbakker, timmerman, smid."
-  },
-  {
-   "t": "belasting",
-   "p": "1.4",
-   "d": "Wat mensen moeten betalen aan het bestuur",
-   "e": "Betalingen aan het bestuur.",
-   "h": "Belasting betaal je aan het bestuur van het gebied."
-  },
-  {
-   "t": "handel",
-   "p": "1.4",
-   "d": "Kopen en verkopen",
-   "e": "Het kopen en verkopen van producten, ook over grote afstanden.",
-   "h": "Handel = kopen en verkopen."
-  },
-  {
-   "t": "koninkrijk",
-   "p": "1.4",
-   "d": "Een staat met een koning",
-   "e": "Een staat die door een koning wordt geleid.",
-   "h": "Koning + rijk: een staat met een koning."
-  },
-  {
-   "t": "landbouwstedelijke samenleving",
-   "p": "1.4",
-   "d": "Samenleving met steden waarin de meeste mensen op het platteland leven van landbouw en een minderheid in de stad woont en leeft van ambachten en handel",
-   "e": "Een samenleving met steden, waarin de meeste mensen op het platteland van landbouw leven en een kleiner deel in de stad woont en werkt (ambacht en handel).",
-   "h": "Land + bouw + stad: de meeste mensen boeren, een deel woont in de stad."
-  },
-  {
-   "t": "markt",
-   "p": "1.4",
-   "d": "Plaats waar mensen handelen",
-   "e": "Een plek waar mensen producten verkopen en kopen.",
-   "h": "Op de markt kopen en verkopen mensen."
-  },
-  {
-   "t": "onderdaan",
-   "p": "1.4",
-   "d": "Persoon die moet gehoorzamen aan een regering",
-   "e": "Mensen die moeten gehoorzamen aan een regering.",
-   "h": "Onder + daan: je staat onder de regering en moet gehoorzamen."
-  },
-  {
-   "t": "staat",
-   "p": "1.4",
-   "d": "Gebied met eigen regering",
-   "e": "Een gebied met een eigen bestuur (regering).",
-   "h": "Een gebied met een eigen regering, zoals Boven-Egypte."
-  },
-  {
-   "t": "volk",
-   "p": "1.4",
-   "d": "Grote groep mensen met een gezamenlijke taal en/of cultuur",
-   "e": "Een grote groep mensen met een gezamenlijke taal en cultuur.",
-   "h": "Volk: dezelfde taal en/of cultuur."
-  },
-  {
-   "t": "vorst",
-   "p": "1.4",
-   "d": "Heerser van een staat of gebied",
-   "e": "De leider van een gebied.",
-   "h": "De vorst is de heerser (leider) van een gebied."
-  },
-  {
-   "t": "experimentele archeologie",
-   "p": "1.1",
-   "d": "Onderzoek waarbij je leeft of werkt zoals mensen vroeger deden, bijvoorbeeld een prehistorische hut nabouwen, om te begrijpen hoe het toen ging.",
-   "x": true,
-   "e": "Onderzoek waarbij je leeft of werkt zoals mensen vroeger deden, bijvoorbeeld een prehistorische hut nabouwen, om te begrijpen hoe het toen ging.",
-   "h": ""
-  },
-  {
-   "t": "landbouw",
-   "p": "1.2",
-   "d": "Akkerbouw en veeteelt samen.",
-   "x": true,
-   "e": "Akkerbouw en veeteelt samen.",
-   "h": ""
-  },
-  {
-   "t": "hunebed",
+   "t": "veeteelt",
    "p": "1.3",
-   "d": "Een grafmonument van grote zwerfkeien uit de tijd van de eerste boeren (ongeveer 3400-3200 v.C.).",
-   "x": true,
-   "e": "Een grafmonument van grote zwerfkeien uit de tijd van de eerste boeren (ongeveer 3400-3200 v.C.).",
-   "h": ""
+   "d": "Fokken en houden van tamme dieren",
+   "e": "Het tam maken en fokken van dieren, zoals geiten, schapen en varkens.",
+   "h": "Vee = dieren, telen = kweken. Je kweekt en houdt tamme dieren."
   },
   {
-   "t": "grafgiften",
+   "t": "zelfvoorzienend",
    "p": "1.3",
-   "d": "Voorwerpen die mensen meegaven in het graf, zoals kralen, wapens en sieraden.",
-   "x": true,
-   "e": "Voorwerpen die mensen meegaven in het graf, zoals kralen, wapens en sieraden.",
-   "h": ""
+   "d": "Voor zichzelf zorgend",
+   "e": "voor zichzelf zorgend",
+   "h": "Zelf + voorzien: je maakt zelf alles wat je nodig hebt."
+  },
+  {
+   "t": "aanzien",
+   "p": "1.4",
+   "d": "Waardering, de betekenis die iemand heeft voor een groep",
+   "e": "Waardering: de betekenis die iemand heeft voor een groep.",
+   "h": "Aan-zien: mensen kijken naar je op. Je wordt gewaardeerd."
   },
   {
    "t": "hiernamaals",
-   "p": "1.3",
-   "d": "Een leven na de dood.",
-   "x": true,
-   "e": "Een leven na de dood.",
-   "h": ""
+   "p": "1.4",
+   "d": "Leven na de dood",
+   "e": "leven na de dood",
+   "h": "Hier-na-maals: het leven ná dit leven."
   },
   {
-   "t": "ruilhandel",
+   "t": "kunst",
    "p": "1.4",
-   "d": "Handel zonder geld: je ruilt het ene product voor het andere.",
-   "x": true,
-   "e": "Handel zonder geld: je ruilt het ene product voor het andere.",
-   "h": ""
+   "d": "Iets moois of bijzonders dat door mensen is gemaakt",
+   "e": "Iets moois of bijzonders dat door mensen is gemaakt.",
+   "h": "Mooi of bijzonder en door mensen gemaakt, zoals de leeuwmens."
   },
   {
-   "t": "irrigatiesysteem",
+   "t": "monument",
    "p": "1.4",
-   "d": "Dammen en kanalen waarmee je water naar de akkers leidt en vasthoudt voor droge maanden.",
-   "x": true,
-   "e": "Dammen en kanalen waarmee je water naar de akkers leidt en vasthoudt voor droge maanden.",
-   "h": ""
+   "d": "Gedenkteken",
+   "e": "gedenkteken",
+   "h": "Een monument helpt je iets te gedenken (herinneren), zoals een hunebed."
   },
   {
-   "t": "farao",
+   "t": "natuurgodsdienst",
    "p": "1.4",
-   "d": "De koning van Egypte. De eerste farao van heel Egypte was Narmer.",
-   "x": true,
-   "e": "De koning van Egypte. De eerste farao van heel Egypte was Narmer.",
-   "h": ""
+   "d": "Geloof waarbij natuurverschijnselen vereerd worden",
+   "e": "Een geloof waarbij natuurverschijnselen (zoals storm en bliksem), dieren, bergen en bomen worden vereerd.",
+   "h": "Natuur + godsdienst: je vereert storm, dieren, bergen en bomen."
+  },
+  {
+   "t": "ritueel",
+   "p": "1.4",
+   "d": "Plechtige handeling, ceremonie",
+   "e": "plechtige handeling, ceremonie",
+   "h": "Een ritueel doe je steeds op dezelfde, plechtige manier, zoals bij een begrafenis."
   }
  ],
  "tijdvakken": [
@@ -628,99 +571,41 @@
  ],
  "timeline": [
   {
-   "w": "8-5 miljoen jaar geleden",
-   "l": "Eerste mensachtige wezens ontstaan",
-   "g": "pre"
-  },
-  {
-   "w": "3,2 miljoen jaar geleden",
-   "l": "Lucy leeft in Ethiopië (gevonden in 1974)",
-   "g": "pre"
-  },
-  {
-   "w": "2 miljoen jaar geleden",
-   "l": "Tot nu toe alleen mensensoorten in Afrika; daarna trekken sommige naar Azië en Europa",
-   "g": "pre"
-  },
-  {
-   "w": "300.000 jaar geleden",
-   "l": "Homo sapiens (moderne mens) ontstaat in Afrika",
-   "g": "pre"
-  },
-  {
-   "w": "50.000 jaar geleden",
-   "l": "Krijn, de oudste neanderthaler van Nederland",
-   "g": "pre"
-  },
-  {
-   "w": "32.000 jaar geleden",
-   "l": "De leeuwmens wordt gemaakt van mammoetivoor",
-   "g": "pre"
-  },
-  {
    "w": "10.000 v.C.",
    "l": "De laatste ijstijd eindigt",
-   "g": "vc",
-   "core": true,
-   "y": -10000
+   "y": -10000,
+   "core": true
   },
   {
    "w": "9000 v.C.",
    "l": "In het Midden-Oosten ontstaat de landbouw",
-   "g": "vc",
-   "core": true,
-   "y": -9000
+   "y": -9000,
+   "core": true
   },
   {
-   "w": "7000 v.C.",
-   "l": "Landbouw verspreidt zich over Europa",
-   "g": "vc",
-   "y": -7000
-  },
-  {
-   "w": "5500 v.C.",
-   "l": "Landbouw in het Nijldal",
-   "g": "vc",
-   "y": -5500
+   "w": "8000-3000 v.C.",
+   "l": "In het Midden-Oosten ontstaan de eerste steden",
+   "y": -8000,
+   "core": true
   },
   {
    "w": "5300 v.C.",
    "l": "Landbouw in Nederland",
-   "g": "vc",
-   "core": true,
-   "y": -5300
-  },
-  {
-   "w": "4500 v.C.",
-   "l": "Gouden graf in Bulgarije: verschillen in aanzien en macht",
-   "g": "vc",
-   "y": -4500
-  },
-  {
-   "w": "3500 v.C.",
-   "l": "Landbouwstedelijke samenleving in Egypte",
-   "g": "vc",
-   "y": -3500
+   "y": -5300,
+   "core": true
   },
   {
    "w": "3400-3200 v.C.",
    "l": "Bouw van de hunebedden",
-   "g": "vc",
-   "core": true,
-   "y": -3400
-  },
-  {
-   "w": "3100 v.C.",
-   "l": "Narmer verenigt Egypte: eerste farao",
-   "g": "vc",
-   "y": -3100
+   "y": -3400,
+   "core": true
   },
   {
    "w": "3000 v.C.",
-   "l": "Einde van de prehistorie. Begin van de Tijd van Grieken en Romeinen (3000 v.C. – 500 n.C.).",
-   "g": "cut",
+   "l": "Einde van de prehistorie. Begin van de Tijd van Grieken en Romeinen (3000 v.C. – 500 n.C.)",
+   "y": -3000,
    "core": true,
-   "y": -3000
+   "g": "cut"
   }
  ],
  "sort": [
@@ -1501,7 +1386,7 @@
    "doel": "Je kunt met een voorbeeld uitleggen hoe we ons een beeld vormen van het verleden."
   },
   {
-   "p": "1.1",
+   "p": "1.2",
    "q": "Hoe leefden jager-verzamelaars?",
    "need": 2,
    "pts": [
@@ -1512,7 +1397,7 @@
    "doel": "Je kunt beschrijven hoe jager-verzamelaars leefden."
   },
   {
-   "p": "1.1",
+   "p": "1.2",
    "q": "In welke soorten samenlevingen delen we de geschiedenis in?",
    "need": 3,
    "pts": [
@@ -1525,7 +1410,7 @@
    "doel": "Je kunt benoemen dat we de geschiedenis in soorten samenlevingen indelen."
   },
   {
-   "p": "1.2",
+   "p": "1.3",
    "q": "Hoe ontstond de landbouw?",
    "need": 2,
    "pts": [
@@ -1536,7 +1421,7 @@
    "doel": "Je kunt beschrijven hoe de landbouw ontstond."
   },
   {
-   "p": "1.2",
+   "p": "1.3",
    "q": "Hoe leefden mensen in de landbouwsamenleving?",
    "need": 2,
    "pts": [
@@ -1547,7 +1432,7 @@
    "doel": "Je kunt beschrijven hoe mensen leefden in de landbouwsamenleving."
   },
   {
-   "p": "1.2",
+   "p": "1.3",
    "q": "Hoe werd de landbouw verspreid?",
    "need": 2,
    "pts": [
@@ -1557,7 +1442,7 @@
    "doel": "Je kunt beschrijven hoe de landbouw werd verspreid."
   },
   {
-   "p": "1.2",
+   "p": "1.3",
    "q": "Hoe leefden de eerste boeren in Nederland?",
    "need": 2,
    "pts": [
@@ -1568,7 +1453,7 @@
    "doel": "Je kunt beschrijven hoe de eerste boeren in Nederland leefden."
   },
   {
-   "p": "1.3",
+   "p": "1.4",
    "q": "Welke kunstvoorwerpen en afbeeldingen maakten mensen?",
    "need": 2,
    "pts": [
@@ -1579,7 +1464,7 @@
    "doel": "Je kunt beschrijven welke kunstvoorwerpen en afbeeldingen mensen maakten."
   },
   {
-   "p": "1.3",
+   "p": "1.4",
    "q": "Wat voor godsdienst hadden mensen waarschijnlijk?",
    "need": 2,
    "pts": [
@@ -1589,7 +1474,7 @@
    "doel": "Je kunt uitleggen wat voor godsdienst mensen waarschijnlijk hadden."
   },
   {
-   "p": "1.3",
+   "p": "1.4",
    "q": "Hoe en waarom gingen mensen de doden zorgvuldig begraven?",
    "need": 2,
    "pts": [
@@ -1599,7 +1484,7 @@
    "doel": "Je kunt uitleggen hoe en waarom mensen de doden zorgvuldig gingen begraven."
   },
   {
-   "p": "1.3",
+   "p": "1.4",
    "q": "Leg uit dat er tussen mensen verschillen gingen ontstaan.",
    "need": 2,
    "pts": [
@@ -1607,49 +1492,12 @@
     "Sommige graven zijn heel rijk, zoals het graf in Bulgarije met veel goud. Die man had veel aanzien en waarschijnlijk macht. Gewone mensen kregen zo'n graf niet."
    ],
    "doel": "Je kunt uitleggen dat er tussen mensen verschillen gingen ontstaan."
-  },
-  {
-   "p": "1.4",
-   "q": "Hoe ontstond in Egypte een succesvolle landbouw?",
-   "need": 2,
-   "pts": [
-    "De Nijl overstroomde elke zomer en liet vruchtbare zwarte modder achter.",
-    "Rond 5500 v.C. begon daar de landbouw (graan, uien, bonen).",
-    "Met dammen en kanalen (een irrigatiesysteem) hadden boeren ook in droge maanden water."
-   ],
-   "doel": "Je kunt uitleggen hoe in Egypte een succesvolle landbouw ontstond."
-  },
-  {
-   "p": "1.4",
-   "q": "Hoe kwamen in Egypte nieuwe middelen van bestaan op?",
-   "need": 2,
-   "pts": [
-    "Er was meer voedsel dan de boeren zelf nodig hadden.",
-    "Daardoor konden sommige mensen een ambacht uitoefenen, zoals timmerman, pottenbakker, smid of wever."
-   ],
-   "doel": "Je kunt uitleggen hoe in Egypte nieuwe middelen van bestaan opkwamen."
-  },
-  {
-   "p": "1.4",
-   "q": "Hoe dreven mensen handel en hoe ontstonden steden?",
-   "need": 2,
-   "pts": [
-    "Op de markt ruilden mensen spullen. Er was nog geen geld: ruilhandel.",
-    "Langs de Nijl werd gehandeld in bijvoorbeeld goud, ivoor, hout, olijfolie en brons.",
-    "Op plekken met veel handel ontstonden steden, zoals Thebe. Zo ontstond rond 3500 v.C. een landbouwstedelijke samenleving."
-   ],
-   "doel": "Je kunt beschrijven hoe mensen handeldreven en hoe steden ontstonden."
-  },
-  {
-   "p": "1.4",
-   "q": "Hoe werd Egypte één staat?",
-   "need": 2,
-   "pts": [
-    "Het irrigatiesysteem vroeg om samenwerking. Zo kwamen er leiders met macht (vorsten) en betaalden boeren belasting.",
-    "Er ontstonden twee koninkrijken: Boven-Egypte en Beneden-Egypte.",
-    "Rond 3100 v.C. won Narmer, koning van Boven-Egypte, de oorlog. Hij werd de eerste farao van heel Egypte."
-   ],
-   "doel": "Je kunt beschrijven hoe Egypte één staat werd."
   }
- ]
+ ],
+ "paragrafen": {
+  "1.1": "De eerste mensen",
+  "1.2": "Geen vaste woonplaats",
+  "1.3": "Leven van de landbouw",
+  "1.4": "Cultuur in de prehistorie"
+ }
 }
