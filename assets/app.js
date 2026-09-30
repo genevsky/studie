@@ -72,7 +72,7 @@ V_start=function(){
     B('leer:vr','Lees vragen en antwoorden',1)+B('toets:vraag','Oefen de vragen'),
     r.Q.seen?`${r.Q.seen} van de ${VR.length} geoefend, ${VR.filter(v=>S.lb[v.k]&&S.lb[v.k].b>=1).length} goed`:'')}
   ${tile(2,'Tijdvakken en tijdperken','Overzicht tijdvakken (p. 376-379): de tien tijdvakken met naam en jaartallen, en de vijf tijdperken (Prehistorie, Oudheid, Middeleeuwen, Vroegmoderne tijd, Moderne tijd).',
-    B('leer:tv','Bekijk de tijdvakken',1)+B('spel:trein','Tijdvakkentrein')+B('spel:jaar','Welk tijdvak?')+B('toets:jaar','Schrijf de jaartallen')+B('leer:tl','Bekijk de tijdperken',1)+B('spel:tl5','Tijdperken op volgorde'),
+    B('leer:tv','Bekijk de tijdvakken',1)+B('spel:trein','Tijdvakkentrein')+B('spel:jaar','Welk tijdvak?')+B('toets:jaar1','Jaartallen één voor één')+B('toets:jaar','Schrijf alle jaartallen')+B('leer:tl','Bekijk de tijdperken',1)+B('spel:tl5','Tijdperken op volgorde'),
     r.T.seen||(S.played||{}).trein?`Tijdvakken: ${r.T.seen}/10 geoefend · Trein ${(S.played||{}).trein||0}× · Tijdlijn ${(S.played||{}).tl5||0}×`:'')}
   ${tile(3,'Begrippen (p. 60-61)','Op de toets krijg je de omschrijving en schrijf jij het begrip op.',
     B('leer:bg','Bekijk de begrippen',1)+B('kaart:beg','Kaartjes')+B('toets:typ','Typ het begrip'),
@@ -274,6 +274,7 @@ V_toets=function(){
   <div class="btns">${['1.1','1.2','1.3','1.4'].map(p=>`<button class="btn ghost" data-t="vraag:${p}">Alleen ${p} (${VR.filter(v=>v.p===p).length})</button>`).join('')}</div>
   <button class="gm" data-t="typ"><em>${best('typ')}</em><b>Typ het begrip</b><span>Zoals op de toets: je krijgt de omschrijving en schrijft het begrip op.</span></button>
   <button class="gm" data-t="jaar"><em>${best('jaar')}</em><b>Schrijf de jaartallen</b><span>Typ zelf het begin- en eindjaar van alle tijdvakken en tijdperken. Geen meerkeuze.</span></button>
+  <button class="gm" data-t="jaar1"><em>${best('jaar1')}</em><b>Jaartallen één voor één</b><span>Je ziet steeds één tijdvak of tijdperk en typt de jaartallen. Fouten komen terug tot ze goed zijn.</span></button>
   <button class="gm" data-t="tvt"><em>${best('tvt')}</em><b>Tijdvakken en tijdperken</b><span>13 vragen over de namen en jaartallen van de tijdvakken en tijdperken (p. 376-379).</span></button>
   <button class="gm" data-t="oefen"><em>${best('oefen')}</em><b>Oefentoets</b><span>20 vragen door elkaar: 8 begrippen, 8 tijdvakken en tijdperken, 4 vragen uit de paragrafen. Met cijfer.</span></button></div>`;
   on('[data-t]',e=>{const t=e.dataset.t;
@@ -282,6 +283,7 @@ V_toets=function(){
     if(t==='vraag')quiz('Vragen 1.1 t/m 1.4','vraag',VR.map(vq));
     if(t.startsWith('vraag:')){const p=t.slice(6);quiz('Vragen '+p,'vraag'+p,VR.filter(v=>v.p===p).map(vq))}
     if(t==='jaar')V_jaar();
+    if(t==='jaar1')V_jaar1();
     if(t==='typ')quiz('Typ het begrip','typ',sample(BEG,10).map(b=>({k:'typ',b})))});
 };
 
@@ -310,6 +312,33 @@ function V_jaar(){
     const p=ok/list.length;S.best.jaar=Math.max(S.best.jaar||0,p);addXP(ok*2);save();if(p===1)confetti();
     $('#ck').remove();$('#res').innerHTML=`<div class="card stack" style="text-align:center"><div class="score">${ok} / ${list.length}</div><p><b>${p===1?'Alles goed! Knap!':wrong.length+' nog oefenen. Kijk goed naar de rode regels.'}</b></p><div class="btns"><button class="btn" id="ag">Nog een keer</button>${wrong.length&&wrong.length<list.length?'<button class="btn ghost" id="fo">Alleen mijn fouten</button>':''}</div></div>`;
     $('#ag').onclick=()=>V_jaar();const fo=$('#fo');if(fo)fo.onclick=()=>{list=wrong.map(x=>({...x}));draw()};$('#res').scrollIntoView({behavior:'smooth'})}
+  draw()}
+
+function V_jaar1(){
+  const all=[...TV.map(t=>({k:'t:'+t.n,name:t.name,yrs:t.yrs,sub:'Tijdvak'})),...D.timeline.filter(e=>e.core).map(e=>({k:null,name:e.l,yrs:e.w,sub:'Tijdperk'}))];
+  let q=shuffle(all),i=0,firstOk=0,tries=0;const missed=new Set();
+  function draw(){
+    if(i>=q.length){const p=firstOk/all.length;S.best.jaar1=Math.max(S.best.jaar1||0,p);addXP(firstOk*2);save();if(p===1)confetti();
+      view.innerHTML=`<div class="card stack" style="text-align:center"><div class="eyebrow">Jaartallen één voor één</div><div class="score">${firstOk} / ${all.length}</div><p><b>${p===1?'Alles in één keer goed!':'In één keer goed. De rest heb je daarna verbeterd.'}</b></p>${missed.size?`<p class="small mut">Nog even extra kijken naar: ${[...missed].map(esc).join(', ')}</p>`:''}<div class="btns"><button class="btn" id="ag">Nog een keer</button><button class="btn ghost" id="bk">Andere toetsen</button></div></div>`;
+      $('#ag').onclick=V_jaar1;$('#bk').onclick=()=>go('toets');return}
+    const it=q[i],sp=yrsSpec(it.yrs);
+    const inp=(side)=>sp[side]?`<input type="text" class="yin big" id="y${side}" autocomplete="off" placeholder="${side==='a'?'beginjaar':'eindjaar'}">`:`<span class="yfix">—</span>`;
+    view.innerHTML=`<button class="back-link" id="bk">← Stoppen</button><div class="prog"><span>${Math.min(i+1,q.length)} / ${q.length}</span><span class="bar"><i style="width:${i/q.length*100}%"></i></span><span>${firstOk} goed</span></div>
+    <div class="card stack" style="text-align:center"><div class="eyebrow">${it.sub}</div><div class="q" style="font-size:1.5rem">${esc(it.name)}</div>
+    <div class="yins" style="justify-content:center">${inp('a')}<span>tot</span>${inp('b')}</div>
+    <p class="small mut">Schrijf v.C. erbij als het vóór Christus is. Duurt het tot nu? Schrijf dan <b>nu</b>.</p>
+    <button class="btn" id="ck">Controleer</button><div id="fb"></div></div>`;
+    $('#bk').onclick=()=>go('toets');
+    const A=$('#ya'),B=$('#yb');(A||B).focus();
+    if(A&&B)A.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();B.focus()}});
+    const last=B||A;last.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if($('#ck'))check()}});
+    $('#ck').onclick=check;
+    function check(){let good=true,why='';[['a',A],['b',B]].forEach(([side,el])=>{if(!el)return;const g=ysame(yparse(el.value),sp[side]);el.classList.toggle('yok',g);el.classList.toggle('yno',!g);el.readOnly=true;if(!g){good=false;why=why||ywhy(yparse(el.value),sp[side])}});
+      const first=!it._tried;it._tried=1;if(good&&first)firstOk++;if(!good){missed.add(it.name);q.push({...it,_tried:1})}
+      if(it.k&&first)mark(it.k,good,true);
+      $('#ck').remove();$('#fb').innerHTML=`<div class="fb ${good?'good':'bad'}">${good?'Goed!':'Niet goed.'}<small>${esc(it.name)}: <b>${esc(it.yrs)}</b>${esc(why)}${good?'':'. Deze komt straks nog een keer terug.'}</small></div><button class="btn" id="nx" style="margin-top:10px;width:100%">Volgende</button>`;
+      const nx=$('#nx');nx.onclick=()=>{i++;draw()};setTimeout(()=>nx.focus(),0)}
+  }
   draw()}
 function quiz(title,key,qs){
   let i=0,score=0;const miss=[];

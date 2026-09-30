@@ -228,3 +228,5 @@ details.vq p{margin-top:6px}
 .yfb{grid-column:1/-1}
 .yfb:empty{display:none}
 @media (max-width:420px){.yrow{grid-template-columns:1fr}.yin,.yfix{width:100%!important}.yins>*{flex:1}}
+
+.yin.big{width:140px!important;font-size:1.2rem!important;text-align:center}
