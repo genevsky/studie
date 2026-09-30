@@ -38,10 +38,6 @@ w=D['eezelsbrug'].split(' ')
 st+=[P('Ezelsbruggetje',H3),P(' '.join('<font color="#B07800"><b>%s</b></font>%s'%(x[0],x[1:]) for x in w),ParagraphStyle('m',parent=B,fontSize=13,leading=19)),
      P(' · '.join('%s = %s'%(w[i][0],D['eezelsbrugUitleg'][i]) for i in range(10)),sm),Spacer(1,4),
      P('De namen komen uit de standaardindeling. Controleer ze met het kaartjesblad van de leraar.',sm)]
-st+=[P('Tijdlijn van tijdvak 1 (p. 60-61)',H2),P('Let op: bij v.C. loopt het getal terug, dus 10.000 v.C. is ouder dan 9000 v.C. Vouw of dek de rechterkolom af en test jezelf.',sm),Spacer(1,4)]
-rows=[[P('<b>%s</b>'%e['w']),P(e['l'])] for e in D['timeline'] if e.get('core')]
-T=Table(rows,colWidths=[40*mm,W-40*mm]);T.setStyle(TableStyle([('LINEBELOW',(0,0),(-1,-1),.4,colors.HexColor('#CBDAD8')),('VALIGN',(0,0),(-1,-1),'TOP'),('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5),('BACKGROUND',(0,0),(0,-1),colors.HexColor('#FBE7A8'))]))
-st+=[T]
 st.append(PageBreak())
 # --- begrippen
 st+=[P('Begrippen (p. 60-61)',H1),P('Dit zijn de 32 begrippen van de begrippenlijst in je boek, met de omschrijving uit het boek. Op de toets krijg je de omschrijving en noem jij het begrip. <b>Vouw het blad dubbel langs de stippellijn</b>: dan zie je alleen de omschrijvingen. Noem het begrip, klap open en kijk. Onder elk begrip staat een steuntje om het te onthouden.',sm),Spacer(1,6)]
@@ -50,43 +46,76 @@ for p,tt in [('1.1','De eerste mensen'),('1.2','Jagers worden boeren'),('1.3','D
     T=Table(rows,colWidths=[W/2,W/2])
     T.setStyle(TableStyle([('LINEBELOW',(0,0),(-1,-1),.4,colors.HexColor('#CBDAD8')),('VALIGN',(0,0),(-1,-1),'TOP'),('TOPPADDING',(0,0),(-1,-1),4),('BOTTOMPADDING',(0,0),(-1,-1),4),('LEFTPADDING',(1,0),(1,-1),10),('RIGHTPADDING',(0,0),(0,-1),10),('LINEAFTER',(0,0),(0,-1),1,MUT,None,(3,3)),('BACKGROUND',(1,0),(1,-1),colors.HexColor('#EEF4F3'))]))
     st+=[KeepTogether([P('%s %s'%(p,tt),H2),T])]
+ext=[x for x in D['begrippen'] if x.get('x')]
+rows=[[P('<b>%s</b>'%x['t']),P(x['d'])] for x in ext]
+T=Table(rows,colWidths=[52*mm,W-52*mm]);T.setStyle(TableStyle([('LINEBELOW',(0,0),(-1,-1),.4,colors.HexColor('#CBDAD8')),('VALIGN',(0,0),(-1,-1),'TOP'),('TOPPADDING',(0,0),(-1,-1),4),('BOTTOMPADDING',(0,0),(-1,-1),4)]))
+st+=[KeepTogether([P('Extra woorden uit de tekst (niet op de begrippenlijst)',H2),P('Handig om te snappen, maar eerst de 32 hierboven leren.',sm),Spacer(1,3),T])]
 st.append(PageBreak())
-# --- vragen 1.1-1.4 (om te vouwen)
-st+=[P('Vragen van 1.1 t/m 1.4',H1),P('Dit zijn de vragen uit de blauwe vakjes “Jouw leerdoelen” aan het begin van elke paragraaf. <b>Vouw het blad dubbel langs de stippellijn</b>: lees de vraag, zeg of schrijf je antwoord en klap open om te kijken.',sm),Spacer(1,4)]
-for p_ in ['1.1','1.2','1.3','1.4']:
-    tt=[s_['title'] for s_ in D['summary'] if s_['id']==p_][0]
-    rows=[[P('<b>%s</b>'%v['q']),P('<br/>'.join('• '+md(x) for x in v['pts'])+('<br/><font size=8 color="#526A6E">Noem er minstens %d.</font>'%v['need'] if v['need']<len(v['pts']) else ''),ParagraphStyle('va',parent=B,fontSize=8.8,leading=11.5))] for v in D['vragen'] if v['p']==p_]
-    T=Table(rows,colWidths=[W/2,W/2])
-    T.setStyle(TableStyle([('LINEBELOW',(0,0),(-1,-1),.4,colors.HexColor('#CBDAD8')),('VALIGN',(0,0),(-1,-1),'TOP'),('TOPPADDING',(0,0),(-1,-1),4),('BOTTOMPADDING',(0,0),(-1,-1),4),('LEFTPADDING',(1,0),(1,-1),10),('RIGHTPADDING',(0,0),(0,-1),10),('LINEAFTER',(0,0),(0,-1),1,MUT,None,(3,3)),('BACKGROUND',(1,0),(1,-1),colors.HexColor('#EEF4F3'))]))
-    st+=[P('%s %s'%(p_,tt),H2),T]
+# --- samenvatting
+st+=[P('Samenvatting',H1)]
+for s in D['summary']:
+    st+=[P('%s · %s (%s)'%(s['id'],s['title'],s['pages']),H2),P('<b>%s</b>'%s['one'],B)]
+    for sec in s['sections']:
+        st.append(P(sec['h'],H3))
+        for pt in sec['pts']: st.append(Paragraph(md(pt),BL,bulletText='•'))
+st.append(PageBreak())
+# --- tijdlijn
+st+=[P('Tijdlijn',H1),P('De geel gemarkeerde regels staan op de tijdlijn van tijdvak 1 in je boek (p. 60-61). Let op: bij v.C. loopt het getal terug, dus 10.000 v.C. is ouder dan 9000 v.C. Niet op schaal.',sm),Spacer(1,6)]
+rows=[[P('<b>%s</b>'%e['w']),P(e['l'])] for e in D['timeline']]
+T=Table(rows,colWidths=[48*mm,W-48*mm]);sty=[('LINEBELOW',(0,0),(-1,-1),.4,colors.HexColor('#CBDAD8')),('VALIGN',(0,0),(-1,-1),'TOP'),('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5)]
+[sty.append(('BACKGROUND',(0,i),(-1,i),colors.HexColor('#FBE7A8'))) for i,e in enumerate(D['timeline']) if e.get('core')];T.setStyle(TableStyle(sty));st+=[T,Spacer(1,10)]
+st+=[P('Jager of boer?',H2)]
+j=[x['t'] for x in D['sort'] if x['s']=='j'];b=[x['t'] for x in D['sort'] if x['s']=='b']
+T=Table([[P('<b>Jager-verzamelaars</b>'),P('<b>Boeren</b>')],[[P(x,BL) for x in j],[P(x,BL) for x in b]]],colWidths=[W/2,W/2])
+T.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,0),SOFT),('VALIGN',(0,0),(-1,-1),'TOP'),('BOX',(0,0),(-1,-1),.5,colors.HexColor('#CBDAD8')),('LINEAFTER',(0,0),(0,-1),.5,colors.HexColor('#CBDAD8'))]))
+st+=[T,PageBreak()]
+# --- studieplan
+st+=[P('Studieplan in vijf korte rondes',H1),P('Verspreid leren werkt beter dan één keer veel. Maak er dagen van. Elke ronde duurt ongeveer 20 minuten.',sm),Spacer(1,6)]
+rows=[[P('<b>Ronde</b>'),P('<b>Wat doe je?</b>')],
+ [P('1'),P('Lees paragraaf 1.1 en 1.2 (samenvatting). Leer de tien tijdvakken met het ezelsbruggetje. Doe de begrippen van 1.1 en 1.2 met de kaartjes.')],
+ [P('2'),P('Lees 1.3 en 1.4. Kaartjes: begrippen van 1.3 en 1.4, plus de kaartjes van ronde 1 die vandaag terugkomen.')],
+ [P('3'),P('Alle begrippen door elkaar (omschrijving → begrip). Bouw de tijdlijn met het spel. Teken de tijdlijn uit je hoofd op een blanco blad.')],
+ [P('4'),P('Oefentoets. Kijk wat fout ging en oefen precies die kaartjes. Doe de leg uit-vragen.')],
+ [P('5 (dag voor de toets)'),P('Alleen kaartjes die nog niet zitten. Tijdvakken zeggen met de jaartallen. Tijdlijn uit je hoofd. Vroeg naar bed.')]]
+T=Table(rows,colWidths=[32*mm,W-32*mm]);T.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,0),SOFT),('LINEBELOW',(0,0),(-1,-1),.4,colors.HexColor('#CBDAD8')),('VALIGN',(0,0),(-1,-1),'TOP'),('TOPPADDING',(0,0),(-1,-1),5),('BOTTOMPADDING',(0,0),(-1,-1),5)]))
+st+=[T,Spacer(1,10),P('Tip: zet een kruisje bij elk begrip dat je twee dagen achter elkaar goed had.',sm),PageBreak()]
+# --- leerdoelen, vergelijk, tips
+st+=[P('Leerdoelen, vergelijking en toetstips',H1),P('Kun je dit uitleggen zonder in het boek te kijken? Zet een vinkje.',sm)]
+for s_ in D['summary']:
+    st.append(P('Paragraaf %s · %s'%(s_['id'],s_['title']),H3))
+    for g in D['leerdoelen'][s_['id']]: st.append(Paragraph(md(g.replace('Je kunt ','')),BL,bulletText='[  ]'))
+st+=[P('Vergelijk: jager of boer',H2)]
+rows=[[P('<b>%s</b>'%c) if i==0 or j==0 else P(c) for j,c in enumerate(r)] for i,r in enumerate(D['compare'])]
+T=Table(rows,colWidths=[24*mm,(W-24*mm)/2,(W-24*mm)/2]);T.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,0),SOFT),('LINEBELOW',(0,0),(-1,-1),.4,colors.HexColor('#CBDAD8')),('VALIGN',(0,0),(-1,-1),'TOP'),('TOPPADDING',(0,0),(-1,-1),4),('BOTTOMPADDING',(0,0),(-1,-1),4)]))
+st.append(T)
+for t_ in D['tips']:
+    st.append(P(t_['h'],H3))
+    for p_ in t_['p']: st.append(Paragraph(md(p_),BL,bulletText='\u2022'))
 st.append(PageBreak())
 # --- oefentoets
 random.seed(11)
-begs=[x for x in D['begrippen'] if not x.get('x')];pick=random.sample(begs,12)
+begs=[x for x in D['begrippen'] if not x.get('x')];pick=random.sample(begs,12);mcs=random.sample(D['mc'],8)
 st+=[P('Oefentoets',H1),P('Naam: ______________________     Datum: ____________     Tijd: 30 minuten',sm),Spacer(1,6),P('Deel A. Noem het begrip (12 punten)',H2)]
 for i,x in enumerate(pick,1):
     st+=[P('<b>%d.</b> %s'%(i,x['d'])),Spacer(1,3),P('Begrip: ____________________________________________'),Spacer(1,6)]
-tv=D['tijdvakken'];tvs=random.sample(tv,4);tvn=random.sample([t for t in tv if t not in tvs],3)
-st+=[P('Deel B. Tijdvakken en tijdlijn (10 punten)',H2)]
-n=13
-for t in tvs: st+=[P('<b>%d.</b> Welke jaartallen horen bij: <b>%s</b>?  ____________________'%(n,t['name'])),Spacer(1,6)];n+=1
-for t in tvn: st+=[P('<b>%d.</b> Welk tijdvak is <b>%s</b>?  ______________________________________'%(n,t['yrs'])),Spacer(1,6)];n+=1
-core=[e for e in D['timeline'] if e.get('core')];cs=random.sample(core,3)
-for e in cs: st+=[P('<b>%d.</b> Wat gebeurde er in <b>%s</b>?  ______________________________________'%(n,e['w'])),Spacer(1,6)];n+=1
-opens=[v for v in random.sample(D['vragen'],4)]
-st+=[P('Deel C. Vragen uit de paragrafen (4 vragen)',H2)]
-for i,o in enumerate(opens,n):
-    st+=[P('<b>%d.</b> %s'%(i,o['q'])),Spacer(1,4)]+[P('_'*78) for _ in range(3)]+[Spacer(1,8)]
+st+=[P('Deel B. Meerkeuze (8 punten)',H2)]
+ans=[]
+for i,m in enumerate(mcs,13):
+    o=list(enumerate(m['o']));random.shuffle(o);L='ABCD'
+    ans.append((i,L[[k for k,(orig,_) in enumerate(o) if orig==m['a']][0]],m['w']))
+    st.append(KeepTogether([P('<b>%d.</b> %s'%(i,m['q'])),*[Paragraph('%s. %s'%(L[k],t.replace('&','&amp;')),ParagraphStyle('o',parent=B,leftIndent=14)) for k,(_,t) in enumerate(o)],Spacer(1,6)]))
+opens=random.sample(D['open'],4)
+st+=[P('Deel C. Open vragen (4 vragen)',H2)]
+for i,o in enumerate(opens,21):
+    st+=[P('<b>%d.</b> %s'%(i,o['q'])),Spacer(1,4)]+[P('_'*78) for _ in range(2)]+[Spacer(1,8)]
 st+=[PageBreak(),P('Antwoorden oefentoets',H1),P('Deel A',H2)]
 for i,x in enumerate(pick,1): st.append(P('<b>%d.</b> %s'%(i,x['t'])))
-st.append(P('Deel B',H2));n=13
-for t in tvs: st.append(P('<b>%d.</b> %s'%(n,t['yrs'])));n+=1
-for t in tvn: st.append(P('<b>%d.</b> %s'%(n,t['name'])));n+=1
-for e in cs: st.append(P('<b>%d.</b> %s'%(n,e['l'])));n+=1
+st.append(P('Deel B',H2))
+for i,a,w in ans: st.append(P('<b>%d.</b> %s  <font color="#526A6E">(%s)</font>'%(i,a,w)))
 st.append(P('Deel C: wat erin moet staan',H2))
-for i,o in enumerate(opens,n):
-    st.append(P('<b>%d.</b> %s <font color="#526A6E">(%s)</font>'%(i,' / '.join(md(x) for x in o['pts']),'minimaal %d'%o['need'] if o['need']<len(o['pts']) else 'alles')))
-st.append(Spacer(1,6));st.append(P('Cijfer ter indicatie: 1 + 9 × (punten ÷ 26). Deel A en B: 1 punt per vraag. Deel C: 1 punt per vraag als je genoeg punten noemt.',sm))
+for i,o in enumerate(opens,21):
+    st.append(P('<b>%d.</b> %s <font color="#526A6E">(%s)</font>'%(i,' / '.join(o['pts']),'minimaal %d van %d'%(o['need'],len(o['pts'])) if o['need']<len(o['pts']) else 'alles')))
+st.append(Spacer(1,6));st.append(P('Cijfer ter indicatie: 1 + 9 × (aantal goed ÷ 20). Deel A en B zijn 1 punt per vraag; Deel C tel je zelf na met de punten hierboven.',sm))
 st.append(PageBreak())
 # --- kaartjes (voorkant / achterkant)
 tv=D['tijdvakken']

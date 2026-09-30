@@ -16,6 +16,7 @@ const store={get(){try{return JSON.parse(localStorage.getItem('studie:'+M.id))||
 let S=Object.assign({xp:0,lb:{},exam:null,best:{},chk:{}},store.get());
 const save=()=>{try{S.pct=ready().pct;S.stats={seen:BEG.filter(b=>S.lb['b:'+b.t]).length+TV.filter(t=>S.lb['t:'+t.n]).length,total:BEG.length+TV.length,unit:'kaartjes'}}catch(e){}S.ts=Date.now();store.set(S)};
 const BEG=D.begrippen.filter(b=>!b.x),EXT=D.begrippen.filter(b=>b.x);
+const VR=(D.vragen||[]).map((v,i)=>Object.assign({k:'v:'+i},v));
 /* ---- Leitner: kaartjes komen terug na 1, 3, 7 en 14 dagen ---- */
 const DAYMS=864e5,INT=[0,1,3,7,14];
 const today=()=>Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/DAYMS);
@@ -52,7 +53,7 @@ const on=(sel,fn,root=view)=>$$(sel,root).forEach(e=>e.addEventListener('click',
 const sc=k=>{const e=S.lb[k];return !e?0:e.b>=2?1:e.b===1?.5:.2};
 const cnt=ks=>({seen:ks.filter(k=>S.lb[k]).length,sure:ks.filter(mastered).length,tot:ks.length,sc:ks.reduce((a,k)=>a+sc(k),0)/(ks.length||1)});
 const played=g=>{const n=(S.played||{})[g];return n?`<span class="donel">✓ ${n}× gespeeld</span>`:''};
-function ready(){const B=cnt(BEG.map(b=>'b:'+b.t)),T=cnt(TV.map(t=>'t:'+t.n)),q=S.best.oefen||0;return{B,T,kn:B.sc,tk:T.sc,q,pct:Math.round(100*(.4*B.sc+.3*T.sc+.3*q))}}
+function ready(){const B=cnt(BEG.map(b=>'b:'+b.t)),T=cnt(TV.map(t=>'t:'+t.n)),Q=cnt(VR.map(v=>v.k)),q=S.best.oefen||0;return{B,T,Q,kn:B.sc,tk:T.sc,q,pct:Math.round(100*(VR.length?.3*B.sc+.2*T.sc+.25*Q.sc+.25*q:.4*B.sc+.3*T.sc+.3*q))}}
 const CHK=["Leerpagina's gelezen: p. 17, 20-23, 29-32, 38-41 en 47-49","De begrippen van p. 60-61: bij de omschrijving het begrip kunnen noemen","De tien tijdvakken in de goede volgorde, zoals in je boek","Bij elk tijdvak de jaartallen (achterkant van het kaartje)","De tijdlijn van tijdvak 1 met de vijf jaartallen"];
 function planText(){const n=S.exam?S.exam-today():null;
   if(n==null)return 'Vul hieronder de datum van je toets in. Dan zet de app je kaartjes slim verspreid over de dagen.';
@@ -62,48 +63,46 @@ function planText(){const n=S.exam?S.exam-today():null;
   if(n<=4)return 'Nog '+n+' dagen. Doe alle kaartjes die aan de beurt zijn en één oefentoets.';
   return 'Nog '+n+' dagen. Doe elke dag een paar kaartjes, één spel en lees één paragraaf.'}
 V_start=function(){
-  const r=ready();
-  const dueB=BEG.filter(b=>isDue('b:'+b.t)).length,dueT=TV.filter(t=>isDue('t:'+t.n)).length;
-  const msg=r.pct<25?'Je begint net. Lees eerst de samenvatting en pak dan de kaartjes.':r.pct<60?'Goed bezig. Blijf oefenen met kaartjes en spellen.':r.pct<85?'Bijna klaar. Doe nog een oefentoets.':'Klaar voor de toets. Nog één keer de tijdvakken en de tijdlijn.';
-  const n=S.exam?S.exam-today():null;
+  const r=ready();const pc=p=>VR.filter(v=>v.p===p);
+  const tile=(n,title,sub,btns,prog)=>`<section class="card stack focus"><div class="fhead"><span class="fno">${n}</span><div><h2>${title}</h2><p class="small mut">${sub}</p></div></div>${prog?`<p class="small"><b style="color:var(--good)">${prog}</b></p>`:''}<div class="btns">${btns}</div></section>`;
+  const B=(act,label,ghost)=>`<button class="btn ${ghost?'ghost':''}" data-act="${act}">${label}</button>`;
   view.innerHTML=`
-  <section class="hero"><h1>Klaar voor de toets over jagers en boeren?</h1><p>Verdien XP met kaartjes, spellen en toetsen. Van Neanderthaler tot Farao.</p></section>
-  <section class="card stack"><div class="eyebrow">Vandaag</div>
-    <p><b>${esc(planText())}</b></p>
-    <div class="btns" style="align-items:center"><label for="exam" class="small" style="flex:0 0 auto;font-weight:800">Datum van de toets</label><input type="date" id="exam" value="${S.exam?new Date(S.exam*DAYMS).toISOString().slice(0,10):''}" style="flex:1 1 150px;font:inherit;padding:10px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--ink)"></div>
-    <p class="small mut">Aan de beurt: ${dueB} begrippen en ${dueT} tijdvakken.</p>
-    <div class="btns"><button class="btn" data-go="kaart">Naar de kaartjes</button></div></section>
-  <section class="card ready"><div class="pct">${r.pct}<small>%</small></div><div class="stack" style="gap:8px"><b>${msg}</b>
-    <div class="mini">
-      <div><span>Begrippen</span><span class="bar"><i style="width:${Math.round(r.kn*100)}%"></i></span></div>
-      <div><span>Tijdvakken</span><span class="bar"><i style="width:${Math.round(r.tk*100)}%"></i></span></div>
-      <div><span>Oefentoets</span><span class="bar"><i style="width:${Math.round(r.q*100)}%"></i></span></div>
-    </div></div></section>
-  <section class="card stack"><div class="eyebrow">Wat heb je al gedaan?</div>
-    <div class="tally"><div><b>${r.B.seen}/${BEG.length}</b><span>Begrippen geoefend</span><small>${r.B.sure} zitten erin</small></div><div><b>${r.T.seen}/${TV.length}</b><span>Tijdvakken geoefend</span><small>${r.T.sure} zitten erin</small></div><div><b>${S.best.oefen!=null?Math.round(S.best.oefen*100)+'%':'–'}</b><span>Beste oefentoets</span><small>${Object.keys(S.played||{}).length} spellen gespeeld</small></div></div>
-    <p class="small mut">Een kaartje “zit erin” als je het op twee verschillende dagen goed had.</p></section>
-  <section class="stack"><h2>Jouw route</h2><div class="route">
-    <button data-go="leer"><b>1. Lees</b><span>Samenvatting, tijdlijn en tips</span></button>
-    <button data-go="kaart"><b>2. Kaartjes</b><span>32 begrippen uit je boek en de tien tijdvakken</span></button>
-    <button data-go="spel"><b>3. Spelen</b><span>Trein, Tijdlijn, Koppel, Jager of boer</span></button>
-    <button data-go="toets"><b>4. Toets</b><span>Oefentoets met cijfer</span></button>
-  </div></section>
-  <section class="card"><h2 style="margin-bottom:6px">Dit vraagt de leraar</h2>
-    ${CHK.map((c,i)=>`<label class="chk"><input type="checkbox" data-c="${i}" ${S.chk[i]?'checked':''}><span>${esc(c)}</span></label>`).join('')}
-    <p class="small mut" style="margin-top:6px">Bij de begrippen krijg je op de toets een omschrijving. Jij noemt dan het begrip. Opschrijven van de omschrijving hoeft niet.</p></section>
-  <details class="card small"><summary><b>Waar komt dit vandaan?</b></summary><p style="margin-top:8px">De 32 begrippen en hun omschrijvingen komen letterlijk uit de begrippenlijst (p. 60-61) en de tijdlijn van tijdvak 1 uit dezelfde pagina's. De samenvatting is gemaakt uit de boekpagina's van paragraaf 1.1 t/m 1.4. Woorden met het label <span class="tag" style="margin:0">extra</span> staan in de tekst maar niet op de begrippenlijst. De namen van de tien tijdvakken zijn de standaardnamen; alleen de eerste twee heb ik in het boek gezien. Vergelijk de rest met het kaartjesblad van de leraar.</p></details>`;
-  on('[data-go]',e=>go(e.dataset.go));
-  $$('[data-c]',view).forEach(e=>e.addEventListener('change',()=>{S.chk[e.dataset.c]=e.checked;save()}));
-  const ex=$('#exam');ex.addEventListener('change',()=>{S.exam=ex.value?Math.floor(Date.parse(ex.value)/DAYMS):null;S.examT=Date.now();save();V_start()});
+  <section class="hero"><h1>Toets geschiedenis: oefen deze 3 onderdelen</h1><p>Doe ze op volgorde. Klaar? Maak dan de oefentoets.</p></section>
+  ${tile(1,'De vragen van 1.1 t/m 1.4','De 17 vragen uit de blauwe vakjes “Jouw leerdoelen” aan het begin van elke paragraaf. Lees de antwoorden en oefen ze dan.',
+    B('leer:vr','Lees vragen en antwoorden',1)+B('toets:vraag','Oefen de vragen'),
+    r.Q.seen?`${r.Q.seen} van de ${VR.length} geoefend, ${VR.filter(v=>S.lb[v.k]&&S.lb[v.k].b>=1).length} goed`:'')}
+  ${tile(2,'Tijdlijn en tijdvakken','De tien tijdvakken met naam en jaartallen, en de vijf jaartallen van de tijdlijn van tijdvak 1.',
+    B('leer:tv','Bekijk de tijdvakken',1)+B('spel:trein','Tijdvakkentrein')+B('spel:jaar','Welk tijdvak?')+B('spel:tl5','Tijdlijn bouwen'),
+    r.T.seen||(S.played||{}).trein?`Tijdvakken: ${r.T.seen}/10 geoefend · Trein ${(S.played||{}).trein||0}× · Tijdlijn ${(S.played||{}).tl5||0}×`:'')}
+  ${tile(3,'Begrippen (p. 60-61)','Op de toets krijg je de omschrijving en schrijf jij het begrip op.',
+    B('leer:bg','Bekijk de begrippen',1)+B('kaart:beg','Kaartjes')+B('toets:typ','Typ het begrip'),
+    r.B.seen?`${r.B.seen} van de ${BEG.length} geoefend, ${r.B.sure} zitten erin`:'')}
+  ${tile('✓','Oefentoets','20 vragen door elkaar: begrippen, tijdvakken, tijdlijn en vragen uit de paragrafen. Met cijfer.',
+    B('toets:oefen','Start de oefentoets'),S.best.oefen!=null?'Beste score: '+Math.round(S.best.oefen*100)+'%':'')}
+  <section class="card ready"><div class="pct">${r.pct}<small>%</small></div><div class="stack" style="gap:8px"><b>Klaar voor de toets</b>
+    <div class="mini"><div><span>Vragen</span><span class="bar"><i style="width:${Math.round(r.Q.sc*100)}%"></i></span></div>
+    <div><span>Tijdvakken</span><span class="bar"><i style="width:${Math.round(r.tk*100)}%"></i></span></div>
+    <div><span>Begrippen</span><span class="bar"><i style="width:${Math.round(r.kn*100)}%"></i></span></div>
+    <div><span>Oefentoets</span><span class="bar"><i style="width:${Math.round(r.q*100)}%"></i></span></div></div></div></section>`;
+  on('[data-act]',e=>{const [tab,x]=e.dataset.act.split(':');
+    if(tab==='leer'){leerTab=x;go('leer')}
+    else if(tab==='kaart'){K.deck=x;K.mode='exam';go('kaart')}
+    else if(tab==='spel'){go('spel');const b=$(`[data-g="${x}"]`);if(b)b.click()}
+    else if(tab==='toets'){go('toets');const b=$(`[data-t="${x}"]`);if(b)b.click()}});
 };
 
 /* ---- LEREN ---- */
-let leerTab='sam';
+let leerTab='vr';
 V_leer=function(){
-  view.innerHTML=`<div class="seg" id="seg">${[['sam','Samenvatting'],['tl','Tijdlijn'],['tv','Tijdvakken'],['tip','Leerdoelen en tips']].map(x=>`<button data-l="${x[0]}" aria-pressed="${leerTab===x[0]}">${x[1]}</button>`).join('')}</div><div id="lbody" class="stack"></div>`;
+  view.innerHTML=`<div class="seg" id="seg">${[['vr','Vragen 1.1-1.4'],['tv','Tijdvakken'],['tl','Tijdlijn'],['bg','Begrippen'],['sam','Samenvatting']].map(x=>`<button data-l="${x[0]}" aria-pressed="${leerTab===x[0]}">${x[1]}</button>`).join('')}</div><div id="lbody" class="stack"></div>`;
   on('[data-l]',e=>{leerTab=e.dataset.l;V_leer()});
   const b=$('#lbody');
-  if(leerTab==='sam'){
+  if(leerTab==='vr'){
+    b.innerHTML=`<p class="mut small">Dit zijn de vragen uit de blauwe vakjes “Jouw leerdoelen” aan het begin van elke paragraaf. Probeer eerst zelf het antwoord te zeggen en tik dan op de vraag.</p>`+['1.1','1.2','1.3','1.4'].map(p=>{const s0=D.summary.find(x=>x.id===p);return `<div class="card stack"><h3>${p} ${esc(s0?s0.title:'')}</h3>${VR.filter(v=>v.p===p).map(v=>`<details class="vq"><summary>${esc(v.q)}</summary><ul>${v.pts.map(x=>`<li>${md(x)}</li>`).join('')}</ul>${v.need<v.pts.length?`<p class="small mut">Noem er minstens ${v.need}.</p>`:''}</details>`).join('')}</div>`}).join('')+`<button class="btn" id="goq">Oefen de vragen</button>`;
+    $('#goq').onclick=()=>{go('toets');$('[data-t="vraag"]').click()};
+  }else if(leerTab==='bg'){
+    b.innerHTML=`<p class="mut small">Op de toets krijg je de omschrijving. Lees de omschrijving, zeg het begrip en tik om te kijken.</p>`+['1.1','1.2','1.3','1.4'].map(p=>`<div class="card stack"><h3>Paragraaf ${p}</h3>${BEG.filter(x=>x.p===p).map(x=>`<details class="vq"><summary>${esc(x.d)}</summary><p><b>${esc(x.t)}</b>${x.h?`<br><span class="small mut">${esc(x.h)}</span>`:''}</p></details>`).join('')}</div>`).join('');
+  }else if(leerTab==='sam'){
     b.innerHTML=D.summary.map((s,i)=>`<details class="sum" ${i===0?'open':''}><summary><span>Paragraaf ${s.id} · ${esc(s.pages)}</span><b>${esc(s.title)}</b></summary><div class="body">
       <p class="one">${esc(s.one)}</p><p class="small mut">${esc(s.key)}</p>
       ${s.sections.map(x=>`<div><h4>${esc(x.h)}</h4><ul>${x.pts.map(p=>`<li>${md(p)}</li>`).join('')}</ul></div>`).join('')}
@@ -113,8 +112,7 @@ V_leer=function(){
   }else if(leerTab==='tl'){
     const li=e=>`<li class="${e.g==='cut'?'cut':''}"><div class="lab"><span class="when">${esc(e.w)}</span>${esc(e.l)}</div></li>`;
     const core=D.timeline.filter(e=>e.core),more=D.timeline.filter(e=>!e.core);
-    b.innerHTML=`<div class="card stack"><h3>De tijdlijn uit je boek</h3><p class="mut small">Dit staat op de tijdlijn van tijdvak 1 (bij de begrippen, p. 60-61). Let op: bij v.C. loopt het getal terug. 10.000 v.C. is dus ouder dan 9000 v.C.</p><ol class="tl">${core.map(li).join('')}</ol></div>
-    <h3>Meer uit de tekst</h3><p class="mut small">Handig om te weten, maar niet op de tijdlijn in je boek.</p><ol class="tl">${more.map(li).join('')}</ol>`;
+    b.innerHTML=`<div class="card stack"><h3>De tijdlijn uit je boek</h3><p class="mut small">Dit staat op de tijdlijn van tijdvak 1 (bij de begrippen, p. 60-61). Let op: bij v.C. loopt het getal terug. 10.000 v.C. is dus ouder dan 9000 v.C.</p><ol class="tl">${core.map(li).join('')}</ol></div><button class="btn" id="gotl">Oefen: tijdlijn bouwen</button>`;$('#gotl').onclick=()=>{go('spel');$('[data-g="tl5"]').click()};
   }else if(leerTab==='tip'){
     b.innerHTML=`<div class="card stack"><h2>Ken je de leerdoelen?</h2><p class="mut small">Vink af als je het kunt uitleggen zonder in het boek te kijken.</p>${D.summary.map(s=>`<div><h4 style="color:var(--accent);margin-bottom:2px">Paragraaf ${s.id} · ${esc(s.title)}</h4>${D.leerdoelen[s.id].map((g,i)=>`<label class="chk"><input type="checkbox" data-g="${s.id}-${i}" ${S.chk['g'+s.id+i]?'checked':''}><span>${esc(g.replace('Je kunt ',''))}</span></label>`).join('')}</div>`).join('')}</div>
     <div class="card stack"><h2>Vergelijk: jager of boer</h2><div style="overflow-x:auto"><table class="cmp">${D.compare.map((r,i)=>`<tr>${r.map(c=>i===0?`<th>${esc(c)}</th>`:`<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</table></div></div>
@@ -150,7 +148,7 @@ function face(o,cls){return `<div class="face ${cls}"><div class="hint">${esc(o.
 function kDraw(){
   const modeLbl=(K.deck==='beg'||K.deck==='ext')?[['exam','Omschrijving → begrip'],['rev','Begrip → omschrijving']]:K.deck==='tv'?[['exam','Naam → jaartallen'],['rev','Jaartallen → naam']]:null;
   const all=deckCards(),dueN=all.filter(c=>isDue(c.k)).length,masN=all.filter(c=>mastered(c.k)).length;
-  let h=`<div class="seg">${[['beg','Begrippen (32)'],['tv','Tijdvakken'],['wk','Weetjes'],['ext','Extra woorden']].map(x=>`<button data-d="${x[0]}" aria-pressed="${K.deck===x[0]}">${x[1]}</button>`).join('')}</div>`;
+  let h=`<div class="seg">${[['beg','Begrippen (32)'],['tv','Tijdvakken']].map(x=>`<button data-d="${x[0]}" aria-pressed="${K.deck===x[0]}">${x[1]}</button>`).join('')}</div>`;
   if(modeLbl)h+=`<div class="seg">${modeLbl.map(x=>`<button data-m="${x[0]}" aria-pressed="${K.mode===x[0]}">${x[1]}</button>`).join('')}</div>`;
   if(K.deck==='beg')h+=`<div class="seg">${['all','1.1','1.2','1.3','1.4'].map(p=>`<button data-p="${p}" aria-pressed="${K.para===p}">${p==='all'?'Alle paragrafen':'Par. '+p}</button>`).join('')}</div>`;
   if(K.deck==='ext')h+=`<p class="small mut">Deze woorden staan in de tekst, maar niet op de begrippenlijst van p. 60-61. Eerst de 32 begrippen leren.</p>`;
@@ -181,10 +179,8 @@ V_spel=function(){
   <button class="gm" data-g="trein"><em>Tijdvakken</em><b>Tijdvakkentrein</b><span>Zet de tien tijdvakken in de goede volgorde.</span>${played('trein')}</button>
   <button class="gm" data-g="jaar"><em>Tijdvakken</em><b>Welk tijdvak?</b><span>Jaartallen erbij, naam eronder. En andersom.</span>${played('jaar')}</button>
   <button class="gm" data-g="tl5"><em>Tijdlijn</em><b>Tijdlijn bouwen</b><span>Zet de vijf gebeurtenissen van je boek op volgorde.</span>${played('tl5')}</button>
-  <button class="gm" data-g="tl10"><em>Tijdlijn, extra</em><b>Tijdlijn bouwen XL</b><span>Tien gebeurtenissen: nu met de jaartallen door elkaar.</span>${played('tl10')}</button>
   <button class="gm" data-g="snel"><em>Begrippen</em><b>Snelle ronde</b><span>60 seconden. Zoveel mogelijk begrippen raden.</span>${played('snel')}</button>
-  <button class="gm" data-g="koppel"><em>Begrippen</em><b>Koppel</b><span>Verbind elk begrip met de goede omschrijving.</span>${played('koppel')}</button>
-  <button class="gm" data-g="jb"><em>Leefwijze</em><b>Jager of boer?</b><span>Hoort deze zin bij jager-verzamelaars of boeren?</span>${played('jb')}</button></div>`;
+  <button class="gm" data-g="koppel"><em>Begrippen</em><b>Koppel</b><span>Verbind elk begrip met de goede omschrijving.</span>${played('koppel')}</button></div>`;
   on('[data-g]',e=>{const g=e.dataset.g;S.played=S.played||{};S.played[g]=(S.played[g]||0)+1;save();G[g]()});
 };
 function gShell(title){view.innerHTML=`<button class="back-link" id="bk">← Alle spellen</button><h2>${title}</h2><div id="g" class="stack"></div>`;$('#bk').addEventListener('click',()=>go('spel'));return $('#g')}
@@ -264,19 +260,22 @@ function judge(ans,t){const n=norm(ans);if(!n)return 0;const c=[norm(t),...(ALT[
 function qBegrip(b){const pool=BEG.filter(x=>x.t!==b.t);const opts=shuffle([b.t,...shuffle(pool.filter(x=>x.p===b.p)).concat(shuffle(pool.filter(x=>x.p!==b.p))).slice(0,3).map(x=>x.t)]);return{k:'mc',q:'Welk begrip hoort bij deze omschrijving?',quote:b.d,opts,a:opts.indexOf(b.t),why:'Het begrip is: '+b.t+'.',begrip:b.t}}
 function qTv(){const t=TV[Math.floor(Math.random()*10)],rev=Math.random()<.5;const o=shuffle([t,...sample(TV.filter(x=>x.n!==t.n),3)]);return{k:'mc',q:rev?'Welke jaartallen horen bij "'+t.name+'"?':'Welk tijdvak hoort bij '+t.yrs+'?',opts:o.map(x=>rev?x.yrs:x.name),a:o.indexOf(t),why:t.name+' · '+t.yrs}}
 function qMc(m){const o=shuffle(m.o.map((x,i)=>({x,i})));return{k:'mc',q:m.q,opts:o.map(z=>z.x),a:o.findIndex(z=>z.i===m.a),why:m.w}}
+function qTl(){const core=D.timeline.filter(e=>e.core),e=core[Math.floor(Math.random()*core.length)],rev=Math.random()<.5;const o=shuffle(core.slice());
+  return rev?{k:'mc',q:'Wanneer was dit? '+e.l,opts:o.map(x=>x.w),a:o.indexOf(e),why:e.w+': '+e.l}:{k:'mc',q:'Wat gebeurde er in '+e.w+'?',opts:o.map(x=>x.l),a:o.indexOf(e),why:e.w+': '+e.l}}
+const vq=v=>({k:'open',o:v});
 V_toets=function(){
   const best=k=>S.best[k]!=null?`Beste: ${Math.round(S.best[k]*100)}%`:'Nog niet gemaakt';
   view.innerHTML=`<h2>Toetsen</h2><div class="games">
-  <button class="gm" data-t="oefen"><em>${best('oefen')}</em><b>Oefentoets</b><span>20 vragen door elkaar: begrippen, feiten en tijdvakken.</span></button>
-  <button class="gm" data-t="open"><em>${best('open')}</em><b>Leg uit-vragen</b><span>Noem, beschrijf en leg uit. Schrijf je antwoord en check het met het voorbeeld.</span></button>
-  <button class="gm" data-t="typ"><em>${best('typ')}</em><b>Typ het begrip</b><span>Zoals op de echte toets: je krijgt een omschrijving en schrijft het begrip op.</span></button>
-  <button class="gm" data-t="beg"><em>${best('beg')}</em><b>Begrippentoets</b><span>15 omschrijvingen uit je begrippenlijst, met meerkeuze.</span></button>
-  <button class="gm" data-t="tvt"><em>${best('tvt')}</em><b>Tijdvakkentoets</b><span>10 vragen over namen en jaartallen.</span></button></div>`;
+  <button class="gm" data-t="vraag"><em>${best('vraag')}</em><b>Vragen 1.1 t/m 1.4</b><span>De 17 vragen van de leerdoelen. Zeg of schrijf je antwoord en kijk het zelf na.</span></button>
+  <div class="btns">${['1.1','1.2','1.3','1.4'].map(p=>`<button class="btn ghost" data-t="vraag:${p}">Alleen ${p} (${VR.filter(v=>v.p===p).length})</button>`).join('')}</div>
+  <button class="gm" data-t="typ"><em>${best('typ')}</em><b>Typ het begrip</b><span>Zoals op de toets: je krijgt de omschrijving en schrijft het begrip op.</span></button>
+  <button class="gm" data-t="tvt"><em>${best('tvt')}</em><b>Tijdvakken en tijdlijn</b><span>12 vragen over de namen, de jaartallen en de tijdlijn.</span></button>
+  <button class="gm" data-t="oefen"><em>${best('oefen')}</em><b>Oefentoets</b><span>20 vragen door elkaar: 8 begrippen, 8 tijdvakken en tijdlijn, 4 vragen uit de paragrafen. Met cijfer.</span></button></div>`;
   on('[data-t]',e=>{const t=e.dataset.t;
-    if(t==='oefen')quiz('Oefentoets','oefen',shuffle([...sample(BEG,8).map(qBegrip),...sample(D.mc,8).map(qMc),qTv(),qTv(),qTv(),qTv()]));
-    if(t==='beg')quiz('Begrippentoets','beg',sample(BEG,15).map(qBegrip));
-    if(t==='tvt')quiz('Tijdvakkentoets','tvt',Array.from({length:10},qTv));
-    if(t==='open')quiz('Leg uit-vragen','open',sample(D.open,8).map(o=>({k:'open',o})));
+    if(t==='oefen')quiz('Oefentoets','oefen',[...shuffle([...sample(BEG,8).map(b=>({k:'typ',b})),qTv(),qTv(),qTv(),qTv(),qTv(),qTv(),qTl(),qTl()]),...sample(VR,4).map(vq)]);
+    if(t==='tvt')quiz('Tijdvakken en tijdlijn','tvt',shuffle([...Array.from({length:8},qTv),qTl(),qTl(),qTl(),qTl()]));
+    if(t==='vraag')quiz('Vragen 1.1 t/m 1.4','vraag',VR.map(vq));
+    if(t.startsWith('vraag:')){const p=t.slice(6);quiz('Vragen '+p,'vraag'+p,VR.filter(v=>v.p===p).map(vq))}
     if(t==='typ')quiz('Typ het begrip','typ',sample(BEG,10).map(b=>({k:'typ',b})))});
 };
 function quiz(title,key,qs){
@@ -285,7 +284,7 @@ function quiz(title,key,qs){
     const q=qs[i];
     let h=`<button class="back-link" id="bk">← Stoppen</button><div class="prog"><span>${i+1} / ${qs.length}</span><span class="bar"><i style="width:${i/qs.length*100}%"></i></span></div>`;
     if(q.k==='mc')h+=`<div class="q">${esc(q.q)}</div>${q.quote?`<div class="quote">${esc(q.quote)}</div>`:''}<div class="opts">${q.opts.map((o,j)=>`<button class="opt" data-j="${j}">${esc(o)}</button>`).join('')}</div><div id="fb"></div>`;
-    else if(q.k==='open')h+=`<div class="q">${esc(q.o.q)}</div><textarea id="ta" placeholder="Schrijf hier je antwoord in eigen woorden"></textarea><button class="btn" id="show">Toon wat erin moet staan</button><div id="fb" class="stack"></div>`;
+    else if(q.k==='open')h+=`<div class="q">${esc(q.o.q)}</div><textarea id="ta" placeholder="Schrijf je antwoord in eigen woorden (of zeg het hardop)"></textarea><button class="btn" id="show">Toon wat erin moet staan</button><div id="fb" class="stack"></div>`;
     else h+=`<div class="q">Welk begrip hoort bij deze omschrijving?</div><div class="quote">${esc(q.b.d)}</div><form id="f" class="stack"><input type="text" id="ans" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Typ het begrip"><button class="btn" type="submit">Controleer</button></form><div id="fb"></div>`;
     view.innerHTML=h;$('#bk').addEventListener('click',()=>go('toets'));
     const next=()=>{i++;if(i===qs.length)end();else draw()};
@@ -294,7 +293,7 @@ function quiz(title,key,qs){
       $('#fb').innerHTML=`<div class="fb ${good?'good':'bad'}">${good?'Goed!':'Niet goed.'}<small>${esc(q.why)}</small></div>`;nx()})}
     else if(q.k==='open'){$('#show').addEventListener('click',()=>{$('#show').hidden=true;$('#ta').readOnly=true;
       $('#fb').innerHTML=`<div class="quote"><b>Vink aan wat jij had${q.o.need<q.o.pts.length?` (${q.o.need} van de ${q.o.pts.length} is genoeg)`:''}:</b>${q.o.pts.map((p,x)=>`<label class="chk"><input type="checkbox" data-p="${x}"><span>${esc(p)}</span></label>`).join('')}</div><button class="btn" id="ok">Klaar met nakijken</button>`;
-      $('#ok').addEventListener('click',()=>{const n=$$('[data-p]:checked',view).length,r=Math.min(n,q.o.need)/q.o.need;score+=r;if(r<1)miss.push({q:q.o.q,why:'Erin hoort: '+q.o.pts.join(' / ')});$('#ok').disabled=true;$('#fb').insertAdjacentHTML('beforeend',`<div class="fb ${r===1?'good':r>0?'good':'bad'}">${r===1?'Helemaal goed!':r>0?'Gedeeltelijk goed.':'Nog niet. Lees het antwoord goed door.'}</div>`);nx()})})}
+      $('#ok').addEventListener('click',()=>{const n=$$('[data-p]:checked',view).length,r=Math.min(n,q.o.need)/q.o.need;score+=r;if(q.o.k)mark(q.o.k,r===1,true);if(r<1)miss.push({q:q.o.q,why:'Erin hoort: '+q.o.pts.join(' / ')});$('#ok').disabled=true;$('#fb').insertAdjacentHTML('beforeend',`<div class="fb ${r===1?'good':r>0?'good':'bad'}">${r===1?'Helemaal goed!':r>0?'Gedeeltelijk goed.':'Nog niet. Lees het antwoord goed door.'}</div>`);nx()})})}
     else{const inp=$('#ans');inp.focus();$('#f').addEventListener('submit',e=>{e.preventDefault();if($('#nx'))return;const r=judge(inp.value,q.b.t);score+=r;inp.disabled=true;$('#f button').disabled=true;
       if(r<1&&r===0)miss.push({q:'Omschrijving: '+q.b.d,why:'Antwoord: '+q.b.t});
       if(r===0)mark('b:'+q.b.t,false);else if(r===1)mark('b:'+q.b.t,true);
