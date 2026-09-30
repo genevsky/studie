@@ -55,7 +55,7 @@ st.append(PageBreak())
 st+=[P('Vragen van 1.1 t/m 1.4',H1),P('Dit zijn de vragen bij het begin van elke paragraaf. <b>Vouw het blad dubbel langs de stippellijn</b>: lees de vraag, zeg of schrijf je antwoord en klap open om te kijken.',sm),Spacer(1,4)]
 for p_ in ['1.1','1.2','1.3','1.4']:
     tt=D['paragrafen'][p_]
-    rows=[[P('<b>%s</b>'%v['q']),P('<br/>'.join('• '+md(x) for x in v['pts'])+('<br/><font size=8 color="#526A6E">Noem er minstens %d.</font>'%v['need'] if v['need']<len(v['pts']) else ''),ParagraphStyle('va',parent=B,fontSize=8.8,leading=11.5))] for v in D['vragen'] if v['p']==p_]
+    rows=[[P('<b>%s</b>'%v['q']),P('<br/>'.join('• '+md(x) for x in v['pts'])+('<br/><font size=8 color="#526A6E">Noem er minstens %d.</font>'%v['need'] if v['need']<len(v['pts']) else '')+('<br/><font size=8 color="#C9402B">Check dit met je boek.</font>' if v.get('check') else ''),ParagraphStyle('va',parent=B,fontSize=8.8,leading=11.5))] for v in D['vragen'] if v['p']==p_]
     T=Table(rows,colWidths=[W/2,W/2])
     T.setStyle(TableStyle([('LINEBELOW',(0,0),(-1,-1),.4,colors.HexColor('#CBDAD8')),('VALIGN',(0,0),(-1,-1),'TOP'),('TOPPADDING',(0,0),(-1,-1),4),('BOTTOMPADDING',(0,0),(-1,-1),4),('LEFTPADDING',(1,0),(1,-1),10),('RIGHTPADDING',(0,0),(0,-1),10),('LINEAFTER',(0,0),(0,-1),1,MUT,None,(3,3)),('BACKGROUND',(1,0),(1,-1),colors.HexColor('#EEF4F3'))]))
     st+=[P('%s %s'%(p_,tt),H2),T]

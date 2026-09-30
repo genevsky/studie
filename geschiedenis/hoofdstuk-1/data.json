@@ -1355,50 +1355,101 @@
  "vragen": [
   {
    "p": "1.1",
+   "q": "Waarom gingen mensen scheppingsverhalen vertellen?",
+   "doel": "Je kunt uitleggen waarom mensen scheppingsverhalen gingen vertellen.",
+   "need": 2,
+   "pts": [
+    "Mensen vroegen zich al heel lang af hoe de wereld en de mens zijn ontstaan.",
+    "De verhalen gaven antwoord op vragen als: waar komen wij vandaan, hoe is alles ontstaan?",
+    "Ze werden mondeling doorgegeven van generatie op generatie en kwamen overal voor (bijvoorbeeld bij de Maori's, en Adam en Eva in de heilige boeken van joden, christenen en moslims)."
+   ],
+   "check": false
+  },
+  {
+   "p": "1.1",
+   "q": "Hoe kijken wetenschappers tegen de vroegste geschiedenis aan?",
+   "doel": "Je kunt uitleggen hoe wetenschappers tegen de vroegste geschiedenis aankijken.",
+   "need": 2,
+   "pts": [
+    "Volgens de moderne wetenschap is de mens geleidelijk uit de natuur ontstaan (evolutie: langzame verandering).",
+    "Eerst waren er meerdere mensensoorten. Daaruit heeft de huidige mens zich ontwikkeld."
+   ],
+   "check": false
+  },
+  {
+   "p": "1.1",
    "q": "Hoe ontstonden mensensoorten en hoe veranderden ze?",
+   "doel": "Je kunt beschrijven hoe mensensoorten ontstonden en veranderden.",
    "need": 2,
    "pts": [
-    "Tussen 8 en 5 miljoen jaar geleden ontstonden in Afrika de eerste mensachtige wezens.",
-    "Nieuwe soorten gingen rechtop lopen, de kaak werd kleiner en de hersenen groter. Ze gebruikten voorwerpen, zoals een vuistbijl.",
-    "Later trokken soorten naar Azië en Europa (bijvoorbeeld de neanderthaler). De moderne mens (homo sapiens) ontstond ongeveer 300.000 jaar geleden in Afrika."
+    "In miljoenen jaren ontstonden in Afrika verschillende mensensoorten, zoals de australopithecus afarensis (Lucy) en de homo habilis (handige mens).",
+    "Nieuwe soorten gingen rechtop lopen, kregen grotere hersenen en maakten werktuigen.",
+    "De huidige mens (homo sapiens) ontstond in Afrika en verspreidde zich over de wereld."
    ],
-   "doel": "Je kunt beschrijven hoe mensensoorten ontstonden en veranderden."
+   "check": true
   },
   {
    "p": "1.1",
-   "q": "Hoe hebben we kennis verzameld over jager-verzamelaars?",
+   "q": "Wat voor verschillen zijn er tussen mensen over de hele wereld?",
+   "doel": "Je kunt beschrijven wat voor verschillen er zijn tussen mensen over de hele wereld.",
    "need": 2,
    "pts": [
-    "Archeologen onderzoeken ongeschreven bronnen, zoals werktuigen en rotstekeningen.",
-    "Experimentele archeologie: leven of bouwen zoals mensen vroeger deden.",
-    "Kijken naar volken die nu nog als jager-verzamelaars leven, zoals de Baka in Centraal-Afrika."
+    "Alle mensen nu horen bij één soort: de homo sapiens.",
+    "Mensen verschillen in uiterlijk, zoals huidskleur en lengte, doordat ze zich aanpasten aan het klimaat waar ze woonden.",
+    "Mensen verschillen ook in cultuur: in hoe ze denken en doen, bijvoorbeeld taal, geloof en eten."
    ],
-   "doel": "Je kunt beschrijven hoe we kennis hebben verzameld over jager-verzamelaars."
+   "check": true
   },
   {
-   "p": "1.1",
-   "q": "Leg met een voorbeeld uit hoe we ons een beeld vormen van het verleden.",
+   "p": "1.2",
+   "q": "Welk landschap ontstond in Europa na de laatste ijstijd?",
+   "doel": "Je kunt beschrijven welk landschap in Europa ontstond na de laatste ijstijd.",
    "need": 2,
    "pts": [
-    "Ons beeld van het verleden verandert door nieuw onderzoek.",
-    "Voorbeeld: de neanderthaler werd eerst gezien als half aap, half mens. Nu weten we dat neanderthalers werktuigen maakten, zieken verzorgden en in families leefden."
+    "Rond 10.000 jaar geleden werd het warmer en verdween het ijs (oorzaak: hogere temperatuur, gevolg: einde van de ijstijd).",
+    "Waar eerst sneeuw en ijs was, gingen grassen en planten groeien. Open vlaktes werden bosgebieden.",
+    "Doggerland, waar je van Nederland naar Engeland kon lopen, liep onder water door de stijgende zeespiegel. Zo ontstond de Noordzee."
    ],
-   "doel": "Je kunt met een voorbeeld uitleggen hoe we ons een beeld vormen van het verleden."
+   "check": false
   },
   {
    "p": "1.2",
    "q": "Hoe leefden jager-verzamelaars?",
+   "doel": "Je kunt beschrijven hoe jager-verzamelaars leefden.",
    "need": 2,
    "pts": [
     "Ze leefden van jagen, vissen en het verzamelen van voedsel in de natuur.",
-    "Ze waren nomaden: ze hadden geen vaste woonplaats en bouwden tijdelijke hutten.",
-    "Ze leefden in kleine groepen en hadden weinig spullen: alleen wat ze konden dragen."
+    "Ze hadden geen vaste woonplaats (nomaden) en bezaten weinig spullen.",
+    "Ze leefden in kleine groepen die voor zichzelf zorgden (zelfvoorzienend)."
    ],
-   "doel": "Je kunt beschrijven hoe jager-verzamelaars leefden."
+   "check": false
   },
   {
    "p": "1.2",
-   "q": "In welke soorten samenlevingen delen we de geschiedenis in?",
+   "q": "Hoe komen we aan kennis over mensen in de prehistorie?",
+   "doel": "Je kunt uitleggen hoe we aan kennis komen over mensen in de prehistorie.",
+   "need": 2,
+   "pts": [
+    "Er zijn geen geschreven bronnen. Archeologen doen opgravingen en bestuderen vondsten, zoals werktuigen en rotstekeningen.",
+    "We kunnen ook kijken naar volken die nu nog als jager-verzamelaars leven."
+   ],
+   "check": true
+  },
+  {
+   "p": "1.2",
+   "q": "Leg met een voorbeeld uit hoe we een beeld krijgen van het verleden.",
+   "doel": "Je kunt met een voorbeeld uitleggen hoe we een beeld krijgen van het verleden.",
+   "need": 2,
+   "pts": [
+    "Door vondsten en onderzoek maken we ons een beeld van het verleden. Dat beeld kan veranderen door nieuw onderzoek.",
+    "Voorbeeld: de neanderthaler werd eerst gezien als half aap, half mens. Nu weten we dat neanderthalers werktuigen maakten, zieken verzorgden en in families leefden."
+   ],
+   "check": true
+  },
+  {
+   "p": "1.2",
+   "q": "Welke soorten samenlevingen zijn er?",
+   "doel": "Je kunt verschillende soorten samenlevingen benoemen.",
    "need": 3,
    "pts": [
     "samenleving van jager-verzamelaars",
@@ -1407,91 +1458,98 @@
     "industriële samenleving",
     "informatiesamenleving"
    ],
-   "doel": "Je kunt benoemen dat we de geschiedenis in soorten samenlevingen indelen."
+   "check": true
   },
   {
    "p": "1.3",
-   "q": "Hoe ontstond de landbouw?",
+   "q": "Hoe ontstond de landbouw in het Midden-Oosten?",
+   "doel": "Je kunt uitleggen hoe de landbouw in het Midden-Oosten ontstond.",
    "need": 2,
    "pts": [
-    "Rond 9000 v.C. in het Midden-Oosten (de Vruchtbare Halvemaan).",
-    "Akkerbouw: mensen gingen planten verbouwen, zoals tarwe en gerst. Veeteelt: ze maakten dieren tam en fokten ze, zoals geiten, schapen en varkens.",
-    "Deze grote verandering heet de landbouwrevolutie."
+    "Rond 9000 v.C. in de Vruchtbare Halvemaan (tussen de Middellandse Zee en de Perzische Golf). Daar groeide veel wild graan.",
+    "Mensen gingen graankorrels zelf in de grond stoppen: akkerbouw (tarwe, gerst, vijgen, olijf, druif).",
+    "Ze gingen dieren tam maken en fokken: veeteelt (bijvoorbeeld geiten, schapen en varkens)."
    ],
-   "doel": "Je kunt beschrijven hoe de landbouw ontstond."
+   "check": false
   },
   {
    "p": "1.3",
-   "q": "Hoe leefden mensen in de landbouwsamenleving?",
+   "q": "Hoe begonnen mensen op andere plaatsen met landbouw?",
+   "doel": "Je kunt uitleggen hoe mensen op andere plaatsen met landbouw begonnen.",
    "need": 2,
    "pts": [
-    "Ze woonden op een vaste plek, in dorpen.",
-    "Ze produceerden hun eigen voedsel met akkerbouw en veeteelt.",
-    "Voordelen: huizen, meestal genoeg eten, meer mensen. Nadelen: zwaarder werk, misoogst en hongersnood, ziektes van dieren."
+    "De landbouw verspreidde zich vanuit het Midden-Oosten naar andere delen van de wereld, ook naar Europa en Nederland (5300 v.C.).",
+    "Op sommige plaatsen ontdekten mensen zelf de landbouw, met hun eigen gewassen, zoals rijst in China en mais in Amerika."
    ],
-   "doel": "Je kunt beschrijven hoe mensen leefden in de landbouwsamenleving."
+   "check": true
   },
   {
    "p": "1.3",
-   "q": "Hoe werd de landbouw verspreid?",
+   "q": "Wat zijn de kenmerken van een landbouwsamenleving?",
+   "doel": "Je kunt de kenmerken van een landbouwsamenleving benoemen.",
    "need": 2,
    "pts": [
-    "Vanuit het Midden-Oosten naar Noord-Afrika, West-Azië en Europa (vanaf 7000 v.C.).",
-    "Op andere plekken ontdekten mensen zelf de landbouw, bijvoorbeeld in China (rijst) en Midden-Amerika (mais)."
+    "Mensen produceren zelf hun voedsel met akkerbouw en veeteelt.",
+    "Mensen wonen op een vaste plek, in dorpen."
    ],
-   "doel": "Je kunt beschrijven hoe de landbouw werd verspreid."
+   "check": false
   },
   {
    "p": "1.3",
-   "q": "Hoe leefden de eerste boeren in Nederland?",
+   "q": "Welke gevolgen had de overstap naar landbouw?",
+   "doel": "Je kunt beschrijven welke gevolgen de overstap naar landbouw had.",
    "need": 2,
    "pts": [
-    "Rond 5300 v.C. woonden de eerste boeren in Zuid-Limburg (bij Elsloo), op vruchtbare grond.",
-    "Ouders, kinderen en grootouders woonden samen in een boerderij. Ze maalden graan en hielden schapen, geiten en varkens.",
-    "Tot 3000 v.C. verspreidde de landbouw zich langzaam over Nederland. Boeren en jager-verzamelaars leefden lang naast elkaar."
+    "De bevolking groeide, want er was meer voedsel.",
+    "Mensen gingen in dorpen wonen en later in steden.",
+    "Maar ook: zwaarder werk, en bij misoogst hongersnood."
    ],
-   "doel": "Je kunt beschrijven hoe de eerste boeren in Nederland leefden."
+   "check": true
+  },
+  {
+   "p": "1.3",
+   "q": "Beschrijf de eerste steden.",
+   "doel": "Je kunt de eerste steden beschrijven.",
+   "need": 2,
+   "pts": [
+    "De eerste steden ontstonden in het Midden-Oosten, tussen 8000 en 3000 v.C.",
+    "Door de landbouw was er genoeg voedsel en groeide de bevolking. Zo werden dorpen steden, waar ook mensen woonden die geen boer waren, zoals ambachtslieden en handelaren."
+   ],
+   "check": true
   },
   {
    "p": "1.4",
    "q": "Welke kunstvoorwerpen en afbeeldingen maakten mensen?",
+   "doel": "Je kunt beschrijven welke kunstvoorwerpen en afbeeldingen mensen maakten.",
    "need": 2,
    "pts": [
-    "Beeldjes, zoals de leeuwmens (ongeveer 32.000 jaar oud, van mammoetivoor).",
-    "Tekeningen en schilderingen op grotwanden, bijvoorbeeld in Lascaux.",
-    "Versierde gebruiksvoorwerpen, zoals de versierde potten van boeren."
+    "Beeldjes, zoals de leeuwmens (ongeveer 32.000 jaar oud, gesneden uit de slagtand van een mammoet) en de Slapende dame van Malta.",
+    "Rotsschilderingen en tekeningen in grotten.",
+    "Versierde potten."
    ],
-   "doel": "Je kunt beschrijven welke kunstvoorwerpen en afbeeldingen mensen maakten."
+   "check": false
   },
   {
    "p": "1.4",
    "q": "Wat voor godsdienst hadden mensen waarschijnlijk?",
+   "doel": "Je kunt uitleggen wat voor godsdienst mensen waarschijnlijk hadden.",
    "need": 2,
    "pts": [
-    "Een natuurgodsdienst: ze vereerden natuurverschijnselen, bergen, bomen en dieren.",
-    "Ze dachten dat bovennatuurlijke krachten storm en bliksem veroorzaakten. Met zang en dans probeerden ze contact te maken."
+    "Een natuurgodsdienst: ze vereerden natuurverschijnselen, zoals de zon, storm, bergen, bomen en dieren.",
+    "Met hun kunst lieten ze waarschijnlijk hun bewondering en eerbied zien voor de wereld om hen heen."
    ],
-   "doel": "Je kunt uitleggen wat voor godsdienst mensen waarschijnlijk hadden."
+   "check": true
   },
   {
    "p": "1.4",
    "q": "Hoe en waarom gingen mensen de doden zorgvuldig begraven?",
+   "doel": "Je kunt uitleggen hoe en waarom mensen de doden zorgvuldig gingen begraven.",
    "need": 2,
    "pts": [
-    "Hoe: ze gaven grafgiften mee, zoals kralen en wapens. Boeren bouwden hunebedden van grote zwerfkeien (3400-3200 v.C.).",
-    "Waarom: misschien geloofden ze in een hiernamaals (leven na de dood) of wilden ze de geesten van de doden gunstig stemmen."
+    "Hoe: ze gaven de doden grafgiften mee, zoals kralen en wapens. Boeren bouwden hunebedden (3400-3200 v.C.), grote grafmonumenten van zwerfkeien.",
+    "Waarom: ze geloofden waarschijnlijk in een hiernamaals (leven na de dood)."
    ],
-   "doel": "Je kunt uitleggen hoe en waarom mensen de doden zorgvuldig gingen begraven."
-  },
-  {
-   "p": "1.4",
-   "q": "Leg uit dat er tussen mensen verschillen gingen ontstaan.",
-   "need": 2,
-   "pts": [
-    "Graven van na 4500 v.C. laten verschil in aanzien zien.",
-    "Sommige graven zijn heel rijk, zoals het graf in Bulgarije met veel goud. Die man had veel aanzien en waarschijnlijk macht. Gewone mensen kregen zo'n graf niet."
-   ],
-   "doel": "Je kunt uitleggen dat er tussen mensen verschillen gingen ontstaan."
+   "check": true
   }
  ],
  "paragrafen": {
