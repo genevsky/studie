@@ -216,3 +216,15 @@ details.vq p{margin-top:6px}
 .era .eh span{font-weight:800}
 .era .ev{display:flex;gap:8px;align-items:center;font-weight:700;font-size:.92rem;flex-wrap:wrap}
 .era .no{width:24px;height:24px;border-radius:50%;display:inline-grid;place-items:center;color:var(--on-tv);font-size:.8rem;font-weight:800}
+
+.ytab{gap:4px}
+.yrow{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;border-top:1px solid var(--line);padding:8px 0}
+.yname{font-size:.95rem}
+.yins{display:flex;gap:6px;align-items:center;font-weight:700;color:var(--muted)}
+.yin{width:104px!important;padding:8px 10px!important;font-size:1rem!important}
+.yfix{display:inline-block;width:104px;text-align:center;color:var(--muted);font-weight:800}
+.yin.yok{border-color:var(--good)!important;background:var(--good-bg)!important}
+.yin.yno{border-color:var(--bad)!important;background:var(--bad-bg)!important}
+.yfb{grid-column:1/-1}
+.yfb:empty{display:none}
+@media (max-width:420px){.yrow{grid-template-columns:1fr}.yin,.yfix{width:100%!important}.yins>*{flex:1}}

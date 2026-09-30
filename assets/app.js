@@ -72,7 +72,7 @@ V_start=function(){
     B('leer:vr','Lees vragen en antwoorden',1)+B('toets:vraag','Oefen de vragen'),
     r.Q.seen?`${r.Q.seen} van de ${VR.length} geoefend, ${VR.filter(v=>S.lb[v.k]&&S.lb[v.k].b>=1).length} goed`:'')}
   ${tile(2,'Tijdvakken en tijdperken','Overzicht tijdvakken (p. 376-379): de tien tijdvakken met naam en jaartallen, en de vijf tijdperken (Prehistorie, Oudheid, Middeleeuwen, Vroegmoderne tijd, Moderne tijd).',
-    B('leer:tv','Bekijk de tijdvakken',1)+B('spel:trein','Tijdvakkentrein')+B('spel:jaar','Welk tijdvak?')+B('leer:tl','Bekijk de tijdperken',1)+B('spel:tl5','Tijdperken op volgorde'),
+    B('leer:tv','Bekijk de tijdvakken',1)+B('spel:trein','Tijdvakkentrein')+B('spel:jaar','Welk tijdvak?')+B('toets:jaar','Schrijf de jaartallen')+B('leer:tl','Bekijk de tijdperken',1)+B('spel:tl5','Tijdperken op volgorde'),
     r.T.seen||(S.played||{}).trein?`Tijdvakken: ${r.T.seen}/10 geoefend · Trein ${(S.played||{}).trein||0}× · Tijdlijn ${(S.played||{}).tl5||0}×`:'')}
   ${tile(3,'Begrippen (p. 60-61)','Op de toets krijg je de omschrijving en schrijf jij het begrip op.',
     B('leer:bg','Bekijk de begrippen',1)+B('kaart:beg','Kaartjes')+B('toets:typ','Typ het begrip'),
@@ -273,6 +273,7 @@ V_toets=function(){
   <button class="gm" data-t="vraag"><em>${best('vraag')}</em><b>Vragen 1.1 t/m 1.4</b><span>De ${VR.length} vragen bij de paragrafen. Zeg of schrijf je antwoord en kijk het zelf na.</span></button>
   <div class="btns">${['1.1','1.2','1.3','1.4'].map(p=>`<button class="btn ghost" data-t="vraag:${p}">Alleen ${p} (${VR.filter(v=>v.p===p).length})</button>`).join('')}</div>
   <button class="gm" data-t="typ"><em>${best('typ')}</em><b>Typ het begrip</b><span>Zoals op de toets: je krijgt de omschrijving en schrijft het begrip op.</span></button>
+  <button class="gm" data-t="jaar"><em>${best('jaar')}</em><b>Schrijf de jaartallen</b><span>Typ zelf het begin- en eindjaar van alle tijdvakken en tijdperken. Geen meerkeuze.</span></button>
   <button class="gm" data-t="tvt"><em>${best('tvt')}</em><b>Tijdvakken en tijdperken</b><span>13 vragen over de namen en jaartallen van de tijdvakken en tijdperken (p. 376-379).</span></button>
   <button class="gm" data-t="oefen"><em>${best('oefen')}</em><b>Oefentoets</b><span>20 vragen door elkaar: 8 begrippen, 8 tijdvakken en tijdperken, 4 vragen uit de paragrafen. Met cijfer.</span></button></div>`;
   on('[data-t]',e=>{const t=e.dataset.t;
@@ -280,8 +281,36 @@ V_toets=function(){
     if(t==='tvt')quiz('Tijdvakken en tijdperken','tvt',shuffle([...Array.from({length:8},qTv),qTl(),qTl(),qTl(),qAsp(),qAsp()]));
     if(t==='vraag')quiz('Vragen 1.1 t/m 1.4','vraag',VR.map(vq));
     if(t.startsWith('vraag:')){const p=t.slice(6);quiz('Vragen '+p,'vraag'+p,VR.filter(v=>v.p===p).map(vq))}
+    if(t==='jaar')V_jaar();
     if(t==='typ')quiz('Typ het begrip','typ',sample(BEG,10).map(b=>({k:'typ',b})))});
 };
+
+/* ---- JAARTALLEN SCHRIJVEN ---- */
+function yparse(str){const t=String(str||'').toLowerCase().replace(/\s+/g,' ').trim();if(!t)return null;if(/^nu$|heden|nu\b/.test(t))return{nu:1};const m=t.replace(/\./g,'').match(/-?\d+/);if(!m)return{bad:1};let n=Math.abs(parseInt(m[0],10));const bc=/v\s*c|vc|voor christus|bc|^-/.test(t.replace(/\./g,''));return{n,bc}}
+function yrsSpec(s){const t=s.replace(/–|-/g,' tot ');let a=null,b=null;const P=x=>{x=x.trim();if(!x)return null;const bc=/v\.?c/i.test(x);return{n:parseInt(x.replace(/\./g,'').match(/\d+/)[0],10),bc}};
+  if(/^tot /.test(t))b=P(t.slice(4));else if(/^vanaf /.test(t)){a=P(t.slice(6));b={nu:1}}else{const k=t.split(' tot ');a=P(k[0]);b=P(k[1])}return{a,b}}
+const ysame=(x,y)=>x&&y&&(y.nu?!!x.nu:(!x.nu&&!x.bad&&x.n===y.n&&!!x.bc===!!y.bc));
+const ywhy=(x,y)=>x&&y&&!y.nu&&!x.nu&&!x.bad&&x.n===y.n&&!!x.bc!==!!y.bc?(y.bc?' (vergeet v.C. niet!)':' (dit is ná Christus, dus zonder v.C.)'):'';
+let jaarMix=true;
+function V_jaar(){
+  const rows=[...TV.map(t=>({k:'t:'+t.n,name:t.name,yrs:t.yrs,sub:'Tijdvak '+t.n})),...D.timeline.filter(e=>e.core).map(e=>({k:null,name:e.l,yrs:e.w,sub:'Tijdperk'}))];
+  let list=jaarMix?[...shuffle(rows.slice(0,10)),...shuffle(rows.slice(10))]:rows;
+  const cell=(sp,i,side)=>sp?`<input type="text" class="yin" data-i="${i}" data-s="${side}" autocomplete="off" inputmode="text" placeholder="${side==='a'?'begin':'eind'}">`:`<span class="yfix">—</span>`;
+  function draw(){view.innerHTML=`<button class="back-link" id="bk">← Stoppen</button><h2>Schrijf de jaartallen</h2>
+   <p class="mut small">Schrijf bij elk tijdvak en tijdperk het beginjaar en het eindjaar. Schrijf <b>v.C.</b> erbij als het vóór Christus is (bijvoorbeeld <b>3000 v.C.</b>). Bij het laatste tijdvak schrijf je bij eind: <b>nu</b>.</p>
+   <label class="chk" style="padding:0"><input type="checkbox" id="mix" ${jaarMix?'checked':''}><span class="small">Door elkaar (moeilijker)</span></label>
+   <div class="card stack ytab">${list.map((r,i)=>{const sp=yrsSpec(r.yrs);r.sp=sp;return `${i===10||(i===0)?`<div class="eyebrow">${i===0?'Tijdvakken':'Tijdperken'}</div>`:''}<div class="yrow" data-row="${i}"><div class="yname"><b>${esc(r.name)}</b></div><div class="yins">${cell(sp.a,i,'a')}<span>tot</span>${cell(sp.b,i,'b')}</div><div class="yfb small" id="yf${i}"></div></div>`}).join('')}</div>
+   <button class="btn" id="ck">Nakijken</button><div id="res"></div>`;
+   $('#bk').onclick=()=>go('toets');$('#mix').onchange=e=>{jaarMix=e.target.checked;V_jaar()};
+   $('#ck').onclick=check}
+  function check(){let ok=0;const wrong=[];
+    list.forEach((r,i)=>{let good=true,why='';['a','b'].forEach(side=>{const el=$(`.yin[data-i="${i}"][data-s="${side}"]`);if(!el)return;const want=r.sp[side];const got=yparse(el.value);const g=ysame(got,want);el.classList.toggle('yok',g);el.classList.toggle('yno',!g);el.readOnly=true;if(!g){good=false;why=why||ywhy(got,want)}});
+      $('#yf'+i).innerHTML=good?'<span style="color:var(--good);font-weight:800">✓</span>':`<span style="color:var(--bad);font-weight:800">✗ ${esc(r.yrs)}${esc(why)}</span>`;
+      if(good)ok++;else wrong.push(r);if(r.k)mark(r.k,good,true)});
+    const p=ok/list.length;S.best.jaar=Math.max(S.best.jaar||0,p);addXP(ok*2);save();if(p===1)confetti();
+    $('#ck').remove();$('#res').innerHTML=`<div class="card stack" style="text-align:center"><div class="score">${ok} / ${list.length}</div><p><b>${p===1?'Alles goed! Knap!':wrong.length+' nog oefenen. Kijk goed naar de rode regels.'}</b></p><div class="btns"><button class="btn" id="ag">Nog een keer</button>${wrong.length&&wrong.length<list.length?'<button class="btn ghost" id="fo">Alleen mijn fouten</button>':''}</div></div>`;
+    $('#ag').onclick=()=>V_jaar();const fo=$('#fo');if(fo)fo.onclick=()=>{list=wrong.map(x=>({...x}));draw()};$('#res').scrollIntoView({behavior:'smooth'})}
+  draw()}
 function quiz(title,key,qs){
   let i=0,score=0;const miss=[];
   function draw(){
