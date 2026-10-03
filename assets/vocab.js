@@ -136,7 +136,6 @@ function V_topic(id){const L=D.lists.find(l=>l.id===id);
    <button class="gm" data-x="leer"><em>1. Leren</em><b>Bekijk en luister</b><span>De woorden met uitspraak en geheugensteuntjes.</span></button>
    <button class="gm" data-x="kaart"><em>2. Kaartjes</em><b>Nederlands → Frans</b><span>Oefen tot je ze kent.</span></button>
    ${L.ordered?'<button class="gm" data-x="order"><em>3. Spel</em><b>Op volgorde</b><span>Tik de Franse woorden in de goede volgorde.</span></button>':''}
-   ${L.cat==='num'?'<button class="gm" data-x="som"><em>3. Spel</em><b>Rekensommen</b><span>Schrijf de uitkomst in het Frans.</span></button>':''}
    <button class="gm" data-x="spell"><em>Spelling</em><b>Letterbouwer</b><span>Bouw het woord met letterblokjes.</span></button>
    ${TTS?'<button class="gm" data-x="dictee"><em>Luisteren</em><b>Dictee</b><span>Hoor het woord en schrijf het op.</span></button>':''}
    <button class="gm" data-x="toets"><em>4. Toets</em><b>Toets: ${esc(L.title)}</b><span>Alle ${byList(id).length} woorden typen, met cijfer.</span>${S.best['L'+id]!=null?'<span class="donel">✓ Beste cijfer: '+grade(S.best['L'+id])+'</span>':''}</button></div>`;
@@ -203,7 +202,6 @@ V.spel=function(){
    <button class="gm" data-g="spell"><em>Spelling</em><b>Letterbouwer</b><span>Bouw het Franse woord met letterblokjes, accenten inbegrepen.</span>${played('spell')}</button>
    <button class="gm" data-g="snel"><em>60 seconden</em><b>Snelle ronde</b><span>Hoeveel woorden haal jij in een minuut?</span>${played('snel')}${S.best.snel?`<span class="donel">🏆 record ${S.best.snel}</span>`:''}</button>
    ${D.lists.some(l=>l.ordered)?'<button class="gm" data-g="order"><em>Volgorde</em><b>Op volgorde</b><span>Zet de dagen, maanden of getallen in de goede volgorde. In het Frans!</span>'+played('order')+'</button>':''}
-   ${D.lists.some(l=>l.cat==='num')?'<button class="gm" data-g="som"><em>Getallen</em><b>Rekensommen</b><span>Reken uit en schrijf het antwoord in het Frans: sept + six = treize.</span>'+played('som')+'</button>':''}
    ${TTS?'<button class="gm" data-g="dictee"><em>Luisteren</em><b>Dictee</b><span>Luister naar het woord en typ het in het Frans.</span>'+played('dictee')+'</button>':''}
   </div>`;
   on('[data-gl]',e=>{gList=e.dataset.gl;V.spel()});on('[data-g]',e=>{const g=e.dataset.g;S.played=S.played||{};S.played[g]=(S.played[g]||0)+1;save();G[g]()})};
