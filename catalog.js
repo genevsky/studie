@@ -9,5 +9,8 @@ window.CATALOG=[
  ]},
  {vak:"Nederlands",emoji:"✏️",hue:200,toetsen:[
   {id:"nederlands-ww",titel:"SO werkwoordspelling",sub:"9 oktober · H27-29, PPT, schema en Gespeld-werkboekjes",url:"nederlands/so-ww/index.html",pdf:"nederlands/so-ww/powerpoint.pdf",pdfLabel:"PowerPoint"}
+ ]},
+ {vak:"Biologie",emoji:"🌱",hue:120,toetsen:[
+  {id:"biologie-so1",titel:"SO 1 · Fotosynthese",sub:"Basisstof 5 en 7 · blz. 39-43 en 57-60",url:"biologie/so-1/index.html"}
  ]}
 ];

@@ -1,0 +1,968 @@
+{
+ "meta": {
+  "id": "biologie-so1",
+  "type": "kennis",
+  "brand": "Biologie",
+  "sub": "SO 1 · Basisstof 5 en 7 · Fotosynthese",
+  "title": "Biologie SO 1",
+  "levels": [
+   [
+    0,
+    "Zaadje"
+   ],
+   [
+    80,
+    "Kiemplant"
+   ],
+   [
+    220,
+    "Plantje"
+   ],
+   [
+    400,
+    "Struik"
+   ],
+   [
+    650,
+    "Boom"
+   ],
+   [
+    950,
+    "Fotosynthese-pro"
+   ]
+  ]
+ },
+ "instructie": "Schriftelijke overhoring van basisstof 5 en 7. Blz. 39 t/m 43 en blz. 57 t/m 60. Gebruik ook: Wat is biologie? (Biologie voor Jou), biologiepagina.nl.",
+ "instructieVerbatim": "Basisstof 5 en 7\n\nSchriftelijke overhoring van basisstof 5 en 7\n\nBlz. 39 t/m 43\n\nblz. 57 t/m 60\n\ngebruik ook:\n\nWat is biologie? Biologie voor Jou\nhttps://biologiepagina.nl/1/1plantendieren/inleiding.htm",
+ "leerdoelen": [
+  [
+   "1.5.11",
+   "Je kunt uitleggen dat door fotosynthese voedsel en zuurstof ontstaan voor dieren en mensen."
+  ],
+  [
+   "1.5.12",
+   "Je kunt de fotosynthese beschrijven."
+  ],
+  [
+   "1.5.13",
+   "Je kunt aangeven welke delen van planten de mens gebruikt als voedsel."
+  ],
+  [
+   "1.7.16",
+   "Je kunt uitleggen dat veel brandstoffen en grondstoffen bestaan dankzij fotosynthese."
+  ]
+ ],
+ "formule": [
+  "water",
+  "koolstofdioxide",
+  "energie uit licht",
+  "glucose",
+  "zuurstof"
+ ],
+ "summary": [
+  {
+   "id": "5",
+   "title": "Basisstof 5 · Voedsel maken",
+   "pages": "blz. 39-43",
+   "one": "Planten maken zelf voedsel (glucose) met energie uit licht: fotosynthese. Daarbij ontstaat ook zuurstof.",
+   "sections": [
+    {
+     "h": "Stoffen en energie",
+     "pts": [
+      "Mensen en dieren hebben **zuurstof**, **voedingsstoffen** en **energie** nodig om in leven te blijven.",
+      "Zuurstof haal je uit de lucht die je inademt. Je voedsel levert de **voedingsstoffen**: stoffen die nodig zijn voor groei en ontwikkeling van je lichaam. Ook je energie haal je uit voedsel.",
+      "Vrijwel al je voedsel komt van planten of dieren. Planten eten geen andere organismen: ze maken zelf de stoffen waaruit ze bestaan."
+     ]
+    },
+    {
+     "h": "Glucose",
+     "pts": [
+      "**Glucose** is een belangrijke stof voor planten. Het bevat veel energie en is een soort suiker.",
+      "Van glucose maakt een plant allerlei andere stoffen. Zo kan hij groeien en nieuwe delen maken (bladeren, stengels, vruchten en zaden).",
+      "Voor glucose zijn drie dingen nodig: **water** (uit de bodem, via de wortels), **koolstofdioxide** (uit de lucht, via kleine openingen in de bladeren) en **energie uit licht** (bijvoorbeeld van de zon)."
+     ]
+    },
+    {
+     "h": "Fotosynthese",
+     "pts": [
+      "**Fotosynthese** is het proces waarbij een plant glucose maakt met behulp van energie uit licht.",
+      "Fotosynthese vindt plaats in alle groene delen van een plant, vooral in de bladeren.",
+      "Er ontstaat niet alleen glucose, maar ook **zuurstof**. Die geeft de plant via de kleine openingen in de bladeren af aan de lucht.",
+      "**water + koolstofdioxide + energie uit licht → glucose + zuurstof**"
+     ]
+    },
+    {
+     "h": "Het belang van fotosynthese",
+     "pts": [
+      "Vrijwel alles wat mensen eten, komt uiteindelijk van planten. Vlees van een koe? De koe heeft gras gegeten. Een ei van een kip? De kip heeft maïs gegeten.",
+      "Door fotosynthese ontstaat steeds nieuw **voedsel** en steeds nieuwe **zuurstof**. Zonder fotosynthese zou de zuurstof in de lucht langzaam opraken."
+     ]
+    },
+    {
+     "h": "Eetbare delen",
+     "pts": [
+      "**Vruchten**: appels, tomaten.",
+      "**Zaden**: rijst en graan.",
+      "**Wortels**: waspeentjes, winterpenen, radijsjes, rode bieten.",
+      "**Stengels**: asperges, bleekselderij.",
+      "**Bladeren** (de meeste groenten): sla, spinazie, andijvie, witlof, kool, prei.",
+      "Soms eten mensen ook de **bloemen** van planten."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "7",
+   "title": "Basisstof 7 · Het belang van fotosynthese",
+   "pages": "blz. 57-60",
+   "one": "Veel brandstoffen en grondstoffen bestaan dankzij fotosynthese.",
+   "sections": [
+    {
+     "h": "Brandstoffen",
+     "pts": [
+      "**Aardolie, aardgas en steenkool** zijn veelgebruikte brandstoffen: benzine (van aardolie) voor auto’s, aardgas voor de verwarmingsketel, steenkool in elektriciteitscentrales.",
+      "Ze zijn gevormd uit **resten van dode organismen** die miljoenen jaren geleden in de zeebodem terecht zijn gekomen. Daar zijn ze samengedrukt door **nieuwe lagen zand**. Door de grote **druk en warmte** zijn ze veranderd in steenkool, aardolie en aardgas.",
+      "Dit heten **fossiele brandstoffen**. Ze zijn ontstaan uit organismen die konden leven en groeien dankzij fotosynthese."
+     ]
+    },
+    {
+     "h": "Grondstoffen",
+     "pts": [
+      "**Grondstoffen** zijn de stoffen waarvan producten worden gemaakt.",
+      "Veel voorwerpen bestaan deels uit **kunststof (plastic)**, zoals een mobiele telefoon en een tv. Kunststoffen worden gemaakt van **aardolie**. Veel kleding is van kunststof, zoals **polyester**.",
+      "Van aardolie worden ook andere grondstoffen gemaakt, voor bijvoorbeeld cosmetica en dakbedekking.",
+      "Andere grondstoffen komen van **planten of dieren die nu leven** (zie tabel 1)."
+     ]
+    }
+   ]
+  }
+ ],
+ "begrippen": [
+  {
+   "t": "fotosynthese",
+   "d": "Het proces waarbij een plant glucose maakt met behulp van energie uit licht.",
+   "p": "5"
+  },
+  {
+   "t": "glucose",
+   "d": "Een belangrijke stof voor planten die veel energie bevat; een soort suiker.",
+   "p": "5"
+  },
+  {
+   "t": "voedingsstoffen",
+   "d": "Stoffen die nodig zijn voor groei en ontwikkeling van je lichaam.",
+   "p": "5"
+  },
+  {
+   "t": "fossiele brandstoffen",
+   "d": "Steenkool, aardolie en aardgas: ontstaan uit resten van dode organismen die miljoenen jaren geleden in de zeebodem terecht zijn gekomen en door druk en warmte zijn veranderd.",
+   "p": "7"
+  },
+  {
+   "t": "grondstoffen",
+   "d": "De stoffen waarvan producten worden gemaakt.",
+   "p": "7"
+  }
+ ],
+ "tabel": {
+  "cols": [
+   "Grondstof",
+   "Afkomstig van …",
+   "Waarvan wordt het gemaakt?",
+   "Waarvoor wordt het gebruikt?"
+  ],
+  "rows": [
+   [
+    "Bamboe",
+    "plant",
+    "hout van de bamboeplant",
+    "kleding"
+   ],
+   [
+    "Beendermeel",
+    "dier",
+    "gemalen botten van dieren uit slachterijen",
+    "lijm, gelatine"
+   ],
+   [
+    "Hout",
+    "plant",
+    "boomstammen",
+    "papier, meubels, speelgoed"
+   ],
+   [
+    "Katoen",
+    "plant",
+    "vruchtpluis van de katoenplant",
+    "kleding"
+   ],
+   [
+    "Leer",
+    "dier",
+    "vel van een koe, schaap, varken of geit",
+    "schoenen, tassen, riemen"
+   ],
+   [
+    "Linnen",
+    "plant",
+    "stengels van vlasplanten",
+    "kleding"
+   ],
+   [
+    "Tencel",
+    "plant",
+    "hout van de eucalyptusboom",
+    "kleding"
+   ],
+   [
+    "Wol",
+    "dier",
+    "vacht van een schaap, geit of lama",
+    "kleding, vloerkleden"
+   ],
+   [
+    "Zijde",
+    "dier",
+    "cocon van de zijderups",
+    "luxe kleding"
+   ]
+  ]
+ },
+ "bronnen": [
+  {
+   "title": "Instructie van de docent",
+   "type": "text"
+  },
+  {
+   "title": "Basisstof 5 · blz. 39",
+   "type": "img",
+   "src": "bronnen/p39.jpg"
+  },
+  {
+   "title": "Basisstof 5 · blz. 40",
+   "type": "img",
+   "src": "bronnen/p40.jpg"
+  },
+  {
+   "title": "Basisstof 5 · blz. 41",
+   "type": "img",
+   "src": "bronnen/p41.jpg"
+  },
+  {
+   "title": "Basisstof 5 · blz. 42",
+   "type": "img",
+   "src": "bronnen/p42.jpg"
+  },
+  {
+   "title": "Basisstof 5 · blz. 43",
+   "type": "img",
+   "src": "bronnen/p43.jpg"
+  },
+  {
+   "title": "Basisstof 7 · blz. 57",
+   "type": "img",
+   "src": "bronnen/p57.jpg"
+  },
+  {
+   "title": "Basisstof 7 · blz. 58",
+   "type": "img",
+   "src": "bronnen/p58.jpg"
+  },
+  {
+   "title": "Basisstof 7 · blz. 59",
+   "type": "img",
+   "src": "bronnen/p59.jpg"
+  },
+  {
+   "title": "Basisstof 7 · blz. 60",
+   "type": "img",
+   "src": "bronnen/p60.jpg"
+  },
+  {
+   "title": "Wat is biologie? (biologiepagina.nl)",
+   "type": "link",
+   "src": "https://biologiepagina.nl/1/1plantendieren/inleiding.htm",
+   "note": "Website die je docent noemt, met animaties en een filmpje over fotosynthese."
+  }
+ ],
+ "opdrachten": [
+  {
+   "id": "5-1",
+   "bs": "5",
+   "nr": "1",
+   "q": "Geef twee redenen waarom fotosynthese belangrijk is voor mensen.",
+   "parts": [
+    {
+     "k": "open",
+     "need": 2,
+     "pts": [
+      "Door fotosynthese ontstaat (steeds nieuw) voedsel: vrijwel alles wat mensen eten komt uiteindelijk van planten.",
+      "Door fotosynthese ontstaat (steeds nieuwe) zuurstof, die mensen nodig hebben om te ademen."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "5-2",
+   "bs": "5",
+   "nr": "2",
+   "q": "Bij de fotosynthese neemt de plant stoffen op uit de omgeving. Hij geeft ook stoffen af.",
+   "parts": [
+    {
+     "k": "pick",
+     "l": "a",
+     "q": "Welke twee stoffen neemt een plant op voor fotosynthese?",
+     "opts": [
+      "glucose",
+      "koolstofdioxide",
+      "water",
+      "zuurstof"
+     ],
+     "ok": [
+      "koolstofdioxide",
+      "water"
+     ]
+    },
+    {
+     "k": "type",
+     "l": "b",
+     "q": "Wat heeft een plant nog meer nodig voor fotosynthese?",
+     "a": [
+      "licht",
+      "energie uit licht",
+      "zonlicht",
+      "energie",
+      "lichtenergie",
+      "(zon)licht"
+     ],
+     "show": "energie uit licht"
+    },
+    {
+     "k": "pick",
+     "l": "c",
+     "q": "Welke twee stoffen ontstaan bij fotosynthese?",
+     "opts": [
+      "glucose",
+      "koolstofdioxide",
+      "water",
+      "zuurstof"
+     ],
+     "ok": [
+      "glucose",
+      "zuurstof"
+     ]
+    },
+    {
+     "k": "open",
+     "l": "d",
+     "q": "Leg uit dat koolstofdioxide nodig is voor de groei van een plant.",
+     "need": 2,
+     "pts": [
+      "Een plant heeft koolstofdioxide nodig om (met water en licht) glucose te maken.",
+      "Van glucose maakt de plant de stoffen waaruit hij bestaat, zodat hij kan groeien en nieuwe delen maken."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "5-3",
+   "bs": "5",
+   "nr": "3",
+   "q": "Mensen gebruiken planten als voedsel.",
+   "parts": [
+    {
+     "k": "pick",
+     "l": "a",
+     "q": "Welke zes delen van planten worden door mensen gegeten?",
+     "opts": [
+      "wortels",
+      "stengels",
+      "bladeren",
+      "bloemen",
+      "vruchten",
+      "zaden",
+      "takken",
+      "schors"
+     ],
+     "ok": [
+      "wortels",
+      "stengels",
+      "bladeren",
+      "bloemen",
+      "vruchten",
+      "zaden"
+     ]
+    },
+    {
+     "k": "open",
+     "l": "b",
+     "q": "Geef vijf voorbeelden van plantaardig voedsel (planten of delen daarvan).",
+     "need": 5,
+     "pts": [
+      "Bijvoorbeeld: appels, tomaten, rijst, graan (brood), waspeentjes, winterpenen, radijsjes, rode bieten, asperges, bleekselderij, sla, spinazie, andijvie, witlof, kool, prei. (Vink het aantal voorbeelden aan dat je goed had.)",
+      "2e voorbeeld",
+      "3e voorbeeld",
+      "4e voorbeeld",
+      "5e voorbeeld"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "5-4",
+   "bs": "5",
+   "nr": "4",
+   "q": "Samenvatting. Maak het woordweb over fotosynthese af (afbeelding 3). Gebruik de woorden: blad – dier – glucose – groei – mens – stengel – voedsel – vrucht – wortel – zuurstof.",
+   "parts": [
+    {
+     "k": "web"
+    }
+   ]
+  },
+  {
+   "id": "5-5",
+   "bs": "5",
+   "nr": "5",
+   "q": "Planten hebben licht nodig voor de fotosynthese.",
+   "parts": [
+    {
+     "k": "yn",
+     "l": "a",
+     "q": "Vindt er bij planten op een bewolkte dag fotosynthese plaats?",
+     "a": "ja",
+     "why": "Ja. Ook op een bewolkte dag komt er licht (van de zon) door de wolken. Er is wel minder licht, dus er is minder fotosynthese.",
+     "check": true
+    },
+    {
+     "k": "yn",
+     "l": "b",
+     "q": "Vindt er bij kamerplanten ’s avonds in een verlichte woning fotosynthese plaats?",
+     "a": "ja",
+     "why": "Ja. De lampen geven licht en daarmee kan de plant fotosynthese doen (wel minder dan in zonlicht).",
+     "check": true
+    }
+   ]
+  },
+  {
+   "id": "5-6",
+   "bs": "5",
+   "nr": "6",
+   "q": "Waterplanten groeien in of op het water en kunnen koolstofdioxide opnemen uit het water. Waterplanten zorgen voor een groot deel van de zuurstofproductie op aarde. Bekijk afbeelding 4 en geef hiervoor een verklaring.",
+   "parts": [
+    {
+     "k": "open",
+     "need": 2,
+     "check": true,
+     "pts": [
+      "Een groot deel van de aarde is bedekt met water (zee), dus er groeien heel veel waterplanten.",
+      "Al die waterplanten doen aan fotosynthese en daarbij ontstaat zuurstof."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "5-7",
+   "bs": "5",
+   "nr": "7",
+   "q": "In afbeelding 5 zie je vijf foto’s van groenten. Zet bij elke groente welk deel van de plant het is. Kies uit: blad – stengel – vrucht – wortel – zaad.",
+   "parts": [
+    {
+     "k": "fill",
+     "opts": [
+      "blad",
+      "stengel",
+      "vrucht",
+      "wortel",
+      "zaad"
+     ],
+     "items": [
+      [
+       "Een paprika is een",
+       "vrucht"
+      ],
+      [
+       "Een doperwt is een",
+       "zaad"
+      ],
+      [
+       "Spinazie is een",
+       "blad"
+      ],
+      [
+       "Een rode biet is een",
+       "wortel"
+      ],
+      [
+       "Bleekselderij is een",
+       "stengel"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "5-8",
+   "bs": "5",
+   "nr": "+8",
+   "q": "Je zou kunnen zeggen dat een mens op zonne-energie loopt. Leg dit uit.",
+   "parts": [
+    {
+     "k": "open",
+     "need": 2,
+     "check": true,
+     "pts": [
+      "Planten maken met energie uit (zon)licht glucose: daar zit de energie van de zon in.",
+      "Mensen eten planten (of dieren die planten hebben gegeten), dus de energie uit ons voedsel komt uiteindelijk van de zon."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "7-1",
+   "bs": "7",
+   "nr": "1",
+   "q": "Fotosynthese is belangrijk voor veel producten die mensen gebruiken.",
+   "parts": [
+    {
+     "k": "open",
+     "l": "a",
+     "q": "Leg uit dat het grootste deel van een katoenen spijkerbroek is ontstaan door fotosynthese.",
+     "need": 2,
+     "check": true,
+     "pts": [
+      "Katoen is gemaakt van het vruchtpluis van de katoenplant.",
+      "De katoenplant kan groeien dankzij fotosynthese."
+     ]
+    },
+    {
+     "k": "open",
+     "l": "b",
+     "q": "Leg uit dat bij een leren schoen fotosynthese aan de basis heeft gestaan.",
+     "need": 2,
+     "check": true,
+     "pts": [
+      "Leer is het vel van een dier, bijvoorbeeld een koe.",
+      "De koe heeft planten (gras) gegeten die zijn gegroeid door fotosynthese."
+     ]
+    },
+    {
+     "k": "open",
+     "l": "c",
+     "q": "Leg uit dat bij plastic speelgoed fotosynthese aan de basis heeft gestaan.",
+     "need": 2,
+     "check": true,
+     "pts": [
+      "Plastic (kunststof) wordt gemaakt van aardolie.",
+      "Aardolie is een fossiele brandstof, ontstaan uit organismen die leefden en groeiden dankzij fotosynthese."
+     ]
+    },
+    {
+     "k": "open",
+     "l": "d",
+     "q": "Zoek vier voorwerpen in je eigen slaapkamer waarbij fotosynthese aan de basis heeft gestaan. Leg daarbij kort uit hoe.",
+     "need": 4,
+     "check": true,
+     "pts": [
+      "Bijvoorbeeld een houten bed of kast (hout komt van bomen).",
+      "Bijvoorbeeld een katoenen dekbedhoes of shirt (katoen komt van de katoenplant).",
+      "Bijvoorbeeld een papieren boek (papier is gemaakt van hout).",
+      "Bijvoorbeeld iets van plastic, zoals een lamp of telefoon (kunststof is gemaakt van aardolie, een fossiele brandstof)."
+     ]
+    },
+    {
+     "k": "open",
+     "l": "e",
+     "q": "Een groot deel van de elektriciteit uit het stopcontact kon worden opgewekt dankzij fotosynthese. Leg dit uit.",
+     "need": 2,
+     "check": true,
+     "pts": [
+      "In elektriciteitscentrales wordt steenkool (en aardgas) gebruikt als brandstof.",
+      "Steenkool en aardgas zijn fossiele brandstoffen, ontstaan uit resten van organismen die leefden dankzij fotosynthese."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "7-2",
+   "bs": "7",
+   "nr": "2",
+   "q": "Je klaslokaal staat vol met meubels en apparaten. Maak een lijst van minstens acht objecten. Schrijf achter elk object waarvan het is gemaakt, of de grondstof van een plant of dier komt, en of fotosynthese aan de basis heeft gestaan.",
+   "parts": [
+    {
+     "k": "class"
+    }
+   ]
+  },
+  {
+   "id": "7-3",
+   "bs": "7",
+   "nr": "3",
+   "q": "Kijk op het label van je kleding van welke grondstof het is gemaakt. Vul in of de grondstof van een plant of een dier komt, en of deze planten/dieren vroeger hebben geleefd of nu.",
+   "parts": [
+    {
+     "k": "clothes"
+    }
+   ]
+  }
+ ],
+ "C": "Modelantwoord: check met je boek of je docent.",
+ "drills": [
+  {
+   "id": "foto",
+   "title": "Fotosynthese",
+   "sub": "Wat gaat erin, wat komt eruit en waar gebeurt het?",
+   "items": [
+    {
+     "k": "formula"
+    },
+    {
+     "k": "sort",
+     "q": "Neemt de plant dit op, of geeft hij het af bij fotosynthese?",
+     "cats": [
+      "neemt de plant op",
+      "ontstaat / geeft de plant af"
+     ],
+     "items": [
+      [
+       "water",
+       "neemt de plant op"
+      ],
+      [
+       "koolstofdioxide",
+       "neemt de plant op"
+      ],
+      [
+       "glucose",
+       "ontstaat / geeft de plant af"
+      ],
+      [
+       "zuurstof",
+       "ontstaat / geeft de plant af"
+      ]
+     ]
+    },
+    {
+     "k": "mc",
+     "q": "Waar haalt een plant het water voor fotosynthese vandaan?",
+     "opts": [
+      "uit de bodem, met zijn wortels",
+      "uit de lucht, via de bladeren",
+      "uit de glucose"
+     ],
+     "a": 0
+    },
+    {
+     "k": "mc",
+     "q": "Hoe komt koolstofdioxide in de plant?",
+     "opts": [
+      "door kleine openingen in de bladeren, uit de lucht",
+      "via de wortels, uit de bodem",
+      "het ontstaat in de stengel"
+     ],
+     "a": 0
+    },
+    {
+     "k": "mc",
+     "q": "Waar vindt fotosynthese plaats?",
+     "opts": [
+      "in alle groene delen, vooral in de bladeren",
+      "alleen in de wortels",
+      "alleen in de bloemen"
+     ],
+     "a": 0
+    },
+    {
+     "k": "mc",
+     "q": "Wat is glucose?",
+     "opts": [
+      "een soort suiker met veel energie",
+      "een gas dat de plant afgeeft",
+      "een soort zout uit de bodem"
+     ],
+     "a": 0
+    },
+    {
+     "k": "mc",
+     "q": "Wat maakt een plant van glucose?",
+     "opts": [
+      "allerlei andere stoffen waaruit de plant bestaat, zodat hij kan groeien",
+      "water",
+      "koolstofdioxide"
+     ],
+     "a": 0
+    },
+    {
+     "k": "mc",
+     "q": "Wat hebben mensen en dieren nodig om in leven te blijven?",
+     "opts": [
+      "zuurstof, voedingsstoffen en energie",
+      "alleen water en licht",
+      "koolstofdioxide en glucose uit de lucht"
+     ],
+     "a": 0
+    },
+    {
+     "k": "mc",
+     "q": "Wat zou er zonder fotosynthese met de zuurstof in de lucht gebeuren?",
+     "opts": [
+      "die zou langzaam opraken",
+      "die zou steeds meer worden",
+      "er verandert niets"
+     ],
+     "a": 0
+    },
+    {
+     "k": "mc",
+     "q": "Een ei komt van een kip. Waarom komt het ei toch uiteindelijk van een plant?",
+     "opts": [
+      "De kip heeft maïs gegeten.",
+      "Een kip doet zelf aan fotosynthese.",
+      "Eieren groeien aan planten."
+     ],
+     "a": 0
+    },
+    {
+     "k": "tf",
+     "q": "Planten eten andere organismen om aan voedsel te komen.",
+     "a": false,
+     "why": "Planten eten geen andere organismen. Ze maken zelf de stoffen waaruit ze bestaan."
+    },
+    {
+     "k": "tf",
+     "q": "Bij fotosynthese ontstaat zuurstof.",
+     "a": true,
+     "why": "Bij fotosynthese ontstaan glucose en zuurstof."
+    },
+    {
+     "k": "tf",
+     "q": "Voor fotosynthese is energie uit licht nodig.",
+     "a": true,
+     "why": "water + koolstofdioxide + energie uit licht → glucose + zuurstof"
+    }
+   ]
+  },
+  {
+   "id": "eet",
+   "title": "Eetbare delen van planten",
+   "sub": "Welk deel van de plant eet je?",
+   "items": [
+    {
+     "k": "sort",
+     "q": "Welk deel van de plant is het?",
+     "cats": [
+      "vrucht",
+      "zaad",
+      "wortel",
+      "stengel",
+      "blad"
+     ],
+     "items": [
+      [
+       "appel",
+       "vrucht"
+      ],
+      [
+       "tomaat",
+       "vrucht"
+      ],
+      [
+       "paprika",
+       "vrucht"
+      ],
+      [
+       "rijst",
+       "zaad"
+      ],
+      [
+       "graan",
+       "zaad"
+      ],
+      [
+       "doperwt",
+       "zaad"
+      ],
+      [
+       "waspeen",
+       "wortel"
+      ],
+      [
+       "winterpeen",
+       "wortel"
+      ],
+      [
+       "radijsje",
+       "wortel"
+      ],
+      [
+       "rode biet",
+       "wortel"
+      ],
+      [
+       "asperge",
+       "stengel"
+      ],
+      [
+       "bleekselderij",
+       "stengel"
+      ],
+      [
+       "sla",
+       "blad"
+      ],
+      [
+       "spinazie",
+       "blad"
+      ],
+      [
+       "andijvie",
+       "blad"
+      ],
+      [
+       "witlof",
+       "blad"
+      ],
+      [
+       "kool",
+       "blad"
+      ],
+      [
+       "prei",
+       "blad"
+      ]
+     ]
+    },
+    {
+     "k": "mc",
+     "q": "Van welke delen van een plant zijn de meeste groenten?",
+     "opts": [
+      "de bladeren",
+      "de wortels",
+      "de zaden"
+     ],
+     "a": 0
+    },
+    {
+     "k": "mc",
+     "q": "Welke zes delen van planten eten mensen?",
+     "opts": [
+      "wortels, stengels, bladeren, bloemen, vruchten en zaden",
+      "wortels, takken, schors, bladeren, vruchten en zaden",
+      "alleen vruchten en bladeren"
+     ],
+     "a": 0
+    }
+   ]
+  },
+  {
+   "id": "brand",
+   "title": "Brandstoffen en grondstoffen",
+   "sub": "Basisstof 7: fossiele brandstoffen, grondstoffen en tabel 1",
+   "items": [
+    {
+     "k": "order",
+     "q": "Zet in de goede volgorde: hoe ontstaan fossiele brandstoffen?",
+     "items": [
+      "Organismen leven dankzij fotosynthese.",
+      "Resten van dode organismen komen in de zeebodem terecht.",
+      "Nieuwe lagen zand drukken de resten steeds verder samen.",
+      "Door de grote druk en warmte veranderen de resten.",
+      "Er ontstaan steenkool, aardolie en aardgas."
+     ]
+    },
+    {
+     "k": "pick",
+     "q": "Welke drie zijn fossiele brandstoffen?",
+     "opts": [
+      "aardolie",
+      "aardgas",
+      "steenkool",
+      "hout",
+      "katoen",
+      "glucose"
+     ],
+     "ok": [
+      "aardolie",
+      "aardgas",
+      "steenkool"
+     ]
+    },
+    {
+     "k": "mc",
+     "q": "Wat zijn grondstoffen?",
+     "opts": [
+      "de stoffen waarvan producten worden gemaakt",
+      "brandstoffen voor auto’s",
+      "stoffen die in de grond zitten en niet gebruikt worden"
+     ],
+     "a": 0
+    },
+    {
+     "k": "mc",
+     "q": "Waarvan worden kunststoffen (plastic) gemaakt?",
+     "opts": [
+      "aardolie",
+      "katoen",
+      "zijde"
+     ],
+     "a": 0
+    },
+    {
+     "k": "mc",
+     "q": "Waarvoor wordt steenkool vooral gebruikt?",
+     "opts": [
+      "als brandstof in elektriciteitscentrales",
+      "om kleding van te maken",
+      "in de verwarmingsketel thuis"
+     ],
+     "a": 0
+    },
+    {
+     "k": "mc",
+     "q": "Wat wordt er van aardolie gemaakt voor auto’s?",
+     "opts": [
+      "benzine",
+      "steenkool",
+      "aardgas"
+     ],
+     "a": 0
+    },
+    {
+     "k": "mc",
+     "q": "Op welke brandstof werken veel verwarmingsketels in huizen?",
+     "opts": [
+      "aardgas",
+      "steenkool",
+      "hout"
+     ],
+     "a": 0
+    },
+    {
+     "k": "mc",
+     "q": "Polyester is …",
+     "opts": [
+      "een kunststof voor kleding, gemaakt van aardolie",
+      "een plant waar kleding van wordt gemaakt",
+      "een stof van de zijderups"
+     ],
+     "a": 0
+    },
+    {
+     "k": "mc",
+     "q": "Waarom bestaan fossiele brandstoffen dankzij fotosynthese?",
+     "opts": [
+      "Ze zijn ontstaan uit organismen die konden leven en groeien dankzij fotosynthese.",
+      "Ze worden gemaakt door planten van nu.",
+      "Fotosynthese maakt steenkool in de bladeren."
+     ],
+     "a": 0
+    },
+    {
+     "k": "tabel"
+    }
+   ]
+  }
+ ],
+ "so": {
+  "n": 20
+ }
+}

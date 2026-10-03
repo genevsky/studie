@@ -281,3 +281,25 @@ input.tin.yok{border-color:var(--good);background:var(--good-bg)}input.tin.yno{b
 .ordl li.ok{border-style:solid;border-color:var(--good);background:var(--good-bg)}
 .ordl li.now{border-color:var(--accent)}
 @media (max-width:420px){.tab{font-size:.68rem;letter-spacing:-.01em}}
+/* kennis-app */
+.formula .fx{font-family:var(--font-d);font-size:1.15rem;font-weight:600;background:color-mix(in srgb,var(--sun) 35%,transparent);border-radius:10px;padding:10px 12px;margin-top:6px}
+.fxb{font-weight:800;line-height:2.6}
+.slot{display:inline-block;min-width:110px;min-height:34px;vertical-align:middle;border-bottom:2px solid var(--accent);background:var(--soft);border-radius:6px 6px 0 0;padding:2px 8px;text-align:center}
+.slot.yok{background:var(--good-bg);border-color:var(--good)}.slot.yno{background:var(--bad-bg);border-color:var(--bad)}
+.chip.sel{border-color:var(--accent);background:var(--soft)}
+.chip.pvok{border-color:var(--good);background:var(--good-bg)}.chip.pvno{border-color:var(--bad);background:var(--bad-bg)}
+.chip:disabled{opacity:.9;cursor:default}
+.frow{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-weight:700}
+.frow select,.vtab select,.wsel{font:inherit;font-weight:700;padding:7px 8px;border:2px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+select.yok{border-color:var(--good);background:var(--good-bg)}select.yno{border-color:var(--bad);background:var(--bad-bg)}
+.fres{font-weight:800}
+.part+.part{border-top:1px solid var(--line);padding-top:12px}
+.part{display:grid;gap:10px}
+.web{display:grid;gap:4px;justify-items:center;text-align:center;font-size:.9rem}
+.web .wn{border:2px solid var(--good);border-radius:10px;padding:6px 12px;font-weight:800;background:var(--surface)}
+.web .wa{color:var(--muted);font-weight:700;font-size:.82rem}
+.web .wsel{border-color:var(--good);min-width:110px}
+.wrow2{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;justify-items:center}
+.wrow2>div{display:grid;gap:4px;justify-items:center;align-content:start}
+.wrow5{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+pre.instr{white-space:pre-wrap;font:inherit;background:var(--soft);border-radius:10px;padding:12px}

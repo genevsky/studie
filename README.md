@@ -9,3 +9,5 @@ Studiemateriaal per vak en toets. Open `index.html` (of de GitHub Pages-link) en
 Twee soorten apps:
 - `assets/app.js`: begrippen en tijdvakken (geschiedenis e.d.)
 - `assets/vocab.js`: woordjes leren voor talen (Frans, Engels, Duits...)
+- `assets/taal.js`: invuloefeningen / werkwoordspelling (Nederlands)
+- `assets/kennis.js`: zaakvakken (biologie): samenvatting, begrippen, opdrachten uit het boek, oefenen per onderwerp, oefen-SO en bronnen
