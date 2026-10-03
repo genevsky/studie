@@ -83,8 +83,9 @@ const ICON={start:'<path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-
  leer:'<path d="M4 5a2 2 0 0 1 2-2h5v17H6a2 2 0 0 0-2 2zM20 5a2 2 0 0 0-2-2h-5v17h5a2 2 0 0 1 2 2z"/>',
  kaart:'<rect x="3" y="7" width="14" height="14" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v12"/>',
  spel:'<path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.5 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/>',
- toets:'<circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/>'};
-const TABS=[['start','Start'],['leer','Woorden'],['kaart','Kaartjes'],['spel','Spellen'],['toets','Toets']];
+ toets:'<circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/>',
+ gram:'<path d="M4 19V5h9a4 4 0 0 1 0 8H4m9 0a3 3 0 0 1 0 6H4"/>'};
+const TABS=[['start','Start'],['leer','Woorden'],['kaart','Kaartjes'],['spel','Spellen']].concat(D.grammar?[['gram','Grammaire']]:[]).concat([['toets','Toets']]);
 $('#tabs').innerHTML=TABS.map(t=>`<button class="tab" data-tab="${t[0]}"><svg viewBox="0 0 24 24" aria-hidden="true">${ICON[t[0]]}</svg>${t[1]}</button>`).join('');
 $$('.tab').forEach(b=>b.addEventListener('click',()=>go(b.dataset.tab)));
 const V={};
@@ -124,9 +125,26 @@ V.start=function(){const r=ready();const due=W.filter(w=>isDue(kF(w))||isDue(kN(
     <button data-go="leer"><b>1. Luister en lees</b><span>De woorden per blokje van vijf</span></button>
     <button data-go="kaart"><b>2. Kaartjes</b><span>Beide kanten op, tot je ze kent</span></button>
     <button data-go="spel"><b>3. Spellen</b><span>Le of la, spelling en snelheid</span></button>
-    <button data-go="toets"><b>4. Oefentoets</b><span>Typen zoals op de SO, met cijfer</span></button></div></section>`;
+    <button data-go="toets"><b>4. Oefentoets</b><span>Typen zoals op de SO, met cijfer</span></button></div></section>
+  ${CATS?`<section class="stack"><h2>Per onderwerp</h2><div class="games">${D.lists.filter(l=>l.cat!=='gram').map(l=>`<button class="gm" data-topic="${esc(l.id)}"><em>${{voc:'Vocabulaire',num:'Getallen',day:'Dagen',month:'Maanden'}[l.cat]||''}</em><b>${esc(l.title)}</b><span>${byList(l.id).length} woorden · ${byList(l.id).filter(w=>mastered(kN(w))).length} zitten erin</span></button>`).join('')}${D.grammar?`<button class="gm" data-topic="#gram"><em>Grammaire</em><b>Grammaire H: avoir</b><span>Uitleg, vervoegen, il/elle/ils/elles, invullen en vertalen.</span></button>`:''}</div></section>`:''}`;
+  on('[data-topic]',e=>{const t=e.dataset.topic;if(t==='#gram'){go('gram');return}V_topic(t)});
   on('[data-go]',e=>go(e.dataset.go));
   $('#exam').addEventListener('change',e=>{const v=e.target.value;S.exam=v?Math.floor(Date.parse(v)/DAYMS):null;S.examT=Date.now();save();V.start()})};
+
+function V_topic(id){const L=D.lists.find(l=>l.id===id);
+  view.innerHTML=`<button class="back-link" id="bk">‹ Start</button><h2>${esc(L.title)}</h2><p class="small mut">${esc(L.sub||'')}</p><div class="games">
+   <button class="gm" data-x="leer"><em>1. Leren</em><b>Bekijk en luister</b><span>De woorden met uitspraak en geheugensteuntjes.</span></button>
+   <button class="gm" data-x="kaart"><em>2. Kaartjes</em><b>Nederlands → Frans</b><span>Oefen tot je ze kent.</span></button>
+   ${L.ordered?'<button class="gm" data-x="order"><em>3. Spel</em><b>Op volgorde</b><span>Tik de Franse woorden in de goede volgorde.</span></button>':''}
+   ${L.cat==='num'?'<button class="gm" data-x="som"><em>3. Spel</em><b>Rekensommen</b><span>Schrijf de uitkomst in het Frans.</span></button>':''}
+   <button class="gm" data-x="spell"><em>Spelling</em><b>Letterbouwer</b><span>Bouw het woord met letterblokjes.</span></button>
+   ${TTS?'<button class="gm" data-x="dictee"><em>Luisteren</em><b>Dictee</b><span>Hoor het woord en schrijf het op.</span></button>':''}
+   <button class="gm" data-x="toets"><em>4. Toets</em><b>Toets: ${esc(L.title)}</b><span>Alle ${byList(id).length} woorden typen, met cijfer.</span>${S.best['L'+id]!=null?'<span class="donel">✓ Beste cijfer: '+grade(S.best['L'+id])+'</span>':''}</button></div>`;
+  $('#bk').onclick=()=>go('start');
+  on('[data-x]',e=>{const x=e.dataset.x;
+    if(x==='leer'){lTab=id;go('leer')}else if(x==='kaart'){kList=id;kDir='n';kAll=false;go('kaart')}
+    else if(x==='toets'){go('toets');quiz(L.title,'L'+id,shuffle(byList(id)).map(w=>({w,d:'n'})))}
+    else{gList=id;go('spel');S.played=S.played||{};S.played[x]=(S.played[x]||0)+1;save();G[x]()}})}
 
 /* ---- WOORDEN ---- */
 let lTab=D.lists[0].id,hide='';
@@ -184,12 +202,34 @@ V.spel=function(){
    <button class="gm" data-g="lela"><em>Punten pakken</em><b>Le, la of les?</b><span>Kies het goede lidwoord. Dit kost vaak punten op de SO!</span>${played('lela')}</button>
    <button class="gm" data-g="spell"><em>Spelling</em><b>Letterbouwer</b><span>Bouw het Franse woord met letterblokjes, accenten inbegrepen.</span>${played('spell')}</button>
    <button class="gm" data-g="snel"><em>60 seconden</em><b>Snelle ronde</b><span>Hoeveel woorden haal jij in een minuut?</span>${played('snel')}${S.best.snel?`<span class="donel">🏆 record ${S.best.snel}</span>`:''}</button>
+   ${D.lists.some(l=>l.ordered)?'<button class="gm" data-g="order"><em>Volgorde</em><b>Op volgorde</b><span>Zet de dagen, maanden of getallen in de goede volgorde. In het Frans!</span>'+played('order')+'</button>':''}
+   ${D.lists.some(l=>l.cat==='num')?'<button class="gm" data-g="som"><em>Getallen</em><b>Rekensommen</b><span>Reken uit en schrijf het antwoord in het Frans: sept + six = treize.</span>'+played('som')+'</button>':''}
    ${TTS?'<button class="gm" data-g="dictee"><em>Luisteren</em><b>Dictee</b><span>Luister naar het woord en typ het in het Frans.</span>'+played('dictee')+'</button>':''}
   </div>`;
   on('[data-gl]',e=>{gList=e.dataset.gl;V.spel()});on('[data-g]',e=>{const g=e.dataset.g;S.played=S.played||{};S.played[g]=(S.played[g]||0)+1;save();G[g]()})};
 const back='<button class="back-link" id="bk">‹ Terug naar spellen</button>';
 function endCard(title,sub){view.innerHTML=`<div class="card stack" style="text-align:center"><div class="score">${title}</div><p><b>${sub}</b></p><div class="btns" style="justify-content:center"><button class="btn" id="ag">Nog een keer</button><button class="btn ghost" id="bk2">Andere spellen</button></div></div>`;$('#bk2').onclick=()=>V.spel()}
 const G={};
+let ordList=null;
+G.order=function(){const OL=D.lists.filter(l=>l.ordered);const L=OL.find(l=>l.id===gList)||OL.find(l=>l.id===ordList)||OL[0];ordList=L.id;
+  const items=byList(L.id);let next=0,mist=0,pool=shuffle(items);
+  function draw(){view.innerHTML=`${back}<h2>Op volgorde</h2><div class="seg">${OL.map(l=>`<button data-ol="${l.id}" aria-pressed="${l.id===L.id}">${esc(l.title)}</button>`).join('')}</div>
+    <p class="small mut">Tik de Franse woorden in de goede volgorde. Fouten: <b>${mist}</b></p>
+    <ol class="ordl">${items.map((w,i)=>`<li class="${i<next?'ok':i===next?'now':''}">${i<next?esc(w.fr):'…'}</li>`).join('')}</ol>
+    <div class="chips">${pool.map(w=>`<button class="chip" data-w="${esc(w.key)}">${esc(w.fr)}</button>`).join('')}</div>`;
+    $('#bk').onclick=()=>V.spel();on('[data-ol]',e=>{ordList=e.dataset.ol;gList='all';G.order()});
+    on('[data-w]',e=>{const w=pool.find(x=>x.key===e.dataset.w);if(w===items[next]){say(w.fr);pool=pool.filter(x=>x!==w);next++;if(next===items.length){addXP(Math.max(4,12-mist*2));if(!mist)confetti();endCard(mist?mist+' fout'+(mist>1?'en':''):'Foutloos!',L.title+' op volgorde.');$('#ag').onclick=G.order;return}draw()}else{mist++;e.classList.add('shake');setTimeout(()=>e.classList.remove('shake'),400)}})}
+  draw()};
+G.som=function(){const N=byList(D.lists.find(l=>l.cat==='num').id);let i=0,ok=0;const qs=Array.from({length:10},()=>{let a,b,op;do{a=Math.floor(Math.random()*21);b=Math.floor(Math.random()*21);op=Math.random()<.6?'+':'−'}while(op==='+'?a+b>20:a-b<0);return{a,b,op,r:op==='+'?a+b:a-b}});
+  function draw(){if(i>=qs.length){addXP(ok*2);if(ok===qs.length)confetti();endCard(ok+'/'+qs.length,'Getallen schrijven: goed geoefend!');$('#ag').onclick=G.som;return}
+    const q=qs[i],w=N[q.r];view.innerHTML=`${back}<div class="prog"><span>${i+1}/${qs.length}</span><div class="bar"><i style="width:${100*i/qs.length}%"></i></div><span>${ok} goed</span></div>
+    <div class="card stack" style="text-align:center"><div class="q" style="font-size:1.4rem">${esc(N[q.a].fr)} ${q.op==='+'?'plus':'moins'} ${esc(N[q.b].fr)} = ?</div><p class="small mut">${q.a} ${q.op} ${q.b} = ? Schrijf het antwoord in het Frans.</p>
+    <input type="text" id="ans" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="in het Frans">${accBar()}<button class="btn" id="ck">Nakijken</button><div id="fb"></div></div>`;
+    $('#bk').onclick=()=>V.spel();const inp=$('#ans');wireAcc(inp);inp.focus();
+    const ck=()=>{if(!$('#ck'))return;const r=checkFr(inp.value,w);if(r.ok)ok++;inp.disabled=true;$('#ck').remove();say(w.fr);
+      $('#fb').innerHTML=`<div class="fb ${r.ok?'good':'bad'}">${r.ok?'Très bien!':esc(r.why==='leeg'?'Het goede antwoord: ':r.why)} <b>${q.r} = ${esc(w.fr)}</b></div><button class="btn" id="nx" style="margin-top:10px">Volgende</button>`;$('#nx').onclick=()=>{i++;draw()};$('#nx').focus()};
+    $('#ck').onclick=ck;inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(!inp.disabled)ck()}})}
+  draw()};
 G.koppel=function(){const pool=byList(gList);const set=sample(pool,Math.min(6,pool.length));let sel=null,done=0,miss=0;
   const L=shuffle(set.map(w=>({w,s:'fr'}))),R=shuffle(set.map(w=>({w,s:'nl'})));
   view.innerHTML=`${back}<h2>Koppel</h2><p class="mut small">Tik een Frans woord en dan de vertaling.</p><div class="pairs">${L.map((x,i)=>`<button data-p="${i}" data-s="fr">${esc(x.w.fr)}</button><button data-p="${i}" data-s="nl" data-r="${i}">${esc(R[i].w.nl)}</button>`).join('')}</div>`;
@@ -244,15 +284,56 @@ G.dictee=function(){const qs=sample(byList(gList),8);let i=0,ok=0;
     $('#ck').onclick=ck;inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(!inp.disabled)ck()}})}
   draw()};
 
+/* ---- GRAMMAIRE ---- */
+let gTab='uitleg';
+V.gram=function(){const Gm=D.grammar;
+  view.innerHTML=`<div class="seg">${[['uitleg','Uitleg'],['vervoeg','Vervoeg avoir'],['pron','il, elle, ils, elles?'],['fill','Vul avoir in'],['vert','Vertaal']].map(x=>`<button data-gt="${x[0]}" aria-pressed="${gTab===x[0]}">${x[1]}</button>`).join('')}</div><div id="gb" class="stack" style="margin-top:12px"></div>`;
+  on('[data-gt]',e=>{gTab=e.dataset.gt;V.gram()});const b=$('#gb');const pl=k=>{S.played=S.played||{};S.played[k]=(S.played[k]||0)+1;save()};
+  if(gTab==='uitleg'){b.innerHTML=`<div class="card stack"><div class="eyebrow">Grammaire H</div><h2>Het persoonlijk voornaamwoord en avoir</h2><p>${esc(Gm.note)}</p>
+    <table class="rules">${Gm.avoir.map(r=>`<tr><th>${esc(r[0])} <b style="color:var(--ink)">${esc(r[1])}</b> ${TTS?spk((r[0]==="j'"?"j'":r[0].split('/')[0]+' ')+r[1]):''}</th><td>${esc(r[2])}</td></tr>`).join('')}</table>
+    <ul class="tipl"><li>Voor een klinker wordt <b>je</b> → <b>j’</b>: j’ai.</li><li><b>il</b> = hij (of een mannelijk woord: le chien → il), <b>elle</b> = zij (of een vrouwelijk woord: la famille → elle).</li><li><b>ils</b> = zij meervoud: jongens, of jongens én meisjes. <b>elles</b> = alleen meisjes.</li><li><b>vous</b> = jullie, en ook de beleefde vorm u.</li><li><b>on</b> = wij (spreektaal) of men: on a.</li></ul></div>
+    <div class="btns"><button class="btn" data-gt2="vervoeg">Oefen: vervoeg avoir</button></div>`;on('[data-gt2]',e=>{gTab=e.dataset.gt2;V.gram()},b);return}
+  if(gTab==='vervoeg'){let rows=Gm.avoir.slice(),mixed=false;
+    const draw=()=>{b.innerHTML=`<div class="card stack"><h3>Vervoeg avoir</h3><p class="small mut">Schrijf de goede vorm van avoir.${mixed?' (door elkaar)':''}</p>
+      <table class="vtab">${rows.map((r,i)=>`<tr><th style="width:90px">${esc(r[0])}</th><td><input type="text" class="tin" data-i="${i}" autocomplete="off" autocapitalize="off" spellcheck="false"></td><td class="small mut">${esc(r[2])}</td></tr>`).join('')}</table>
+      <button class="btn" id="ck">Nakijken</button><div id="res"></div></div>`;
+      const all=$$('.tin',b);all[0].focus();all.forEach((el,k)=>el.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();(all[k+1]||$('#ck')).focus()}}));
+      $('#ck').onclick=()=>{let ok=0;all.forEach(el=>{const want=rows[+el.dataset.i][1],g=nrmA(el.value)===want;if(g)ok++;else el.insertAdjacentHTML('afterend',`<div class="tfix">${esc(want)}</div>`);el.classList.add(g?'yok':'yno');el.readOnly=true});
+        S.best['g:vervoeg']=Math.max(S.best['g:vervoeg']||0,ok/rows.length);addXP(ok);pl('g:vervoeg');if(ok===rows.length)confetti();$('#ck').remove();
+        $('#res').innerHTML=`<div class="score" style="text-align:center">${ok}/${rows.length}</div><div class="btns"><button class="btn" id="mx">Nog eens, door elkaar</button><button class="btn ghost" id="or">Op volgorde</button></div>`;
+        $('#mx').onclick=()=>{rows=shuffle(Gm.avoir);mixed=true;draw()};$('#or').onclick=()=>{rows=Gm.avoir.slice();mixed=false;draw()}}};
+    draw();return}
+  if(gTab==='pron'){const qs=sample(Gm.pron,10);let i=0,ok=0;const OPTS=['je','tu','il','elle','nous','vous','ils','elles'];
+    const draw=()=>{if(i>=qs.length){S.best['g:pron']=Math.max(S.best['g:pron']||0,ok/qs.length);addXP(ok);pl('g:pron');if(ok===qs.length)confetti();b.innerHTML=`<div class="card stack" style="text-align:center"><div class="score">${ok}/${qs.length}</div><p><b>Eén naam: il of elle. Meer namen: ils of elles.</b></p><button class="btn" id="ag">Nog een keer</button></div>`;$('#ag').onclick=()=>V.gram();return}
+      const q=qs[i],nl=/^(ik|jij|hij|wij|jullie)$/.test(q[0]);
+      b.innerHTML=`<div class="prog"><span>${i+1}/${qs.length}</span><div class="bar"><i style="width:${100*i/qs.length}%"></i></div><span>${ok} goed</span></div><div class="card stack"><p class="small mut">${nl?'Wat is het Franse persoonlijk voornaamwoord?':'Door welk voornaamwoord vervang je dit?'}</p><div class="q">${esc(q[0])}</div><div class="opts two">${OPTS.map(o=>`<button class="opt" data-o="${o}">${o}</button>`).join('')}</div><div id="fb"></div></div>`;
+      on('[data-o]',e=>{const g=e.dataset.o===q[1];if(g)ok++;$$('[data-o]',b).forEach(x=>{x.disabled=true;if(x.dataset.o===q[1])x.classList.add('right')});if(!g)e.classList.add('wrong');
+        $('#fb').innerHTML=`<div class="fb ${g?'good':'bad'}">${g?'Goed!':'Het is: '+esc(q[1])}</div><button class="btn" id="nx" style="margin-top:10px;width:100%">Volgende</button>`;$('#nx').onclick=()=>{i++;draw()};$('#nx').focus()},b)};
+    draw();return}
+  if(gTab==='fill'){let list=shuffle(Gm.fill);
+    const draw=()=>{b.innerHTML=`<div class="card stack"><h3>Vul de goede vorm van avoir in</h3><ol class="wsheet">${list.map((q,i)=>`<li><div class="wsent">${esc(q[0]).replace('█',`<input type="text" class="blank" data-i="${i}" autocomplete="off" autocapitalize="off" spellcheck="false">`)}</div><div class="wfb" id="gf${i}"></div></li>`).join('')}</ol><button class="btn" id="ck">Nakijken</button><div id="res"></div></div>`;
+      const all=$$('.blank',b);all.forEach((el,k)=>el.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();(all[k+1]||$('#ck')).focus()}}));
+      $('#ck').onclick=()=>{let ok=0;const wrong=[];all.forEach(el=>{const q=list[+el.dataset.i],g=nrmA(el.value)===q[1];if(g)ok++;else wrong.push(q);el.classList.add(g?'yok':'yno');el.readOnly=true;$('#gf'+el.dataset.i).innerHTML=g?'<span class="okline">✓</span>':`<span class="noline">✗ ${esc(q[0].replace('█',q[1]))}</span>`});
+        S.best['g:fill']=Math.max(S.best['g:fill']||0,ok/list.length);addXP(ok);pl('g:fill');if(ok===list.length)confetti();$('#ck').remove();
+        $('#res').innerHTML=`<div class="score" style="text-align:center">${ok}/${list.length}</div><div class="btns">${wrong.length?'<button class="btn" id="fo">Alleen mijn fouten</button>':''}<button class="btn ghost" id="ag">Opnieuw</button></div>`;
+        const fo=$('#fo');if(fo)fo.onclick=()=>{list=wrong;draw()};$('#ag').onclick=()=>{list=shuffle(Gm.fill);draw()};$('#res').scrollIntoView({behavior:'smooth'})}};
+    draw();return}
+  if(gTab==='vert'){const L=D.lists.find(l=>l.cat==='gram');b.innerHTML=`<div class="card stack"><h3>Vertaal: ik heb, jij hebt …</h3><p class="small mut">Je krijgt het Nederlands en typt het Frans, bijvoorbeeld ik heb → j’ai.</p><button class="btn" id="go">Start (${byList(L.id).length} vragen)</button></div>`;$('#go').onclick=()=>quiz(L.title,'L'+L.id,shuffle(byList(L.id)).map(w=>({w,d:'n'})))}};
+const nrmA=s=>String(s||'').trim().toLowerCase().replace(/[’‘]/g,"'");
+
 /* ---- TOETS ---- */
+const CATS=D.lists.some(l=>l.cat);
+function soSet(){if(!CATS){const s=shuffle(W);return s.slice(0,10).map(w=>({w,d:'n'})).concat(s.slice(10,20).map(w=>({w,d:'f'})))}
+  const of=c=>shuffle(W.filter(w=>D.lists.find(l=>l.id===w.list).cat===c));const v=of('voc');
+  return [...v.slice(0,5).map(w=>({w,d:'n'})),...v.slice(5,8).map(w=>({w,d:'f'})),...of('gram').slice(0,3).map(w=>({w,d:'n'})),...of('num').slice(0,4).map(w=>({w,d:'n'})),...of('day').slice(0,2).map(w=>({w,d:'n'})),...of('month').slice(0,3).map(w=>({w,d:'n'}))]}
 V.toets=function(){const b=S.best;
   view.innerHTML=`<h2>Toetsen</h2><p class="mut small">Hier typ je de antwoorden, net als op de SO. Accenten en le/la/les tellen mee. Een fout accent of lidwoord geeft hier een half punt; een spelfout is fout. Je docent kan strenger nakijken.</p><div class="games">
-   <button class="gm" data-t="oefen"><em>Zoals de SO</em><b>Oefentoets</b><span>20 woorden uit A, B en E: 10 Nederlands → Frans en 10 Frans → Nederlands. Met cijfer.</span>${b.oefen!=null?'<span class="donel">✓ Beste cijfer: '+grade(b.oefen)+'</span>':''}</button>
-   ${D.lists.map(l=>`<button class="gm" data-t="L${l.id}"><em>Hele lijst</em><b>${esc(l.title)}</b><span>Alle ${byList(l.id).length} woorden, Nederlands → Frans.</span>${b['L'+l.id]!=null?'<span class="donel">✓ Beste cijfer: '+grade(b['L'+l.id])+'</span>':''}</button>`).join('')}
+   <button class="gm" data-t="oefen"><em>Zoals de SO</em><b>Oefentoets</b><span>${CATS?'20 vragen over alle onderwerpen: woorden, avoir, getallen, dagen en maanden. Met cijfer.':'20 woorden uit A, B en E: 10 Nederlands → Frans en 10 Frans → Nederlands. Met cijfer.'}</span>${b.oefen!=null?'<span class="donel">✓ Beste cijfer: '+grade(b.oefen)+'</span>':''}</button>
+   ${D.lists.map(l=>`<button class="gm" data-t="L${l.id}"><em>${CATS?'Per onderwerp':'Hele lijst'}</em><b>${esc(l.title)}</b><span>Alle ${byList(l.id).length} woorden, Nederlands → Frans.</span>${b['L'+l.id]!=null?'<span class="donel">✓ Beste cijfer: '+grade(b['L'+l.id])+'</span>':''}</button>`).join('')}
    ${nWrong()?`<button class="gm" data-t="fout"><em>Slim herhalen</em><b>Mijn fouten (${nWrong()})</b><span>Typ de woorden die je eerder fout had. Goed = van de lijst af.</span></button>`:''}
   </div>`;
   on('[data-t]',e=>{const t=e.dataset.t;
-    if(t==='oefen'){const s=shuffle(W);quiz('Oefentoets','oefen',s.slice(0,10).map(w=>({w,d:'n'})).concat(s.slice(10,20).map(w=>({w,d:'f'}))))}
+    if(t==='oefen')quiz('Oefentoets','oefen',soSet())
     else if(t==='fout')quiz('Mijn fouten','fout',shuffle(byList('fout')).map(w=>({w,d:'n'})));
     else{const id=t.slice(1);quiz(D.lists.find(l=>l.id===id).title,t,shuffle(byList(id)).map(w=>({w,d:'n'})))}})};
 function quiz(title,key,qs){let i=0,pts=0;const res=[];
@@ -273,7 +354,7 @@ function quiz(title,key,qs){let i=0,pts=0;const res=[];
     ${key!=='fout'?'<p class="small mut">Dit cijfer is een indicatie: 1 + 9 × je score.</p>':''}</div>
     ${wrong.length?`<div class="card stack"><h3>Om nog te oefenen</h3><div class="miss">${wrong.map(r=>`<div><b>${esc(r.d==='n'?r.w.nl:r.w.fr)}</b> → ${esc(r.d==='n'?r.w.fr:r.w.nl)} ${spk(r.w.fr)}<br><span class="small mut">Jij: ${esc(r.a||'(leeg)')}${r.p?' · half punt':''}</span></div>`).join('')}</div></div>`:''}
     <div class="btns"><button class="btn" id="ag">Nog een keer</button>${nWrong()&&key!=='fout'?'<button class="btn ghost" id="fo">Oefen mijn fouten</button>':''}<button class="btn ghost" id="bk">Andere toetsen</button></div>`;
-    $('#ag').onclick=()=>{if(key==='oefen'){const s=shuffle(W);quiz(title,key,s.slice(0,10).map(w=>({w,d:'n'})).concat(s.slice(10,20).map(w=>({w,d:'f'}))))}else if(key==='fout')quiz(title,key,shuffle(byList('fout')).map(w=>({w,d:'n'})));else quiz(title,key,shuffle(qs.map(x=>x.w)).map(w=>({w,d:'n'})))};
+    $('#ag').onclick=()=>{if(key==='oefen'){quiz(title,key,soSet())}else if(key==='fout')quiz(title,key,shuffle(byList('fout')).map(w=>({w,d:'n'})));else quiz(title,key,shuffle(qs.map(x=>x.w)).map(w=>({w,d:'n'})))};
     $('#bk').onclick=()=>V.toets();const fo=$('#fo');if(fo)fo.onclick=()=>quiz('Mijn fouten','fout',shuffle(byList('fout')).map(w=>({w,d:'n'})))}
   draw()}
 

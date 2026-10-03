@@ -33,7 +33,7 @@ header.top{background:var(--surface);border-bottom:1px solid var(--line)}
 .strata i{flex:1;display:block}
 main{padding-block:20px 110px;display:flex;flex-direction:column;gap:18px;min-height:70vh}
 nav.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));z-index:5}
-nav.tabs .in{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+nav.tabs .in{max-width:760px;margin:0 auto;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px}
 .tab{border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 2px;border-radius:12px;font-size:.74rem;font-weight:800;color:var(--muted);min-width:0}
 .tab svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .tab[aria-current="page"]{color:var(--accent);background:var(--soft)}
@@ -275,3 +275,9 @@ input.tin.yok{border-color:var(--good);background:var(--good-bg)}input.tin.yno{b
 .wtap button.sel{border-color:var(--accent);background:var(--soft)}
 .wtap button.pvok{border-color:var(--good);background:var(--good-bg)}
 .wtap button.pvno{border-color:var(--bad);background:var(--bad-bg)}
+.ordl{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:6px;padding:0;list-style:none;counter-reset:o}
+.ordl li{counter-increment:o;border:2px dashed var(--line);border-radius:10px;padding:6px 8px;font-weight:800;min-height:38px}
+.ordl li::before{content:counter(o)'. ';color:var(--muted);font-weight:700}
+.ordl li.ok{border-style:solid;border-color:var(--good);background:var(--good-bg)}
+.ordl li.now{border-color:var(--accent)}
+@media (max-width:420px){.tab{font-size:.68rem;letter-spacing:-.01em}}
