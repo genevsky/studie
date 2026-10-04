@@ -2,15 +2,15 @@
 <html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex">
 <title>Studiehub</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap">
-<link rel="stylesheet" href="assets/app.css?v=202610031248">
-<style>details.instr{background:var(--soft);border-radius:12px;padding:8px 12px}details.instr summary{cursor:pointer;font-weight:800;font-size:.9rem}details.instr .itxt{white-space:pre-wrap;font-size:.9rem;margin-top:8px;line-height:1.5;overflow-wrap:anywhere}.vak{margin-top:22px}.vak h2{display:flex;gap:10px;align-items:center}.ex{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit}
+<link rel="stylesheet" href="assets/app.css?v=202610040959">
+<style>.tdate{font-size:.92rem;margin:-2px 0 0}.tdate.soon b{color:var(--bad)}.tdate.soon{color:var(--bad);font-weight:700}.tdate.past{color:var(--muted)}.card.ex.done{opacity:.7}details.instr{background:var(--soft);border-radius:12px;padding:8px 12px}details.instr summary{cursor:pointer;font-weight:800;font-size:.9rem}details.instr .itxt{white-space:pre-wrap;font-size:.9rem;margin-top:8px;line-height:1.5;overflow-wrap:anywhere}.vak{margin-top:22px}.vak h2{display:flex;gap:10px;align-items:center}.ex{display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit}
 .ex .r{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.pill{padding:8px 14px;border-radius:999px;font-weight:800;text-decoration:none;font-size:.9rem;background:var(--soft);color:var(--ink)}
 .pill.main{background:var(--accent);color:var(--on-accent)}</style></head><body>
 <header class="top"><div class="wrap row"><div class="brand"><b>Studiehub</b><span>Al je toetsen op één plek</span></div></div><div class="strata" id="strata" aria-hidden="true"></div></header>
 <main class="wrap" id="view"><section class="hero"><h1>Waar ga je vandaag mee aan de slag?</h1><p>Kies een vak en een toets. Je voortgang wordt bewaard in deze browser. Met sync (onderaan) gaat hij mee naar je andere apparaten.</p></section><div id="list"></div><section class="card stack" id="sync" style="margin-top:24px" hidden></section></main>
-<script src="assets/sync-config.js?v=202610031248"></script>
-<script src="assets/sync.js?v=202610031248"></script>
-<script src="catalog.js?v=202610031248"></script>
+<script src="assets/sync-config.js?v=202610040959"></script>
+<script src="assets/sync.js?v=202610040959"></script>
+<script src="catalog.js?v=202610040959"></script>
 <script>
 (function(){
 var HUE=[28,12,352,322,285,240,205,172,140,95];
@@ -18,11 +18,15 @@ var st=document.getElementById('strata');st.innerHTML=HUE.map(function(h){return
 function pct(id){try{var s=JSON.parse(localStorage.getItem('studie:'+id));if(!s)return null;var t=[];if(s.stats&&s.stats.total)t.push(s.stats.seen+'/'+s.stats.total+' '+(s.stats.unit||'')+' geoefend');if(typeof s.pct==='number')t.push('klaar voor de toets: '+s.pct+'%');return t.length?t.join(' · '):null}catch(e){return null}}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function linkify(s){return s.replace(/(https?:\/\/[^\s<]+)/g,'<a href="$1" target="_blank" rel="noopener">$1</a>')}
+var DAG=['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'],MND=['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+function datum(iso){if(!iso)return '';var p=iso.split('-'),d=new Date(+p[0],+p[1]-1,+p[2]),t=new Date();t.setHours(0,0,0,0);var n=Math.round((d-t)/864e5);
+ var txt=DAG[d.getDay()]+' '+d.getDate()+' '+MND[d.getMonth()],rel=n<0?'geweest':n===0?'vandaag!':n===1?'morgen!':'nog '+n+' dagen',cls=n<0?'past':n<=2?'soon':'';
+ return '<p class="tdate '+cls+'">📅 <b>'+txt+'</b> · '+rel+'</p>'}
 function renderList(){var h='';
 CATALOG.forEach(function(v){
  h+='<div class="vak"><h2><span>'+v.emoji+'</span>'+v.vak+'</h2><div class="stack">';
  v.toetsen.forEach(function(t){var p=pct(t.id);
-  h+='<div class="card ex"><h3>'+t.titel+'</h3><p class="mut small">'+t.sub+(p?'<br><b style="color:var(--good)">'+p+'</b>':'')+'</p>'+(t.instr?'<details class="instr"><summary>📋 Instructie van de docent</summary><div class="itxt">'+linkify(esc(t.instr))+'</div>'+(t.instrNote?'<p class="small mut">'+esc(t.instrNote)+'</p>':'')+'</details>':'')+'<div class="r"><a class="pill main" href="'+t.url+'">Open studie-app</a>'+(t.pdf?'<a class="pill" href="'+t.pdf+'" target="_blank" rel="noopener">'+(t.pdfLabel||'Spiekbrief')+' (PDF)</a>':'')+'</div></div>'});
+  h+='<div class="card ex'+(t.datum&&datum(t.datum).indexOf('past')>0?' done':'')+'"><h3>'+t.titel+'</h3>'+datum(t.datum)+'<p class="mut small">'+t.sub+(p?'<br><b style="color:var(--good)">'+p+'</b>':'')+'</p>'+(t.instr?'<details class="instr"><summary>📋 Instructie van de docent</summary><div class="itxt">'+linkify(esc(t.instr))+'</div>'+(t.instrNote?'<p class="small mut">'+esc(t.instrNote)+'</p>':'')+'</details>':'')+'<div class="r"><a class="pill main" href="'+t.url+'">Open studie-app</a>'+(t.pdf?'<a class="pill" href="'+t.pdf+'" target="_blank" rel="noopener">'+(t.pdfLabel||'Spiekbrief')+' (PDF)</a>':'')+'</div></div>'});
  h+='</div></div>'});
 document.getElementById('list').innerHTML=h}
 renderList();
