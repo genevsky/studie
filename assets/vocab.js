@@ -20,6 +20,7 @@ const NOUNS=W.filter(w=>gender(w));
 /* ---- voortgang (alleen in deze browser) ---- */
 const store={get(){try{return JSON.parse(localStorage.getItem('studie:'+M.id))||{}}catch(e){return{}}},set(v){try{localStorage.setItem('studie:'+M.id,JSON.stringify(v))}catch(e){}if(window.StudieSync)StudieSync.changed()}};
 let S=Object.assign({xp:0,lb:{},exam:null,best:{},wrong:{}},store.get());
+if(S.exam==null&&M.examDate)S.exam=Math.floor(Date.parse(M.examDate)/864e5);
 const save=()=>{S.pct=ready().pct;S.stats={seen:W.filter(w=>S.lb[kF(w)]||S.lb[kN(w)]).length,total:W.length,unit:'woorden'};S.ts=Date.now();store.set(S)};
 const DAYMS=864e5,INT=[0,1,3,7,14];
 const today=()=>Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/DAYMS);

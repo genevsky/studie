@@ -5,7 +5,7 @@ window.CATALOG=[
  ]},
  {vak:"Frans",emoji:"🥐",hue:240,toetsen:[
   {id:"frans-so1",instr:"LEREN!!!\n\n- VOCABULAIRE A, B EN E. Let op! geen zinnen.",titel:"SO 1 · Vocabulaire A, B en E",sub:"Chapitre 1 · alleen woorden, geen zinnen",url:"frans/so-1/index.html",pdf:"frans/so-1/woordenlijst.pdf",pdfLabel:"Woordenlijst + oefen-SO"}
-  ,{id:"frans-so2",instr:"LEREN!!!\n\n* VOCABULAIRE:  A,B, E en F.\n* GRAMMAIRE  :   H.\n* GETALLEN     :   0 T/M 20. LEREN SCHRIJVEN!\n* DE DAGEN.\n* DE MAANDEN.",titel:"SO 2 · Vocabulaire, avoir, getallen, dagen en maanden",sub:"Vocabulaire A, B, E, F · Grammaire H · 0 t/m 20 · dagen · maanden",url:"frans/so-2/index.html"}
+  ,{id:"frans-so2",datum:"2026-10-13",instr:"LEREN!!!\n\n* VOCABULAIRE:  A,B, E en F.\n* GRAMMAIRE  :   H.\n* GETALLEN     :   0 T/M 20. LEREN SCHRIJVEN!\n* DE DAGEN.\n* DE MAANDEN.",titel:"SO 2 · Vocabulaire, avoir, getallen, dagen en maanden",sub:"Vocabulaire A, B, E, F · Grammaire H · 0 t/m 20 · dagen · maanden",url:"frans/so-2/index.html"}
  ]},
  {vak:"Nederlands",emoji:"✏️",hue:200,toetsen:[
   {id:"nederlands-ww",datum:"2026-10-09",instr:"Toets werkwoordspelling kans 1 [weging 1]\n\nJe moet de theorie van de werkwoordspelling kennen en kunnen toepassen.\nZie H27-28-29, het stencil met uitleg van de theorie en de PPT, en de oefenboekjes van Gespeld.\n\nDe toets duurt niet de hele les. Neem dus je lesboek, schrift en leesboek mee!",instrNote:"Vertaald: de instructie stond in het Engels in de map.",titel:"SO werkwoordspelling",sub:"H27-29, PPT, schema en Gespeld-werkboekjes",url:"nederlands/so-ww/index.html",pdf:"nederlands/so-ww/powerpoint.pdf",pdfLabel:"PowerPoint"}
