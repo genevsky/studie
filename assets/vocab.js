@@ -198,6 +198,7 @@ V.kaart=function(){
 let gList='all';
 V.spel=function(){
   view.innerHTML=`<h2>Spellen</h2>${listSeg(gList,'gl')}<div class="games">
+   ${D.meta.invasie?`<button class="gm" data-inv="1"><em>Arcade</em><b>👾 Woord-Invasie</b><span>Aliens zweven om je schip. Klik snel op de alien met de goede vertaling!</span>${played('invasie')}</button>`:''}
    <button class="gm" data-g="koppel"><em>Rustig</em><b>Koppel</b><span>Zoek de paartjes Frans en Nederlands.</span>${played('koppel')}</button>
    <button class="gm" data-g="lela"><em>Punten pakken</em><b>Le, la of les?</b><span>Kies het goede lidwoord. Dit kost vaak punten op de SO!</span>${played('lela')}</button>
    <button class="gm" data-g="spell"><em>Spelling</em><b>Letterbouwer</b><span>Bouw het Franse woord met letterblokjes, accenten inbegrepen.</span>${played('spell')}</button>
@@ -205,7 +206,7 @@ V.spel=function(){
    ${D.lists.some(l=>l.ordered)?'<button class="gm" data-g="order"><em>Volgorde</em><b>Op volgorde</b><span>Zet de dagen, maanden of getallen in de goede volgorde. In het Frans!</span>'+played('order')+'</button>':''}
    ${TTS?'<button class="gm" data-g="dictee"><em>Luisteren</em><b>Dictee</b><span>Luister naar het woord en typ het in het Frans.</span>'+played('dictee')+'</button>':''}
   </div>`;
-  on('[data-gl]',e=>{gList=e.dataset.gl;V.spel()});on('[data-g]',e=>{const g=e.dataset.g;S.played=S.played||{};S.played[g]=(S.played[g]||0)+1;save();G[g]()})};
+  on('[data-gl]',e=>{gList=e.dataset.gl;V.spel()});on('[data-inv]',()=>{S.played=S.played||{};S.played.invasie=(S.played.invasie||0)+1;save();location.href='invasie.html'+(gList&&gList!=='all'?'?l='+encodeURIComponent(gList):'')});on('[data-g]',e=>{const g=e.dataset.g;S.played=S.played||{};S.played[g]=(S.played[g]||0)+1;save();G[g]()})};
 const back='<button class="back-link" id="bk">‹ Terug naar spellen</button>';
 function endCard(title,sub){view.innerHTML=`<div class="card stack" style="text-align:center"><div class="score">${title}</div><p><b>${sub}</b></p><div class="btns" style="justify-content:center"><button class="btn" id="ag">Nog een keer</button><button class="btn ghost" id="bk2">Andere spellen</button></div></div>`;$('#bk2').onclick=()=>V.spel()}
 const G={};

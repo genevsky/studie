@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex">
+<title>Woord-Invasie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@500;700&display=swap">
+<link rel="stylesheet" href="../../assets/woordinvasie.css?v=202610061530">
+</head><body>
+<div class="cab">
+  <div class="top"><a class="back" id="back" href="index.html#spel">‹ Terug</a><span class="best" id="best"></span></div>
+  <div class="top"><div class="logo">WOORD-INVASIE</div><div class="tag" id="tag"></div></div>
+  <div class="hud" aria-live="polite">
+    <div>SCORE<b id="hScore">0</b></div>
+    <div>COMBO<b id="hCombo">x1</b></div>
+    <div>RAAK<b id="hAcc">–</b></div>
+    <div>LEVENS<b id="hLives">♥♥♥</b></div>
+  </div>
+  <div class="stage" id="stage">
+    <canvas id="cv" width="640" height="760" aria-label="Speelveld"></canvas>
+    <div class="overlay" id="ovStart">
+      <h2>WOORD-INVASIE</h2>
+      <p>Je schip staat in het midden. Om je heen zweven aliens met woorden. Bovenaan staat een <span id="lang1">Frans</span> woord: klik of tik op de alien met de goede vertaling.</p>
+      <p class="help">Je schip draait mee en schiet een laser. Hoe sneller je de goede raakt, hoe meer punten.</p>
+      <p class="small">Snel én goed = meer punten. Fout geraakt? Dan verlies je een leven.</p>
+      <button class="btn" id="bStart">START</button>
+    </div>
+    <div class="overlay" id="ovEnd" hidden>
+      <h2 id="endTitle">GAME OVER</h2>
+      <div class="stats"><div>SCORE<b id="eScore">0</b></div><div>RAAK<b id="eAcc">0%</b></div><div>SNELHEID<b id="eRt">0s</b></div></div>
+      <div class="review" id="eReview"></div>
+      <button class="btn" id="bAgain">NOG EEN KEER</button>
+    </div>
+  </div>
+
+  <details class="tweak">
+    <summary>INSTELLINGEN</summary>
+    <div class="grid">
+      <label for="sList">Woordenlijst<select id="sList"></select></label>
+      <label for="sDir">Richting<select id="sDir"></select></label>
+      <label for="sN">Aantal aliens <output id="oN">5</output><input type="range" id="sN" min="3" max="8" value="5"></label>
+      <label for="sSpeed">Startsnelheid <output id="oSpeed">rustig</output><input type="range" id="sSpeed" min="1" max="5" value="2"></label>
+      <label for="sRamp">Sneller per woord <output id="oRamp">3%</output><input type="range" id="sRamp" min="0" max="15" value="3"></label>
+      <label for="sLives">Levens <output id="oLives">3</output><input type="range" id="sLives" min="1" max="5" value="3"></label>
+      <label for="sWords">Woorden per spel <output id="oWords">15</output><input type="range" id="sWords" min="5" max="40" step="5" value="15"></label>
+      <label class="chk" for="sSound"><input type="checkbox" id="sSound" checked> Geluid</label>
+      
+    </div>
+    <p class="note">Punten: 100 per goed woord, plus tot 200 snelheidsbonus (sneller dan 8 seconden), maal je combo (max x5). “Raak” is het deel van je schoten dat het goede woord trof: missers en foute schepen tellen als niet raak. Nieuwe instellingen gelden vanaf het volgende spel.</p>
+  </details>
+</div>
+<script src="data.js?v=202610061530"></script>
+<script src="../../assets/woordinvasie.js?v=202610061530"></script>
+</body></html>
