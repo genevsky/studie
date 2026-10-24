@@ -303,3 +303,26 @@ select.yok{border-color:var(--good);background:var(--good-bg)}select.yno{border-
 .wrow2>div{display:grid;gap:4px;justify-items:center;align-content:start}
 .wrow5{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
 pre.instr{white-space:pre-wrap;font:inherit;background:var(--soft);border-radius:10px;padding:12px}
+/* leer.js (sobere studie-app) */
+.lr-dot{display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:-1px;background:var(--line)}
+.lr-dot.green{background:var(--good)}.lr-dot.amber{background:var(--sun)}.lr-dot.red{background:var(--bad)}
+.lr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.lr-tile{display:grid;grid-template-columns:auto 1fr;gap:2px 8px;align-items:center;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 12px}
+.lr-tile span{grid-column:2;font-size:.82rem;color:var(--muted);font-weight:700;line-height:1.25}
+.lr-step{display:flex;gap:12px;align-items:flex-start;padding-top:12px;border-top:1px solid var(--line)}
+.lr-step.done .fno{background:var(--good)}
+.lr-list{display:grid;gap:10px}.lr-list .gm{padding:12px 16px}
+.lr-mix{border-color:var(--accent);border-width:2px}
+.lr-kern{padding-left:20px;display:grid;gap:8px;margin:0}
+.lr-fig{margin:0;padding:10px;display:grid;gap:6px}.lr-fig img{width:100%;border-radius:8px;background:#fff;display:block}
+.lr-let{border-color:var(--sun);border-width:2px}
+.lr-ctx{font-weight:600;font-size:.95rem}
+.lr-qimg{max-width:100%;max-height:340px;border-radius:8px;border:1px solid var(--line);background:#fff;display:block}
+.lr-unit{flex:0 0 auto;align-self:center;font-weight:800}
+.lr-row{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line)}.lr-row span{flex:1}
+.btn.lr-sm{flex:0 0 auto;min-height:36px;padding:6px 12px}
+.lr-date{flex:1 1 160px;font:inherit;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--ink)}
+#view textarea{width:100%;min-height:96px;font:inherit;padding:12px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--ink)}
+.frow select.yok{border-color:var(--good);background:var(--good-bg)}.frow select.yno{border-color:var(--bad);background:var(--bad-bg)}
+.lr-step .btns>*{flex:1 1 90px}.lr-let b{background:none;padding:0;border-radius:0}
+.lr-done{color:var(--good);font-weight:800;padding-top:10px;border-top:1px solid var(--line)}

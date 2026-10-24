@@ -12,5 +12,6 @@ window.CATALOG=[
  ]},
  {vak:"Biologie",emoji:"🌱",hue:120,toetsen:[
   {id:"biologie-so1",datum:"2026-10-15",instr:"Basisstof 5 en 7\n\nSchriftelijke overhoring van basisstof 5 en 7\n\nBlz. 39 t/m 43\nblz. 57 t/m 60\n\ngebruik ook:\nWat is biologie? Biologie voor Jou\nhttps://biologiepagina.nl/1/1plantendieren/inleiding.htm",titel:"SO 1 · Fotosynthese",sub:"Basisstof 5 en 7 · blz. 39-43 en 57-60",url:"biologie/so-1/index.html"}
+  ,{id:"biologie-pw1",datum:"2026-10-30",instr:"Leren:\n\nThema 1, basisstof 1 t/m 5, 7 en 8 (basisstof 6 dus NIET)  (blz 14 t/m 62)\n\nLeren onderzoeken 1 en 3 (blz 63 t/m 69)\n\nDe samenvatting staat op blz 79 t/m 82 (BS 6 niet!). Een diagnostische toets staat in het digitale boek.\n\nToegestane hulpmiddelen:\n-blauwe of zwarte pen (niet uitgumbaar)\n-(kleur)potlood + gum\n-geodriehoek/liniaal\n-gewone rekenmachine\n-NE woordenboek",titel:"Proefwerk 1 · Thema 1 Planten en dieren",sub:"Basisstof 1-5, 7 en 8 · Leren onderzoeken 1 en 3",url:"biologie/proefwerk-1/index.html"}
  ]}
 ];
