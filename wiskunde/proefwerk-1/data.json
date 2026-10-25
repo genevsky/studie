@@ -1,0 +1,1134 @@
+{
+ "meta": {
+  "id": "wiskunde-pw1",
+  "type": "leer",
+  "brand": "Wiskunde",
+  "sub": "Toetsweek · H2 Getallen en bewerkingen",
+  "title": "Wiskunde H2",
+  "toets": "toets",
+  "lidw": "de",
+  "examDate": "2026-11-03"
+ },
+ "instructie": "H2 Getallen en bewerkingen: alle paragrafen van hoofdstuk 2 (2.1 t/m 2.5).",
+ "instructieVerbatim": "De leerstof voor de toetsweek:\n\nH2 Getallen en bewerkingen     : alle paragrafen van hoofdstuk 2\n\nMeenemen : gevulde etui, geodriehoek, (kleur)potloden en markeerstift.\n\nSucces met de voorbereidingen!",
+ "C": "Dit antwoord is niet uit het boek maar zelf geschreven. Check het met je boek of je docent.",
+ "extra": "Schrijf bij elke som de tussenstappen op papier, net als op de toets. Typ daarna alleen de uitkomst in.",
+ "topics": [
+  {
+   "id": "w1",
+   "nav": "2.1",
+   "title": "Bewerkingen en rekenvolgorde",
+   "pages": "blz. 58-63",
+   "bron": [
+    58,
+    59,
+    60,
+    61,
+    62,
+    63
+   ],
+   "doelen": [
+    "Je kunt de bewerkingen optellen, aftrekken, vermenigvuldigen en delen gebruiken bij berekeningen.",
+    "Je kunt de rekenvolgorde toepassen."
+   ],
+   "kern": [
+    "In het product 4 × 3 zijn 4 en 3 de **factoren**. In de som 8 + 11 zijn 8 en 11 de **termen**.",
+    "4 × 3 is een **product**. 28 : 7 is een **quotiënt**. 8 + 11 is een **som**. 18 − 5 is een **verschil**.",
+    "Bij elke deling hoort een vermenigvuldiging: 28 : 7 = 4, want 4 × 7 = 28.",
+    "Een vermenigvuldiging kun je met een vermenigvuldigingspunt noteren: 5 · 8 betekent 5 × 8.",
+    "**De rekenvolgorde:** 1 werk binnen de haakjes · 2 vermenigvuldigen en delen van links naar rechts · 3 optellen en aftrekken van links naar rechts.",
+    "Voorbeeld: 5 · (19 − 11) : 4 + 5 = 5 · 8 : 4 + 5 = 40 : 4 + 5 = 10 + 5 = **15**"
+   ],
+   "let": [
+    "2 + 7 · 5 = 2 + 35 = **37** (niet 45!): vermenigvuldigen gaat vóór optellen.",
+    "8 : 2 · 3 = 4 · 3 = **12**: vermenigvuldigen en delen van **links naar rechts**.",
+    "Schrijf elke tussenstap op een nieuwe regel. Let bij verhaalsommen op **overbodige informatie**."
+   ],
+   "beg": [
+    [
+     "product",
+     "De uitkomst van een vermenigvuldiging (4 × 3)."
+    ],
+    [
+     "quotiënt",
+     "De uitkomst van een deling (28 : 7)."
+    ],
+    [
+     "som",
+     "De uitkomst van een optelling (8 + 11)."
+    ],
+    [
+     "verschil",
+     "De uitkomst van een aftrekking (18 − 5)."
+    ],
+    [
+     "factoren",
+     "De getallen in een product (4 en 3 in 4 × 3)."
+    ],
+    [
+     "termen",
+     "De getallen in een som (8 en 11 in 8 + 11)."
+    ]
+   ],
+   "n": 12,
+   "qs": [
+    {
+     "k": "num",
+     "q": "Bereken het product van 8 en 6.",
+     "a": 48,
+     "tol": 0,
+     "bk": "blz. 92, leerdoelentest 1a"
+    },
+    {
+     "k": "num",
+     "q": "Bereken het quotiënt van 63 en 9.",
+     "a": 7,
+     "tol": 0,
+     "bk": "blz. 92, leerdoelentest 1b"
+    },
+    {
+     "k": "mc",
+     "q": "Van 8 · 12 zijn 8 en 12 de …",
+     "opts": [
+      "factoren",
+      "termen"
+     ],
+     "a": 0,
+     "bk": "blz. 92, leerdoelentest 1c"
+    },
+    {
+     "k": "mc",
+     "q": "Van 8 + 12 zijn 8 en 12 de …",
+     "opts": [
+      "termen",
+      "factoren"
+     ],
+     "a": 0,
+     "bk": "blz. 92, leerdoelentest 1c"
+    },
+    {
+     "k": "num",
+     "q": "Bereken het verschil van 47 en 29.",
+     "a": 18,
+     "tol": 0,
+     "bk": "blz. 92, leerdoelentest 1d"
+    },
+    {
+     "k": "num",
+     "q": "Margot koopt 4 kg bananen. In een kilogram gaan 7 bananen. De prijs van 1 kg bananen is €1,75. Hoeveel bananen heeft Margot gekocht?",
+     "a": 28,
+     "tol": 0,
+     "unit": "bananen",
+     "x": "4 · 7 = 28. De prijs is overbodige informatie.",
+     "bk": "blz. 92, leerdoelentest 2a"
+    },
+    {
+     "k": "num",
+     "q": "Ilse verkocht 900 kaarsen in dozen van 18 stuks, voor in totaal €150. Hoeveel kost een doos met kaarsen?",
+     "a": 3,
+     "tol": 0,
+     "unit": "euro",
+     "x": "900 : 18 = 50 dozen. €150 : 50 = €3 per doos.",
+     "bk": "blz. 92, leerdoelentest 2b"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 21 + 3 · 5 + 11 : 11",
+     "a": "37",
+     "bk": "blz. 92, leerdoelentest 3a"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 80 : 2 · 4 − (7 − 2)",
+     "a": "155",
+     "bk": "blz. 92, leerdoelentest 3b"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 63 : 7 + (18 − 7) · 3 + 24 : 6 · 2",
+     "a": "50",
+     "bk": "blz. 92, leerdoelentest 3c"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 500 − (250 − 3 · (150 − 125) : 5) − 75",
+     "a": "190",
+     "bk": "blz. 92, leerdoelentest 3d"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 85 − 3 · 7",
+     "a": "64",
+     "bk": "blz. 94, herhaling 3a"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 25 + 18 : 3",
+     "a": "31",
+     "bk": "blz. 94, herhaling 3b"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 60 : 3 · 2 + 18",
+     "a": "58",
+     "bk": "blz. 94, herhaling 3c"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 53 − (7 + 1) · 4 : (16 − 16 : 2)",
+     "a": "49",
+     "bk": "blz. 94, herhaling 3d"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 20 · 3 − 38 : (7 · (8 − 3) − 2 · 8)",
+     "a": "58",
+     "bk": "blz. 94, herhaling 3e"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: ((5 − 3) · 10 − 8) : (11 − 5)",
+     "a": "2",
+     "bk": "blz. 94, herhaling 3f"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 2 + 7 · 5",
+     "a": "37",
+     "bk": "blz. 61"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 8 : 2 · 3",
+     "a": "12",
+     "bk": "blz. 62"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 80 − 2 · (9 + 3) + 14",
+     "a": "70",
+     "bk": "blz. 62"
+    },
+    {
+     "k": "num",
+     "q": "Een jaar heeft 12 maanden. Cindy is 180 maanden oud. Hoeveel jaar oud is Cindy?",
+     "a": 15,
+     "tol": 0,
+     "unit": "jaar",
+     "bk": "blz. 94, herhaling 2b"
+    },
+    {
+     "k": "num",
+     "q": "Cindy verdient €85 per maand. Hoeveel verdient ze per jaar?",
+     "a": 1020,
+     "tol": 0,
+     "unit": "euro",
+     "bk": "blz. 94, herhaling 2d"
+    },
+    {
+     "k": "order",
+     "q": "Zet de stappen van de rekenvolgorde op volgorde.",
+     "items": [
+      "Werk binnen de haakjes.",
+      "Vermenigvuldigen en delen van links naar rechts.",
+      "Optellen en aftrekken van links naar rechts."
+     ],
+     "bk": "blz. 62"
+    },
+    {
+     "k": "gen",
+     "g": "volgorde",
+     "q": "",
+     "bk": "blz. 62"
+    },
+    {
+     "k": "gen",
+     "g": "volgorde",
+     "q": "",
+     "bk": "blz. 62"
+    },
+    {
+     "k": "gen",
+     "g": "volgorde",
+     "q": "",
+     "bk": "blz. 62"
+    },
+    {
+     "k": "gen",
+     "g": "volgorde",
+     "q": "",
+     "bk": "blz. 62"
+    }
+   ]
+  },
+  {
+   "id": "w2",
+   "nav": "2.2",
+   "title": "Breuken",
+   "pages": "blz. 64-69",
+   "bron": [
+    64,
+    65,
+    66,
+    67,
+    68,
+    69
+   ],
+   "doelen": [
+    "Je kunt breuken optellen en aftrekken.",
+    "Je kunt breuken vermenigvuldigen."
+   ],
+   "kern": [
+    "In de breuk {8/11} is 8 de **teller** en 11 de **noemer**.",
+    "Breuken met dezelfde noemer zijn **gelijknamig**. Om breuken op te tellen of af te trekken, maak je ze eerst gelijknamig: {8/15} + {2/3} = {8/15} + {10/15} = {18/15} = {6/5} = 1{1/5}",
+    "Om 3{1/6} − {1/3} te berekenen, breng je bij 3{1/6} eerst de **helen binnen de breuk**: 3{1/6} − {1/3} = {19/6} − {2/6} = {17/6} = 2{5/6}",
+    "Bij het vermenigvuldigen van breuken: **breuk × breuk = (teller × teller) / (noemer × noemer)**. 1{1/3} · {3/5} = {4/3} · {3/5} = {12/15} = {4/5}",
+    "{2/3} · 60 = {2/3} · {60/1} = {120/3} = 40",
+    "{3/4} **deel van** een half is {3/4} · {1/2} = {3/8} (deel van = keer)",
+    "Vereenvoudig de uitkomst zo ver mogelijk. De helen eruit halen is niet verplicht."
+   ],
+   "let": [
+    "Bij **optellen en aftrekken** maak je gelijknamig; bij **vermenigvuldigen niet**.",
+    "Bij vermenigvuldigen met een gemengd getal: **eerst de helen binnen de breuk brengen**.",
+    "Kies als nieuwe noemer het kleinste getal dat in beide tafels zit: {3/10} + {8/15} → noemer 30."
+   ],
+   "beg": [
+    [
+     "teller",
+     "Het getal boven de breukstreep."
+    ],
+    [
+     "noemer",
+     "Het getal onder de breukstreep."
+    ],
+    [
+     "gelijknamig",
+     "Breuken met dezelfde noemer zijn …"
+    ]
+   ],
+   "n": 12,
+   "qs": [
+    {
+     "k": "calc",
+     "q": "Bereken: {8/9} − {5/9}",
+     "a": "1/3",
+     "bk": "blz. 92, leerdoelentest 4a"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 1{2/5} + 2{3/10}",
+     "a": "37/10",
+     "bk": "blz. 92, leerdoelentest 4b",
+     "x": "37/10 = 3 7/10 (helen eruit halen mag, maar hoeft niet)."
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 4{1/5} − 2{1/3}",
+     "a": "28/15",
+     "bk": "blz. 92, leerdoelentest 4c",
+     "x": "28/15 = 1 13/15 (helen eruit halen mag, maar hoeft niet)."
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: {5/12} − {5/18} + 1{1/6}",
+     "a": "47/36",
+     "bk": "blz. 92, leerdoelentest 4d",
+     "x": "47/36 = 1 11/36 (helen eruit halen mag, maar hoeft niet)."
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: {2/3} · {5/12}",
+     "a": "5/18",
+     "bk": "blz. 92, leerdoelentest 5a"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: {2/3} + {5/12}",
+     "a": "13/12",
+     "bk": "blz. 92, leerdoelentest 5b",
+     "x": "13/12 = 1 1/12 (helen eruit halen mag, maar hoeft niet)."
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 1{1/5} · {5/7}",
+     "a": "6/7",
+     "bk": "blz. 92, leerdoelentest 5c"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 1{1/5} + {5/7}",
+     "a": "67/35",
+     "bk": "blz. 92, leerdoelentest 5d",
+     "x": "67/35 = 1 32/35 (helen eruit halen mag, maar hoeft niet)."
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: {5/6} · 42",
+     "a": "35",
+     "bk": "blz. 92, leerdoelentest 5e"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 42 − 3{5/6}",
+     "a": "229/6",
+     "bk": "blz. 92, leerdoelentest 5f",
+     "x": "229/6 = 38 1/6 (helen eruit halen mag, maar hoeft niet)."
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 1{1/14} − 1{1/4} · {4/7}",
+     "a": "5/14",
+     "bk": "blz. 92, leerdoelentest 5g"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: (1{1/3} − {5/6}) · {3/4}",
+     "a": "3/8",
+     "bk": "blz. 92, leerdoelentest 5h"
+    },
+    {
+     "k": "num",
+     "q": "Bereken: {1/5} deel van 80",
+     "a": 16,
+     "tol": 0,
+     "bk": "blz. 92, leerdoelentest 6a"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: een kwart van {7/12}",
+     "a": "7/48",
+     "bk": "blz. 92, leerdoelentest 6b"
+    },
+    {
+     "k": "num",
+     "q": "Bereken: {3/4} deel van 160",
+     "a": 120,
+     "tol": 0,
+     "bk": "blz. 92, leerdoelentest 6c"
+    },
+    {
+     "k": "num",
+     "q": "Bereken: een achtste deel van 120",
+     "a": 15,
+     "tol": 0,
+     "bk": "blz. 92, leerdoelentest 6d"
+    },
+    {
+     "k": "num",
+     "q": "In een concertzaal kunnen 600 mensen. De zaal is voor {2/3} deel bezet met volwassenen en voor {1/4} deel met kinderen. Hoeveel volwassenen zijn er?",
+     "a": 400,
+     "tol": 0,
+     "bk": "blz. 92, leerdoelentest 7a"
+    },
+    {
+     "k": "num",
+     "q": "Zelfde concertzaal (600 plaatsen, {2/3} volwassenen, {1/4} kinderen). Hoeveel lege stoelen zijn er?",
+     "a": 50,
+     "tol": 0,
+     "x": "Kinderen: {1/4} · 600 = 150. 600 − 400 − 150 = 50.",
+     "bk": "blz. 92, leerdoelentest 7b"
+    },
+    {
+     "k": "num",
+     "q": "Zelfde concertzaal: volwassenen betalen €8, kinderen de helft. Hoeveel euro hebben alle aanwezigen samen betaald?",
+     "a": 3800,
+     "tol": 0,
+     "unit": "euro",
+     "x": "400 · 8 + 150 · 4 = 3200 + 600 = €3800.",
+     "bk": "blz. 92, leerdoelentest 7c"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: {3/10} + {5/6}",
+     "a": "17/15",
+     "bk": "blz. 94, herhaling 4a",
+     "x": "17/15 = 1 2/15 (helen eruit halen mag, maar hoeft niet)."
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: {5/12} + 1{1/6}",
+     "a": "19/12",
+     "bk": "blz. 94, herhaling 4b",
+     "x": "19/12 = 1 7/12 (helen eruit halen mag, maar hoeft niet)."
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 2{2/5} − 1{1/8}",
+     "a": "51/40",
+     "bk": "blz. 94, herhaling 4c",
+     "x": "51/40 = 1 11/40 (helen eruit halen mag, maar hoeft niet)."
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 5 − 2{1/3}",
+     "a": "8/3",
+     "bk": "blz. 94, herhaling 4e",
+     "x": "8/3 = 2 2/3 (helen eruit halen mag, maar hoeft niet)."
+    },
+    {
+     "k": "gen",
+     "g": "breuk_op",
+     "q": "",
+     "bk": "blz. 65-66"
+    },
+    {
+     "k": "gen",
+     "g": "breuk_op",
+     "q": "",
+     "bk": "blz. 65-66"
+    },
+    {
+     "k": "gen",
+     "g": "breuk_op",
+     "q": "",
+     "bk": "blz. 65-66"
+    },
+    {
+     "k": "gen",
+     "g": "breuk_keer",
+     "q": "",
+     "bk": "blz. 68"
+    },
+    {
+     "k": "gen",
+     "g": "breuk_keer",
+     "q": "",
+     "bk": "blz. 68"
+    }
+   ]
+  },
+  {
+   "id": "w3",
+   "nav": "2.3",
+   "title": "Negatieve getallen",
+   "pages": "blz. 70-77",
+   "bron": [
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77
+   ],
+   "doelen": [
+    "Je kunt positieve en negatieve getallen in volgorde van grootte zetten.",
+    "Je kunt optellen en aftrekken met negatieve getallen."
+   ],
+   "kern": [
+    "Negatieve getallen zijn getallen kleiner dan nul. Je herkent ze aan het minteken ervoor. Op de getallenlijn staan de negatieve getallen **links** van 0 en de positieve getallen **rechts** van 0. Het getal **0 is niet positief en niet negatief**.",
+    "−4 < 0 betekent −4 is **kleiner dan** 0. −4 > −6 betekent −4 is **groter dan** −6.",
+    "−8 + 2 = −6 · −7 − 5 = −12 · 8 − 13 = −5",
+    "**+ − = −**: 7 + −5 = 7 − 5 = 2",
+    "**− − = +**: −13 − −8 = −13 + 8 = −5",
+    "2 + −8 − −14 = 2 − 8 + 14 = −6 + 14 = 8",
+    "−9 − (−5 − 8) = −9 − −13 = −9 + 13 = 4"
+   ],
+   "let": [
+    "Bij negatieve getallen is het getal **dichter bij 0 het grootste**: −2 > −5 en −2{1/4} > −2{1/2}.",
+    "Tip: van **<** kun je een **K** van Kleiner maken.",
+    "Eerst haakjes: −9 − (−5 − 8) = −9 − −13 = 4."
+   ],
+   "n": 12,
+   "qs": [
+    {
+     "k": "mc",
+     "q": "Vul in: −61 … −59",
+     "opts": [
+      "<",
+      ">",
+      "="
+     ],
+     "a": 0,
+     "bk": "blz. 93, leerdoelentest 8a"
+    },
+    {
+     "k": "mc",
+     "q": "Vul in: −33 … 12",
+     "opts": [
+      "<",
+      ">",
+      "="
+     ],
+     "a": 0,
+     "bk": "blz. 93, leerdoelentest 8b"
+    },
+    {
+     "k": "mc",
+     "q": "Vul in: 3{1/3} … 3{1/5}",
+     "opts": [
+      "<",
+      ">",
+      "="
+     ],
+     "a": 1,
+     "bk": "blz. 93, leerdoelentest 8c"
+    },
+    {
+     "k": "mc",
+     "q": "Vul in: −1{4/5} … −1{3/4}",
+     "opts": [
+      "<",
+      ">",
+      "="
+     ],
+     "a": 0,
+     "bk": "blz. 93, leerdoelentest 8d"
+    },
+    {
+     "k": "mc",
+     "q": "Vul in: −5{1/4} … −5,25",
+     "opts": [
+      "<",
+      ">",
+      "="
+     ],
+     "a": 2,
+     "bk": "blz. 93, leerdoelentest 8e"
+    },
+    {
+     "k": "mc",
+     "q": "Vul in: 0 … −11{3/4}",
+     "opts": [
+      "<",
+      ">",
+      "="
+     ],
+     "a": 1,
+     "bk": "blz. 93, leerdoelentest 8f"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 5 − 9",
+     "a": "-4",
+     "bk": "blz. 93, leerdoelentest 9a"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −5 + 9",
+     "a": "4",
+     "bk": "blz. 93, leerdoelentest 9b"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −5 − 9",
+     "a": "-14",
+     "bk": "blz. 93, leerdoelentest 9c"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 3 − 17",
+     "a": "-14",
+     "bk": "blz. 93, leerdoelentest 9d"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −3 + 17",
+     "a": "14",
+     "bk": "blz. 93, leerdoelentest 9e"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −3 − 17",
+     "a": "-20",
+     "bk": "blz. 93, leerdoelentest 9f"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 5 + −3",
+     "a": "2",
+     "bk": "blz. 93, leerdoelentest 10a"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −3 − −1",
+     "a": "-2",
+     "bk": "blz. 93, leerdoelentest 10b"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −11 − −3",
+     "a": "-8",
+     "bk": "blz. 93, leerdoelentest 10c"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 13 + −7",
+     "a": "6",
+     "bk": "blz. 93, leerdoelentest 10d"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −13 − −27",
+     "a": "14",
+     "bk": "blz. 93, leerdoelentest 10e"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −15 − 38",
+     "a": "-53",
+     "bk": "blz. 93, leerdoelentest 10f"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −3 + 19 − −41",
+     "a": "57",
+     "bk": "blz. 93, leerdoelentest 10g"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 3 − (−21 + −12)",
+     "a": "36",
+     "bk": "blz. 93, leerdoelentest 10h"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −7 − (−8 − −2)",
+     "a": "-1",
+     "bk": "blz. 93, leerdoelentest 10i"
+    },
+    {
+     "k": "order",
+     "q": "Zet van klein naar groot.",
+     "items": [
+      "−1000",
+      "−{5/4}",
+      "−1",
+      "{2/3}",
+      "{12/5}",
+      "2{1/2}"
+     ],
+     "bk": "blz. 71, opdr. 35"
+    },
+    {
+     "k": "num",
+     "q": "Op Antarctica was het −89 °C, in Death Valley 54 °C. Hoeveel graden is het verschil?",
+     "a": 143,
+     "tol": 0,
+     "unit": "°C",
+     "x": "54 − −89 = 54 + 89 = 143.",
+     "bk": "blz. 76"
+    },
+    {
+     "k": "tf",
+     "q": "0 is een positief getal.",
+     "a": false,
+     "x": "0 is niet positief en niet negatief.",
+     "bk": "blz. 70"
+    },
+    {
+     "k": "gen",
+     "g": "neg_op",
+     "q": "",
+     "bk": "blz. 74-75"
+    },
+    {
+     "k": "gen",
+     "g": "neg_op",
+     "q": "",
+     "bk": "blz. 74-75"
+    },
+    {
+     "k": "gen",
+     "g": "neg_op",
+     "q": "",
+     "bk": "blz. 74-75"
+    },
+    {
+     "k": "gen",
+     "g": "vergelijk",
+     "q": "",
+     "bk": "blz. 71"
+    },
+    {
+     "k": "gen",
+     "g": "vergelijk",
+     "q": "",
+     "bk": "blz. 71"
+    }
+   ]
+  },
+  {
+   "id": "w4",
+   "nav": "2.4",
+   "title": "Negatieve getallen vermenigvuldigen en delen",
+   "pages": "blz. 78-82",
+   "bron": [
+    78,
+    79,
+    80,
+    81,
+    82
+   ],
+   "doelen": [
+    "Je kunt vermenigvuldigen met negatieve getallen, ook in combinatie met de rekenvolgorde.",
+    "Je kunt delen met negatieve getallen, ook in combinatie met de rekenvolgorde."
+   ],
+   "kern": [
+    "8 · 7 = 56 · 8 · −7 = −56 · −6 · 3 = −18 · −3 · −12 = 36",
+    "18 : 3 = 6 · 36 : −12 = −3 · −56 : 7 = −8 · −56 : −7 = 8",
+    "**+ · + = +** · **+ · − = −** · **− · + = −** · **− · − = +** (bij delen precies hetzelfde)",
+    "Bij 5 − 6 · −3 heb je te maken met twee verschillende mintekens: de **aftrekmin** en de **negatieve min**.",
+    "Denk ook bij negatieve getallen aan de rekenvolgorde: 5 − 6 · −3 = 5 − −18 = 5 + 18 = **23** · −15 − 18 : −3 = −15 − −6 = −15 + 6 = **−9**"
+   ],
+   "let": [
+    "−5 − 3 is een **aftrekking** (= −8), −5 · −3 is een **vermenigvuldiging** (= 15).",
+    "Meer factoren? Tel de minnen: **even** aantal → positief, **oneven** → negatief.",
+    "Een getal keer 0 is 0, en 0 gedeeld door een getal is 0."
+   ],
+   "n": 12,
+   "qs": [
+    {
+     "k": "calc",
+     "q": "Bereken: −8 · −3",
+     "a": "24",
+     "bk": "blz. 93, leerdoelentest 11a"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −8 − 3",
+     "a": "-11",
+     "bk": "blz. 93, leerdoelentest 11b"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −5 · 4 · −6",
+     "a": "120",
+     "bk": "blz. 93, leerdoelentest 11c"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −5 + 4 − 6",
+     "a": "-7",
+     "bk": "blz. 93, leerdoelentest 11d"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −4 − −12",
+     "a": "8",
+     "bk": "blz. 93, leerdoelentest 11e"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −4 · −12",
+     "a": "48",
+     "bk": "blz. 93, leerdoelentest 11f"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −25 − 5 · 3 − 1",
+     "a": "-41",
+     "bk": "blz. 93, leerdoelentest 12a"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 12 · −6 − 8 · −2",
+     "a": "-56",
+     "bk": "blz. 93, leerdoelentest 12b"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −21 + (2 − 12) · −8 + 3",
+     "a": "62",
+     "bk": "blz. 93, leerdoelentest 12c"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: (−17 + 8) · −5 − 6 · −3",
+     "a": "63",
+     "bk": "blz. 93, leerdoelentest 12d"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 17 − 9 : −3",
+     "a": "20",
+     "bk": "blz. 93, leerdoelentest 13a"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: (−17 − 19) : −4 − 6",
+     "a": "3",
+     "bk": "blz. 93, leerdoelentest 13b"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −60 : (3 · −4) − 18 : 2",
+     "a": "-4",
+     "bk": "blz. 93, leerdoelentest 13c"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 27 : −3 · (6 − 2 · 5 − 7)",
+     "a": "99",
+     "bk": "blz. 93, leerdoelentest 13d"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 5 − 6 · −3",
+     "a": "23",
+     "bk": "blz. 89"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −15 − 18 : −3",
+     "a": "-9",
+     "bk": "blz. 89"
+    },
+    {
+     "k": "mc",
+     "q": "Wat is het teken van de uitkomst van −2 · −3 · −1 · −5 · −4?",
+     "opts": [
+      "negatief (oneven aantal minnen)",
+      "positief (even aantal minnen)"
+     ],
+     "a": 0,
+     "bk": "blz. 79, opdr. 61"
+    },
+    {
+     "k": "gen",
+     "g": "neg_keer",
+     "q": "",
+     "bk": "blz. 79-81"
+    },
+    {
+     "k": "gen",
+     "g": "neg_keer",
+     "q": "",
+     "bk": "blz. 79-81"
+    },
+    {
+     "k": "gen",
+     "g": "neg_keer",
+     "q": "",
+     "bk": "blz. 79-81"
+    },
+    {
+     "k": "gen",
+     "g": "neg_keer",
+     "q": "",
+     "bk": "blz. 79-81"
+    }
+   ]
+  },
+  {
+   "id": "w5",
+   "nav": "2.5",
+   "title": "Negatieve breuken",
+   "pages": "blz. 83-87",
+   "bron": [
+    83,
+    84,
+    85,
+    86,
+    87
+   ],
+   "doelen": [
+    "Je kunt berekeningen maken waarin de deelstreep voorkomt.",
+    "Je kunt berekeningen maken met negatieve breuken."
+   ],
+   "kern": [
+    "Je kunt een deling met een deelstreep noteren. {27/−9} betekent 27 : −9, dus {27/−9} = −3. En zo is {−80/−16} = 5.",
+    "Bij {24 − 30/5 − 6} bereken je eerst de teller en de noemer apart. Dus {24 − 30/5 − 6} = {−6/−1} = 6.",
+    "Bij het vereenvoudigen van breuken laat je **geen minteken in de teller of de noemer** staan. Dus {−2/5} = −{2/5}, {4/−6} = −{4/6} = −{2/3} en {−4/−8} = {4/8} = {1/2}.",
+    "−{2/3} + {5/8} = −{16/24} + {15/24} = −{1/24} · −{2/3} − {2/9} = −{6/9} − {2/9} = −{8/9}",
+    "−2{2/3} + 1{1/5} = −{8/3} + {6/5} = −{40/15} + {18/15} = −{22/15} = −1{7/15}",
+    "−{3/5} · {2/7} = −{6/35} · −1{1/6} · −{2/7} = −{7/6} · −{2/7} = {14/42} = {1/3}"
+   ],
+   "let": [
+    "Met de deelstreep: **eerst boven en onder apart uitrekenen**, dan delen.",
+    "Een negatief gemengd getal: −2{2/3} = −{8/3} (het minteken hoort bij het hele getal).",
+    "Mintekens in teller én noemer heffen elkaar op: {−4/−8} = {1/2}."
+   ],
+   "n": 12,
+   "qs": [
+    {
+     "k": "calc",
+     "q": "Bereken: {−24 − 16/2 · −4}",
+     "a": "5",
+     "bk": "blz. 93, leerdoelentest 14a"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: {21 + −21/−3 − 10}",
+     "a": "0",
+     "bk": "blz. 93, leerdoelentest 14b"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: {−18/3} · 2 − {9 − 4/−5 : 1}",
+     "a": "-11",
+     "bk": "blz. 93, leerdoelentest 14c"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 4 · {−28/7} − ({16/−2} − 2) · −1",
+     "a": "-26",
+     "bk": "blz. 93, leerdoelentest 14d"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −{5/9} + {1/4}",
+     "a": "-11/36",
+     "bk": "blz. 93, leerdoelentest 15a"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −{4/5} − {2/3}",
+     "a": "-22/15",
+     "bk": "blz. 93, leerdoelentest 15b",
+     "x": "−22/15 = −1 7/15 (helen eruit halen mag, maar hoeft niet)."
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −1{2/3} + 4{1/2}",
+     "a": "17/6",
+     "bk": "blz. 93, leerdoelentest 15c",
+     "x": "17/6 = 2 5/6 (helen eruit halen mag, maar hoeft niet)."
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 1{2/7} − 5{1/3}",
+     "a": "-85/21",
+     "bk": "blz. 93, leerdoelentest 15d",
+     "x": "−85/21 = −4 1/21 (helen eruit halen mag, maar hoeft niet)."
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −7{1/3} − 3{1/5}",
+     "a": "-158/15",
+     "bk": "blz. 93, leerdoelentest 15e",
+     "x": "−158/15 = −10 8/15 (helen eruit halen mag, maar hoeft niet)."
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: 6 − 13{1/5}",
+     "a": "-36/5",
+     "bk": "blz. 93, leerdoelentest 15f",
+     "x": "−36/5 = −7 1/5 (helen eruit halen mag, maar hoeft niet)."
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −{3/7} · {2/5}",
+     "a": "-6/35",
+     "bk": "blz. 93, leerdoelentest 16a"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −{3/7} + {2/5}",
+     "a": "-1/35",
+     "bk": "blz. 93, leerdoelentest 16b"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −1{1/6} · −{2/7}",
+     "a": "1/3",
+     "bk": "blz. 93, leerdoelentest 16c"
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: −1{1/6} − {2/7}",
+     "a": "-61/42",
+     "bk": "blz. 93, leerdoelentest 16d",
+     "x": "−61/42 = −1 19/42 (helen eruit halen mag, maar hoeft niet)."
+    },
+    {
+     "k": "calc",
+     "q": "Bereken: ({−18/−3} − 8) · −4",
+     "a": "8",
+     "bk": "blz. 89"
+    },
+    {
+     "k": "calc",
+     "q": "Vereenvoudig: {−18/27}",
+     "a": "-2/3",
+     "bk": "blz. 84"
+    },
+    {
+     "k": "calc",
+     "q": "Vereenvoudig: {−16/−20}",
+     "a": "4/5",
+     "bk": "blz. 84"
+    },
+    {
+     "k": "gen",
+     "g": "deelstreep",
+     "q": "",
+     "bk": "blz. 83"
+    },
+    {
+     "k": "gen",
+     "g": "deelstreep",
+     "q": "",
+     "bk": "blz. 83"
+    },
+    {
+     "k": "gen",
+     "g": "neg_breuk",
+     "q": "",
+     "bk": "blz. 85"
+    },
+    {
+     "k": "gen",
+     "g": "neg_breuk",
+     "q": "",
+     "bk": "blz. 85"
+    },
+    {
+     "k": "gen",
+     "g": "neg_breuk",
+     "q": "",
+     "bk": "blz. 85"
+    }
+   ]
+  }
+ ],
+ "bronnen": {
+  "pages": [
+   56,
+   57,
+   58,
+   59,
+   60,
+   61,
+   62,
+   63,
+   64,
+   65,
+   66,
+   67,
+   68,
+   69,
+   70,
+   71,
+   72,
+   73,
+   74,
+   75,
+   76,
+   77,
+   78,
+   79,
+   80,
+   81,
+   82,
+   83,
+   84,
+   85,
+   86,
+   87,
+   88,
+   89,
+   90,
+   91,
+   92,
+   93,
+   94,
+   95,
+   96,
+   97,
+   98,
+   99
+  ]
+ }
+}

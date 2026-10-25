@@ -4,7 +4,8 @@
 const D=window.EXAM,M=D.meta,T=D.topics;
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const md=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');
+/* md: **vet** en {a/b} als staande breuk */
+const md=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\{([^{}\/]+)\/([^{}]+)\}/g,'<span class="fr"><i>$1</i><i>$2</i></span>');
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const view=$('#view');document.title=M.title;$('#brand').textContent=M.brand;$('#sub').textContent=M.sub;
 const TOETS=M.toets||'toets',LW=M.lidw||'de',HT=LW+' '+TOETS; /* lidw: 'het' proefwerk, 'de' toets */
@@ -29,7 +30,17 @@ function ready(){const avg=T.reduce((a,t)=>a+mastery(t.id).p,0)/T.length;return 
 const save=()=>{S.pct=ready();const all=T.flatMap(t=>scored(t.id));S.stats={seen:all.filter(q=>S.lb[q.key]).length,total:all.length,unit:'vragen'};S.ts=Date.now();store.set(S);header()};
 function header(){$('#lvlName').textContent='Klaar: '+ready()+'%';$('#lvlBar').style.width=ready()+'%'}
 const grade=p=>Math.max(1,Math.round((1+9*p)*10)/10).toFixed(1).replace('.',',');
-const nrm=s=>String(s||'').trim().toLowerCase().replace(/[’‘]/g,"'").replace(/[.!?,;:]+$/,'').replace(/\s+/g,' ');
+const nrm=s=>String(s||'').trim().toLowerCase().replace(/[’‘]/g,"'").replace(/'\s+/g,"'").replace(/[.!?,;:]+$/,'').replace(/\s+/g,' ');
+const nrmS=s=>nrm(s).replace(/[,.!?;:]/g,'').replace(/\s+/g,' ').trim(); /* streng: alleen leestekens tellen niet */
+const deacc=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/œ/g,'oe');
+/* breuken: '-1 1/18', '−19/18', '2,75', '7' -> {n,d,simple} of null */
+const gcd=(a,b)=>{a=Math.abs(a);b=Math.abs(b);while(b){[a,b]=[b,a%b]}return a};
+function frac(s){s=String(s).trim().replace(/[−–]/g,'-').replace(/\s+/g,' ').replace(/ ?\/ ?/g,'/');let m;
+  if((m=s.match(/^(-?)(\d+)$/)))return{n:(m[1]?-1:1)*+m[2],d:1,simple:true};
+  if((m=s.match(/^(-?)(\d+)[.,](\d+)$/))){const d=10**m[3].length,n=+m[2]*d+ +m[3];return{n:(m[1]?-1:1)*n,d,simple:true}}
+  if((m=s.match(/^(-?)(\d+)\/(\d+)$/))&&+m[3])return{n:(m[1]?-1:1)*+m[2],d:+m[3],simple:gcd(+m[2],+m[3])===1||+m[2]===0};
+  if((m=s.match(/^(-?)(\d+) (\d+)\/(\d+)$/))&&+m[4])return{n:(m[1]?-1:1)*(+m[2]*+m[4]+ +m[3]),d:+m[4],simple:gcd(+m[3],+m[4])===1&&+m[3]<+m[4]};
+  return null}
 const lev=(a,b)=>{const m=a.length,n=b.length;let p=[...Array(n+1).keys()];for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[n]};
 const near=(a,list)=>{a=nrm(a).replace(/^(de|het|een) /,'');return list.map(w=>nrm(w).replace(/^(de|het|een) /,'')).some(w=>w===a||(w.length>5&&lev(w,a)<=1))};
 const num=s=>parseFloat(String(s).replace(',','.').replace(/[^0-9.\-]/g,''));
@@ -80,7 +91,7 @@ V.start=function(){const P=plan();
 V.leer=function(id){const t=T.find(x=>x.id===id);
   if(!t){view.innerHTML=`<h2>Leren</h2><p class="small mut">Per onderwerp: wat je moet kunnen, de kern uit de samenvatting van je boek en de belangrijkste afbeeldingen.</p>
     <div class="lr-list">${T.map(t=>`<button class="gm" data-go="leer:${t.id}"><em>${dot(t.id)} ${esc(t.pages)}</em><b>${esc(tname(t))}</b></button>`).join('')}</div>
-    <div class="btns"><button class="btn ghost" data-go="bron">Boekpagina’s en instructie</button></div>`;return act()}
+    <div class="btns"><button class="btn ghost" data-go="bron">${esc(D.bronLabel||"Boekpagina’s en instructie")}</button></div>`;return act()}
   const i=T.indexOf(t),nx=T[i+1];
   view.innerHTML=`<button class="back-link" data-go="leer">← Alle onderwerpen</button>
   <section class="hero"><div class="eyebrow">${esc(t.nav)} · ${esc(t.pages)}</div><h1>${esc(t.title)}</h1></section>
@@ -88,39 +99,53 @@ V.leer=function(id){const t=T.find(x=>x.id===id);
   <section class="card stack"><div class="eyebrow">De kern</div><ul class="lr-kern">${t.kern.map(p=>`<li>${md(p)}</li>`).join('')}</ul></section>
   ${(t.fig||[]).map(f=>`<figure class="card lr-fig"><a href="${esc(f[0])}" target="_blank" rel="noopener"><img src="${esc(f[0])}" alt="${esc(f[1])}" loading="lazy"></a><figcaption class="small mut">${esc(f[1])}</figcaption></figure>`).join('')}
   ${t.let&&t.let.length?`<section class="card stack lr-let"><div class="eyebrow">Let op</div><ul class="tipl">${t.let.map(p=>`<li>${md(p)}</li>`).join('')}</ul></section>`:''}
-  <div class="btns"><button class="btn" data-go="oef:${t.id}">Oefen dit onderwerp</button><button class="btn ghost" data-go="bron:${t.id}">Boek ${esc(t.pages)}</button></div>
+  <div class="btns"><button class="btn" data-go="oef:${t.id}">Oefen dit onderwerp</button>${t.bron&&t.bron.length?`<button class="btn ghost" data-go="bron:${t.id}">${esc(t.bronTitle||'Boek '+t.pages)}</button>`:''}</div>
   ${nx?`<button class="back-link" data-go="leer:${nx.id}">Volgende: ${esc(tname(nx))} →</button>`:''}`;
   act()};
 
 /* ---- BRONNEN (via Leren) ---- */
-V.bron=function(id){const t=T.find(x=>x.id===id),pages=t?t.bron:D.bronnen.pages;
-  view.innerHTML=`<button class="back-link" data-go="leer${t?':'+t.id:''}">← Terug</button><h2>${t?'Boek '+esc(t.pages):'Bronnen'}</h2>
+/* bron-items: paginanummer (bronnen/pNN.jpg) of {src, cap}; D.bronnen.files: [{title, href, note}] */
+const bitem=p=>typeof p==='number'?{src:'bronnen/p'+p+'.jpg',cap:'Blz. '+p}:p;
+V.bron=function(id){const t=T.find(x=>x.id===id),B=D.bronnen||{},pages=(t?t.bron:B.pages||[]).map(bitem);
+  view.innerHTML=`<button class="back-link" data-go="leer${t?':'+t.id:''}">← Terug</button><h2>${t?esc(t.bronTitle||'Boek '+t.pages):'Bronnen'}</h2>
   ${t?'':`<section class="card stack"><div class="eyebrow">Instructie van de docent</div><pre class="instr">${esc(D.instructieVerbatim||D.instructie)}</pre></section>`}
-  ${pages.map(p=>`<figure class="card lr-fig"><a href="bronnen/p${p}.jpg" target="_blank" rel="noopener"><img class="page" loading="lazy" src="bronnen/p${p}.jpg" alt="Blz. ${p}"></a><figcaption class="small mut">Blz. ${p}</figcaption></figure>`).join('')}`;
+  ${!t&&B.files&&B.files.length?`<section class="card stack"><div class="eyebrow">Bestanden</div>${B.files.map(f=>`<div class="lr-row"><span>${esc(f.title)}${f.note?`<br><small class="mut">${esc(f.note)}</small>`:''}</span><a class="btn ghost lr-sm" href="${esc(f.href)}" target="_blank" rel="noopener">Open</a></div>`).join('')}</section>`:''}
+  ${pages.map(p=>`<figure class="card lr-fig"><a href="${esc(p.src)}" target="_blank" rel="noopener"><img class="page" loading="lazy" src="${esc(p.src)}" alt="${esc(p.cap)}"></a><figcaption class="small mut">${esc(p.cap)}</figcaption></figure>`).join('')}`;
   act()};
 
 /* ---- vraagtypes: elk rendert in box en roept done(score 0..1) aan ---- */
 function part(p,box,done){
-  const head=(p.ctx?`<div class="quote lr-ctx">${esc(p.ctx)}</div>`:'')+(p.img?`<a href="${esc(p.img)}" target="_blank" rel="noopener"><img class="lr-qimg" src="${esc(p.img)}" alt=""></a>`:'');
+  /* gen: een verse som uit window.LEER_GEN (per module in gen.js) */
+  if(p.k==='gen'){const g=window.LEER_GEN[p.g]();window.__lastGen=g;return part(Object.assign({bk:p.bk},g,{key:p.key}),box,done)}
+  const T0=p.txt&&D.texts&&D.texts[p.txt],head=(T0?`<details class="lr-txt" ${p.txtOpen===false?'':'open'}><summary>Tekst: ${esc(T0.title)}</summary>${T0.src?`<p class="small mut">${esc(T0.src)}</p>`:''}${T0.body.map(x=>/^## /.test(x)?`<h4>${esc(x.slice(3))}</h4>`:`<p>${md(x)}</p>`).join('')}</details>`:'')+(p.ctx?`<div class="quote lr-ctx">${esc(p.ctx)}</div>`:'')+(p.img?`<a href="${esc(p.img)}" target="_blank" rel="noopener"><img class="lr-qimg" src="${esc(p.img)}" alt=""></a>`:'');
   const after=()=>(p.x?`<small>${esc(p.x)}</small>`:'')+(p.check?`<small class="mut">${esc(D.C)}</small>`:'')+(p.bk?`<small class="mut">Boek: ${esc(p.bk)}</small>`:'');
   const fb=(ok,html)=>box.insertAdjacentHTML('beforeend',`<div class="fb ${ok===true?'good':ok===false?'bad':''}">${html}${after()}</div>`);
-  const Q=`${head}<p class="q"><b>${esc(p.q)}</b></p>`;
-  if(p.k==='mc'){const o=shuffle(p.opts.map((t,i)=>({t,i})));box.innerHTML=`${Q}<div class="opts">${o.map((x,j)=>`<button class="opt" data-j="${j}">${esc(x.t)}</button>`).join('')}</div>`;
-    on('.opt',e=>{const g=o[+e.dataset.j].i===p.a;$$('.opt',box).forEach((b,j)=>{b.disabled=true;if(o[j].i===p.a)b.classList.add('right')});if(!g)e.classList.add('wrong');fb(g,g?'Goed!':'Het goede antwoord: <b>'+esc(p.opts[p.a])+'</b>');done(g?1:0)},box);return}
+  const Q=`${head}<p class="q"><b>${md(p.q)}</b></p>`;
+  if(p.k==='mc'){const o=shuffle(p.opts.map((t,i)=>({t,i})));box.innerHTML=`${Q}<div class="opts">${o.map((x,j)=>`<button class="opt" data-j="${j}">${md(x.t)}</button>`).join('')}</div>`;
+    on('.opt',e=>{const g=o[+e.dataset.j].i===p.a;$$('.opt',box).forEach((b,j)=>{b.disabled=true;if(o[j].i===p.a)b.classList.add('right')});if(!g)e.classList.add('wrong');fb(g,g?'Goed!':'Het goede antwoord: <b>'+md(p.opts[p.a])+'</b>');done(g?1:0)},box);return}
   if(p.k==='tf'){box.innerHTML=`${Q}<div class="btns"><button class="btn ghost" data-v="1">Juist</button><button class="btn ghost" data-v="0">Onjuist</button></div>`;
     on('[data-v]',e=>{const g=(e.dataset.v==='1')===p.a;$$('[data-v]',box).forEach(b=>b.disabled=true);fb(g,g?'Goed!':'Niet goed: de zin is '+(p.a?'juist':'onjuist')+'.');done(g?1:0)},box);return}
   if(p.k==='pick'){box.innerHTML=`${Q}<p class="small mut">Kies er ${p.ok.length}.</p><div class="chips">${shuffle(p.opts).map(o=>`<button class="chip" data-o="${esc(o)}">${esc(o)}</button>`).join('')}</div><button class="btn" id="pk">Controleer</button>`;
     on('[data-o]',e=>{if($('#pk',box))e.classList.toggle('sel')},box);
     $('#pk',box).onclick=()=>{const sel=$$('[data-o].sel',box).map(b=>b.dataset.o);let good=0;$$('[data-o]',box).forEach(b=>{const ok=p.ok.includes(b.dataset.o),s=b.classList.contains('sel');b.disabled=true;if(ok)b.classList.add('pvok');if(s&&!ok)b.classList.add('pvno');if(ok&&s)good++});
       const sc=Math.max(0,(good-sel.filter(x=>!p.ok.includes(x)).length)/p.ok.length);$('#pk',box).remove();fb(sc===1,sc===1?'Helemaal goed!':'Het goede antwoord: <b>'+p.ok.map(esc).join(', ')+'</b>');done(sc)};return}
+  if(p.k==='calc'){box.innerHTML=`${Q}<div class="btns"><input type="text" class="ti" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="bijv. 7/12" style="flex:1 1 160px"><button class="btn" id="tk">Controleer</button></div><p class="small mut">Breuk: 3/4 · gemengd getal: 2 1/3 · negatief: -5</p>`;
+    const inp=$('.ti',box),A=frac(p.a),ck=()=>{if(!$('#tk',box)||!inp.value.trim())return;const v=frac(inp.value);
+      if(!v){fb(false,'Dat kan ik niet lezen. Schrijf bijvoorbeeld 7/12, 2 1/3 of -5.');inp.focus();setTimeout(()=>$$('.fb',box).forEach(e=>e.remove()),2200);return}
+      const eq=v.n*A.d===A.n*v.d,sc=eq?(v.simple?1:.5):0;inp.readOnly=true;$('#tk',box).remove();
+      fb(sc===1?true:sc?null:false,(sc===1?'Goed! ':sc?'Goed gerekend, maar vereenvoudig nog: ':'Het goede antwoord: ')+'<b>'+esc(String(p.a).replace(/-/g,'−'))+'</b>');done(sc)};
+    $('#tk',box).onclick=ck;inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();ck()}});return}
   if(p.k==='type'||p.k==='num'){box.innerHTML=`${Q}<div class="btns"><input type="text" class="ti" ${p.k==='num'?'inputmode="decimal"':''} autocomplete="off" autocapitalize="off" spellcheck="false" style="flex:1 1 160px">${p.unit?`<span class="lr-unit">${esc(p.unit)}</span>`:''}<button class="btn" id="tk">Controleer</button></div>`;
-    const inp=$('.ti',box),ck=()=>{if(!$('#tk',box)||!inp.value.trim())return;const g=p.k==='num'?Math.abs(num(inp.value)-p.a)<=(p.tol||0)+1e-9:near(inp.value,p.a);inp.readOnly=true;$('#tk',box).remove();
-      fb(g,(g?'Goed! ':'Het goede antwoord: ')+'<b>'+esc(p.k==='num'?String(p.a).replace('.',',')+' '+(p.unit||''):(p.show||p.a[0]))+'</b>');done(g?1:0)};
+    const inp=$('.ti',box),ck=()=>{if(!$('#tk',box)||!inp.value.trim())return;/* strict: accenten en lidwoord tellen mee (vreemde talen) */
+      const g=p.k==='num'?Math.abs(num(inp.value)-p.a)<=(p.tol||0)+1e-9:p.strict?p.a.some(w=>nrmS(w)===nrmS(inp.value)):near(inp.value,p.a);
+      const hint=!g&&p.strict?(p.a.some(w=>deacc(nrmS(w))===deacc(nrmS(inp.value)))?'Bijna! Let op de accenten. ':p.a.some(w=>nrmS(w).replace(/^(le |la |l'|les |un |une )/,'')===nrmS(inp.value))?'Vergeet het lidwoord niet. ':''):'';
+      inp.readOnly=true;$('#tk',box).remove();
+      fb(g,(g?'Goed! ':hint+'Het goede antwoord: ')+'<b>'+esc(p.k==='num'?String(p.a).replace('.',',')+' '+(p.unit||''):(p.show||p.a[0]))+'</b>');done(g?1:0)};
     $('#tk',box).onclick=ck;inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();ck()}});return}
   if(p.k==='open'){box.innerHTML=`${Q}<textarea placeholder="Schrijf je antwoord op (op het proefwerk moet je het ook opschrijven)"></textarea><button class="btn" id="sh">Kijk na</button>`;
     $('#sh',box).onclick=()=>{$('#sh',box).remove();$('textarea',box).readOnly=true;box.insertAdjacentHTML('beforeend',`<div class="quote"><b>Vink aan wat er in jouw antwoord stond${p.need<p.pts.length?` (${p.need} is genoeg)`:''}:</b>${p.pts.map((x,i)=>`<label class="chk"><input type="checkbox" data-p="${i}"><span>${esc(x)}</span></label>`).join('')}</div><button class="btn" id="okb">Klaar</button>`);
       $('#okb',box).onclick=()=>{const n=$$('[data-p]:checked',box).length,sc=Math.min(n,p.need)/p.need;$('#okb',box).remove();$$('[data-p]',box).forEach(c=>c.disabled=true);fb(sc===1?true:sc>0?null:false,sc===1?'Helemaal goed!':sc>0?'Gedeeltelijk goed.':'Lees het goede antwoord nog eens.');done(sc)}};return}
-  if(p.k==='fill'){box.innerHTML=`${Q}<div class="stack">${p.items.map((it,i)=>`<div class="frow"><span>${esc(it[0])}</span><select data-i="${i}"><option value="">kies…</option>${p.opts.map(o=>`<option>${esc(o)}</option>`).join('')}</select><span class="fres" id="fr${i}"></span></div>`).join('')}</div><button class="btn" id="fk">Controleer</button>`;
+  if(p.k==='fill'){box.innerHTML=`${Q}<div class="stack">${p.items.map((it,i)=>`<div class="frow"><span>${md(it[0])}</span><select data-i="${i}"><option value="">kies…</option>${p.opts.map(o=>`<option>${esc(o)}</option>`).join('')}</select><span class="fres" id="fr${i}"></span></div>`).join('')}</div><button class="btn" id="fk">Controleer</button>`;
     $('#fk',box).onclick=()=>{let ok=0;$$('select',box).forEach(s=>{const it=p.items[+s.dataset.i],g=s.value===it[1];if(g)ok++;s.disabled=true;s.classList.add(g?'yok':'yno');$('#fr'+s.dataset.i,box).innerHTML=g?'✓':'✗ '+esc(it[1])});$('#fk',box).remove();fb(ok===p.items.length,ok+' van de '+p.items.length+' goed.');done(ok/p.items.length)};return}
   if(p.k==='sort'){const items=shuffle(p.items);let i=0,ok=0;const miss=[];
     const draw=()=>{if(i>=items.length){box.innerHTML=Q;fb(ok===items.length,ok+' van de '+items.length+' goed.'+(miss.length?'<br>'+miss.map(m=>esc(m[0])+' → <b>'+esc(m[1])+'</b>').join('<br>'):''));return done(ok/items.length)}
@@ -128,7 +153,7 @@ function part(p,box,done){
       on('[data-c]',e=>{const g=e.dataset.c===items[i][1];if(g)ok++;else miss.push(items[i]);$$('[data-c]',box).forEach(b=>{b.disabled=true;if(b.dataset.c===items[i][1])b.classList.add('right')});if(!g)e.classList.add('wrong');setTimeout(()=>{i++;draw()},g?400:1300)},box)};
     draw();return}
   if(p.k==='order'){const items=p.items;let next=0,mist=0,pool=shuffle(items.map((t,i)=>({t,i})));
-    const draw=()=>{box.innerHTML=`${Q}<p class="small mut">Tik ze in de goede volgorde aan.</p><ol class="ordl" style="grid-template-columns:1fr">${items.map((t,i)=>`<li class="${i<next?'ok':i===next?'now':''}">${i<next?esc(t):'…'}</li>`).join('')}</ol><div class="opts">${pool.map(x=>`<button class="opt" data-i="${x.i}">${esc(x.t)}</button>`).join('')}</div>`;
+    const draw=()=>{box.innerHTML=`${Q}<p class="small mut">Tik ze in de goede volgorde aan.</p><ol class="ordl" style="grid-template-columns:1fr">${items.map((t,i)=>`<li class="${i<next?'ok':i===next?'now':''}">${i<next?md(t):'…'}</li>`).join('')}</ol><div class="opts">${pool.map(x=>`<button class="opt" data-i="${x.i}">${md(x.t)}</button>`).join('')}</div>`;
       on('[data-i]',e=>{if(+e.dataset.i===next){pool=pool.filter(x=>x.i!==next);next++;draw();if(next===items.length){fb(!mist,mist?mist+' keer mis.':'Foutloos!');done(Math.max(0,1-mist*.2))}}else{mist++;e.classList.add('shake','wrong');setTimeout(()=>e.classList.remove('shake','wrong'),500)}},box)};
     draw();return}
   if(p.k==='formula'){const L=p.left,R=p.right,bank=shuffle(L.concat(R)),n=L.length+R.length;
@@ -144,7 +169,7 @@ function part(p,box,done){
 /* een reeks vragen afspelen; fout beantwoorde vragen komen aan het eind nog één keer terug (behalve in het proefwerk) */
 function run(qs,{title,retry,onEnd}){let i=0,tot=0,first=qs.length;const res=[];
   const draw=()=>{if(i>=qs.length)return onEnd(tot/first,res);
-    const q=qs[i],again=i>=first;
+    const q=qs[i],again=i>=first;window.__leerQ=q; /* voor de testscripts */
     view.innerHTML=`<button class="back-link" id="bk">← Stoppen</button><div class="prog"><span>${Math.min(i+1,first)}/${first}${again?' · nog een keer':''}</span><span class="bar"><i style="width:${Math.min(i,first)/first*100}%"></i></span></div>
       <div class="card stack"><div class="eyebrow">${esc(title)}${q.tid&&title!==tname(T.find(t=>t.id===q.tid))?' · '+esc(T.find(t=>t.id===q.tid).nav):''}</div><div id="pb" class="stack"></div><div id="nx"></div></div>`;
     $('#bk').onclick=()=>go(CUR==='pw'?'pw':'oef');
@@ -162,7 +187,7 @@ V.oef=function(id){
     return session('Herhalen',shuffle(pickSession(pool,12)),'mix')}
   const t=T.find(x=>x.id===id);if(t){const it=ITEMS[t.id],b=it.filter(q=>q.beg),r=it.filter(q=>!q.beg);
     /* begrippen en vragen door elkaar, zwakke en nieuwe eerst; papier-opdracht aan het eind */
-    const qs=pickSession(b,4).concat(pickSession(r.filter(q=>q.k!=='paper'),10));const ordered=shuffle(qs).concat(r.filter(q=>q.k==='paper').slice(0,1));
+    const qs=pickSession(b,4).concat(pickSession(r.filter(q=>q.k!=='paper'),t.n||10));const ordered=shuffle(qs).concat(r.filter(q=>q.k==='paper').slice(0,1));
     return session(tname(t),ordered,t.id)}
   view.innerHTML=`<h2>Oefenen</h2><p class="small mut">Overhoor jezelf. Wat je fout hebt, komt aan het eind en bij Herhalen terug.</p>
   <button class="gm lr-mix" data-go="oef:mix"><em>Door elkaar</em><b>Herhalen</b><span>Vragen uit alles wat je al geoefend hebt; je fouten eerst.</span></button>

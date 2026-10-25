@@ -1,17 +1,18 @@
 // Catalogus van alle vakken en toetsen. Nieuwe toets = nieuwe regel hieronder.
 window.CATALOG=[
- {vak:"Geschiedenis",emoji:"🏺",hue:28,toetsen:[
-  {id:"geschiedenis-h1",datum:"2026-10-01",instr:"Leer hppfdstuk 1\n\nLeerpagina's\np. 17\np. 20-23\np. 29-32\np.38-41\np. 47-49\n\np. 60-61 begrippen. Leer het begrip, zodat je het bij de beschrijving kunt noemen.\nDe beschrijving hoef je niet te kunnen opschrijven.\n\nTien tijdvakken Leer de tien tijdvakken, zoals ze in je boek staan en op het blad met de kaartjes (voorkaant naam tijdvak of periode, achterkant de jaartallen.",titel:"Hoofdstuk 1 · Jagers en boeren",sub:"Jaar 1 · eerste toets",url:"geschiedenis/hoofdstuk-1/index.html",pdf:"geschiedenis/hoofdstuk-1/spiekbrief.pdf"}
+ {vak:"Biologie",emoji:"🌱",hue:120,toetsen:[
+  {id:"biologie-pw1",datum:"2026-10-30",instr:"Leren:\n\nThema 1, basisstof 1 t/m 5, 7 en 8 (basisstof 6 dus NIET)  (blz 14 t/m 62)\n\nLeren onderzoeken 1 en 3 (blz 63 t/m 69)\n\nDe samenvatting staat op blz 79 t/m 82 (BS 6 niet!). Een diagnostische toets staat in het digitale boek.\n\nToegestane hulpmiddelen:\n-blauwe of zwarte pen (niet uitgumbaar)\n-(kleur)potlood + gum\n-geodriehoek/liniaal\n-gewone rekenmachine\n-NE woordenboek",titel:"Proefwerk 1 · Thema 1 Planten en dieren",sub:"Basisstof 1-5, 7 en 8 · Leren onderzoeken 1 en 3",url:"biologie/proefwerk-1/index.html"}
  ]},
- {vak:"Frans",emoji:"🥐",hue:240,toetsen:[
-  {id:"frans-so1",instr:"LEREN!!!\n\n- VOCABULAIRE A, B EN E. Let op! geen zinnen.",titel:"SO 1 · Vocabulaire A, B en E",sub:"Chapitre 1 · alleen woorden, geen zinnen",url:"frans/so-1/index.html",pdf:"frans/so-1/woordenlijst.pdf",pdfLabel:"Woordenlijst + oefen-SO"}
-  ,{id:"frans-so2",datum:"2026-10-13",instr:"LEREN!!!\n\n* VOCABULAIRE:  A,B, E en F.\n* GRAMMAIRE  :   H.\n* GETALLEN     :   0 T/M 20. LEREN SCHRIJVEN!\n* DE DAGEN.\n* DE MAANDEN.",titel:"SO 2 · Vocabulaire, avoir, getallen, dagen en maanden",sub:"Vocabulaire A, B, E, F · Grammaire H · 0 t/m 20 · dagen · maanden",url:"frans/so-2/index.html"}
+ {vak:"Wiskunde",emoji:"➗",hue:30,toetsen:[
+  {id:"wiskunde-pw1",datum:"2026-11-03",instr:"De leerstof voor de toetsweek:\n\nH2 Getallen en bewerkingen     : alle paragrafen van hoofdstuk 2\n\nMeenemen : gevulde etui, geodriehoek, (kleur)potloden en markeerstift.\n\nSucces met de voorbereidingen!",titel:"H2 · Getallen en bewerkingen",sub:"Toetsweek · alle paragrafen 2.1 t/m 2.5",url:"wiskunde/proefwerk-1/index.html"}
  ]},
  {vak:"Nederlands",emoji:"✏️",hue:200,toetsen:[
-  {id:"nederlands-ww",datum:"2026-10-09",instr:"Toets werkwoordspelling kans 1 [weging 1]\n\nJe moet de theorie van de werkwoordspelling kennen en kunnen toepassen.\nZie H27-28-29, het stencil met uitleg van de theorie en de PPT, en de oefenboekjes van Gespeld.\n\nDe toets duurt niet de hele les. Neem dus je lesboek, schrift en leesboek mee!",instrNote:"Vertaald: de instructie stond in het Engels in de map.",titel:"SO werkwoordspelling",sub:"H27-29, PPT, schema en Gespeld-werkboekjes",url:"nederlands/so-ww/index.html",pdf:"nederlands/so-ww/powerpoint.pdf",pdfLabel:"PowerPoint"}
+  {id:"nederlands-pw1",datum:"2026-11-03",instr:"Leesvaardigheid 1: H17 H18 H19 H32 + powerpoint [weging 2]\n\nDe volgende begrippen moet je weten en kunnen toepassen:\n\nLeesstrategieën\nWoordraadstrategieën\nOnderwerp, deelonderwerp en hoofdgedachte\nSamenvatten en kernzinnen",titel:"Leesvaardigheid 1",sub:"H17, H18, H19, H32 + PowerPoint · weging 2",url:"nederlands/proefwerk-1/index.html"}
  ]},
- {vak:"Biologie",emoji:"🌱",hue:120,toetsen:[
-  {id:"biologie-so1",datum:"2026-10-15",instr:"Basisstof 5 en 7\n\nSchriftelijke overhoring van basisstof 5 en 7\n\nBlz. 39 t/m 43\nblz. 57 t/m 60\n\ngebruik ook:\nWat is biologie? Biologie voor Jou\nhttps://biologiepagina.nl/1/1plantendieren/inleiding.htm",titel:"SO 1 · Fotosynthese",sub:"Basisstof 5 en 7 · blz. 39-43 en 57-60",url:"biologie/so-1/index.html"}
-  ,{id:"biologie-pw1",datum:"2026-10-30",instr:"Leren:\n\nThema 1, basisstof 1 t/m 5, 7 en 8 (basisstof 6 dus NIET)  (blz 14 t/m 62)\n\nLeren onderzoeken 1 en 3 (blz 63 t/m 69)\n\nDe samenvatting staat op blz 79 t/m 82 (BS 6 niet!). Een diagnostische toets staat in het digitale boek.\n\nToegestane hulpmiddelen:\n-blauwe of zwarte pen (niet uitgumbaar)\n-(kleur)potlood + gum\n-geodriehoek/liniaal\n-gewone rekenmachine\n-NE woordenboek",titel:"Proefwerk 1 · Thema 1 Planten en dieren",sub:"Basisstof 1-5, 7 en 8 · Leren onderzoeken 1 en 3",url:"biologie/proefwerk-1/index.html"}
+ {vak:"Aardrijkskunde",emoji:"🌍",hue:170,toetsen:[
+  {id:"aardrijkskunde-pw1",datum:"2026-11-04",instr:"Leren hoofdstuk 1 Steden\n\n– Paragraaf §1.2 + §1.3 + §1.4 + §1.5 + §1.7 + §1.9\n– Aantekeningen",titel:"Proefwerk 1 · H1 Steden",sub:"§1.2, 1.3, 1.4, 1.5, 1.7 en 1.9 + aantekeningen",url:"aardrijkskunde/proefwerk-1/index.html"}
+ ]},
+ {vak:"Frans",emoji:"🥐",hue:240,toetsen:[
+  {id:"frans-pw1",datum:"2026-11-06",instr:"Leren: woordjes NF FN Chapitre 1, avoir en être, de lidwoorden",titel:"Proefwerk 1 · Chapitre 1",sub:"Woordjes NF en FN · avoir en être · lidwoorden",url:"frans/proefwerk-1/index.html"}
  ]}
 ];
