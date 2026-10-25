@@ -53,7 +53,7 @@
     ]
    ],
    "let": [
-    "Leer **alle vijf** kenmerken van een stad uit de leertekst (het overzicht noemt er maar drie).",
+    "Een stad heeft **vijf kenmerken**: veel inwoners en hoge bevolkingsdichtheid, veel bedrijven, veel voorzieningen, grootstedelijke functies, uitgebreide infrastructuur.",
     "Volgorde: **urbanisatie** (vanaf ±1850) → **suburbanisatie** (vanaf ±1960) → verpaupering (jaren 70-80) → **re-urbanisatie** (vanaf jaren 90).",
     "Bevolkingsdichtheid = **inwoners ÷ km²**. Je mag een rekenmachine gebruiken."
    ],
@@ -127,7 +127,7 @@
     {
      "k": "pick",
      "bk": "blz. 16, opdr. 3a",
-     "q": "Welke vijf zijn kenmerken van een stad (leertekst)?",
+     "q": "Welke vijf zijn kenmerken van een stad?",
      "opts": [
       "meer dan 50.000 inwoners en een hoge bevolkingsdichtheid",
       "veel bedrijven",
@@ -208,18 +208,6 @@
       "een bioscoop",
       "een meubelwinkel"
      ]
-    },
-    {
-     "k": "mc",
-     "bk": "blz. 16, opdr. 4b",
-     "q": "In welk deel van Nederland is de bevolkingsdichtheid het hoogst?",
-     "opts": [
-      "in het noorden",
-      "in het oosten",
-      "in het zuiden",
-      "in het westen"
-     ],
-     "a": 3
     },
     {
      "k": "mc",
@@ -361,7 +349,7 @@
    "let": [
     "Van binnen naar buiten: binnenstad → arbeiderswijken → vooroorlogs → naoorlogs → jaren 70 → nieuwbouw. **Bedrijventerreinen** liggen aan de rand, bij snelweg, spoor of haven.",
     "Naoorlogse wijken: **snel veel** woningen (woningnood) → flats. Vooroorlogse wijken: **beter en ruimer** door de Woningwet (1901).",
-    "Het overzicht zegt: binnenstad = gebouwd **vóór 1870**; de leertekst: vóór de komst van de industrie."
+    "De binnenstad is het **oudste deel**: gebouwd vóór de komst van de industrie (vóór ±1870)."
    ],
    "beg": [
     [
@@ -774,17 +762,6 @@
       "Amsterdam",
       "Utrecht"
      ]
-    },
-    {
-     "k": "mc",
-     "bk": "blz. 26",
-     "q": "Welk stedelijk netwerk bestaat uit Almelo, Hengelo en Enschede?",
-     "opts": [
-      "Twente",
-      "Brabantstad",
-      "de Randstad"
-     ],
-     "a": 0
     },
     {
      "k": "mc",
@@ -1292,18 +1269,6 @@
     },
     {
      "k": "mc",
-     "bk": "blz. 45, opdr. 5b",
-     "q": "Welke grote stad ligt op 38° N.B. 122° W.L.?",
-     "opts": [
-      "New York",
-      "Los Angeles",
-      "San Francisco",
-      "Washington"
-     ],
-     "a": 2
-    },
-    {
-     "k": "mc",
      "bk": "blz. 44",
      "q": "Hoe schrijf je de coördinaten van New York?",
      "opts": [
@@ -1498,14 +1463,6 @@
       "Een nieuwbouwwijk in Utrecht."
      ],
      "a": 0
-    },
-    {
-     "k": "num",
-     "bk": "blz. 53",
-     "q": "Hoeveel miljoen mensen wonen er (ruim) in de Randstad?",
-     "a": 8.5,
-     "tol": 0.01,
-     "unit": "miljoen"
     },
     {
      "k": "fill",

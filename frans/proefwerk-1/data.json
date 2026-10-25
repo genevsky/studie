@@ -3160,11 +3160,11 @@
     },
     {
      "k": "mc",
-     "q": "Welke twee betekenissen heeft les?",
+     "q": "Wanneer gebruik je les?",
      "opts": [
-      "de (meervoud, mannelijk én vrouwelijk)",
-      "een",
-      "het (enkelvoud)"
+      "bij meervoud, voor mannelijke én vrouwelijke woorden",
+      "alleen bij vrouwelijke woorden",
+      "bij enkelvoud voor een klinker"
      ],
      "a": 0,
      "bk": "blz. 32"

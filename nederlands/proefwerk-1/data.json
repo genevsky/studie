@@ -120,15 +120,15 @@
    ],
    "kern": [
     "Hoe je een tekst leest, hangt af van je **leesdoel**. Zodra je je leesdoel voor ogen hebt, weet je welke **leesstrategie** je moet toepassen. Leesstrategieën = verschillende manieren om te lezen.",
-    "**Globaal lezen (H17)**: als je snel wilt weten waarover een tekst gaat en of hij interessant voor je is. 1 Lees de titel, inleiding, tussenkopjes, eerste zinnen van alinea’s en de slotalinea. 2 Bekijk de afbeeldingen. 3 Bedenk: wat weet je al over het onderwerp? Waar zou de tekst over kunnen gaan?",
+    "**Globaal lezen**: als je snel wilt weten waarover een tekst gaat en of hij interessant voor je is. 1 Lees de titel, inleiding, tussenkopjes, eerste zinnen van alinea’s en de slotalinea. 2 Bekijk de afbeeldingen. 3 Bedenk: wat weet je al over het onderwerp? Waar zou de tekst over kunnen gaan?",
     "De belangrijkste boodschap van de tekst staat vaak in de **inleiding** of de **slotalinea**.",
-    "**Intensief lezen (H17)**: als je een tekst goed wilt begrijpen. Lees de tekst van begin tot eind, probeer elke zin te begrijpen en zoek onbekende woorden op.",
-    "**Zoekend lezen (H18)**: als je op zoek bent naar heel specifieke informatie (of naar geschikte teksten). 1 Bedenk trefwoorden. 2 Zoek met die trefwoorden op internet of in de catalogus van de bibliotheek. 3 Scan de zoekresultaten. 4 Scan in de gevonden tekst de inhoudsopgave, de (tussen)kopjes en vetgedrukte begrippen.",
-    "**Lerend lezen (H18)**: als je belangrijke informatie wilt onthouden. 1 Eerst globaal lezen (kopjes, inhoudsopgave, eerste en laatste alinea). 2 Dan intensief lezen (details en begrippen begrijpen). 3 Daarna samenvatten of belangrijke onderdelen markeren.",
-    "**Kritisch lezen (H19)**: als je je afvraagt of de tekst betrouwbaar is. Wat is het doel van de schrijver (informeren, overtuigen, overhalen)? Klopt wat de schrijver zegt, kloppen de feiten? Raadpleeg andere teksten ter controle. Kijk altijd naar de bron: de ene bron is betrouwbaarder dan de andere."
+    "**Intensief lezen**: als je een tekst goed wilt begrijpen. Lees de tekst van begin tot eind, probeer elke zin te begrijpen en zoek onbekende woorden op.",
+    "**Zoekend lezen**: als je op zoek bent naar heel specifieke informatie (of naar geschikte teksten). 1 Bedenk trefwoorden. 2 Zoek met die trefwoorden op internet of in de catalogus van de bibliotheek. 3 Scan de zoekresultaten. 4 Scan in de gevonden tekst de inhoudsopgave, de (tussen)kopjes en vetgedrukte begrippen.",
+    "**Lerend lezen**: als je belangrijke informatie wilt onthouden. 1 Eerst globaal lezen (kopjes, inhoudsopgave, eerste en laatste alinea). 2 Dan intensief lezen (details en begrippen begrijpen). 3 Daarna samenvatten of belangrijke onderdelen markeren.",
+    "**Kritisch lezen**: als je je afvraagt of de tekst betrouwbaar is. Wat is het doel van de schrijver (informeren, overtuigen, overhalen)? Klopt wat de schrijver zegt, kloppen de feiten? Raadpleeg andere teksten ter controle. Kijk altijd naar de bron: de ene bron is betrouwbaarder dan de andere."
    ],
    "let": [
-    "Globaal en intensief = **H17**, zoekend en lerend = **H18**, kritisch = **H19**.",
+    "Kies je strategie bij je **leesdoel**: snel weten waar het over gaat = globaal; goed begrijpen = intensief; iets specifieks vinden = zoekend; onthouden = lerend; betrouwbaarheid = kritisch.",
     "Lerend lezen = **eerst globaal, dan intensief, dan samenvatten/markeren**.",
     "Kritisch lezen gaat over **betrouwbaarheid**: doel van de schrijver, feiten controleren, bron bekijken."
    ],
@@ -163,38 +163,6 @@
     ]
    ],
    "qs": [
-    {
-     "k": "sort",
-     "q": "In welk hoofdstuk staat deze leesstrategie?",
-     "cats": [
-      "H17",
-      "H18",
-      "H19"
-     ],
-     "items": [
-      [
-       "globaal lezen",
-       "H17"
-      ],
-      [
-       "intensief lezen",
-       "H17"
-      ],
-      [
-       "zoekend lezen",
-       "H18"
-      ],
-      [
-       "lerend lezen",
-       "H18"
-      ],
-      [
-       "kritisch lezen",
-       "H19"
-      ]
-     ],
-     "bk": "PowerPoint dia 12"
-    },
     {
      "k": "fill",
      "q": "Welke leesstrategie past bij dit leesdoel?",
@@ -433,7 +401,7 @@
     "Moet je de betekenis van het moeilijke woord kennen om de tekst te begrijpen? **Nee** → lees gewoon door. **Ja** → pas een woordraadstrategie toe: kijk naar de context (het zinsverband of de zinnen eromheen).",
     "1 **Uitleg / omschrijving / definitie** van het woord. 2 **Synoniem**: een ander woord met dezelfde of een soortgelijke betekenis. 3 **Voorbeeld**. 4 **Tegenstelling**. 5 **Samenstelling**: kijk naar de delen waaruit het woord is opgebouwd en zoek een bekend woorddeel. 6 **Gelijkenis met een ander woord**, bijvoorbeeld uit een andere taal. 7 **Afbeelding** bij de tekst.",
     "8 **Laatste redmiddel**: zoek het woord op in het woordenboek of vraag het iemand. Gebruik het woordenboek alleen voor een enkel woord. Op toetsen heb je geen woordenboek.",
-    "Je kunt alleen onbewust woorden uit de context leren als je al een groot deel van de woorden in de tekst kent (minimaal 85 procent)."
+    "Woorden raden uit de context lukt alleen als je de meeste andere woorden in de tekst wél kent. Daarom helpt veel lezen."
    ],
    "let": [
     "Eerste vraag: **moet ik dit woord kennen om de tekst te begrijpen?** Zo nee: gewoon doorlezen.",
@@ -624,14 +592,6 @@
      "bk": "Oefenblad 17"
     },
     {
-     "k": "num",
-     "q": "Hoeveel procent van de woorden in een tekst moet je minimaal kennen om de tekst goed te begrijpen (volgens de PowerPoint)?",
-     "a": 85,
-     "tol": 0,
-     "unit": "%",
-     "bk": "PowerPoint dia 14"
-    },
-    {
      "k": "open",
      "q": "Wat wordt bedoeld met ‘niet in de koude kleren gaan zitten’ (r. 27)?",
      "need": 1,
@@ -819,7 +779,7 @@
     },
     {
      "k": "pick",
-     "q": "Onderwerp = werken in de zorg. Welke zijn deelonderwerpen (uit de PowerPoint)?",
+     "q": "Onderwerp = werken in de zorg. Welke zijn deelonderwerpen?",
      "opts": [
       "verpleegkundige",
       "fysiotherapeut",
@@ -1058,7 +1018,7 @@
    "kern": [
     "Lees de tekst **eerst globaal**: titel, inleiding, tussenkopjes, eerste zinnen van alinea’s, slotalinea, blauw tekstvak.",
     "Lees hem **daarna intensief** en beantwoord de vragen. Kijk je antwoorden na met de punten uit het antwoordblad.",
-    "Vragen met T2 vragen om je eigen gedachten: daar geeft het antwoordblad een voorbeeldantwoord."
+    "Kijk bij elke vraag eerst waar in de tekst het antwoord staat, en schrijf het dan in je eigen woorden op."
    ],
    "qs": [
     {
@@ -1070,16 +1030,6 @@
       "Bijvoorbeeld: De tekst gaat over hoe je een verkoudheid kunt voorkomen."
      ],
      "bk": "Oefenblad 17, vraag 2"
-    },
-    {
-     "k": "open",
-     "txt": "t17",
-     "q": "3 Wat verwacht je te lezen in het blauwe tekstvak?",
-     "need": 1,
-     "pts": [
-      "Tips om verkoudheden te voorkomen."
-     ],
-     "bk": "Oefenblad 17, vraag 3"
     },
     {
      "k": "open",
@@ -1158,16 +1108,6 @@
       "Tegen de tijd dat de prik klaar is, is er alweer een nieuw virus waar het vaccin niet tegen helpt."
      ],
      "bk": "Oefenblad 17, vraag 10"
-    },
-    {
-     "k": "open",
-     "txt": "t17",
-     "q": "11 Waarom zouden (jonge) kinderen vaker verkouden zijn dan volwassenen, denk je?",
-     "need": 1,
-     "pts": [
-      "Bijvoorbeeld: kinderen hebben vaker en met meer mensen lichamelijk contact en zitten dicht bij elkaar (spelen, stoeien, samen tekenen, hetzelfde speelgoed)."
-     ],
-     "bk": "Oefenblad 17, vraag 11"
     }
    ]
   },
@@ -1202,7 +1142,7 @@
    "kern": [
     "Lerend lezen: eerst globaal, dan intensief, dan samenvatten of markeren.",
     "Zoekend lezen begint met **trefwoorden** bedenken.",
-    "Vragen 6, 10 en 11 van het oefenblad zijn eigen antwoord of worden door de docent beoordeeld: die staan hier niet in."
+    "Let bij open vragen op: antwoord in hele zinnen en gebruik informatie uit de tekst."
    ],
    "qs": [
     {
@@ -1234,16 +1174,6 @@
       "bewegende beelden snel genoeg herkennen is lastig"
      ],
      "bk": "Oefenblad 18, vraag 4"
-    },
-    {
-     "k": "open",
-     "txt": "t18",
-     "q": "5 Bedenk zelf nog een mogelijke toepassing van AR die niet in de tekst genoemd staat.",
-     "need": 1,
-     "pts": [
-      "Bijvoorbeeld: navigatie, waarbij de route over de weg heen geprojecteerd wordt. (Elk zinnig eigen voorbeeld is goed.)"
-     ],
-     "bk": "Oefenblad 18, vraag 5"
     },
     {
      "k": "open",
@@ -1309,7 +1239,7 @@
    ],
    "kern": [
     "Bij kritisch lezen let je op: wie geeft welke mening, geeft de schrijver zelf een mening, wat is het **doel** van de tekst en hoe **betrouwbaar** is de bron.",
-    "Vragen 9 tot en met 11 van het oefenblad doe je op internet en beoordeelt de docent: die staan hier niet in."
+    "Vraag je bij elke tekst af: geeft de schrijver een mening, of laat hij verschillende kanten zien?"
    ],
    "qs": [
     {
@@ -1387,15 +1317,6 @@
      ],
      "a": 0,
      "bk": "Oefenblad 19, vraag 5"
-    },
-    {
-     "k": "open",
-     "q": "7 De tekst komt uit De Gelderlander. Is dat een betrouwbare vindplaats? Leg uit.",
-     "need": 1,
-     "pts": [
-      "Ja: De Gelderlander is een regionale (kwaliteits)krant van een groot mediabedrijf (ook eigenaar van o.a. AD, Volkskrant, Trouw); je mag uitgaan dat het een betrouwbare nieuwsbron is."
-     ],
-     "bk": "Oefenblad 19, vraag 7"
     },
     {
      "k": "open",

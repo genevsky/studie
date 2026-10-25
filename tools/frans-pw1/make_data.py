@@ -129,7 +129,7 @@ lid = {"id": "lid", "nav": "Lidwoorden", "title": "De lidwoorden", "pages": "blz
            {"k": "tf", "q": "De meervouds-s van les filles spreek je uit.", "a": False, "x": "Deze s spreek je niet uit.", "bk": "blz. 32"},
            {"k": "mc", "q": "Houd je van cola? = Tu aimes ___ coca?", "opts": ["le", "un", "(niets)"], "a": 0, "x": "Na aimer, préférer, adorer en détester zet je altijd le / la / l' of les.", "bk": "blz. 167"},
            {"k": "mc", "q": "Nee, ik heb liever mineraalwater. = Non, je préfère ___ eau minérale.", "opts": ["l'", "une", "(niets)"], "a": 0, "bk": "blz. 167"},
-           {"k": "mc", "q": "Welke twee betekenissen heeft les?", "opts": ["de (meervoud, mannelijk én vrouwelijk)", "een", "het (enkelvoud)"], "a": 0, "bk": "blz. 32"}
+           {"k": "mc", "q": "Wanneer gebruik je les?", "opts": ["bij meervoud, voor mannelijke én vrouwelijke woorden", "alleen bij vrouwelijke woorden", "bij enkelvoud voor een klinker"], "a": 0, "bk": "blz. 32"}
        ]}
 topics.append(lid)
 
