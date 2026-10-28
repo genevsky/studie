@@ -136,17 +136,20 @@ topics.append(lid)
 AV = [["j'", "ai", "ik heb"], ["tu", "as", "jij hebt"], ["il / elle", "a", "hij / zij heeft"], ["on", "a", "wij hebben"], ["nous", "avons", "wij hebben"], ["vous", "avez", "jullie hebben / u heeft"], ["ils / elles", "ont", "zij hebben"]]
 ET = [["je", "suis", "ik ben"], ["tu", "es", "jij bent"], ["il / elle", "est", "hij / zij is"], ["on", "est", "wij zijn"], ["nous", "sommes", "wij zijn"], ["vous", "êtes", "jullie zijn / u bent"], ["ils / elles", "sont", "zij zijn"]]
 ae_q = []
+def full(pr, v):
+    # het werkwoord alleen, of met persoonlijk voornaamwoord (j'ai, je suis, il a, elle a ...)
+    return [v] + [(f"{x}{v}" if x.endswith("'") else f"{x} {v}") for x in pr.split(" / ")]
 for pr, v, nl in AV:
-    ae_q.append({"k": "type", "strict": True, "q": f"avoir: {pr} ___ ({nl})", "a": [v], "show": f"{pr} {v}".replace("' ", "'"), "bk": "blz. 49 en 55"})
+    ae_q.append({"k": "type", "strict": True, "q": f"avoir: {pr} ___ ({nl})", "a": full(pr, v), "show": f"{pr} {v}".replace("' ", "'"), "bk": "blz. 49 en 55"})
 for pr, v, nl in ET:
-    ae_q.append({"k": "type", "strict": True, "q": f"être: {pr} ___ ({nl})", "a": [v], "show": f"{pr} {v}", "bk": "blz. 171"})
+    ae_q.append({"k": "type", "strict": True, "q": f"être: {pr} ___ ({nl})", "a": full(pr, v), "show": f"{pr} {v}", "bk": "blz. 171"})
 ae_q += [
-    {"k": "type", "strict": True, "q": "Remplis le verbe avoir: Vous ___ quel âge?", "a": ["avez"], "bk": "blz. 50, opdr. 31e"},
-    {"k": "type", "strict": True, "q": "Remplis le verbe avoir: Nous ___ 12 ans.", "a": ["avons"], "bk": "blz. 50, opdr. 31e"},
-    {"k": "type", "strict": True, "q": "Remplis le verbe avoir: Luc ___ 11 ans.", "a": ["a"], "bk": "blz. 50, opdr. 31e"},
-    {"k": "type", "strict": True, "q": "Remplis le verbe avoir: Valentine et Léon ___ 13 ans.", "a": ["ont"], "bk": "blz. 50, opdr. 31e"},
-    {"k": "type", "strict": True, "q": "Remplis le verbe avoir: Et toi? Tu ___ quel âge?", "a": ["as"], "bk": "blz. 50, opdr. 31e"},
-    {"k": "type", "strict": True, "q": "Remplis le verbe avoir: Moi, j'___ aussi 13 ans.", "a": ["ai"], "bk": "blz. 50, opdr. 31e"},
+    {"k": "type", "strict": True, "q": "Remplis le verbe avoir: Vous ___ quel âge?", "a": ["avez", "vous avez"], "bk": "blz. 50, opdr. 31e"},
+    {"k": "type", "strict": True, "q": "Remplis le verbe avoir: Nous ___ 12 ans.", "a": ["avons", "nous avons"], "bk": "blz. 50, opdr. 31e"},
+    {"k": "type", "strict": True, "q": "Remplis le verbe avoir: Luc ___ 11 ans.", "a": ["a", "Luc a"], "bk": "blz. 50, opdr. 31e"},
+    {"k": "type", "strict": True, "q": "Remplis le verbe avoir: Valentine et Léon ___ 13 ans.", "a": ["ont", "Valentine et Léon ont"], "bk": "blz. 50, opdr. 31e"},
+    {"k": "type", "strict": True, "q": "Remplis le verbe avoir: Et toi? Tu ___ quel âge?", "a": ["as", "tu as"], "bk": "blz. 50, opdr. 31e"},
+    {"k": "type", "strict": True, "q": "Remplis le verbe avoir: Moi, j'___ aussi 13 ans.", "a": ["ai", "j'ai"], "bk": "blz. 50, opdr. 31e"},
     {"k": "type", "strict": True, "q": "Réponds en français: Vous avez une tente? (une caravane) Non, …", "a": ["Non, nous avons une caravane.", "nous avons une caravane"], "show": "Non, nous avons une caravane.", "bk": "blz. 50, opdr. 31f"},
     {"k": "type", "strict": True, "q": "Réponds en français: Simon a un frère? (twee zussen) Non, …", "a": ["Non, il a deux sœurs.", "il a deux sœurs", "il a deux soeurs", "Non, il a deux soeurs."], "show": "Non, il a deux sœurs.", "bk": "blz. 50, opdr. 31f"},
     {"k": "type", "strict": True, "q": "Réponds en français: Tu as un souvenir de la Tour Eiffel? (een foto) Non, …", "a": ["Non, j'ai une photo.", "j'ai une photo"], "show": "Non, j'ai une photo.", "bk": "blz. 50, opdr. 31f"},

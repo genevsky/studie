@@ -3210,7 +3210,8 @@
      "strict": true,
      "q": "avoir: j' ___ (ik heb)",
      "a": [
-      "ai"
+      "ai",
+      "j'ai"
      ],
      "show": "j'ai",
      "bk": "blz. 49 en 55"
@@ -3220,7 +3221,8 @@
      "strict": true,
      "q": "avoir: tu ___ (jij hebt)",
      "a": [
-      "as"
+      "as",
+      "tu as"
      ],
      "show": "tu as",
      "bk": "blz. 49 en 55"
@@ -3230,7 +3232,9 @@
      "strict": true,
      "q": "avoir: il / elle ___ (hij / zij heeft)",
      "a": [
-      "a"
+      "a",
+      "il a",
+      "elle a"
      ],
      "show": "il / elle a",
      "bk": "blz. 49 en 55"
@@ -3240,7 +3244,8 @@
      "strict": true,
      "q": "avoir: on ___ (wij hebben)",
      "a": [
-      "a"
+      "a",
+      "on a"
      ],
      "show": "on a",
      "bk": "blz. 49 en 55"
@@ -3250,7 +3255,8 @@
      "strict": true,
      "q": "avoir: nous ___ (wij hebben)",
      "a": [
-      "avons"
+      "avons",
+      "nous avons"
      ],
      "show": "nous avons",
      "bk": "blz. 49 en 55"
@@ -3260,7 +3266,8 @@
      "strict": true,
      "q": "avoir: vous ___ (jullie hebben / u heeft)",
      "a": [
-      "avez"
+      "avez",
+      "vous avez"
      ],
      "show": "vous avez",
      "bk": "blz. 49 en 55"
@@ -3270,7 +3277,9 @@
      "strict": true,
      "q": "avoir: ils / elles ___ (zij hebben)",
      "a": [
-      "ont"
+      "ont",
+      "ils ont",
+      "elles ont"
      ],
      "show": "ils / elles ont",
      "bk": "blz. 49 en 55"
@@ -3280,7 +3289,8 @@
      "strict": true,
      "q": "être: je ___ (ik ben)",
      "a": [
-      "suis"
+      "suis",
+      "je suis"
      ],
      "show": "je suis",
      "bk": "blz. 171"
@@ -3290,7 +3300,8 @@
      "strict": true,
      "q": "être: tu ___ (jij bent)",
      "a": [
-      "es"
+      "es",
+      "tu es"
      ],
      "show": "tu es",
      "bk": "blz. 171"
@@ -3300,7 +3311,9 @@
      "strict": true,
      "q": "être: il / elle ___ (hij / zij is)",
      "a": [
-      "est"
+      "est",
+      "il est",
+      "elle est"
      ],
      "show": "il / elle est",
      "bk": "blz. 171"
@@ -3310,7 +3323,8 @@
      "strict": true,
      "q": "être: on ___ (wij zijn)",
      "a": [
-      "est"
+      "est",
+      "on est"
      ],
      "show": "on est",
      "bk": "blz. 171"
@@ -3320,7 +3334,8 @@
      "strict": true,
      "q": "être: nous ___ (wij zijn)",
      "a": [
-      "sommes"
+      "sommes",
+      "nous sommes"
      ],
      "show": "nous sommes",
      "bk": "blz. 171"
@@ -3330,7 +3345,8 @@
      "strict": true,
      "q": "être: vous ___ (jullie zijn / u bent)",
      "a": [
-      "êtes"
+      "êtes",
+      "vous êtes"
      ],
      "show": "vous êtes",
      "bk": "blz. 171"
@@ -3340,7 +3356,9 @@
      "strict": true,
      "q": "être: ils / elles ___ (zij zijn)",
      "a": [
-      "sont"
+      "sont",
+      "ils sont",
+      "elles sont"
      ],
      "show": "ils / elles sont",
      "bk": "blz. 171"
@@ -3350,7 +3368,8 @@
      "strict": true,
      "q": "Remplis le verbe avoir: Vous ___ quel âge?",
      "a": [
-      "avez"
+      "avez",
+      "vous avez"
      ],
      "bk": "blz. 50, opdr. 31e"
     },
@@ -3359,7 +3378,8 @@
      "strict": true,
      "q": "Remplis le verbe avoir: Nous ___ 12 ans.",
      "a": [
-      "avons"
+      "avons",
+      "nous avons"
      ],
      "bk": "blz. 50, opdr. 31e"
     },
@@ -3368,7 +3388,8 @@
      "strict": true,
      "q": "Remplis le verbe avoir: Luc ___ 11 ans.",
      "a": [
-      "a"
+      "a",
+      "Luc a"
      ],
      "bk": "blz. 50, opdr. 31e"
     },
@@ -3377,7 +3398,8 @@
      "strict": true,
      "q": "Remplis le verbe avoir: Valentine et Léon ___ 13 ans.",
      "a": [
-      "ont"
+      "ont",
+      "Valentine et Léon ont"
      ],
      "bk": "blz. 50, opdr. 31e"
     },
@@ -3386,7 +3408,8 @@
      "strict": true,
      "q": "Remplis le verbe avoir: Et toi? Tu ___ quel âge?",
      "a": [
-      "as"
+      "as",
+      "tu as"
      ],
      "bk": "blz. 50, opdr. 31e"
     },
@@ -3395,7 +3418,8 @@
      "strict": true,
      "q": "Remplis le verbe avoir: Moi, j'___ aussi 13 ans.",
      "a": [
-      "ai"
+      "ai",
+      "j'ai"
      ],
      "bk": "blz. 50, opdr. 31e"
     },

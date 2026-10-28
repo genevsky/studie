@@ -30,7 +30,8 @@ function ready(){const avg=T.reduce((a,t)=>a+mastery(t.id).p,0)/T.length;return 
 const save=()=>{S.pct=ready();const all=T.flatMap(t=>scored(t.id));S.stats={seen:all.filter(q=>S.lb[q.key]).length,total:all.length,unit:'vragen'};S.ts=Date.now();store.set(S);header()};
 function header(){$('#lvlName').textContent='Klaar: '+ready()+'%';$('#lvlBar').style.width=ready()+'%'}
 const grade=p=>Math.max(1,Math.round((1+9*p)*10)/10).toFixed(1).replace('.',',');
-const nrm=s=>String(s||'').trim().toLowerCase().replace(/[’‘]/g,"'").replace(/'\s+/g,"'").replace(/[.!?,;:]+$/,'').replace(/\s+/g,' ');
+/* NFC: accenten als één teken; alle soorten apostrof tellen als ' */
+const nrm=s=>String(s||'').normalize('NFC').trim().toLowerCase().replace(/[’‘ʼ`´′]/g,"'").replace(/'\s+/g,"'").replace(/[.!?,;:]+$/,'').replace(/\s+/g,' ');
 const nrmS=s=>nrm(s).replace(/[,.!?;:]/g,'').replace(/\s+/g,' ').trim(); /* streng: alleen leestekens tellen niet */
 const deacc=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/œ/g,'oe');
 /* breuken: '-1 1/18', '−19/18', '2,75', '7' -> {n,d,simple} of null */
@@ -113,6 +114,11 @@ V.bron=function(id){const t=T.find(x=>x.id===id),B=D.bronnen||{},pages=(t?t.bron
   ${pages.map(p=>`<figure class="card lr-fig"><a href="${esc(p.src)}" target="_blank" rel="noopener"><img class="page" loading="lazy" src="${esc(p.src)}" alt="${esc(p.cap)}"></a><figcaption class="small mut">${esc(p.cap)}</figcaption></figure>`).join('')}`;
   act()};
 
+/* accentknoppen bij vreemde-taalvragen: voegen de letter in op de plek van de cursor */
+const ACC=`<div class="lr-acc" aria-label="Letters met accent">${['é','è','ê','ë','à','â','ç','î','ï','ô','û','ù','œ'].map(c=>`<button type="button" class="chip" data-ac="${c}">${c}</button>`).join('')}</div>`;
+function accBar(box){const inp=$('.ti',box);$$('[data-ac]',box).forEach(b=>{b.addEventListener('mousedown',e=>e.preventDefault());b.addEventListener('click',()=>{if(inp.readOnly)return;
+  const a=inp.selectionStart??inp.value.length,z=inp.selectionEnd??a;inp.value=inp.value.slice(0,a)+b.dataset.ac+inp.value.slice(z);inp.focus();inp.setSelectionRange(a+1,a+1)})})}
+
 /* ---- vraagtypes: elk rendert in box en roept done(score 0..1) aan ---- */
 function part(p,box,done){
   /* gen: een verse som uit window.LEER_GEN (per module in gen.js) */
@@ -135,7 +141,8 @@ function part(p,box,done){
       const eq=v.n*A.d===A.n*v.d,sc=eq?(v.simple?1:.5):0;inp.readOnly=true;$('#tk',box).remove();
       fb(sc===1?true:sc?null:false,(sc===1?'Goed! ':sc?'Goed gerekend, maar vereenvoudig nog: ':'Het goede antwoord: ')+'<b>'+esc(String(p.a).replace(/-/g,'−'))+'</b>');done(sc)};
     $('#tk',box).onclick=ck;inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();ck()}});return}
-  if(p.k==='type'||p.k==='num'){box.innerHTML=`${Q}<div class="btns"><input type="text" class="ti" ${p.k==='num'?'inputmode="decimal"':''} autocomplete="off" autocapitalize="off" spellcheck="false" style="flex:1 1 160px">${p.unit?`<span class="lr-unit">${esc(p.unit)}</span>`:''}<button class="btn" id="tk">Controleer</button></div>`;
+  if(p.k==='type'||p.k==='num'){box.innerHTML=`${Q}<div class="btns"><input type="text" class="ti" ${p.k==='num'?'inputmode="decimal"':''} autocomplete="off" autocapitalize="off" spellcheck="false" style="flex:1 1 160px">${p.unit?`<span class="lr-unit">${esc(p.unit)}</span>`:''}<button class="btn" id="tk">Controleer</button></div>${p.strict?ACC:''}`;
+    if(p.strict)accBar(box);
     const inp=$('.ti',box),ck=()=>{if(!$('#tk',box)||!inp.value.trim())return;/* strict: accenten en lidwoord tellen mee (vreemde talen) */
       const g=p.k==='num'?Math.abs(num(inp.value)-p.a)<=(p.tol||0)+1e-9:p.strict?p.a.some(w=>nrmS(w)===nrmS(inp.value)):near(inp.value,p.a);
       const hint=!g&&p.strict?(p.a.some(w=>deacc(nrmS(w))===deacc(nrmS(inp.value)))?'Bijna! Let op de accenten. ':p.a.some(w=>nrmS(w).replace(/^(le |la |l'|les |un |une )/,'')===nrmS(inp.value))?'Vergeet het lidwoord niet. ':''):'';
