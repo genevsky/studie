@@ -127,11 +127,11 @@ function part(p,box,done){
   /* gen: een verse som uit window.LEER_GEN (per module in gen.js) */
   if(p.k==='gen'){const g=window.LEER_GEN[p.g]();window.__lastGen=g;return part(Object.assign({bk:p.bk},g,{key:p.key}),box,done)}
   const T0=p.txt&&D.texts&&D.texts[p.txt],head=(T0?`<details class="lr-txt" ${p.txtOpen===false?'':'open'}><summary>Tekst: ${esc(T0.title)}</summary>${T0.src?`<p class="small mut">${esc(T0.src)}</p>`:''}${T0.body.map(x=>/^## /.test(x)?`<h4>${esc(x.slice(3))}</h4>`:`<p>${md(x)}</p>`).join('')}</details>`:'')+(p.ctx?`<div class="quote lr-ctx">${esc(p.ctx)}</div>`:'')+(p.img?`<a href="${esc(p.img)}" target="_blank" rel="noopener"><img class="lr-qimg" src="${esc(p.img)}" alt=""></a>`:'');
-  const after=()=>(p.x?`<small>${esc(p.x)}</small>`:'')+(p.check?`<small class="mut">${esc(D.C)}</small>`:'')+(p.bk?`<small class="mut">Boek: ${esc(p.bk)}</small>`:'');
+  const after=()=>(p.x?`<small>${md(p.x)}</small>`:'')+(p.check?`<small class="mut">${esc(D.C)}</small>`:'')+(p.bk?`<small class="mut">Boek: ${esc(p.bk)}</small>`:'');
   const fb=(ok,html)=>box.insertAdjacentHTML('beforeend',`<div class="fb ${ok===true?'good':ok===false?'bad':''}">${html}${after()}</div>`);
   const Q=`${head}<p class="q"><b>${md(p.q)}</b></p>`;
-  if(p.k==='mc'){const o=shuffle(p.opts.map((t,i)=>({t,i})));box.innerHTML=`${Q}<div class="opts">${o.map((x,j)=>`<button class="opt" data-j="${j}">${md(x.t)}</button>`).join('')}</div>`;
-    on('.opt',e=>{const g=o[+e.dataset.j].i===p.a;$$('.opt',box).forEach((b,j)=>{b.disabled=true;if(o[j].i===p.a)b.classList.add('right')});if(!g)e.classList.add('wrong');fb(g,g?'Goed!':'Het goede antwoord: <b>'+md(p.opts[p.a])+'</b>');done(g?1:0)},box);return}
+  if(p.k==='mc'){const o=(p.keep?x=>x:shuffle)(p.opts.map((t,i)=>({t,i}))); /* keep: vaste volgorde (le, la, l', les) */box.innerHTML=`${Q}<div class="opts">${o.map((x,j)=>`<button class="opt" data-j="${j}">${md(x.t)}</button>`).join('')}</div>`;
+    on('.opt',e=>{const g=o[+e.dataset.j].i===p.a;$$('.opt',box).forEach((b,j)=>{b.disabled=true;if(o[j].i===p.a)b.classList.add('right')});if(!g)e.classList.add('wrong');fb(g,(g?'Goed!':'Het goede antwoord: <b>'+md(p.opts[p.a])+'</b>')+(!g&&p.xw?`<small>${md(p.xw)}</small>`:''));done(g?1:0)},box);return}
   if(p.k==='tf'){box.innerHTML=`${Q}<div class="btns"><button class="btn ghost" data-v="1">Juist</button><button class="btn ghost" data-v="0">Onjuist</button></div>`;
     on('[data-v]',e=>{const g=(e.dataset.v==='1')===p.a;$$('[data-v]',box).forEach(b=>b.disabled=true);fb(g,g?'Goed!':'Niet goed: de zin is '+(p.a?'juist':'onjuist')+'.');done(g?1:0)},box);return}
   if(p.k==='pick'){box.innerHTML=`${Q}<p class="small mut">Kies er ${p.ok.length}.</p><div class="chips">${shuffle(p.opts).map(o=>`<button class="chip" data-o="${esc(o)}">${esc(o)}</button>`).join('')}</div><button class="btn" id="pk">Controleer</button>`;

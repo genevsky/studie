@@ -133,6 +133,39 @@ lid = {"id": "lid", "nav": "Lidwoorden", "title": "De lidwoorden", "pages": "blz
        ]}
 topics.append(lid)
 
+# lidwoord per woord: alle zelfstandige naamwoorden uit de woordenlijst (blz. 52-53) en de grammatica (blz. 32-34)
+# (woord, m/v, nl, meervoud?)
+NOUNS = [("camping", "m", "de camping"), ("hôtel", "m", "het hotel"), ("piscine", "v", "het zwembad"), ("fille", "v", "het meisje"),
+         ("garçon", "m", "de jongen"), ("famille", "v", "de familie"), ("sœur", "v", "de zus"), ("frère", "m", "de broer"),
+         ("plage", "v", "het strand"), ("mer", "v", "de zee"), ("problème", "m", "het probleem"), ("message", "m", "de boodschap"),
+         ("ville", "v", "de stad"), ("maison", "v", "het huis"), ("père", "m", "de vader"), ("mère", "v", "de moeder"),
+         ("photo", "v", "de foto"), ("sport", "m", "de sport"), ("fromage", "m", "de kaas"), ("crêpe", "v", "de pannenkoek"),
+         ("ami", "m", "de vriend"), ("tente", "v", "de tent"), ("attraction", "v", "de attractie"), ("restaurant", "m", "het restaurant"),
+         ("village", "m", "het dorp"), ("adresse", "v", "het adres"), ("musée", "m", "het museum")]
+PLUR = [("vacances", "v", "de vakantie"), ("parents", "m", "de ouders"), ("grands-parents", "m", "de grootouders")]
+def starts_vowel(w): return w[0] in "aeiouéèêh"
+lw_q = []
+for w, g, nl in NOUNS:
+    v = starts_vowel(w); art = "l'" if v else ("le" if g == "m" else "la")
+    full_ = f"{art}{w}" if v else f"{art} {w}"
+    why = (f"**{w}** begint met een {'stomme h' if w[0] == 'h' else 'klinker'} → **l'**. (Het is {'mannelijk: **un**' if g == 'm' else 'vrouwelijk: **une**'} {w}.)" if v
+           else f"**{w}** is {'mannelijk → **le**' if g == 'm' else 'vrouwelijk → **la**'}. Leer het woord altijd mét lidwoord.")
+    lw_q.append({"k": "mc", "keep": True, "q": f"Kies het lidwoord: ___ {w} ({nl})", "opts": ["le", "la", "l'", "les"], "a": ["le", "la", "l'", "les"].index(art), "x": f"**{full_}** = {nl}", "xw": why, "bk": "blz. 32, 52-53"})
+    lw_q.append({"k": "mc", "keep": True, "q": f"Kies: ___ {w} (een {nl.split(' ', 1)[1]})", "opts": ["un", "une"], "a": 0 if g == "m" else 1, "x": f"**{'un' if g == 'm' else 'une'} {w}**", "xw": f"**{w}** is {'mannelijk → **un**' if g == 'm' else 'vrouwelijk → **une**'}" + (" (bij l'-woorden moet je het geslacht apart onthouden)." if v else "."), "bk": "blz. 33"})
+for w, g, nl in PLUR:
+    lw_q.append({"k": "mc", "keep": True, "q": f"Kies het lidwoord: ___ {w} ({nl})", "opts": ["le", "la", "l'", "les"], "a": 3, "x": f"**les {w}** = {nl}", "xw": f"**{w}** is meervoud → **les**.", "bk": "blz. 52-53"})
+for w, g, nl in [("garçon", "m", "de jongen"), ("fille", "v", "het meisje"), ("maison", "v", "het huis"), ("problème", "m", "het probleem"), ("ami", "m", "de vriend"), ("adresse", "v", "het adres")]:
+    lw_q.append({"k": "type", "strict": True, "q": f"Zet in het meervoud: {'l' + chr(39) + w if starts_vowel(w) else ('le ' if g == 'm' else 'la ') + w}", "a": [f"les {w}s"], "xw": "Meervoud: **les** + woord met **-s** (de s hoor je niet).", "bk": "blz. 32"})
+lw_q.append({"k": "sort", "q": "Wordt le/la hier ingekort tot l'?", "cats": ["ja: l'", "nee: le of la"], "items": [["hôtel", "ja: l'"], ["ami", "ja: l'"], ["attraction", "ja: l'"], ["adresse", "ja: l'"], ["camping", "nee: le of la"], ["piscine", "nee: le of la"], ["fille", "nee: le of la"], ["frère", "nee: le of la"], ["maison", "nee: le of la"]], "x": "Voor een klinker (a, e, i, o, u) of een stomme h → l'.", "bk": "blz. 32"})
+topics.append({"id": "lidw", "nav": "le, la, l'?", "title": "Lidwoord per woord", "pages": "blz. 32-33, 52-53", "bron": [32, 33, 52, 53], "n": 15,
+               "doelen": ["Je weet van elk zelfstandig naamwoord uit de woordenlijst of het le, la, l' of les krijgt, en of het un of une is."],
+               "kern": ["Stap 1: **meervoud?** → **les**.", "Stap 2: begint het woord met een **klinker** (a, e, i, o, u) of een **stomme h**? → **l'**.", "Stap 3: anders: **mannelijk → le** (een: **un**), **vrouwelijk → la** (een: **une**). Aan het woord zie je het niet: je moet het geslacht per woord kennen.",
+                        "**Mannelijk (le / un):** " + ", ".join(("l'" + w + " (m)") if starts_vowel(w) else ("le " + w) for w, g, _ in NOUNS if g == "m"),
+                        "**Vrouwelijk (la / une):** " + ", ".join(("l'" + w + " (v)") if starts_vowel(w) else ("la " + w) for w, g, _ in NOUNS if g == "v"),
+                        "**Meervoud (les):** les vacances, les parents, les grands-parents"],
+               "let": ["Bij **l'**-woorden zie je het geslacht niet: leer **l'hôtel (m) → un hôtel** en **l'adresse (v) → une adresse** erbij.", "Een Nederlands **het**-woord is in het Frans niet automatisch le: *het meisje* = **la** fille, *het zwembad* = **la** piscine.", "Leer elk woord hardop mét lidwoord: *la plage, le problème, la mer*."],
+               "qs": lw_q})
+
 AV = [["j'", "ai", "ik heb"], ["tu", "as", "jij hebt"], ["il / elle", "a", "hij / zij heeft"], ["on", "a", "wij hebben"], ["nous", "avons", "wij hebben"], ["vous", "avez", "jullie hebben / u heeft"], ["ils / elles", "ont", "zij hebben"]]
 ET = [["je", "suis", "ik ben"], ["tu", "es", "jij bent"], ["il / elle", "est", "hij / zij is"], ["on", "est", "wij zijn"], ["nous", "sommes", "wij zijn"], ["vous", "êtes", "jullie zijn / u bent"], ["ils / elles", "sont", "zij zijn"]]
 ae_q = []
@@ -201,6 +234,13 @@ MIX = [
     mz("Hoe oud ben jij?", "Tu as quel âge?", "avoir", 1, AGE),
     mz("Dat is een stad.", "C'est une ville.", "etre", 2, "*c'est* = ce + **est** (être)."),
 ]
+topics.append({"id": "tabel", "nav": "Hele tabel", "title": "avoir en être: de hele vervoeging", "pages": "blz. 49, 55, 171", "bron": [49, 55, 171], "n": 2,
+               "doelen": ["Je kunt avoir en être helemaal vervoegen, van je/j' tot ils/elles, zonder te spieken."],
+               "kern": ["**avoir** (hebben): j'**ai** · tu **as** · il/elle **a** · on **a** · nous **avons** · vous **avez** · ils/elles **ont**",
+                        "**être** (zijn): je **suis** · tu **es** · il/elle **est** · on **est** · nous **sommes** · vous **êtes** · ils/elles **sont**",
+                        "Zo oefen je: vul de tabel in, kijk welke rijen rood zijn en schrijf die rijen drie keer over. Doe dit elke dag één keer, tot beide tabellen in één keer goed zijn."],
+               "let": ["Tabellen die niet in één keer goed zijn, komen aan het eind nog een keer terug.", "Zeg de vormen hardop terwijl je ze typt: *j'ai, tu as, il a …*"],
+               "qs": [dict(c) for c in CONJ]})
 topics.append({"id": "avoiretre", "nav": "avoir of être?", "title": "Door elkaar oefenen", "pages": "blz. 49, 55, 171", "bron": [49, 55, 171], "n": 12,
                "doelen": ["Je kiest zelf of je avoir of être nodig hebt, en je schrijft de goede vorm."],
                "kern": ["**avoir** (hebben): j'**ai** · tu **as** · il/elle **a** · on **a** · nous **avons** · vous **avez** · ils/elles **ont**",
@@ -220,7 +260,8 @@ topics.append({"id": "ae", "nav": "avoir/être", "title": "avoir en être (+ per
                "let": ["**Ik ben 12 jaar = J'ai 12 ans** (avoir, niet être!).", "**ils ont** (hebben) en **ils sont** (zijn) verschillen maar één letter.", "**tu as / il a** zonder accent; **à** met accent betekent *in / naar* (J'habite **à** Breda)."],
                "qs": ae_q})
 
-topics.sort(key=lambda t: t["id"] == "avoiretre")  # door elkaar oefenen komt na de losse tabellen
+ORDER = ["a", "b", "e", "f", "num", "lid", "lidw", "ae", "tabel", "avoiretre"]
+topics.sort(key=lambda t: ORDER.index(t["id"]))
 data = {
     "meta": {"id": "frans-pw1", "type": "leer", "brand": "Frans", "sub": "Proefwerk 1 · Chapitre 1", "title": "Frans proefwerk 1", "toets": "proefwerk", "lidw": "het", "examDate": "2026-11-06"},
     "instructie": "Woordjes Chapitre 1 (Frans → Nederlands en Nederlands → Frans), avoir en être, de lidwoorden.",

@@ -3172,6 +3172,946 @@
    ]
   },
   {
+   "id": "lidw",
+   "nav": "le, la, l'?",
+   "title": "Lidwoord per woord",
+   "pages": "blz. 32-33, 52-53",
+   "bron": [
+    32,
+    33,
+    52,
+    53
+   ],
+   "n": 15,
+   "doelen": [
+    "Je weet van elk zelfstandig naamwoord uit de woordenlijst of het le, la, l' of les krijgt, en of het un of une is."
+   ],
+   "kern": [
+    "Stap 1: **meervoud?** → **les**.",
+    "Stap 2: begint het woord met een **klinker** (a, e, i, o, u) of een **stomme h**? → **l'**.",
+    "Stap 3: anders: **mannelijk → le** (een: **un**), **vrouwelijk → la** (een: **une**). Aan het woord zie je het niet: je moet het geslacht per woord kennen.",
+    "**Mannelijk (le / un):** le camping, l'hôtel (m), le garçon, le frère, le problème, le message, le père, le sport, le fromage, l'ami (m), le restaurant, le village, le musée",
+    "**Vrouwelijk (la / une):** la piscine, la fille, la famille, la sœur, la plage, la mer, la ville, la maison, la mère, la photo, la crêpe, la tente, l'attraction (v), l'adresse (v)",
+    "**Meervoud (les):** les vacances, les parents, les grands-parents"
+   ],
+   "let": [
+    "Bij **l'**-woorden zie je het geslacht niet: leer **l'hôtel (m) → un hôtel** en **l'adresse (v) → une adresse** erbij.",
+    "Een Nederlands **het**-woord is in het Frans niet automatisch le: *het meisje* = **la** fille, *het zwembad* = **la** piscine.",
+    "Leer elk woord hardop mét lidwoord: *la plage, le problème, la mer*."
+   ],
+   "qs": [
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ camping (de camping)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 0,
+     "x": "**le camping** = de camping",
+     "xw": "**camping** is mannelijk → **le**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ camping (een camping)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 0,
+     "x": "**un camping**",
+     "xw": "**camping** is mannelijk → **un**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ hôtel (het hotel)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 2,
+     "x": "**l'hôtel** = het hotel",
+     "xw": "**hôtel** begint met een stomme h → **l'**. (Het is mannelijk: **un** hôtel.)",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ hôtel (een hotel)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 0,
+     "x": "**un hôtel**",
+     "xw": "**hôtel** is mannelijk → **un** (bij l'-woorden moet je het geslacht apart onthouden).",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ piscine (het zwembad)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 1,
+     "x": "**la piscine** = het zwembad",
+     "xw": "**piscine** is vrouwelijk → **la**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ piscine (een zwembad)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 1,
+     "x": "**une piscine**",
+     "xw": "**piscine** is vrouwelijk → **une**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ fille (het meisje)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 1,
+     "x": "**la fille** = het meisje",
+     "xw": "**fille** is vrouwelijk → **la**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ fille (een meisje)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 1,
+     "x": "**une fille**",
+     "xw": "**fille** is vrouwelijk → **une**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ garçon (de jongen)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 0,
+     "x": "**le garçon** = de jongen",
+     "xw": "**garçon** is mannelijk → **le**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ garçon (een jongen)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 0,
+     "x": "**un garçon**",
+     "xw": "**garçon** is mannelijk → **un**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ famille (de familie)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 1,
+     "x": "**la famille** = de familie",
+     "xw": "**famille** is vrouwelijk → **la**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ famille (een familie)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 1,
+     "x": "**une famille**",
+     "xw": "**famille** is vrouwelijk → **une**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ sœur (de zus)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 1,
+     "x": "**la sœur** = de zus",
+     "xw": "**sœur** is vrouwelijk → **la**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ sœur (een zus)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 1,
+     "x": "**une sœur**",
+     "xw": "**sœur** is vrouwelijk → **une**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ frère (de broer)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 0,
+     "x": "**le frère** = de broer",
+     "xw": "**frère** is mannelijk → **le**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ frère (een broer)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 0,
+     "x": "**un frère**",
+     "xw": "**frère** is mannelijk → **un**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ plage (het strand)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 1,
+     "x": "**la plage** = het strand",
+     "xw": "**plage** is vrouwelijk → **la**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ plage (een strand)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 1,
+     "x": "**une plage**",
+     "xw": "**plage** is vrouwelijk → **une**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ mer (de zee)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 1,
+     "x": "**la mer** = de zee",
+     "xw": "**mer** is vrouwelijk → **la**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ mer (een zee)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 1,
+     "x": "**une mer**",
+     "xw": "**mer** is vrouwelijk → **une**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ problème (het probleem)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 0,
+     "x": "**le problème** = het probleem",
+     "xw": "**problème** is mannelijk → **le**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ problème (een probleem)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 0,
+     "x": "**un problème**",
+     "xw": "**problème** is mannelijk → **un**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ message (de boodschap)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 0,
+     "x": "**le message** = de boodschap",
+     "xw": "**message** is mannelijk → **le**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ message (een boodschap)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 0,
+     "x": "**un message**",
+     "xw": "**message** is mannelijk → **un**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ ville (de stad)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 1,
+     "x": "**la ville** = de stad",
+     "xw": "**ville** is vrouwelijk → **la**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ ville (een stad)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 1,
+     "x": "**une ville**",
+     "xw": "**ville** is vrouwelijk → **une**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ maison (het huis)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 1,
+     "x": "**la maison** = het huis",
+     "xw": "**maison** is vrouwelijk → **la**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ maison (een huis)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 1,
+     "x": "**une maison**",
+     "xw": "**maison** is vrouwelijk → **une**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ père (de vader)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 0,
+     "x": "**le père** = de vader",
+     "xw": "**père** is mannelijk → **le**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ père (een vader)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 0,
+     "x": "**un père**",
+     "xw": "**père** is mannelijk → **un**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ mère (de moeder)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 1,
+     "x": "**la mère** = de moeder",
+     "xw": "**mère** is vrouwelijk → **la**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ mère (een moeder)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 1,
+     "x": "**une mère**",
+     "xw": "**mère** is vrouwelijk → **une**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ photo (de foto)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 1,
+     "x": "**la photo** = de foto",
+     "xw": "**photo** is vrouwelijk → **la**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ photo (een foto)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 1,
+     "x": "**une photo**",
+     "xw": "**photo** is vrouwelijk → **une**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ sport (de sport)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 0,
+     "x": "**le sport** = de sport",
+     "xw": "**sport** is mannelijk → **le**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ sport (een sport)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 0,
+     "x": "**un sport**",
+     "xw": "**sport** is mannelijk → **un**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ fromage (de kaas)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 0,
+     "x": "**le fromage** = de kaas",
+     "xw": "**fromage** is mannelijk → **le**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ fromage (een kaas)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 0,
+     "x": "**un fromage**",
+     "xw": "**fromage** is mannelijk → **un**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ crêpe (de pannenkoek)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 1,
+     "x": "**la crêpe** = de pannenkoek",
+     "xw": "**crêpe** is vrouwelijk → **la**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ crêpe (een pannenkoek)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 1,
+     "x": "**une crêpe**",
+     "xw": "**crêpe** is vrouwelijk → **une**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ ami (de vriend)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 2,
+     "x": "**l'ami** = de vriend",
+     "xw": "**ami** begint met een klinker → **l'**. (Het is mannelijk: **un** ami.)",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ ami (een vriend)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 0,
+     "x": "**un ami**",
+     "xw": "**ami** is mannelijk → **un** (bij l'-woorden moet je het geslacht apart onthouden).",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ tente (de tent)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 1,
+     "x": "**la tente** = de tent",
+     "xw": "**tente** is vrouwelijk → **la**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ tente (een tent)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 1,
+     "x": "**une tente**",
+     "xw": "**tente** is vrouwelijk → **une**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ attraction (de attractie)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 2,
+     "x": "**l'attraction** = de attractie",
+     "xw": "**attraction** begint met een klinker → **l'**. (Het is vrouwelijk: **une** attraction.)",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ attraction (een attractie)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 1,
+     "x": "**une attraction**",
+     "xw": "**attraction** is vrouwelijk → **une** (bij l'-woorden moet je het geslacht apart onthouden).",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ restaurant (het restaurant)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 0,
+     "x": "**le restaurant** = het restaurant",
+     "xw": "**restaurant** is mannelijk → **le**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ restaurant (een restaurant)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 0,
+     "x": "**un restaurant**",
+     "xw": "**restaurant** is mannelijk → **un**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ village (het dorp)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 0,
+     "x": "**le village** = het dorp",
+     "xw": "**village** is mannelijk → **le**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ village (een dorp)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 0,
+     "x": "**un village**",
+     "xw": "**village** is mannelijk → **un**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ adresse (het adres)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 2,
+     "x": "**l'adresse** = het adres",
+     "xw": "**adresse** begint met een klinker → **l'**. (Het is vrouwelijk: **une** adresse.)",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ adresse (een adres)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 1,
+     "x": "**une adresse**",
+     "xw": "**adresse** is vrouwelijk → **une** (bij l'-woorden moet je het geslacht apart onthouden).",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ musée (het museum)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 0,
+     "x": "**le musée** = het museum",
+     "xw": "**musée** is mannelijk → **le**. Leer het woord altijd mét lidwoord.",
+     "bk": "blz. 32, 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies: ___ musée (een museum)",
+     "opts": [
+      "un",
+      "une"
+     ],
+     "a": 0,
+     "x": "**un musée**",
+     "xw": "**musée** is mannelijk → **un**.",
+     "bk": "blz. 33"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ vacances (de vakantie)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 3,
+     "x": "**les vacances** = de vakantie",
+     "xw": "**vacances** is meervoud → **les**.",
+     "bk": "blz. 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ parents (de ouders)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 3,
+     "x": "**les parents** = de ouders",
+     "xw": "**parents** is meervoud → **les**.",
+     "bk": "blz. 52-53"
+    },
+    {
+     "k": "mc",
+     "keep": true,
+     "q": "Kies het lidwoord: ___ grands-parents (de grootouders)",
+     "opts": [
+      "le",
+      "la",
+      "l'",
+      "les"
+     ],
+     "a": 3,
+     "x": "**les grands-parents** = de grootouders",
+     "xw": "**grands-parents** is meervoud → **les**.",
+     "bk": "blz. 52-53"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Zet in het meervoud: le garçon",
+     "a": [
+      "les garçons"
+     ],
+     "xw": "Meervoud: **les** + woord met **-s** (de s hoor je niet).",
+     "bk": "blz. 32"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Zet in het meervoud: la fille",
+     "a": [
+      "les filles"
+     ],
+     "xw": "Meervoud: **les** + woord met **-s** (de s hoor je niet).",
+     "bk": "blz. 32"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Zet in het meervoud: la maison",
+     "a": [
+      "les maisons"
+     ],
+     "xw": "Meervoud: **les** + woord met **-s** (de s hoor je niet).",
+     "bk": "blz. 32"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Zet in het meervoud: le problème",
+     "a": [
+      "les problèmes"
+     ],
+     "xw": "Meervoud: **les** + woord met **-s** (de s hoor je niet).",
+     "bk": "blz. 32"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Zet in het meervoud: l'ami",
+     "a": [
+      "les amis"
+     ],
+     "xw": "Meervoud: **les** + woord met **-s** (de s hoor je niet).",
+     "bk": "blz. 32"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Zet in het meervoud: l'adresse",
+     "a": [
+      "les adresses"
+     ],
+     "xw": "Meervoud: **les** + woord met **-s** (de s hoor je niet).",
+     "bk": "blz. 32"
+    },
+    {
+     "k": "sort",
+     "q": "Wordt le/la hier ingekort tot l'?",
+     "cats": [
+      "ja: l'",
+      "nee: le of la"
+     ],
+     "items": [
+      [
+       "hôtel",
+       "ja: l'"
+      ],
+      [
+       "ami",
+       "ja: l'"
+      ],
+      [
+       "attraction",
+       "ja: l'"
+      ],
+      [
+       "adresse",
+       "ja: l'"
+      ],
+      [
+       "camping",
+       "nee: le of la"
+      ],
+      [
+       "piscine",
+       "nee: le of la"
+      ],
+      [
+       "fille",
+       "nee: le of la"
+      ],
+      [
+       "frère",
+       "nee: le of la"
+      ],
+      [
+       "maison",
+       "nee: le of la"
+      ]
+     ],
+     "x": "Voor een klinker (a, e, i, o, u) of een stomme h → l'.",
+     "bk": "blz. 32"
+    }
+   ]
+  },
+  {
    "id": "ae",
    "nav": "avoir/être",
    "title": "avoir en être (+ persoonlijk voornaamwoord)",
@@ -3708,6 +4648,44 @@
      ],
      "a": 0,
      "bk": "blz. 53"
+    }
+   ]
+  },
+  {
+   "id": "tabel",
+   "nav": "Hele tabel",
+   "title": "avoir en être: de hele vervoeging",
+   "pages": "blz. 49, 55, 171",
+   "bron": [
+    49,
+    55,
+    171
+   ],
+   "n": 2,
+   "doelen": [
+    "Je kunt avoir en être helemaal vervoegen, van je/j' tot ils/elles, zonder te spieken."
+   ],
+   "kern": [
+    "**avoir** (hebben): j'**ai** · tu **as** · il/elle **a** · on **a** · nous **avons** · vous **avez** · ils/elles **ont**",
+    "**être** (zijn): je **suis** · tu **es** · il/elle **est** · on **est** · nous **sommes** · vous **êtes** · ils/elles **sont**",
+    "Zo oefen je: vul de tabel in, kijk welke rijen rood zijn en schrijf die rijen drie keer over. Doe dit elke dag één keer, tot beide tabellen in één keer goed zijn."
+   ],
+   "let": [
+    "Tabellen die niet in één keer goed zijn, komen aan het eind nog een keer terug.",
+    "Zeg de vormen hardop terwijl je ze typt: *j'ai, tu as, il a …*"
+   ],
+   "qs": [
+    {
+     "k": "conj",
+     "tab": "avoir",
+     "q": "Vervoeg avoir (hebben): vul de hele tabel in.",
+     "bk": "blz. 49 en 55"
+    },
+    {
+     "k": "conj",
+     "tab": "etre",
+     "q": "Vervoeg être (zijn): vul de hele tabel in.",
+     "bk": "blz. 171"
     }
    ]
   },
