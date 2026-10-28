@@ -139,10 +139,13 @@ ae_q = []
 def full(pr, v):
     # het werkwoord alleen, of met persoonlijk voornaamwoord (j'ai, je suis, il a, elle a ...)
     return [v] + [(f"{x}{v}" if x.endswith("'") else f"{x} {v}") for x in pr.split(" / ")]
-for pr, v, nl in AV:
-    ae_q.append({"k": "type", "strict": True, "q": f"avoir: {pr} ___ ({nl})", "a": full(pr, v), "show": f"{pr} {v}".replace("' ", "'"), "bk": "blz. 49 en 55"})
-for pr, v, nl in ET:
-    ae_q.append({"k": "type", "strict": True, "q": f"être: {pr} ___ ({nl})", "a": full(pr, v), "show": f"{pr} {v}", "bk": "blz. 171"})
+for i, (pr, v, nl) in enumerate(AV):
+    ae_q.append({"k": "type", "strict": True, "q": f"avoir: {pr} ___ ({nl})", "a": full(pr, v), "show": f"{pr} {v}".replace("' ", "'"), "tab": "avoir", "row": i, "bk": "blz. 49 en 55"})
+for i, (pr, v, nl) in enumerate(ET):
+    ae_q.append({"k": "type", "strict": True, "q": f"être: {pr} ___ ({nl})", "a": full(pr, v), "show": f"{pr} {v}", "tab": "etre", "row": i, "bk": "blz. 171"})
+CONJ = [{"k": "conj", "tab": "avoir", "q": "Vervoeg avoir (hebben): vul de hele tabel in.", "bk": "blz. 49 en 55"},
+        {"k": "conj", "tab": "etre", "q": "Vervoeg être (zijn): vul de hele tabel in.", "bk": "blz. 171"}]
+ae_q[0:0] = CONJ
 ae_q += [
     {"k": "type", "strict": True, "q": "Remplis le verbe avoir: Vous ___ quel âge?", "a": ["avez", "vous avez"], "bk": "blz. 50, opdr. 31e"},
     {"k": "type", "strict": True, "q": "Remplis le verbe avoir: Nous ___ 12 ans.", "a": ["avons", "nous avons"], "bk": "blz. 50, opdr. 31e"},
@@ -171,6 +174,40 @@ ae_q += [
     {"k": "mc", "q": "Heb jij een broer? = Tu ___ un frère?", "opts": ["as", "es", "a"], "a": 0, "bk": "blz. 49"},
     {"k": "mc", "q": "Dat is een stad. = C'___ une ville.", "opts": ["est", "a", "es"], "a": 0, "bk": "blz. 53"},
 ]
+AGE = "In het Frans **héb** je een leeftijd: *avoir … ans*. Ik ben 12 jaar = **j'ai** 12 ans."
+ONT = "**ils/elles sont** = zij **zijn** (de **s** van **z**ijn) · **ils/elles ont** = zij **hebben**."
+TUA = "**tu es** = jij bent · **tu as** = jij hebt."
+ILA = "**il/elle est** = hij/zij is · **il/elle a** = hij/zij heeft."
+J = "Voor een klinker wordt *je* → **j'**: **j'ai**, maar **je suis**."
+def mz(nl, fr, tab, row, xw, alt=()):
+    return {"k": "type", "strict": True, "q": "Vertaal: " + nl, "a": [fr, *alt], "show": fr, "tab": tab, "row": row, "xw": xw, "bk": "avoir blz. 49 · être blz. 171"}
+MIX = [
+    mz("Ik ben 12 jaar.", "J'ai 12 ans.", "avoir", 0, AGE, ["J'ai douze ans."]),
+    mz("Ik heb een broer.", "J'ai un frère.", "avoir", 0, J),
+    mz("Ik ben Nederlands.", "Je suis hollandais.", "etre", 0, J, ["Je suis hollandaise."]),
+    mz("Hij is 15 jaar.", "Il a 15 ans.", "avoir", 2, AGE, ["Il a quinze ans."]),
+    mz("Hij is groot.", "Il est grand.", "etre", 2, ILA),
+    mz("Zij (één meisje) is klein.", "Elle est petite.", "etre", 2, ILA),
+    mz("Zij (één meisje) heeft een zus.", "Elle a une sœur.", "avoir", 2, ILA, ["Elle a une soeur."]),
+    mz("Jij hebt een foto.", "Tu as une photo.", "avoir", 1, TUA),
+    mz("Jij bent in het zwembad.", "Tu es dans la piscine.", "etre", 1, TUA),
+    mz("Wij hebben een probleem.", "Nous avons un problème.", "avoir", 4, "nous **avons** (hebben) · nous **sommes** (zijn).", ["On a un problème."]),
+    mz("Wij zijn in het hotel.", "Nous sommes dans l'hôtel.", "etre", 4, "nous **sommes** (zijn) · nous **avons** (hebben).", ["On est dans l'hôtel."]),
+    mz("Jullie hebben een zus.", "Vous avez une sœur.", "avoir", 5, "vous **avez** (hebben) · vous **êtes** (zijn).", ["Vous avez une soeur."]),
+    mz("Jullie zijn in het huis.", "Vous êtes dans la maison.", "etre", 5, "vous **êtes** (zijn) · vous **avez** (hebben)."),
+    mz("Zij (Hugo en Adam) zijn klein.", "Ils sont petits.", "etre", 6, ONT),
+    mz("Zij (Sophie en Céline) hebben een probleem.", "Elles ont un problème.", "avoir", 6, ONT),
+    mz("Zij (Hugo en Céline) zijn 13 jaar.", "Ils ont 13 ans.", "avoir", 6, AGE + " " + ONT, ["Ils ont treize ans."]),
+    mz("Hoe oud ben jij?", "Tu as quel âge?", "avoir", 1, AGE),
+    mz("Dat is een stad.", "C'est une ville.", "etre", 2, "*c'est* = ce + **est** (être)."),
+]
+topics.append({"id": "avoiretre", "nav": "avoir of être?", "title": "Door elkaar oefenen", "pages": "blz. 49, 55, 171", "bron": [49, 55, 171], "n": 12,
+               "doelen": ["Je kiest zelf of je avoir of être nodig hebt, en je schrijft de goede vorm."],
+               "kern": ["**avoir** (hebben): j'**ai** · tu **as** · il/elle **a** · on **a** · nous **avons** · vous **avez** · ils/elles **ont**",
+                        "**être** (zijn): je **suis** · tu **es** · il/elle **est** · on **est** · nous **sommes** · vous **êtes** · ils/elles **sont**",
+                        AGE, ONT, TUA + " " + ILA, J],
+               "let": ["Vraag je bij elke zin eerst af: **hebben** of **zijn**? Pas daarna: welke vorm?", "Leeftijd is altijd **avoir**, ook al zeg je in het Nederlands *ben*.", "Kies bij *zij* eerst het voornaamwoord: één meisje = **elle**, meer mensen = **ils** (of **elles** als het alleen meisjes/vrouwen zijn)."],
+               "qs": CONJ + MIX})
 topics.append({"id": "ae", "nav": "avoir/être", "title": "avoir en être (+ persoonlijk voornaamwoord)", "pages": "blz. 48-51, 55, 166, 171", "bron": [48, 49, 50, 55, 166, 171], "n": 15,
                "doelen": ["Je kunt de persoonlijke voornaamwoorden gebruiken.", "Je kunt avoir gebruiken.", "Je kunt être vervoegen."],
                "kern": ["**je / j'** – ik · **tu** – jij · **il** – hij · **elle** – zij · **on** – wij · **nous** – wij · **vous** – jullie, u · **ils** – zij (mannelijk, meervoud) · **elles** – zij (vrouwelijk, meervoud)",
@@ -183,6 +220,7 @@ topics.append({"id": "ae", "nav": "avoir/être", "title": "avoir en être (+ per
                "let": ["**Ik ben 12 jaar = J'ai 12 ans** (avoir, niet être!).", "**ils ont** (hebben) en **ils sont** (zijn) verschillen maar één letter.", "**tu as / il a** zonder accent; **à** met accent betekent *in / naar* (J'habite **à** Breda)."],
                "qs": ae_q})
 
+topics.sort(key=lambda t: t["id"] == "avoiretre")  # door elkaar oefenen komt na de losse tabellen
 data = {
     "meta": {"id": "frans-pw1", "type": "leer", "brand": "Frans", "sub": "Proefwerk 1 · Chapitre 1", "title": "Frans proefwerk 1", "toets": "proefwerk", "lidw": "het", "examDate": "2026-11-06"},
     "instructie": "Woordjes Chapitre 1 (Frans → Nederlands en Nederlands → Frans), avoir en être, de lidwoorden.",
@@ -190,6 +228,7 @@ data = {
     "C": "Dit antwoord is niet uit het boek maar zelf geschreven. Check het met je boek of je docent.",
     "extra": "Tip uit het boek: oefen ook met Slim stampen in Grandes Lignes en ligne.",
     "topics": topics,
+    "tables": {"avoir": {"title": "avoir (hebben)", "rows": AV}, "etre": {"title": "être (zijn)", "rows": ET}},
     "bronnen": {"pages": [32, 33, 34, 35, 48, 49, 50, 51, 52, 53, 54, 55, 166, 167, 171]},
 }
 json.dump(data, open(f"{ROOT}/frans/proefwerk-1/data.json", "w"), ensure_ascii=False, indent=1)

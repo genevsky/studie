@@ -3206,6 +3206,18 @@
    ],
    "qs": [
     {
+     "k": "conj",
+     "tab": "avoir",
+     "q": "Vervoeg avoir (hebben): vul de hele tabel in.",
+     "bk": "blz. 49 en 55"
+    },
+    {
+     "k": "conj",
+     "tab": "etre",
+     "q": "Vervoeg être (zijn): vul de hele tabel in.",
+     "bk": "blz. 171"
+    },
+    {
      "k": "type",
      "strict": true,
      "q": "avoir: j' ___ (ik heb)",
@@ -3214,6 +3226,8 @@
       "j'ai"
      ],
      "show": "j'ai",
+     "tab": "avoir",
+     "row": 0,
      "bk": "blz. 49 en 55"
     },
     {
@@ -3225,6 +3239,8 @@
       "tu as"
      ],
      "show": "tu as",
+     "tab": "avoir",
+     "row": 1,
      "bk": "blz. 49 en 55"
     },
     {
@@ -3237,6 +3253,8 @@
       "elle a"
      ],
      "show": "il / elle a",
+     "tab": "avoir",
+     "row": 2,
      "bk": "blz. 49 en 55"
     },
     {
@@ -3248,6 +3266,8 @@
       "on a"
      ],
      "show": "on a",
+     "tab": "avoir",
+     "row": 3,
      "bk": "blz. 49 en 55"
     },
     {
@@ -3259,6 +3279,8 @@
       "nous avons"
      ],
      "show": "nous avons",
+     "tab": "avoir",
+     "row": 4,
      "bk": "blz. 49 en 55"
     },
     {
@@ -3270,6 +3292,8 @@
       "vous avez"
      ],
      "show": "vous avez",
+     "tab": "avoir",
+     "row": 5,
      "bk": "blz. 49 en 55"
     },
     {
@@ -3282,6 +3306,8 @@
       "elles ont"
      ],
      "show": "ils / elles ont",
+     "tab": "avoir",
+     "row": 6,
      "bk": "blz. 49 en 55"
     },
     {
@@ -3293,6 +3319,8 @@
       "je suis"
      ],
      "show": "je suis",
+     "tab": "etre",
+     "row": 0,
      "bk": "blz. 171"
     },
     {
@@ -3304,6 +3332,8 @@
       "tu es"
      ],
      "show": "tu es",
+     "tab": "etre",
+     "row": 1,
      "bk": "blz. 171"
     },
     {
@@ -3316,6 +3346,8 @@
       "elle est"
      ],
      "show": "il / elle est",
+     "tab": "etre",
+     "row": 2,
      "bk": "blz. 171"
     },
     {
@@ -3327,6 +3359,8 @@
       "on est"
      ],
      "show": "on est",
+     "tab": "etre",
+     "row": 3,
      "bk": "blz. 171"
     },
     {
@@ -3338,6 +3372,8 @@
       "nous sommes"
      ],
      "show": "nous sommes",
+     "tab": "etre",
+     "row": 4,
      "bk": "blz. 171"
     },
     {
@@ -3349,6 +3385,8 @@
       "vous êtes"
      ],
      "show": "vous êtes",
+     "tab": "etre",
+     "row": 5,
      "bk": "blz. 171"
     },
     {
@@ -3361,6 +3399,8 @@
       "elles sont"
      ],
      "show": "ils / elles sont",
+     "tab": "etre",
+     "row": 6,
      "bk": "blz. 171"
     },
     {
@@ -3670,8 +3710,374 @@
      "bk": "blz. 53"
     }
    ]
+  },
+  {
+   "id": "avoiretre",
+   "nav": "avoir of être?",
+   "title": "Door elkaar oefenen",
+   "pages": "blz. 49, 55, 171",
+   "bron": [
+    49,
+    55,
+    171
+   ],
+   "n": 12,
+   "doelen": [
+    "Je kiest zelf of je avoir of être nodig hebt, en je schrijft de goede vorm."
+   ],
+   "kern": [
+    "**avoir** (hebben): j'**ai** · tu **as** · il/elle **a** · on **a** · nous **avons** · vous **avez** · ils/elles **ont**",
+    "**être** (zijn): je **suis** · tu **es** · il/elle **est** · on **est** · nous **sommes** · vous **êtes** · ils/elles **sont**",
+    "In het Frans **héb** je een leeftijd: *avoir … ans*. Ik ben 12 jaar = **j'ai** 12 ans.",
+    "**ils/elles sont** = zij **zijn** (de **s** van **z**ijn) · **ils/elles ont** = zij **hebben**.",
+    "**tu es** = jij bent · **tu as** = jij hebt. **il/elle est** = hij/zij is · **il/elle a** = hij/zij heeft.",
+    "Voor een klinker wordt *je* → **j'**: **j'ai**, maar **je suis**."
+   ],
+   "let": [
+    "Vraag je bij elke zin eerst af: **hebben** of **zijn**? Pas daarna: welke vorm?",
+    "Leeftijd is altijd **avoir**, ook al zeg je in het Nederlands *ben*.",
+    "Kies bij *zij* eerst het voornaamwoord: één meisje = **elle**, meer mensen = **ils** (of **elles** als het alleen meisjes/vrouwen zijn)."
+   ],
+   "qs": [
+    {
+     "k": "conj",
+     "tab": "avoir",
+     "q": "Vervoeg avoir (hebben): vul de hele tabel in.",
+     "bk": "blz. 49 en 55"
+    },
+    {
+     "k": "conj",
+     "tab": "etre",
+     "q": "Vervoeg être (zijn): vul de hele tabel in.",
+     "bk": "blz. 171"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Vertaal: Ik ben 12 jaar.",
+     "a": [
+      "J'ai 12 ans.",
+      "J'ai douze ans."
+     ],
+     "show": "J'ai 12 ans.",
+     "tab": "avoir",
+     "row": 0,
+     "xw": "In het Frans **héb** je een leeftijd: *avoir … ans*. Ik ben 12 jaar = **j'ai** 12 ans.",
+     "bk": "avoir blz. 49 · être blz. 171"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Vertaal: Ik heb een broer.",
+     "a": [
+      "J'ai un frère."
+     ],
+     "show": "J'ai un frère.",
+     "tab": "avoir",
+     "row": 0,
+     "xw": "Voor een klinker wordt *je* → **j'**: **j'ai**, maar **je suis**.",
+     "bk": "avoir blz. 49 · être blz. 171"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Vertaal: Ik ben Nederlands.",
+     "a": [
+      "Je suis hollandais.",
+      "Je suis hollandaise."
+     ],
+     "show": "Je suis hollandais.",
+     "tab": "etre",
+     "row": 0,
+     "xw": "Voor een klinker wordt *je* → **j'**: **j'ai**, maar **je suis**.",
+     "bk": "avoir blz. 49 · être blz. 171"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Vertaal: Hij is 15 jaar.",
+     "a": [
+      "Il a 15 ans.",
+      "Il a quinze ans."
+     ],
+     "show": "Il a 15 ans.",
+     "tab": "avoir",
+     "row": 2,
+     "xw": "In het Frans **héb** je een leeftijd: *avoir … ans*. Ik ben 12 jaar = **j'ai** 12 ans.",
+     "bk": "avoir blz. 49 · être blz. 171"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Vertaal: Hij is groot.",
+     "a": [
+      "Il est grand."
+     ],
+     "show": "Il est grand.",
+     "tab": "etre",
+     "row": 2,
+     "xw": "**il/elle est** = hij/zij is · **il/elle a** = hij/zij heeft.",
+     "bk": "avoir blz. 49 · être blz. 171"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Vertaal: Zij (één meisje) is klein.",
+     "a": [
+      "Elle est petite."
+     ],
+     "show": "Elle est petite.",
+     "tab": "etre",
+     "row": 2,
+     "xw": "**il/elle est** = hij/zij is · **il/elle a** = hij/zij heeft.",
+     "bk": "avoir blz. 49 · être blz. 171"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Vertaal: Zij (één meisje) heeft een zus.",
+     "a": [
+      "Elle a une sœur.",
+      "Elle a une soeur."
+     ],
+     "show": "Elle a une sœur.",
+     "tab": "avoir",
+     "row": 2,
+     "xw": "**il/elle est** = hij/zij is · **il/elle a** = hij/zij heeft.",
+     "bk": "avoir blz. 49 · être blz. 171"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Vertaal: Jij hebt een foto.",
+     "a": [
+      "Tu as une photo."
+     ],
+     "show": "Tu as une photo.",
+     "tab": "avoir",
+     "row": 1,
+     "xw": "**tu es** = jij bent · **tu as** = jij hebt.",
+     "bk": "avoir blz. 49 · être blz. 171"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Vertaal: Jij bent in het zwembad.",
+     "a": [
+      "Tu es dans la piscine."
+     ],
+     "show": "Tu es dans la piscine.",
+     "tab": "etre",
+     "row": 1,
+     "xw": "**tu es** = jij bent · **tu as** = jij hebt.",
+     "bk": "avoir blz. 49 · être blz. 171"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Vertaal: Wij hebben een probleem.",
+     "a": [
+      "Nous avons un problème.",
+      "On a un problème."
+     ],
+     "show": "Nous avons un problème.",
+     "tab": "avoir",
+     "row": 4,
+     "xw": "nous **avons** (hebben) · nous **sommes** (zijn).",
+     "bk": "avoir blz. 49 · être blz. 171"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Vertaal: Wij zijn in het hotel.",
+     "a": [
+      "Nous sommes dans l'hôtel.",
+      "On est dans l'hôtel."
+     ],
+     "show": "Nous sommes dans l'hôtel.",
+     "tab": "etre",
+     "row": 4,
+     "xw": "nous **sommes** (zijn) · nous **avons** (hebben).",
+     "bk": "avoir blz. 49 · être blz. 171"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Vertaal: Jullie hebben een zus.",
+     "a": [
+      "Vous avez une sœur.",
+      "Vous avez une soeur."
+     ],
+     "show": "Vous avez une sœur.",
+     "tab": "avoir",
+     "row": 5,
+     "xw": "vous **avez** (hebben) · vous **êtes** (zijn).",
+     "bk": "avoir blz. 49 · être blz. 171"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Vertaal: Jullie zijn in het huis.",
+     "a": [
+      "Vous êtes dans la maison."
+     ],
+     "show": "Vous êtes dans la maison.",
+     "tab": "etre",
+     "row": 5,
+     "xw": "vous **êtes** (zijn) · vous **avez** (hebben).",
+     "bk": "avoir blz. 49 · être blz. 171"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Vertaal: Zij (Hugo en Adam) zijn klein.",
+     "a": [
+      "Ils sont petits."
+     ],
+     "show": "Ils sont petits.",
+     "tab": "etre",
+     "row": 6,
+     "xw": "**ils/elles sont** = zij **zijn** (de **s** van **z**ijn) · **ils/elles ont** = zij **hebben**.",
+     "bk": "avoir blz. 49 · être blz. 171"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Vertaal: Zij (Sophie en Céline) hebben een probleem.",
+     "a": [
+      "Elles ont un problème."
+     ],
+     "show": "Elles ont un problème.",
+     "tab": "avoir",
+     "row": 6,
+     "xw": "**ils/elles sont** = zij **zijn** (de **s** van **z**ijn) · **ils/elles ont** = zij **hebben**.",
+     "bk": "avoir blz. 49 · être blz. 171"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Vertaal: Zij (Hugo en Céline) zijn 13 jaar.",
+     "a": [
+      "Ils ont 13 ans.",
+      "Ils ont treize ans."
+     ],
+     "show": "Ils ont 13 ans.",
+     "tab": "avoir",
+     "row": 6,
+     "xw": "In het Frans **héb** je een leeftijd: *avoir … ans*. Ik ben 12 jaar = **j'ai** 12 ans. **ils/elles sont** = zij **zijn** (de **s** van **z**ijn) · **ils/elles ont** = zij **hebben**.",
+     "bk": "avoir blz. 49 · être blz. 171"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Vertaal: Hoe oud ben jij?",
+     "a": [
+      "Tu as quel âge?"
+     ],
+     "show": "Tu as quel âge?",
+     "tab": "avoir",
+     "row": 1,
+     "xw": "In het Frans **héb** je een leeftijd: *avoir … ans*. Ik ben 12 jaar = **j'ai** 12 ans.",
+     "bk": "avoir blz. 49 · être blz. 171"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Vertaal: Dat is een stad.",
+     "a": [
+      "C'est une ville."
+     ],
+     "show": "C'est une ville.",
+     "tab": "etre",
+     "row": 2,
+     "xw": "*c'est* = ce + **est** (être).",
+     "bk": "avoir blz. 49 · être blz. 171"
+    }
+   ]
   }
  ],
+ "tables": {
+  "avoir": {
+   "title": "avoir (hebben)",
+   "rows": [
+    [
+     "j'",
+     "ai",
+     "ik heb"
+    ],
+    [
+     "tu",
+     "as",
+     "jij hebt"
+    ],
+    [
+     "il / elle",
+     "a",
+     "hij / zij heeft"
+    ],
+    [
+     "on",
+     "a",
+     "wij hebben"
+    ],
+    [
+     "nous",
+     "avons",
+     "wij hebben"
+    ],
+    [
+     "vous",
+     "avez",
+     "jullie hebben / u heeft"
+    ],
+    [
+     "ils / elles",
+     "ont",
+     "zij hebben"
+    ]
+   ]
+  },
+  "etre": {
+   "title": "être (zijn)",
+   "rows": [
+    [
+     "je",
+     "suis",
+     "ik ben"
+    ],
+    [
+     "tu",
+     "es",
+     "jij bent"
+    ],
+    [
+     "il / elle",
+     "est",
+     "hij / zij is"
+    ],
+    [
+     "on",
+     "est",
+     "wij zijn"
+    ],
+    [
+     "nous",
+     "sommes",
+     "wij zijn"
+    ],
+    [
+     "vous",
+     "êtes",
+     "jullie zijn / u bent"
+    ],
+    [
+     "ils / elles",
+     "sont",
+     "zij zijn"
+    ]
+   ]
+  }
+ },
  "bronnen": {
   "pages": [
    32,

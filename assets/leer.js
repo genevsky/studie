@@ -4,8 +4,8 @@
 const D=window.EXAM,M=D.meta,T=D.topics;
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-/* md: **vet** en {a/b} als staande breuk */
-const md=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\{([^{}\/]+)\/([^{}]+)\}/g,'<span class="fr"><i>$1</i><i>$2</i></span>');
+/* md: **vet**, *schuin* en {a/b} als staande breuk */
+const md=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\*([^*]+?)\*/g,'<i>$1</i>').replace(/\{([^{}\/]+)\/([^{}]+)\}/g,'<span class="fr"><i>$1</i><i>$2</i></span>');
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const view=$('#view');document.title=M.title;$('#brand').textContent=M.brand;$('#sub').textContent=M.sub;
 const TOETS=M.toets||'toets',LW=M.lidw||'de',HT=LW+' '+TOETS; /* lidw: 'het' proefwerk, 'de' toets */
@@ -114,9 +114,12 @@ V.bron=function(id){const t=T.find(x=>x.id===id),B=D.bronnen||{},pages=(t?t.bron
   ${pages.map(p=>`<figure class="card lr-fig"><a href="${esc(p.src)}" target="_blank" rel="noopener"><img class="page" loading="lazy" src="${esc(p.src)}" alt="${esc(p.cap)}"></a><figcaption class="small mut">${esc(p.cap)}</figcaption></figure>`).join('')}`;
   act()};
 
+/* vervoegingstabel uit D.tables; de rij die gevraagd werd is gemarkeerd */
+const conjTable=(tab,row)=>{const T=D.tables[tab];return `<table class="lr-conj lr-show"><caption>${esc(T.title)}</caption>${T.rows.map((r,i)=>`<tr class="${i===row?'hl':''}"><th>${esc(r[0])}</th><td><b>${esc(r[1])}</b></td><td class="small mut">${esc(r[2])}</td></tr>`).join('')}</table>`};
+const conjForms=r=>[r[1],...r[0].split(' / ').map(x=>x.endsWith("'")?x+r[1]:x+' '+r[1])];
 /* accentknoppen bij vreemde-taalvragen: voegen de letter in op de plek van de cursor */
 const ACC=`<div class="lr-acc" aria-label="Letters met accent">${['é','è','ê','ë','à','â','ç','î','ï','ô','û','ù','œ'].map(c=>`<button type="button" class="chip" data-ac="${c}">${c}</button>`).join('')}</div>`;
-function accBar(box){const inp=$('.ti',box);$$('[data-ac]',box).forEach(b=>{b.addEventListener('mousedown',e=>e.preventDefault());b.addEventListener('click',()=>{if(inp.readOnly)return;
+function accBar(box){let inp=$('.ti',box);$$('.ti',box).forEach(i=>i.addEventListener('focus',()=>inp=i));$$('[data-ac]',box).forEach(b=>{b.addEventListener('mousedown',e=>e.preventDefault());b.addEventListener('click',()=>{if(inp.readOnly)return;
   const a=inp.selectionStart??inp.value.length,z=inp.selectionEnd??a;inp.value=inp.value.slice(0,a)+b.dataset.ac+inp.value.slice(z);inp.focus();inp.setSelectionRange(a+1,a+1)})})}
 
 /* ---- vraagtypes: elk rendert in box en roept done(score 0..1) aan ---- */
@@ -141,13 +144,21 @@ function part(p,box,done){
       const eq=v.n*A.d===A.n*v.d,sc=eq?(v.simple?1:.5):0;inp.readOnly=true;$('#tk',box).remove();
       fb(sc===1?true:sc?null:false,(sc===1?'Goed! ':sc?'Goed gerekend, maar vereenvoudig nog: ':'Het goede antwoord: ')+'<b>'+esc(String(p.a).replace(/-/g,'−'))+'</b>');done(sc)};
     $('#tk',box).onclick=ck;inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();ck()}});return}
+  if(p.k==='conj'){const T=D.tables[p.tab];
+    box.innerHTML=`${Q}<table class="lr-conj">${T.rows.map((r,i)=>`<tr><th>${esc(r[0])}</th><td><input type="text" class="ti" data-r="${i}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="${esc(r[0])}"></td><td class="small mut">${esc(r[2])}</td></tr>`).join('')}</table>${ACC}<button class="btn" id="tk">Controleer</button>`;accBar(box);
+    const ins=$$('.ti',box),ck=()=>{if(!$('#tk',box))return;let ok=0;
+      ins.forEach((inp,i)=>{const r=T.rows[i],g=conjForms(r).some(w=>nrmS(w)===nrmS(inp.value));if(g)ok++;inp.readOnly=true;inp.classList.add(g?'yok':'yno');
+        if(!g)inp.insertAdjacentHTML('afterend',`<div class="tfix">${esc(r[1])}</div>`)});
+      $('#tk',box).remove();$$('[data-ac]',box).forEach(b=>b.disabled=true);fb(ok===T.rows.length,ok===T.rows.length?'De hele tabel goed!':ok+' van de '+T.rows.length+' goed. Schrijf de rode rijen nog een keer over.');done(ok/T.rows.length)};
+    ins.forEach((inp,i)=>inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();ins[i+1]?ins[i+1].focus():ck()}}));$('#tk',box).onclick=ck;return}
   if(p.k==='type'||p.k==='num'){box.innerHTML=`${Q}<div class="btns"><input type="text" class="ti" ${p.k==='num'?'inputmode="decimal"':''} autocomplete="off" autocapitalize="off" spellcheck="false" style="flex:1 1 160px">${p.unit?`<span class="lr-unit">${esc(p.unit)}</span>`:''}<button class="btn" id="tk">Controleer</button></div>${p.strict?ACC:''}`;
     if(p.strict)accBar(box);
     const inp=$('.ti',box),ck=()=>{if(!$('#tk',box)||!inp.value.trim())return;/* strict: accenten en lidwoord tellen mee (vreemde talen) */
       const g=p.k==='num'?Math.abs(num(inp.value)-p.a)<=(p.tol||0)+1e-9:p.strict?p.a.some(w=>nrmS(w)===nrmS(inp.value)):near(inp.value,p.a);
       const hint=!g&&p.strict?(p.a.some(w=>deacc(nrmS(w))===deacc(nrmS(inp.value)))?'Bijna! Let op de accenten. ':p.a.some(w=>nrmS(w).replace(/^(le |la |l'|les |un |une )/,'')===nrmS(inp.value))?'Vergeet het lidwoord niet. ':''):'';
       inp.readOnly=true;$('#tk',box).remove();
-      fb(g,(g?'Goed! ':hint+'Het goede antwoord: ')+'<b>'+esc(p.k==='num'?String(p.a).replace('.',',')+' '+(p.unit||''):(p.show||p.a[0]))+'</b>');done(g?1:0)};
+      fb(g,(g?'Goed! ':hint+'Het goede antwoord: ')+'<b>'+esc(p.k==='num'?String(p.a).replace('.',',')+' '+(p.unit||''):(p.show||p.a[0]))+'</b>'+(!g&&p.xw?`<small>${md(p.xw)}</small>`:''));
+      if(!g&&p.tab&&D.tables)box.insertAdjacentHTML('beforeend',conjTable(p.tab,p.row));done(g?1:0)};
     $('#tk',box).onclick=ck;inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();ck()}});return}
   if(p.k==='open'){box.innerHTML=`${Q}<textarea placeholder="Schrijf je antwoord op (op het proefwerk moet je het ook opschrijven)"></textarea><button class="btn" id="sh">Kijk na</button>`;
     $('#sh',box).onclick=()=>{$('#sh',box).remove();$('textarea',box).readOnly=true;box.insertAdjacentHTML('beforeend',`<div class="quote"><b>Vink aan wat er in jouw antwoord stond${p.need<p.pts.length?` (${p.need} is genoeg)`:''}:</b>${p.pts.map((x,i)=>`<label class="chk"><input type="checkbox" data-p="${i}"><span>${esc(x)}</span></label>`).join('')}</div><button class="btn" id="okb">Klaar</button>`);

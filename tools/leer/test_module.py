@@ -28,6 +28,9 @@ def answer(pg, q, wrong=False):
         if k == 'open': pg.fill('#pb textarea', 'antwoord'); pg.click('#sh')
         for c in pg.locator('#pb [data-p]').all(): c.check()
         pg.click('#okb')
+    elif k == 'conj':
+        for i, r in enumerate(D['tables'][q['tab']]['rows']): pg.fill(f'#pb input.ti[data-r="{i}"]', r[1])
+        pg.click('#tk')
     elif k == 'fill':
         for i, it in enumerate(q['items']): pg.select_option(f'#pb select[data-i="{i}"]', it[1])
         pg.click('#fk')
