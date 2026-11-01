@@ -3,6 +3,9 @@ window.CATALOG=[
  {vak:"Biologie",emoji:"🌱",hue:120,toetsen:[
   {id:"biologie-pw1",datum:"2026-10-30",instr:"Leren:\n\nThema 1, basisstof 1 t/m 5, 7 en 8 (basisstof 6 dus NIET)  (blz 14 t/m 62)\n\nLeren onderzoeken 1 en 3 (blz 63 t/m 69)\n\nDe samenvatting staat op blz 79 t/m 82 (BS 6 niet!). Een diagnostische toets staat in het digitale boek.\n\nToegestane hulpmiddelen:\n-blauwe of zwarte pen (niet uitgumbaar)\n-(kleur)potlood + gum\n-geodriehoek/liniaal\n-gewone rekenmachine\n-NE woordenboek",titel:"Proefwerk 1 · Thema 1 Planten en dieren",sub:"Basisstof 1-5, 7 en 8 · Leren onderzoeken 1 en 3",url:"biologie/proefwerk-1/index.html"}
  ]},
+ {vak:"Filosofie",emoji:"🤔",hue:280,toetsen:[
+  {id:"filosofie-toets",datum:"2026-11-02",instr:"leren: wat is filosofie\n\nleren: soorten vragen\n\nleren: vooronderstellingen (aannames)\n\nleren: historische context\n\nleren: socrates",titel:"Toets · Wat is filosofie?",sub:"Soorten vragen · vooronderstellingen · historische context · Socrates",url:"filosofie/toets/index.html"}
+ ]},
  {vak:"Wiskunde",emoji:"➗",hue:30,toetsen:[
   {id:"wiskunde-pw1",datum:"2026-11-03",instr:"De leerstof voor de toetsweek:\n\nH2 Getallen en bewerkingen     : alle paragrafen van hoofdstuk 2\n\nMeenemen : gevulde etui, geodriehoek, (kleur)potloden en markeerstift.\n\nSucces met de voorbereidingen!",titel:"H2 · Getallen en bewerkingen",sub:"Toetsweek · alle paragrafen 2.1 t/m 2.5",url:"wiskunde/proefwerk-1/index.html"}
  ]},

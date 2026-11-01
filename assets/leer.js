@@ -59,7 +59,7 @@ const V={};
 function go(t,arg){CUR=t;cleanup();cleanup=()=>{};const tab=t==='bron'?'leer':t;$$('.tab').forEach(b=>b.setAttribute('aria-current',b.dataset.tab===tab?'page':'false'));V[t](arg);window.scrollTo(0,0);try{history.replaceState(null,'','#'+t+(arg?':'+arg:''))}catch(e){}}
 const on=(sel,fn,root=view)=>$$(sel,root).forEach(e=>e.addEventListener('click',()=>fn(e)));
 const act=()=>on('[data-go]',e=>{const [t,x]=e.dataset.go.split(':');go(t,x)});
-const tname=t=>t.nav+' · '+t.title;
+const tname=t=>t.nav===t.title?t.title:t.nav+' · '+t.title;
 const dot=id=>`<i class="lr-dot ${status(id)}" title="${SLABEL[status(id)]}"></i>`;
 
 /* ---- VANDAAG: dagplan. Nieuwe onderwerpen verdeeld over de dagen tot de dag vóór de toets; die dag: oefenproefwerk. ---- */
@@ -160,7 +160,7 @@ function part(p,box,done){
       fb(g,(g?'Goed! ':hint+'Het goede antwoord: ')+'<b>'+esc(p.k==='num'?String(p.a).replace('.',',')+' '+(p.unit||''):(p.show||p.a[0]))+'</b>'+(!g&&p.xw?`<small>${md(p.xw)}</small>`:''));
       if(!g&&p.tab&&D.tables)box.insertAdjacentHTML('beforeend',conjTable(p.tab,p.row));done(g?1:0)};
     $('#tk',box).onclick=ck;inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();ck()}});return}
-  if(p.k==='open'){box.innerHTML=`${Q}<textarea placeholder="Schrijf je antwoord op (op het proefwerk moet je het ook opschrijven)"></textarea><button class="btn" id="sh">Kijk na</button>`;
+  if(p.k==='open'){box.innerHTML=`${Q}<textarea placeholder="Schrijf je antwoord op (op ${HT} moet je het ook opschrijven)"></textarea><button class="btn" id="sh">Kijk na</button>`;
     $('#sh',box).onclick=()=>{$('#sh',box).remove();$('textarea',box).readOnly=true;box.insertAdjacentHTML('beforeend',`<div class="quote"><b>Vink aan wat er in jouw antwoord stond${p.need<p.pts.length?` (${p.need} is genoeg)`:''}:</b>${p.pts.map((x,i)=>`<label class="chk"><input type="checkbox" data-p="${i}"><span>${esc(x)}</span></label>`).join('')}</div><button class="btn" id="okb">Klaar</button>`);
       $('#okb',box).onclick=()=>{const n=$$('[data-p]:checked',box).length,sc=Math.min(n,p.need)/p.need;$('#okb',box).remove();$$('[data-p]',box).forEach(c=>c.disabled=true);fb(sc===1?true:sc>0?null:false,sc===1?'Helemaal goed!':sc>0?'Gedeeltelijk goed.':'Lees het goede antwoord nog eens.');done(sc)}};return}
   if(p.k==='fill'){box.innerHTML=`${Q}<div class="stack">${p.items.map((it,i)=>`<div class="frow"><span>${md(it[0])}</span><select data-i="${i}"><option value="">kies…</option>${p.opts.map(o=>`<option>${esc(o)}</option>`).join('')}</select><span class="fres" id="fr${i}"></span></div>`).join('')}</div><button class="btn" id="fk">Controleer</button>`;
