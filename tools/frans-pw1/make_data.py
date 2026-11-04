@@ -81,6 +81,66 @@ topics.append({"id": "num", "nav": "0-20", "title": "Les nombres de 0 à 20", "p
                "let": ["**dix-sept, dix-huit, dix-neuf** schrijf je met een streepje.", "**quatre** en **quatorze**, **cinq** en **quinze**, **six** en **seize**: let goed op het verschil.", "**vingt** (20) heeft een stomme **g** en **t**: niet vergeten bij het schrijven."],
                "qs": numq})
 
+# ---- getallen 0-100 (traditionele spelling: streepjes, behalve bij "et"; 1990-spelling met overal streepjes telt ook goed)
+TENS = {20: "vingt", 30: "trente", 40: "quarante", 50: "cinquante", 60: "soixante"}
+def fr_num(n):
+    if n <= 20: return NUM[n]
+    if n == 100: return "cent"
+    if n < 70:
+        t, u = n // 10 * 10, n % 10
+        return TENS[t] if u == 0 else TENS[t] + (" et un" if u == 1 else "-" + NUM[u])
+    if n < 80: return "soixante" + (" et onze" if n == 71 else "-" + NUM[n - 60])
+    if n == 80: return "quatre-vingts"
+    return "quatre-vingt-" + NUM[n - 80]
+def fr_alts(n):
+    w = fr_num(n)
+    return [w, w.replace(" ", "-")] if " et " in w else [w]
+assert [fr_num(x) for x in (21, 31, 71, 77, 80, 81, 90, 91, 99, 100)] == ["vingt et un", "trente et un", "soixante et onze", "soixante-dix-sept", "quatre-vingts", "quatre-vingt-un", "quatre-vingt-dix", "quatre-vingt-onze", "quatre-vingt-dix-neuf", "cent"]
+NUMX = "Getallen tot 100 staan niet in de woordenlijst van Chapitre 1: ze zijn toegevoegd op verzoek."
+def nq(n, rng):
+    w = fr_num(n)
+    xw = ("Bij **1** (21, 31, 41, 51, 61) en bij **71** schrijf je **et** zonder streepjes." if n in (21, 31, 41, 51, 61, 71) else
+          "**80 = quatre-vingts** (met **s**); daarna zonder s: quatre-vingt-un, quatre-vingt-deux …" if n == 80 else
+          "Na 80 géén *et*: 81 = **quatre-vingt-un**, 91 = **quatre-vingt-onze**." if n in (81, 91) else
+          "70-79 = **soixante** + 10 t/m 19: 72 = soixante-**douze**." if 70 <= n < 80 else
+          "90-99 = **quatre-vingt** + 10 t/m 19: 92 = quatre-vingt-**douze**." if 90 <= n < 100 else
+          "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq." if n % 10 else None)
+    a = {"k": "type", "strict": True, "q": f"Schrijf in het Frans: {n}", "a": fr_alts(n), "show": w, "tab": rng, "row": None, "bk": "getallen"}
+    if xw: a["xw"] = xw
+    b_ = {"k": "num", "q": f"Welk getal is: {w}", "a": n, "tol": 0, "bk": "getallen"}
+    return [a, b_]
+TIEN = [[str(t), fr_num(t), ""] for t in (10, 20, 30, 40, 50, 60, 70, 80, 90, 100)]
+SPEC = [[str(t), fr_num(t), ""] for t in (21, 31, 41, 51, 61, 71, 81, 91)]
+TAB_EXTRA = {"tien": {"title": "De tientallen", "rows": TIEN}, "een": {"title": "Getallen met 1 (let op et)", "rows": SPEC}}
+q2 = []
+for n in list(range(21, 70)): q2 += nq(n, "tien")
+for q in q2:
+    if q["k"] == "type": q["row"] = [r[0] for r in TIEN].index(str(int(q["q"].split(": ")[1]) // 10 * 10))
+q2 = [{"k": "conj", "tab": "tien", "q": "Schrijf alle tientallen van 10 tot en met 100.", "bk": "getallen"}, {"k": "conj", "tab": "een", "q": "Schrijf de getallen met een 1 aan het eind.", "bk": "getallen"}] + q2
+topics.append({"id": "num2", "nav": "21-69", "title": "Les nombres de 21 à 69", "pages": "getallen", "bron": [], "n": 15,
+               "doelen": ["Je kunt de getallen 21 tot en met 69 in het Frans lezen en goed spellen."],
+               "kern": ["**Tientallen:** 20 vingt · 30 trente · 40 quarante · 50 cinquante · 60 soixante",
+                        "**Tiental + eenheid met een streepje:** 22 vingt-deux · 35 trente-cinq · 48 quarante-huit · 57 cinquante-sept · 69 soixante-neuf",
+                        "**Bij een 1: et, zonder streepjes:** 21 vingt et un · 31 trente et un · 41 quarante et un · 51 cinquante et un · 61 soixante et un",
+                        "Je bouwt het getal dus op: **tiental + eenheid**. Ken je 0-20 en de vijf tientallen, dan kun je alles tot 69."],
+               "let": ["**vingt et un**, niet *vingt-un*: bij een 1 hoort **et**.", "**quarante** (40) met **-ante**, net als cinquante en soixante; **trente** met **-ente**.", "**soixante** schrijf je met **x**: soi-x-ante."],
+               "qs": q2})
+q3 = []
+for n in list(range(70, 101)): q3 += nq(n, "tien")
+for q in q3:
+    if q["k"] == "type": q["row"] = [r[0] for r in TIEN].index(str(min(100, int(q["q"].split(": ")[1]) // 10 * 10)))
+q3 = [{"k": "conj", "tab": "tien", "q": "Schrijf alle tientallen van 10 tot en met 100.", "bk": "getallen"}] + q3
+q3 += [{"k": "mc", "q": "Hoe bouw je 75 op in het Frans?", "opts": ["60 + 15: soixante-quinze", "70 + 5: septante-cinq", "4 × 20 − 5"], "a": 0, "bk": "getallen", "x": "70-79 = soixante + 10 t/m 19."},
+       {"k": "mc", "q": "Hoe bouw je 93 op in het Frans?", "opts": ["4 × 20 + 13: quatre-vingt-treize", "90 + 3: nonante-trois", "60 + 33"], "a": 0, "bk": "getallen"},
+       {"k": "mc", "q": "Wanneer krijgt quatre-vingt een s?", "opts": ["alleen bij 80: quatre-vingts", "bij alle getallen van 80 tot 99", "nooit"], "a": 0, "bk": "getallen"}]
+topics.append({"id": "num3", "nav": "70-100", "title": "Les nombres de 70 à 100", "pages": "getallen", "bron": [], "n": 15,
+               "doelen": ["Je kunt de getallen 70 tot en met 100 in het Frans lezen en goed spellen."],
+               "kern": ["**70-79 = soixante + 10 t/m 19:** 70 soixante-dix · 71 soixante et onze · 72 soixante-douze · 75 soixante-quinze · 77 soixante-dix-sept · 79 soixante-dix-neuf",
+                        "**80 = 4 × 20:** quatre-vingts. Daarna zonder s: 81 quatre-vingt-un · 85 quatre-vingt-cinq · 89 quatre-vingt-neuf",
+                        "**90-99 = quatre-vingt + 10 t/m 19:** 90 quatre-vingt-dix · 91 quatre-vingt-onze · 96 quatre-vingt-seize · 99 quatre-vingt-dix-neuf",
+                        "**100** = cent"],
+               "let": ["**71 = soixante et onze** (met et), maar **81 = quatre-vingt-un** en **91 = quatre-vingt-onze** (zonder et).", "**quatre-vingts** heeft alleen bij precies 80 een **s**.", "In België en Zwitserland zeggen ze *septante* en *nonante*, maar in Frankrijk (en op je toets) gebruik je **soixante-dix** en **quatre-vingt-dix**."],
+               "qs": q3})
 lid = {"id": "lid", "nav": "Lidwoorden", "title": "De lidwoorden", "pages": "blz. 32-35, 55, 166-167", "bron": [32, 33, 34, 55, 166, 167],
        "doelen": ["Je kunt de lidwoorden gebruiken (le, la, l', les, un, une)."],
        "kern": ["*De / Het* vertaal je met: **le, la, l'** of **les**. In het Frans zijn zelfstandige naamwoorden mannelijk of vrouwelijk.",
@@ -132,6 +192,11 @@ lid = {"id": "lid", "nav": "Lidwoorden", "title": "De lidwoorden", "pages": "blz
            {"k": "mc", "q": "Wanneer gebruik je les?", "opts": ["bij meervoud, voor mannelijke én vrouwelijke woorden", "alleen bij vrouwelijke woorden", "bij enkelvoud voor een klinker"], "a": 0, "bk": "blz. 32"}
        ]}
 topics.append(lid)
+topics.append({"id": "getal", "nav": "0-100 door elkaar", "title": "Getallen 0-100 door elkaar", "pages": "getallen", "bron": [], "n": 20,
+               "doelen": ["Je kunt elk getal van 0 tot en met 100 in het Frans schrijven en lezen, ook als ze door elkaar komen."],
+               "kern": ["Elke ronde krijg je nieuwe getallen tussen 0 en 100: schrijf ze in het Frans, of zeg welk getal er staat.", "Spreek het getal hardop uit terwijl je het typt."],
+               "let": ["Denk bij elk getal eerst: **welk tiental**, en dan **welke eenheid**? Bij 70-79 en 90-99: tiental + 10 t/m 19."],
+               "qs": [{"k": "gen", "g": "schrijf", "q": "", "bk": "getallen"} for _ in range(14)] + [{"k": "gen", "g": "lees", "q": "", "bk": "getallen"} for _ in range(6)]})
 
 # lidwoord per woord: alle zelfstandige naamwoorden uit de woordenlijst (blz. 52-53) en de grammatica (blz. 32-34)
 # (woord, m/v, nl, meervoud?)
@@ -260,7 +325,7 @@ topics.append({"id": "ae", "nav": "avoir/être", "title": "avoir en être (+ per
                "let": ["**Ik ben 12 jaar = J'ai 12 ans** (avoir, niet être!).", "**ils ont** (hebben) en **ils sont** (zijn) verschillen maar één letter.", "**tu as / il a** zonder accent; **à** met accent betekent *in / naar* (J'habite **à** Breda)."],
                "qs": ae_q})
 
-ORDER = ["a", "b", "e", "f", "num", "lid", "lidw", "ae", "tabel", "avoiretre"]
+ORDER = ["a", "b", "e", "f", "num", "num2", "num3", "getal", "lid", "lidw", "ae", "tabel", "avoiretre"]
 topics.sort(key=lambda t: ORDER.index(t["id"]))
 data = {
     "meta": {"id": "frans-pw1", "type": "leer", "brand": "Frans", "sub": "Proefwerk 1 · Chapitre 1", "title": "Frans proefwerk 1", "toets": "proefwerk", "lidw": "het", "examDate": "2026-11-06"},
@@ -269,7 +334,7 @@ data = {
     "C": "Dit antwoord is niet uit het boek maar zelf geschreven. Check het met je boek of je docent.",
     "extra": "Tip uit het boek: oefen ook met Slim stampen in Grandes Lignes en ligne.",
     "topics": topics,
-    "tables": {"avoir": {"title": "avoir (hebben)", "rows": AV}, "etre": {"title": "être (zijn)", "rows": ET}},
+    "tables": {"avoir": {"title": "avoir (hebben)", "rows": AV}, "etre": {"title": "être (zijn)", "rows": ET}, **TAB_EXTRA},
     "bronnen": {"pages": [32, 33, 34, 35, 48, 49, 50, 51, 52, 53, 54, 55, 166, 167, 171]},
 }
 json.dump(data, open(f"{ROOT}/frans/proefwerk-1/data.json", "w"), ensure_ascii=False, indent=1)

@@ -2708,6 +2708,1847 @@
    ]
   },
   {
+   "id": "num2",
+   "nav": "21-69",
+   "title": "Les nombres de 21 à 69",
+   "pages": "getallen",
+   "bron": [],
+   "n": 15,
+   "doelen": [
+    "Je kunt de getallen 21 tot en met 69 in het Frans lezen en goed spellen."
+   ],
+   "kern": [
+    "**Tientallen:** 20 vingt · 30 trente · 40 quarante · 50 cinquante · 60 soixante",
+    "**Tiental + eenheid met een streepje:** 22 vingt-deux · 35 trente-cinq · 48 quarante-huit · 57 cinquante-sept · 69 soixante-neuf",
+    "**Bij een 1: et, zonder streepjes:** 21 vingt et un · 31 trente et un · 41 quarante et un · 51 cinquante et un · 61 soixante et un",
+    "Je bouwt het getal dus op: **tiental + eenheid**. Ken je 0-20 en de vijf tientallen, dan kun je alles tot 69."
+   ],
+   "let": [
+    "**vingt et un**, niet *vingt-un*: bij een 1 hoort **et**.",
+    "**quarante** (40) met **-ante**, net als cinquante en soixante; **trente** met **-ente**.",
+    "**soixante** schrijf je met **x**: soi-x-ante."
+   ],
+   "qs": [
+    {
+     "k": "conj",
+     "tab": "tien",
+     "q": "Schrijf alle tientallen van 10 tot en met 100.",
+     "bk": "getallen"
+    },
+    {
+     "k": "conj",
+     "tab": "een",
+     "q": "Schrijf de getallen met een 1 aan het eind.",
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 21",
+     "a": [
+      "vingt et un",
+      "vingt-et-un"
+     ],
+     "show": "vingt et un",
+     "tab": "tien",
+     "row": 1,
+     "bk": "getallen",
+     "xw": "Bij **1** (21, 31, 41, 51, 61) en bij **71** schrijf je **et** zonder streepjes."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: vingt et un",
+     "a": 21,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 22",
+     "a": [
+      "vingt-deux"
+     ],
+     "show": "vingt-deux",
+     "tab": "tien",
+     "row": 1,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: vingt-deux",
+     "a": 22,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 23",
+     "a": [
+      "vingt-trois"
+     ],
+     "show": "vingt-trois",
+     "tab": "tien",
+     "row": 1,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: vingt-trois",
+     "a": 23,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 24",
+     "a": [
+      "vingt-quatre"
+     ],
+     "show": "vingt-quatre",
+     "tab": "tien",
+     "row": 1,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: vingt-quatre",
+     "a": 24,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 25",
+     "a": [
+      "vingt-cinq"
+     ],
+     "show": "vingt-cinq",
+     "tab": "tien",
+     "row": 1,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: vingt-cinq",
+     "a": 25,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 26",
+     "a": [
+      "vingt-six"
+     ],
+     "show": "vingt-six",
+     "tab": "tien",
+     "row": 1,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: vingt-six",
+     "a": 26,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 27",
+     "a": [
+      "vingt-sept"
+     ],
+     "show": "vingt-sept",
+     "tab": "tien",
+     "row": 1,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: vingt-sept",
+     "a": 27,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 28",
+     "a": [
+      "vingt-huit"
+     ],
+     "show": "vingt-huit",
+     "tab": "tien",
+     "row": 1,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: vingt-huit",
+     "a": 28,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 29",
+     "a": [
+      "vingt-neuf"
+     ],
+     "show": "vingt-neuf",
+     "tab": "tien",
+     "row": 1,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: vingt-neuf",
+     "a": 29,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 30",
+     "a": [
+      "trente"
+     ],
+     "show": "trente",
+     "tab": "tien",
+     "row": 2,
+     "bk": "getallen"
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: trente",
+     "a": 30,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 31",
+     "a": [
+      "trente et un",
+      "trente-et-un"
+     ],
+     "show": "trente et un",
+     "tab": "tien",
+     "row": 2,
+     "bk": "getallen",
+     "xw": "Bij **1** (21, 31, 41, 51, 61) en bij **71** schrijf je **et** zonder streepjes."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: trente et un",
+     "a": 31,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 32",
+     "a": [
+      "trente-deux"
+     ],
+     "show": "trente-deux",
+     "tab": "tien",
+     "row": 2,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: trente-deux",
+     "a": 32,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 33",
+     "a": [
+      "trente-trois"
+     ],
+     "show": "trente-trois",
+     "tab": "tien",
+     "row": 2,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: trente-trois",
+     "a": 33,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 34",
+     "a": [
+      "trente-quatre"
+     ],
+     "show": "trente-quatre",
+     "tab": "tien",
+     "row": 2,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: trente-quatre",
+     "a": 34,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 35",
+     "a": [
+      "trente-cinq"
+     ],
+     "show": "trente-cinq",
+     "tab": "tien",
+     "row": 2,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: trente-cinq",
+     "a": 35,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 36",
+     "a": [
+      "trente-six"
+     ],
+     "show": "trente-six",
+     "tab": "tien",
+     "row": 2,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: trente-six",
+     "a": 36,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 37",
+     "a": [
+      "trente-sept"
+     ],
+     "show": "trente-sept",
+     "tab": "tien",
+     "row": 2,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: trente-sept",
+     "a": 37,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 38",
+     "a": [
+      "trente-huit"
+     ],
+     "show": "trente-huit",
+     "tab": "tien",
+     "row": 2,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: trente-huit",
+     "a": 38,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 39",
+     "a": [
+      "trente-neuf"
+     ],
+     "show": "trente-neuf",
+     "tab": "tien",
+     "row": 2,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: trente-neuf",
+     "a": 39,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 40",
+     "a": [
+      "quarante"
+     ],
+     "show": "quarante",
+     "tab": "tien",
+     "row": 3,
+     "bk": "getallen"
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quarante",
+     "a": 40,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 41",
+     "a": [
+      "quarante et un",
+      "quarante-et-un"
+     ],
+     "show": "quarante et un",
+     "tab": "tien",
+     "row": 3,
+     "bk": "getallen",
+     "xw": "Bij **1** (21, 31, 41, 51, 61) en bij **71** schrijf je **et** zonder streepjes."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quarante et un",
+     "a": 41,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 42",
+     "a": [
+      "quarante-deux"
+     ],
+     "show": "quarante-deux",
+     "tab": "tien",
+     "row": 3,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quarante-deux",
+     "a": 42,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 43",
+     "a": [
+      "quarante-trois"
+     ],
+     "show": "quarante-trois",
+     "tab": "tien",
+     "row": 3,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quarante-trois",
+     "a": 43,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 44",
+     "a": [
+      "quarante-quatre"
+     ],
+     "show": "quarante-quatre",
+     "tab": "tien",
+     "row": 3,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quarante-quatre",
+     "a": 44,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 45",
+     "a": [
+      "quarante-cinq"
+     ],
+     "show": "quarante-cinq",
+     "tab": "tien",
+     "row": 3,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quarante-cinq",
+     "a": 45,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 46",
+     "a": [
+      "quarante-six"
+     ],
+     "show": "quarante-six",
+     "tab": "tien",
+     "row": 3,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quarante-six",
+     "a": 46,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 47",
+     "a": [
+      "quarante-sept"
+     ],
+     "show": "quarante-sept",
+     "tab": "tien",
+     "row": 3,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quarante-sept",
+     "a": 47,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 48",
+     "a": [
+      "quarante-huit"
+     ],
+     "show": "quarante-huit",
+     "tab": "tien",
+     "row": 3,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quarante-huit",
+     "a": 48,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 49",
+     "a": [
+      "quarante-neuf"
+     ],
+     "show": "quarante-neuf",
+     "tab": "tien",
+     "row": 3,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quarante-neuf",
+     "a": 49,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 50",
+     "a": [
+      "cinquante"
+     ],
+     "show": "cinquante",
+     "tab": "tien",
+     "row": 4,
+     "bk": "getallen"
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: cinquante",
+     "a": 50,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 51",
+     "a": [
+      "cinquante et un",
+      "cinquante-et-un"
+     ],
+     "show": "cinquante et un",
+     "tab": "tien",
+     "row": 4,
+     "bk": "getallen",
+     "xw": "Bij **1** (21, 31, 41, 51, 61) en bij **71** schrijf je **et** zonder streepjes."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: cinquante et un",
+     "a": 51,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 52",
+     "a": [
+      "cinquante-deux"
+     ],
+     "show": "cinquante-deux",
+     "tab": "tien",
+     "row": 4,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: cinquante-deux",
+     "a": 52,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 53",
+     "a": [
+      "cinquante-trois"
+     ],
+     "show": "cinquante-trois",
+     "tab": "tien",
+     "row": 4,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: cinquante-trois",
+     "a": 53,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 54",
+     "a": [
+      "cinquante-quatre"
+     ],
+     "show": "cinquante-quatre",
+     "tab": "tien",
+     "row": 4,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: cinquante-quatre",
+     "a": 54,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 55",
+     "a": [
+      "cinquante-cinq"
+     ],
+     "show": "cinquante-cinq",
+     "tab": "tien",
+     "row": 4,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: cinquante-cinq",
+     "a": 55,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 56",
+     "a": [
+      "cinquante-six"
+     ],
+     "show": "cinquante-six",
+     "tab": "tien",
+     "row": 4,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: cinquante-six",
+     "a": 56,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 57",
+     "a": [
+      "cinquante-sept"
+     ],
+     "show": "cinquante-sept",
+     "tab": "tien",
+     "row": 4,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: cinquante-sept",
+     "a": 57,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 58",
+     "a": [
+      "cinquante-huit"
+     ],
+     "show": "cinquante-huit",
+     "tab": "tien",
+     "row": 4,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: cinquante-huit",
+     "a": 58,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 59",
+     "a": [
+      "cinquante-neuf"
+     ],
+     "show": "cinquante-neuf",
+     "tab": "tien",
+     "row": 4,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: cinquante-neuf",
+     "a": 59,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 60",
+     "a": [
+      "soixante"
+     ],
+     "show": "soixante",
+     "tab": "tien",
+     "row": 5,
+     "bk": "getallen"
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: soixante",
+     "a": 60,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 61",
+     "a": [
+      "soixante et un",
+      "soixante-et-un"
+     ],
+     "show": "soixante et un",
+     "tab": "tien",
+     "row": 5,
+     "bk": "getallen",
+     "xw": "Bij **1** (21, 31, 41, 51, 61) en bij **71** schrijf je **et** zonder streepjes."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: soixante et un",
+     "a": 61,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 62",
+     "a": [
+      "soixante-deux"
+     ],
+     "show": "soixante-deux",
+     "tab": "tien",
+     "row": 5,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: soixante-deux",
+     "a": 62,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 63",
+     "a": [
+      "soixante-trois"
+     ],
+     "show": "soixante-trois",
+     "tab": "tien",
+     "row": 5,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: soixante-trois",
+     "a": 63,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 64",
+     "a": [
+      "soixante-quatre"
+     ],
+     "show": "soixante-quatre",
+     "tab": "tien",
+     "row": 5,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: soixante-quatre",
+     "a": 64,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 65",
+     "a": [
+      "soixante-cinq"
+     ],
+     "show": "soixante-cinq",
+     "tab": "tien",
+     "row": 5,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: soixante-cinq",
+     "a": 65,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 66",
+     "a": [
+      "soixante-six"
+     ],
+     "show": "soixante-six",
+     "tab": "tien",
+     "row": 5,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: soixante-six",
+     "a": 66,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 67",
+     "a": [
+      "soixante-sept"
+     ],
+     "show": "soixante-sept",
+     "tab": "tien",
+     "row": 5,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: soixante-sept",
+     "a": 67,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 68",
+     "a": [
+      "soixante-huit"
+     ],
+     "show": "soixante-huit",
+     "tab": "tien",
+     "row": 5,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: soixante-huit",
+     "a": 68,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 69",
+     "a": [
+      "soixante-neuf"
+     ],
+     "show": "soixante-neuf",
+     "tab": "tien",
+     "row": 5,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: soixante-neuf",
+     "a": 69,
+     "tol": 0,
+     "bk": "getallen"
+    }
+   ]
+  },
+  {
+   "id": "num3",
+   "nav": "70-100",
+   "title": "Les nombres de 70 à 100",
+   "pages": "getallen",
+   "bron": [],
+   "n": 15,
+   "doelen": [
+    "Je kunt de getallen 70 tot en met 100 in het Frans lezen en goed spellen."
+   ],
+   "kern": [
+    "**70-79 = soixante + 10 t/m 19:** 70 soixante-dix · 71 soixante et onze · 72 soixante-douze · 75 soixante-quinze · 77 soixante-dix-sept · 79 soixante-dix-neuf",
+    "**80 = 4 × 20:** quatre-vingts. Daarna zonder s: 81 quatre-vingt-un · 85 quatre-vingt-cinq · 89 quatre-vingt-neuf",
+    "**90-99 = quatre-vingt + 10 t/m 19:** 90 quatre-vingt-dix · 91 quatre-vingt-onze · 96 quatre-vingt-seize · 99 quatre-vingt-dix-neuf",
+    "**100** = cent"
+   ],
+   "let": [
+    "**71 = soixante et onze** (met et), maar **81 = quatre-vingt-un** en **91 = quatre-vingt-onze** (zonder et).",
+    "**quatre-vingts** heeft alleen bij precies 80 een **s**.",
+    "In België en Zwitserland zeggen ze *septante* en *nonante*, maar in Frankrijk (en op je toets) gebruik je **soixante-dix** en **quatre-vingt-dix**."
+   ],
+   "qs": [
+    {
+     "k": "conj",
+     "tab": "tien",
+     "q": "Schrijf alle tientallen van 10 tot en met 100.",
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 70",
+     "a": [
+      "soixante-dix"
+     ],
+     "show": "soixante-dix",
+     "tab": "tien",
+     "row": 6,
+     "bk": "getallen",
+     "xw": "70-79 = **soixante** + 10 t/m 19: 72 = soixante-**douze**."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: soixante-dix",
+     "a": 70,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 71",
+     "a": [
+      "soixante et onze",
+      "soixante-et-onze"
+     ],
+     "show": "soixante et onze",
+     "tab": "tien",
+     "row": 6,
+     "bk": "getallen",
+     "xw": "Bij **1** (21, 31, 41, 51, 61) en bij **71** schrijf je **et** zonder streepjes."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: soixante et onze",
+     "a": 71,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 72",
+     "a": [
+      "soixante-douze"
+     ],
+     "show": "soixante-douze",
+     "tab": "tien",
+     "row": 6,
+     "bk": "getallen",
+     "xw": "70-79 = **soixante** + 10 t/m 19: 72 = soixante-**douze**."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: soixante-douze",
+     "a": 72,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 73",
+     "a": [
+      "soixante-treize"
+     ],
+     "show": "soixante-treize",
+     "tab": "tien",
+     "row": 6,
+     "bk": "getallen",
+     "xw": "70-79 = **soixante** + 10 t/m 19: 72 = soixante-**douze**."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: soixante-treize",
+     "a": 73,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 74",
+     "a": [
+      "soixante-quatorze"
+     ],
+     "show": "soixante-quatorze",
+     "tab": "tien",
+     "row": 6,
+     "bk": "getallen",
+     "xw": "70-79 = **soixante** + 10 t/m 19: 72 = soixante-**douze**."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: soixante-quatorze",
+     "a": 74,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 75",
+     "a": [
+      "soixante-quinze"
+     ],
+     "show": "soixante-quinze",
+     "tab": "tien",
+     "row": 6,
+     "bk": "getallen",
+     "xw": "70-79 = **soixante** + 10 t/m 19: 72 = soixante-**douze**."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: soixante-quinze",
+     "a": 75,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 76",
+     "a": [
+      "soixante-seize"
+     ],
+     "show": "soixante-seize",
+     "tab": "tien",
+     "row": 6,
+     "bk": "getallen",
+     "xw": "70-79 = **soixante** + 10 t/m 19: 72 = soixante-**douze**."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: soixante-seize",
+     "a": 76,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 77",
+     "a": [
+      "soixante-dix-sept"
+     ],
+     "show": "soixante-dix-sept",
+     "tab": "tien",
+     "row": 6,
+     "bk": "getallen",
+     "xw": "70-79 = **soixante** + 10 t/m 19: 72 = soixante-**douze**."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: soixante-dix-sept",
+     "a": 77,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 78",
+     "a": [
+      "soixante-dix-huit"
+     ],
+     "show": "soixante-dix-huit",
+     "tab": "tien",
+     "row": 6,
+     "bk": "getallen",
+     "xw": "70-79 = **soixante** + 10 t/m 19: 72 = soixante-**douze**."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: soixante-dix-huit",
+     "a": 78,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 79",
+     "a": [
+      "soixante-dix-neuf"
+     ],
+     "show": "soixante-dix-neuf",
+     "tab": "tien",
+     "row": 6,
+     "bk": "getallen",
+     "xw": "70-79 = **soixante** + 10 t/m 19: 72 = soixante-**douze**."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: soixante-dix-neuf",
+     "a": 79,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 80",
+     "a": [
+      "quatre-vingts"
+     ],
+     "show": "quatre-vingts",
+     "tab": "tien",
+     "row": 7,
+     "bk": "getallen",
+     "xw": "**80 = quatre-vingts** (met **s**); daarna zonder s: quatre-vingt-un, quatre-vingt-deux …"
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quatre-vingts",
+     "a": 80,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 81",
+     "a": [
+      "quatre-vingt-un"
+     ],
+     "show": "quatre-vingt-un",
+     "tab": "tien",
+     "row": 7,
+     "bk": "getallen",
+     "xw": "Na 80 géén *et*: 81 = **quatre-vingt-un**, 91 = **quatre-vingt-onze**."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quatre-vingt-un",
+     "a": 81,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 82",
+     "a": [
+      "quatre-vingt-deux"
+     ],
+     "show": "quatre-vingt-deux",
+     "tab": "tien",
+     "row": 7,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quatre-vingt-deux",
+     "a": 82,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 83",
+     "a": [
+      "quatre-vingt-trois"
+     ],
+     "show": "quatre-vingt-trois",
+     "tab": "tien",
+     "row": 7,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quatre-vingt-trois",
+     "a": 83,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 84",
+     "a": [
+      "quatre-vingt-quatre"
+     ],
+     "show": "quatre-vingt-quatre",
+     "tab": "tien",
+     "row": 7,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quatre-vingt-quatre",
+     "a": 84,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 85",
+     "a": [
+      "quatre-vingt-cinq"
+     ],
+     "show": "quatre-vingt-cinq",
+     "tab": "tien",
+     "row": 7,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quatre-vingt-cinq",
+     "a": 85,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 86",
+     "a": [
+      "quatre-vingt-six"
+     ],
+     "show": "quatre-vingt-six",
+     "tab": "tien",
+     "row": 7,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quatre-vingt-six",
+     "a": 86,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 87",
+     "a": [
+      "quatre-vingt-sept"
+     ],
+     "show": "quatre-vingt-sept",
+     "tab": "tien",
+     "row": 7,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quatre-vingt-sept",
+     "a": 87,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 88",
+     "a": [
+      "quatre-vingt-huit"
+     ],
+     "show": "quatre-vingt-huit",
+     "tab": "tien",
+     "row": 7,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quatre-vingt-huit",
+     "a": 88,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 89",
+     "a": [
+      "quatre-vingt-neuf"
+     ],
+     "show": "quatre-vingt-neuf",
+     "tab": "tien",
+     "row": 7,
+     "bk": "getallen",
+     "xw": "Tiental en eenheid krijgen een **streepje**: vingt-deux, trente-cinq."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quatre-vingt-neuf",
+     "a": 89,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 90",
+     "a": [
+      "quatre-vingt-dix"
+     ],
+     "show": "quatre-vingt-dix",
+     "tab": "tien",
+     "row": 8,
+     "bk": "getallen",
+     "xw": "90-99 = **quatre-vingt** + 10 t/m 19: 92 = quatre-vingt-**douze**."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quatre-vingt-dix",
+     "a": 90,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 91",
+     "a": [
+      "quatre-vingt-onze"
+     ],
+     "show": "quatre-vingt-onze",
+     "tab": "tien",
+     "row": 8,
+     "bk": "getallen",
+     "xw": "Na 80 géén *et*: 81 = **quatre-vingt-un**, 91 = **quatre-vingt-onze**."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quatre-vingt-onze",
+     "a": 91,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 92",
+     "a": [
+      "quatre-vingt-douze"
+     ],
+     "show": "quatre-vingt-douze",
+     "tab": "tien",
+     "row": 8,
+     "bk": "getallen",
+     "xw": "90-99 = **quatre-vingt** + 10 t/m 19: 92 = quatre-vingt-**douze**."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quatre-vingt-douze",
+     "a": 92,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 93",
+     "a": [
+      "quatre-vingt-treize"
+     ],
+     "show": "quatre-vingt-treize",
+     "tab": "tien",
+     "row": 8,
+     "bk": "getallen",
+     "xw": "90-99 = **quatre-vingt** + 10 t/m 19: 92 = quatre-vingt-**douze**."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quatre-vingt-treize",
+     "a": 93,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 94",
+     "a": [
+      "quatre-vingt-quatorze"
+     ],
+     "show": "quatre-vingt-quatorze",
+     "tab": "tien",
+     "row": 8,
+     "bk": "getallen",
+     "xw": "90-99 = **quatre-vingt** + 10 t/m 19: 92 = quatre-vingt-**douze**."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quatre-vingt-quatorze",
+     "a": 94,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 95",
+     "a": [
+      "quatre-vingt-quinze"
+     ],
+     "show": "quatre-vingt-quinze",
+     "tab": "tien",
+     "row": 8,
+     "bk": "getallen",
+     "xw": "90-99 = **quatre-vingt** + 10 t/m 19: 92 = quatre-vingt-**douze**."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quatre-vingt-quinze",
+     "a": 95,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 96",
+     "a": [
+      "quatre-vingt-seize"
+     ],
+     "show": "quatre-vingt-seize",
+     "tab": "tien",
+     "row": 8,
+     "bk": "getallen",
+     "xw": "90-99 = **quatre-vingt** + 10 t/m 19: 92 = quatre-vingt-**douze**."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quatre-vingt-seize",
+     "a": 96,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 97",
+     "a": [
+      "quatre-vingt-dix-sept"
+     ],
+     "show": "quatre-vingt-dix-sept",
+     "tab": "tien",
+     "row": 8,
+     "bk": "getallen",
+     "xw": "90-99 = **quatre-vingt** + 10 t/m 19: 92 = quatre-vingt-**douze**."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quatre-vingt-dix-sept",
+     "a": 97,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 98",
+     "a": [
+      "quatre-vingt-dix-huit"
+     ],
+     "show": "quatre-vingt-dix-huit",
+     "tab": "tien",
+     "row": 8,
+     "bk": "getallen",
+     "xw": "90-99 = **quatre-vingt** + 10 t/m 19: 92 = quatre-vingt-**douze**."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quatre-vingt-dix-huit",
+     "a": 98,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 99",
+     "a": [
+      "quatre-vingt-dix-neuf"
+     ],
+     "show": "quatre-vingt-dix-neuf",
+     "tab": "tien",
+     "row": 8,
+     "bk": "getallen",
+     "xw": "90-99 = **quatre-vingt** + 10 t/m 19: 92 = quatre-vingt-**douze**."
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: quatre-vingt-dix-neuf",
+     "a": 99,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "type",
+     "strict": true,
+     "q": "Schrijf in het Frans: 100",
+     "a": [
+      "cent"
+     ],
+     "show": "cent",
+     "tab": "tien",
+     "row": 9,
+     "bk": "getallen"
+    },
+    {
+     "k": "num",
+     "q": "Welk getal is: cent",
+     "a": 100,
+     "tol": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "mc",
+     "q": "Hoe bouw je 75 op in het Frans?",
+     "opts": [
+      "60 + 15: soixante-quinze",
+      "70 + 5: septante-cinq",
+      "4 × 20 − 5"
+     ],
+     "a": 0,
+     "bk": "getallen",
+     "x": "70-79 = soixante + 10 t/m 19."
+    },
+    {
+     "k": "mc",
+     "q": "Hoe bouw je 93 op in het Frans?",
+     "opts": [
+      "4 × 20 + 13: quatre-vingt-treize",
+      "90 + 3: nonante-trois",
+      "60 + 33"
+     ],
+     "a": 0,
+     "bk": "getallen"
+    },
+    {
+     "k": "mc",
+     "q": "Wanneer krijgt quatre-vingt een s?",
+     "opts": [
+      "alleen bij 80: quatre-vingts",
+      "bij alle getallen van 80 tot 99",
+      "nooit"
+     ],
+     "a": 0,
+     "bk": "getallen"
+    }
+   ]
+  },
+  {
+   "id": "getal",
+   "nav": "0-100 door elkaar",
+   "title": "Getallen 0-100 door elkaar",
+   "pages": "getallen",
+   "bron": [],
+   "n": 20,
+   "doelen": [
+    "Je kunt elk getal van 0 tot en met 100 in het Frans schrijven en lezen, ook als ze door elkaar komen."
+   ],
+   "kern": [
+    "Elke ronde krijg je nieuwe getallen tussen 0 en 100: schrijf ze in het Frans, of zeg welk getal er staat.",
+    "Spreek het getal hardop uit terwijl je het typt."
+   ],
+   "let": [
+    "Denk bij elk getal eerst: **welk tiental**, en dan **welke eenheid**? Bij 70-79 en 90-99: tiental + 10 t/m 19."
+   ],
+   "qs": [
+    {
+     "k": "gen",
+     "g": "schrijf",
+     "q": "",
+     "bk": "getallen"
+    },
+    {
+     "k": "gen",
+     "g": "schrijf",
+     "q": "",
+     "bk": "getallen"
+    },
+    {
+     "k": "gen",
+     "g": "schrijf",
+     "q": "",
+     "bk": "getallen"
+    },
+    {
+     "k": "gen",
+     "g": "schrijf",
+     "q": "",
+     "bk": "getallen"
+    },
+    {
+     "k": "gen",
+     "g": "schrijf",
+     "q": "",
+     "bk": "getallen"
+    },
+    {
+     "k": "gen",
+     "g": "schrijf",
+     "q": "",
+     "bk": "getallen"
+    },
+    {
+     "k": "gen",
+     "g": "schrijf",
+     "q": "",
+     "bk": "getallen"
+    },
+    {
+     "k": "gen",
+     "g": "schrijf",
+     "q": "",
+     "bk": "getallen"
+    },
+    {
+     "k": "gen",
+     "g": "schrijf",
+     "q": "",
+     "bk": "getallen"
+    },
+    {
+     "k": "gen",
+     "g": "schrijf",
+     "q": "",
+     "bk": "getallen"
+    },
+    {
+     "k": "gen",
+     "g": "schrijf",
+     "q": "",
+     "bk": "getallen"
+    },
+    {
+     "k": "gen",
+     "g": "schrijf",
+     "q": "",
+     "bk": "getallen"
+    },
+    {
+     "k": "gen",
+     "g": "schrijf",
+     "q": "",
+     "bk": "getallen"
+    },
+    {
+     "k": "gen",
+     "g": "schrijf",
+     "q": "",
+     "bk": "getallen"
+    },
+    {
+     "k": "gen",
+     "g": "lees",
+     "q": "",
+     "bk": "getallen"
+    },
+    {
+     "k": "gen",
+     "g": "lees",
+     "q": "",
+     "bk": "getallen"
+    },
+    {
+     "k": "gen",
+     "g": "lees",
+     "q": "",
+     "bk": "getallen"
+    },
+    {
+     "k": "gen",
+     "g": "lees",
+     "q": "",
+     "bk": "getallen"
+    },
+    {
+     "k": "gen",
+     "g": "lees",
+     "q": "",
+     "bk": "getallen"
+    },
+    {
+     "k": "gen",
+     "g": "lees",
+     "q": "",
+     "bk": "getallen"
+    }
+   ]
+  },
+  {
    "id": "lid",
    "nav": "Lidwoorden",
    "title": "De lidwoorden",
@@ -5052,6 +6893,106 @@
      "ils / elles",
      "sont",
      "zij zijn"
+    ]
+   ]
+  },
+  "tien": {
+   "title": "De tientallen",
+   "rows": [
+    [
+     "10",
+     "dix",
+     ""
+    ],
+    [
+     "20",
+     "vingt",
+     ""
+    ],
+    [
+     "30",
+     "trente",
+     ""
+    ],
+    [
+     "40",
+     "quarante",
+     ""
+    ],
+    [
+     "50",
+     "cinquante",
+     ""
+    ],
+    [
+     "60",
+     "soixante",
+     ""
+    ],
+    [
+     "70",
+     "soixante-dix",
+     ""
+    ],
+    [
+     "80",
+     "quatre-vingts",
+     ""
+    ],
+    [
+     "90",
+     "quatre-vingt-dix",
+     ""
+    ],
+    [
+     "100",
+     "cent",
+     ""
+    ]
+   ]
+  },
+  "een": {
+   "title": "Getallen met 1 (let op et)",
+   "rows": [
+    [
+     "21",
+     "vingt et un",
+     ""
+    ],
+    [
+     "31",
+     "trente et un",
+     ""
+    ],
+    [
+     "41",
+     "quarante et un",
+     ""
+    ],
+    [
+     "51",
+     "cinquante et un",
+     ""
+    ],
+    [
+     "61",
+     "soixante et un",
+     ""
+    ],
+    [
+     "71",
+     "soixante et onze",
+     ""
+    ],
+    [
+     "81",
+     "quatre-vingt-un",
+     ""
+    ],
+    [
+     "91",
+     "quatre-vingt-onze",
+     ""
     ]
    ]
   }

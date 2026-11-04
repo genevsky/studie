@@ -116,7 +116,7 @@ V.bron=function(id){const t=T.find(x=>x.id===id),B=D.bronnen||{},pages=(t?t.bron
 
 /* vervoegingstabel uit D.tables; de rij die gevraagd werd is gemarkeerd */
 const conjTable=(tab,row)=>{const T=D.tables[tab];return `<table class="lr-conj lr-show"><caption>${esc(T.title)}</caption>${T.rows.map((r,i)=>`<tr class="${i===row?'hl':''}"><th>${esc(r[0])}</th><td><b>${esc(r[1])}</b></td><td class="small mut">${esc(r[2])}</td></tr>`).join('')}</table>`};
-const conjForms=r=>[r[1],...r[0].split(' / ').map(x=>x.endsWith("'")?x+r[1]:x+' '+r[1])];
+const conjForms=r=>[r[1],...(r[1].includes(' et ')?[r[1].replace(/ /g,'-')]:[]),...r[0].split(' / ').map(x=>x.endsWith("'")?x+r[1]:x+' '+r[1])]; /* ook 1990-spelling (vingt-et-un) */
 /* accentknoppen bij vreemde-taalvragen: voegen de letter in op de plek van de cursor */
 const ACC=`<div class="lr-acc" aria-label="Letters met accent">${['é','è','ê','ë','à','â','ç','î','ï','ô','û','ù','œ'].map(c=>`<button type="button" class="chip" data-ac="${c}">${c}</button>`).join('')}</div>`;
 function accBar(box){let inp=$('.ti',box);$$('.ti',box).forEach(i=>i.addEventListener('focus',()=>inp=i));$$('[data-ac]',box).forEach(b=>{b.addEventListener('mousedown',e=>e.preventDefault());b.addEventListener('click',()=>{if(inp.readOnly)return;
