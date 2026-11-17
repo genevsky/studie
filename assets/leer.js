@@ -119,6 +119,8 @@ const conjTable=(tab,row)=>{const T=D.tables[tab];return `<table class="lr-conj 
 const conjForms=r=>[r[1],...(r[1].includes(' et ')?[r[1].replace(/ /g,'-')]:[]),...r[0].split(' / ').map(x=>x.endsWith("'")?x+r[1]:x+' '+r[1])]; /* ook 1990-spelling (vingt-et-un) */
 /* accentknoppen bij vreemde-taalvragen: voegen de letter in op de plek van de cursor */
 const ACC=`<div class="lr-acc" aria-label="Letters met accent">${['é','è','ê','ë','à','â','ç','î','ï','ô','û','ù','œ'].map(c=>`<button type="button" class="chip" data-ac="${c}">${c}</button>`).join('')}</div>`;
+const useAcc=()=>D.meta.acc!==false; /* meta.acc:false = geen accentknoppen (bv. Engels) */
+const caps=s=>String(s||'').replace(/[^A-Za-z]/g,'').replace(/[a-z]/g,''); /* p.case: hoofdletters tellen mee */
 function accBar(box){let inp=$('.ti',box);$$('.ti',box).forEach(i=>i.addEventListener('focus',()=>inp=i));$$('[data-ac]',box).forEach(b=>{b.addEventListener('mousedown',e=>e.preventDefault());b.addEventListener('click',()=>{if(inp.readOnly)return;
   const a=inp.selectionStart??inp.value.length,z=inp.selectionEnd??a;inp.value=inp.value.slice(0,a)+b.dataset.ac+inp.value.slice(z);inp.focus();inp.setSelectionRange(a+1,a+1)})})}
 
@@ -145,17 +147,17 @@ function part(p,box,done){
       fb(sc===1?true:sc?null:false,(sc===1?'Goed! ':sc?'Goed gerekend, maar vereenvoudig nog: ':'Het goede antwoord: ')+'<b>'+esc(String(p.a).replace(/-/g,'−'))+'</b>');done(sc)};
     $('#tk',box).onclick=ck;inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();ck()}});return}
   if(p.k==='conj'){const T=D.tables[p.tab];
-    box.innerHTML=`${Q}<table class="lr-conj">${T.rows.map((r,i)=>`<tr><th>${esc(r[0])}</th><td><input type="text" class="ti" data-r="${i}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="${esc(r[0])}"></td><td class="small mut">${esc(r[2])}</td></tr>`).join('')}</table>${ACC}<button class="btn" id="tk">Controleer</button>`;accBar(box);
+    box.innerHTML=`${Q}<table class="lr-conj">${T.rows.map((r,i)=>`<tr><th>${esc(r[0])}</th><td><input type="text" class="ti" data-r="${i}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="${esc(r[0])}"></td><td class="small mut">${esc(r[2])}</td></tr>`).join('')}</table>${useAcc()?ACC:''}<button class="btn" id="tk">Controleer</button>`;accBar(box);
     const ins=$$('.ti',box),ck=()=>{if(!$('#tk',box))return;let ok=0;
       ins.forEach((inp,i)=>{const r=T.rows[i],g=conjForms(r).some(w=>nrmS(w)===nrmS(inp.value));if(g)ok++;inp.readOnly=true;inp.classList.add(g?'yok':'yno');
         if(!g)inp.insertAdjacentHTML('afterend',`<div class="tfix">${esc(r[1])}</div>`)});
       $('#tk',box).remove();$$('[data-ac]',box).forEach(b=>b.disabled=true);fb(ok===T.rows.length,ok===T.rows.length?'De hele tabel goed!':ok+' van de '+T.rows.length+' goed. Schrijf de rode rijen nog een keer over.');done(ok/T.rows.length)};
     ins.forEach((inp,i)=>inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();ins[i+1]?ins[i+1].focus():ck()}}));$('#tk',box).onclick=ck;return}
-  if(p.k==='type'||p.k==='num'){box.innerHTML=`${Q}<div class="btns"><input type="text" class="ti" ${p.k==='num'?'inputmode="decimal"':''} autocomplete="off" autocapitalize="off" spellcheck="false" style="flex:1 1 160px">${p.unit?`<span class="lr-unit">${esc(p.unit)}</span>`:''}<button class="btn" id="tk">Controleer</button></div>${p.strict?ACC:''}`;
-    if(p.strict)accBar(box);
+  if(p.k==='type'||p.k==='num'){box.innerHTML=`${Q}<div class="btns"><input type="text" class="ti" ${p.k==='num'?'inputmode="decimal"':''} autocomplete="off" autocapitalize="off" spellcheck="false" style="flex:1 1 160px">${p.unit?`<span class="lr-unit">${esc(p.unit)}</span>`:''}<button class="btn" id="tk">Controleer</button></div>${p.strict&&useAcc()?ACC:''}`;
+    if(p.strict&&useAcc())accBar(box);
     const inp=$('.ti',box),ck=()=>{if(!$('#tk',box)||!inp.value.trim())return;/* strict: accenten en lidwoord tellen mee (vreemde talen) */
-      const g=p.k==='num'?Math.abs(num(inp.value)-p.a)<=(p.tol||0)+1e-9:p.strict?p.a.some(w=>nrmS(w)===nrmS(inp.value)):near(inp.value,p.a);
-      const hint=!g&&p.strict?(p.a.some(w=>deacc(nrmS(w))===deacc(nrmS(inp.value)))?'Bijna! Let op de accenten. ':p.a.some(w=>nrmS(w).replace(/^(le |la |l'|les |un |une )/,'')===nrmS(inp.value))?'Vergeet het lidwoord niet. ':''):'';
+      const g=p.k==='num'?Math.abs(num(inp.value)-p.a)<=(p.tol||0)+1e-9:p.strict?p.a.some(w=>nrmS(w)===nrmS(inp.value)&&(!p.case||caps(w)===caps(inp.value))):near(inp.value,p.a);
+      const hint=!g&&p.strict?(p.case&&p.a.some(w=>nrmS(w)===nrmS(inp.value))?'Let op de hoofdletter! ':p.a.some(w=>deacc(nrmS(w))===deacc(nrmS(inp.value)))?'Bijna! Let op de accenten. ':p.a.some(w=>nrmS(w).replace(/^(le |la |l'|les |un |une )/,'')===nrmS(inp.value))?'Vergeet het lidwoord niet. ':''):'';
       inp.readOnly=true;$('#tk',box).remove();
       fb(g,(g?'Goed! ':hint+'Het goede antwoord: ')+'<b>'+esc(p.k==='num'?String(p.a).replace('.',',')+' '+(p.unit||''):(p.show||p.a[0]))+'</b>'+(!g&&p.xw?`<small>${md(p.xw)}</small>`:''));
       if(!g&&p.tab&&D.tables)box.insertAdjacentHTML('beforeend',conjTable(p.tab,p.row));done(g?1:0)};
