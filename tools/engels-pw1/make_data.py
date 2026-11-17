@@ -451,7 +451,7 @@ topics = sorted(topics, key=lambda t: ORDER.index(t["id"]))
 INSTR = "Te leren/ kennen voor deze toets zijn de woorden, zinnen en grammatica van de thema's 1 en 2 (zie blz. 82-85 en 130-133"
 data = {
     "meta": {"id": "engels-pw1", "type": "leer", "brand": "Engels", "sub": "Thema 1 en 2 · Stepping Stones", "title": "Proefwerk Engels thema 1 en 2", "toets": "proefwerk", "lidw": "het",
-             "examDate": "2026-11-17", "acc": False},
+             "examDate": "2026-11-20", "acc": False},
     "instructie": "Woorden, zinnen (Stones) en grammatica van thema 1 en 2: blz. 82-85 en 130-133.",
     "instructieVerbatim": INSTR,
     "C": "Deze oefenzin is zelf gemaakt bij de regel uit het boek.",
