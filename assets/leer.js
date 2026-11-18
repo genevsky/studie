@@ -116,10 +116,10 @@ V.bron=function(id){const t=T.find(x=>x.id===id),B=D.bronnen||{},pages=(t?t.bron
 
 /* vervoegingstabel uit D.tables; de rij die gevraagd werd is gemarkeerd */
 const conjTable=(tab,row)=>{const T=D.tables[tab];return `<table class="lr-conj lr-show"><caption>${esc(T.title)}</caption>${T.rows.map((r,i)=>`<tr class="${i===row?'hl':''}"><th>${esc(r[0])}</th><td><b>${esc(r[1])}</b></td><td class="small mut">${esc(r[2])}</td></tr>`).join('')}</table>`};
-const conjForms=r=>[r[1],...(r[1].includes(' et ')?[r[1].replace(/ /g,'-')]:[]),...r[0].split(' / ').map(x=>x.endsWith("'")?x+r[1]:x+' '+r[1])]; /* ook 1990-spelling (vingt-et-un) */
+const conjForms=r=>[...r[1].split(/\s*\/\s*/),r[1],...(r[1].includes(' et ')?[r[1].replace(/ /g,'-')]:[]),...r[0].split(' / ').map(x=>x.endsWith("'")?x+r[1]:x+' '+r[1])]; /* ook 1990-spelling (vingt-et-un) */
 /* accentknoppen bij vreemde-taalvragen: voegen de letter in op de plek van de cursor */
-const ACC=`<div class="lr-acc" aria-label="Letters met accent">${['é','è','ê','ë','à','â','ç','î','ï','ô','û','ù','œ'].map(c=>`<button type="button" class="chip" data-ac="${c}">${c}</button>`).join('')}</div>`;
-const useAcc=()=>D.meta.acc!==false; /* meta.acc:false = geen accentknoppen (bv. Engels) */
+const ACC=`<div class="lr-acc" aria-label="Letters met accent">${(Array.isArray(D.meta.acc)?D.meta.acc:['é','è','ê','ë','à','â','ç','î','ï','ô','û','ù','œ']).map(c=>`<button type="button" class="chip" data-ac="${c}">${c}</button>`).join('')}</div>`;
+const useAcc=()=>D.meta.acc!==false; /* meta.acc:false = geen accentknoppen (bv. Engels); een lijst = eigen letters (bv. ü ë voor Nederlands) */
 const caps=s=>String(s||'').replace(/[^A-Za-z]/g,'').replace(/[a-z]/g,''); /* p.case: hoofdletters tellen mee */
 function accBar(box){let inp=$('.ti',box);$$('.ti',box).forEach(i=>i.addEventListener('focus',()=>inp=i));$$('[data-ac]',box).forEach(b=>{b.addEventListener('mousedown',e=>e.preventDefault());b.addEventListener('click',()=>{if(inp.readOnly)return;
   const a=inp.selectionStart??inp.value.length,z=inp.selectionEnd??a;inp.value=inp.value.slice(0,a)+b.dataset.ac+inp.value.slice(z);inp.focus();inp.setSelectionRange(a+1,a+1)})})}
@@ -128,8 +128,8 @@ function accBar(box){let inp=$('.ti',box);$$('.ti',box).forEach(i=>i.addEventLis
 function part(p,box,done){
   /* gen: een verse som uit window.LEER_GEN (per module in gen.js) */
   if(p.k==='gen'){const g=window.LEER_GEN[p.g]();window.__lastGen=g;return part(Object.assign({bk:p.bk},g,{key:p.key}),box,done)}
-  const T0=p.txt&&D.texts&&D.texts[p.txt],head=(T0?`<details class="lr-txt" ${p.txtOpen===false?'':'open'}><summary>Tekst: ${esc(T0.title)}</summary>${T0.src?`<p class="small mut">${esc(T0.src)}</p>`:''}${T0.body.map(x=>/^## /.test(x)?`<h4>${esc(x.slice(3))}</h4>`:`<p>${md(x)}</p>`).join('')}</details>`:'')+(p.ctx?`<div class="quote lr-ctx">${esc(p.ctx)}</div>`:'')+(p.img?`<a href="${esc(p.img)}" target="_blank" rel="noopener"><img class="lr-qimg" src="${esc(p.img)}" alt=""></a>`:'');
-  const after=()=>(p.x?`<small>${md(p.x)}</small>`:'')+(p.check?`<small class="mut">${esc(D.C)}</small>`:'')+(p.bk?`<small class="mut">Boek: ${esc(p.bk)}</small>`:'');
+  const T0=p.txt&&D.texts&&D.texts[p.txt],head=(T0?`<details class="lr-txt" ${p.txtOpen===false?'':'open'}><summary>Tekst: ${esc(T0.title)}</summary>${T0.src?`<p class="small mut">${esc(T0.src)}</p>`:''}${T0.body.map(x=>/^## /.test(x)?`<h4>${esc(x.slice(3))}</h4>`:`<p>${md(x)}</p>`).join('')}</details>`:'')+(p.ctx?`<div class="quote lr-ctx">${md(p.ctx)}</div>`:'')+(p.img?`<a href="${esc(p.img)}" target="_blank" rel="noopener"><img class="lr-qimg" src="${esc(p.img)}" alt=""></a>`:'');
+  const after=()=>(p.x?`<small>${md(p.x)}</small>`:'')+(p.check?`<small class="mut">${esc(D.C)}</small>`:'')+(p.bk?`<small class="mut">${esc(D.bkLabel||'Boek')}: ${esc(p.bk)}</small>`:'');
   const fb=(ok,html)=>box.insertAdjacentHTML('beforeend',`<div class="fb ${ok===true?'good':ok===false?'bad':''}">${html}${after()}</div>`);
   const Q=`${head}<p class="q"><b>${md(p.q)}</b></p>`;
   if(p.k==='mc'){const o=(p.keep?x=>x:shuffle)(p.opts.map((t,i)=>({t,i}))); /* keep: vaste volgorde (le, la, l', les) */box.innerHTML=`${Q}<div class="opts">${o.map((x,j)=>`<button class="opt" data-j="${j}">${md(x.t)}</button>`).join('')}</div>`;
