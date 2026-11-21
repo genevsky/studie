@@ -92,6 +92,11 @@ q2 = [
      "items": [["De Egyptische vorst werd … genoemd.", "farao"], ["Zijn taak was om Egypte te … tegen vijanden.", "beschermen"], ["Hij nam alle beslissingen en maakte de … .", "wetten"], ["Bij zijn taken werd hij geholpen door … die hij in dienst had.", "ambtenaren"], ["Omstreeks … ontwikkelden de Egyptenaren een eigen schrift.", "3000 v.C."], ["Dat schrift noemen wij … .", "hiërogliefen"], ["Het schrift was belangrijk voor het … van de staat.", "bestuur"], ["Met deze uitvinding begon de … .", "oudheid"], ["De Egyptenaren waren een … met een gezamenlijke taal en cultuur.", "volk"], ["Egypte werd in … onderdeel van het Romeinse Rijk.", "30 v.C."]], "bk": "blz. 91, opdr. 14"},
     {"k": "open", "q": "Leg uit hoe Egypte rond 3100 v.C. één staat werd. Gebruik het begrip ‘koninkrijk’.", "need": 3, "pts": ["er waren twee koninkrijken: Boven-Egypte en Beneden-Egypte", "omstreeks 3100 v.C. brak er oorlog uit, gewonnen door Narmer (koning van Boven-Egypte)", "Narmer verenigde de twee koninkrijken tot één staat (hoofdstad Memphis)"], "bk": "blz. 86, opdr. 2b", **CHK},
 ]
+q2 += [
+    {"k": "mc", "q": "Het Egyptische rijk ontstond rond 3100 v.C. In welke twee tijdvakken valt de geschiedenis van het oude Egypte?", "opts": ["Tijd van jagers en boeren en Tijd van Grieken en Romeinen", "Tijd van Grieken en Romeinen en Tijd van monniken en ridders", "alleen Tijd van Grieken en Romeinen"], "a": 0, "x": "De grens ligt rond 3000 v.C., bij de uitvinding van het schrift.", "bk": "blz. 70, 124"},
+    {"k": "num", "q": "Rond 3100 v.C. werd Egypte één rijk; rond 3000 v.C. ontstond het schrift. Hoeveel jaar zit daartussen?", "a": 100, "tol": 0, "bk": "blz. 70, opdr. 4b"},
+    {"k": "num", "q": "Het Egyptische rijk ontstond rond 3100 v.C. en kwam in 30 v.C. ten einde. Hoeveel jaar bestond het ongeveer?", "a": 3070, "tol": 70, "x": "3100 − 30 = 3070, dus ongeveer 3000 jaar.", "bk": "blz. 70, opdr. 4c"},
+]
 topics.append({"id": "p2", "nav": "2.2", "title": "Het land van de farao", "pages": "blz. 82-91", "n": 12,
     "bron": [82, 83, 84, 85, S(5, "Staat en belastingen"), S(7, "Land, volk, staat, regering"), S(8, "De staat"), S(9, "Zo ontstaat het schrift")],
     "doelen": ["Je kunt uitleggen hoe Egypte een staat werd.", "Je kunt de positie van de Egyptische koning (farao) en koningin beschrijven.", "Je kunt uitleggen hoe farao's Egypte bestuurden.", "Je kunt benoemen waarom de uitvinding van het schrift belangrijk was.", "Je kunt beschrijven welk contact er was tussen Egypte en de buurvolken."],
@@ -130,6 +135,12 @@ q3 = [
     {"k": "mc", "q": "Wat is cultuur volgens de PPT?", "opts": ["aangeleerd gedrag", "alles wat de natuur maakt", "alleen kunst en muziek"], "a": 0, "bk": "PPT dia 12-13"},
     {"k": "open", "q": "Leg uit waarom de bouw van een piramide zo belangrijk was voor een farao.", "need": 2, "pts": ["de piramide was het graf / grafmonument van de farao", "zijn lichaam en ziel moesten bewaard blijven voor het leven in het dodenrijk (graf ingericht als woning voor de ziel)"], "bk": "blz. 97, opdr. 5b", **CHK},
 ]
+q3 += [
+    {"k": "order", "q": "Zet de gebeurtenissen uit de tijdbalk in de goede volgorde.", "items": ["begin landbouwstedelijke samenleving", "Narmer maakt één staat van Egypte", "Egyptenaren ontwikkelen een schrift", "bouw van de drie piramides op de vlakte van Gizeh", "overlijden farao Toetanchamon", "Egypte wordt onderdeel van het Romeinse Rijk"], "x": "3500 v.C. · 3100 v.C. · 3000 v.C. · 2550-2510 v.C. · 1323 v.C. · 30 v.C.", "bk": "blz. 124-125"},
+    {"k": "num", "q": "Toetanchamon overleed in 1323 v.C. Zijn graf werd gevonden in 1922. Hoeveel jaar zit daartussen?", "a": 3244, "tol": 1, "x": "1323 + 1922 − 1 = 3244 (er is geen jaar 0; 3245 telt ook goed).", "bk": "blz. 101, opdr. 13c"},
+    {"k": "num", "q": "Cheops overleed rond 2525 v.C., Toetanchamon in 1323 v.C. Hoeveel jaar zit daartussen?", "a": 1202, "tol": 0, "x": "Allebei vóór Christus: aftrekken. 2525 − 1323 = 1202.", "bk": "blz. 101, opdr. 13c"},
+    {"k": "num", "q": "De piramide van Cheops werd voltooid in 2570 v.C. (tijdbalk blz. 70). Hoe oud is de piramide in het jaar 2030?", "a": 4599, "tol": 1, "x": "2570 + 2030 − 1 = 4599 (geen jaar 0; 4600 telt ook goed).", "bk": "blz. 70, opdr. 3a"},
+]
 topics.append({"id": "p3", "nav": "2.3", "title": "Een ontwikkelde cultuur", "pages": "blz. 92-101", "n": 12,
     "bron": [92, 93, 94, 95, S(12, "Wat is cultuur?"), S(14, "Hoogontwikkelde cultuur"), S(15, "Staat"), S(16, "Godsdienst"), S(17, "Wetenschap"), S(18, "Schrift")],
     "doelen": ["Je kunt kenmerken van de Egyptische godsdienst noemen.", "Je kunt uitleggen hoe Egyptenaren voor hun doden zorgden.", "Je kunt beschrijven met welk doel Egyptenaren kunst maakten.", "Je kunt een beschrijving geven van de Egyptische wetenschap."],
@@ -139,6 +150,7 @@ topics.append({"id": "p3", "nav": "2.3", "title": "Een ontwikkelde cultuur", "pa
              "In **1922** ontdekte Howard Carter het graf van **Toetanchamon** (overleden ca. 1323 v.C.): bijna compleet, terwijl de meeste graven al leeggeroofd waren.",
              "**Kunst** had te maken met het geloof in het hiernamaals: afbeeldingen van het leven dat de dode in het dodenrijk zou krijgen. **Tradities**: mensen jong en fit, tegelijk van voren en van opzij afgebeeld. Ook beeldhouwkunst: obelisken en **reliëf**.",
              "**Wetenschap** was praktisch (landbouw en bouwkunst): gesteenten (bouwen), natuurlijke stoffen (verf), wiskunde (akkergrenzen, piramides), sterrenkunde (tijd indelen, **kalender**: 12 maanden van 30 dagen + 5 dagen = 365; drie seizoenen: overstroming, groei, droogte; de ster **Sirius** voorspelde de overstroming). Goed organiseren en bouwen = **techniek**.",
+             "**Rekenen met jaartallen:** er is **geen jaar 0** (na 1 v.C. komt 1 n.C.). Van een jaar v.C. naar een jaar n.C.: optellen en 1 aftrekken. Twee jaren v.C.: aftrekken.",
              "**PPT:** cultuur is **aangeleerd gedrag**. Een hoogontwikkelde cultuur heeft: 1 een **staat** (farao/regering, belastingen, ambtenaren, soldaten), 2 een **godsdienst** (verhalen, tempels, priesters, kunst), 3 **wetenschap** (sterrenkunde, meetkunde), 4 **schrift**."],
     "fig": [["fig/mummie.jpg", "Bron 31: mummiemakers aan het werk"], ["fig/dodenboek.jpg", "Bron 27: het hart wordt gewogen tegen een veer"]],
     "let": ["**Polytheïstisch** = veel goden (Egypte); **monotheïstisch** = één god (jodendom, christendom, islam).", "Bij het mummificeren bleef het **hart** in het lichaam: daarin zaten volgens de Egyptenaren emoties, geheugen en wijsheid.",
@@ -207,51 +219,52 @@ topics.append({"id": "p5", "nav": "2.5", "title": "Israëlieten in Egypte", "pag
             "**Achnaton** (alleen Aton) ≠ **Toetanchamon** (herstelde het geloof in veel goden)."],
     "beg": B5, "qs": q5})
 
-# ================= tien tijdvakken
-TV = [("1", "Tijd van jagers en boeren", "tot 3000 v.C.", "prehistorie"), ("2", "Tijd van Grieken en Romeinen", "3000 v.C. – 500", "oudheid"),
-      ("3", "Tijd van monniken en ridders", "500 – 1000", "middeleeuwen"), ("4", "Tijd van steden en staten", "1000 – 1500", "middeleeuwen"),
-      ("5", "Tijd van ontdekkers en hervormers", "1500 – 1600", "vroegmoderne tijd"), ("6", "Tijd van regenten en vorsten", "1600 – 1700", "vroegmoderne tijd"),
-      ("7", "Tijd van pruiken en revoluties", "1700 – 1800", "vroegmoderne tijd"), ("8", "Tijd van burgers en stoommachines", "1800 – 1900", "moderne tijd"),
-      ("9", "Tijd van de wereldoorlogen", "1900 – 1950", "moderne tijd"), ("10", "Tijd van televisie en computer", "vanaf 1950", "moderne tijd")]
-TABLES = {"tv": {"title": "De tien tijdvakken", "rows": [[f"{n} · {y}", f"{name} / {name[8:]}", ""] for n, name, y, p in TV]}}
-q6 = [{"k": "conj", "tab": "tv", "q": "Schrijf de tien tijdvakken op (je mag ‘Tijd van’ weglaten).", "bk": "blz. 376-379"},
-      {"k": "order", "q": "Zet de tien tijdvakken in de goede volgorde.", "items": [t[1] for t in TV], "bk": "blz. 376-379"},
-      {"k": "order", "q": "Zet de vijf perioden in de goede volgorde.", "items": ["prehistorie", "oudheid", "middeleeuwen", "vroegmoderne tijd", "moderne tijd"], "bk": "blz. 376-379"},
-      {"k": "sort", "q": "In welke periode valt dit tijdvak?", "cats": ["prehistorie", "oudheid", "middeleeuwen", "vroegmoderne tijd", "moderne tijd"], "items": [[t[1], t[3]] for t in TV], "bk": "blz. 376-379"}]
-for i, (n, name, y, p) in enumerate(TV):
-    q6.append({"k": "type", "q": f"Welk tijdvak is **{y}**?", "a": [name, name[8:]], "show": name, "tab": "tv", "row": i, "bk": "blz. 376-379"})
-q6 += [
-    *[{"k": "mc", "q": f"In welk tijdvak valt het jaar **{y}**?", "opts": o, "a": 0, "bk": "blz. 376-379"} for y, o in [
-        ("1650", ["Tijd van regenten en vorsten", "Tijd van ontdekkers en hervormers", "Tijd van pruiken en revoluties"]),
-        ("1250", ["Tijd van steden en staten", "Tijd van monniken en ridders", "Tijd van ontdekkers en hervormers"]),
-        ("750", ["Tijd van monniken en ridders", "Tijd van Grieken en Romeinen", "Tijd van steden en staten"]),
-        ("1850", ["Tijd van burgers en stoommachines", "Tijd van pruiken en revoluties", "Tijd van de wereldoorlogen"]),
-        ("1500 v.C.", ["Tijd van Grieken en Romeinen", "Tijd van jagers en boeren", "Tijd van monniken en ridders"])]],
-    {"k": "mc", "q": "Het Egyptische rijk ontstond rond 3100 v.C. In welke twee tijdvakken valt de geschiedenis van het oude Egypte?", "opts": ["Tijd van jagers en boeren en Tijd van Grieken en Romeinen", "Tijd van Grieken en Romeinen en Tijd van monniken en ridders", "alleen Tijd van Grieken en Romeinen"], "a": 0, "x": "De grens ligt rond 3000 v.C., bij de uitvinding van het schrift.", "bk": "blz. 70, 124"},
-    {"k": "mc", "q": "Waarom eindigt de prehistorie rond 3000 v.C.?", "opts": ["Toen ontstond het schrift: er kwamen geschreven bronnen.", "Toen werden de piramides gebouwd.", "Toen werd Egypte één staat."], "a": 0, "bk": "blz. 85"},
-    {"k": "mc", "q": "Wat komt na 1 v.C.?", "opts": ["1 n.C.: er bestaat geen jaar 0", "0", "het jaar 2 v.C."], "a": 0, "x": "Bij de christelijke jaartelling begint het tellen bij de geboorte van Jezus (jaar 1); het jaar ervoor heet 1 v.C.", "bk": "blz. 10"},
-    {"k": "mc", "q": "Hoe lang is een eeuw?", "opts": ["100 jaar", "1000 jaar", "10 jaar"], "a": 0, "bk": "blz. 10"},
-    {"k": "num", "q": "Toetanchamon overleed in 1323 v.C. Zijn graf werd gevonden in 1922. Hoeveel jaar zit daartussen?", "a": 3244, "tol": 1, "x": "1323 + 1922 − 1 = 3244 (er is geen jaar 0; 3245 telt ook goed).", "bk": "blz. 101, opdr. 13c"},
-    {"k": "num", "q": "Cheops overleed rond 2525 v.C., Toetanchamon in 1323 v.C. Hoeveel jaar zit daartussen?", "a": 1202, "tol": 0, "x": "Allebei vóór Christus: aftrekken. 2525 − 1323 = 1202.", "bk": "blz. 101, opdr. 13c"},
-    {"k": "num", "q": "Rond 3100 v.C. werd Egypte één rijk; rond 3000 v.C. ontstond het schrift. Hoeveel jaar zit daartussen?", "a": 100, "tol": 0, "bk": "blz. 70, opdr. 4b"},
-    {"k": "num", "q": "Het Egyptische rijk ontstond rond 3100 v.C. en kwam in 30 v.C. ten einde. Hoeveel jaar bestond het ongeveer?", "a": 3070, "tol": 70, "x": "3100 − 30 = 3070, dus ongeveer 3000 jaar.", "bk": "blz. 70, opdr. 4c"},
-    {"k": "num", "q": "De piramide van Cheops werd voltooid in 2570 v.C. (tijdbalk blz. 70). Hoe oud is de piramide in het jaar 2030?", "a": 4599, "tol": 1, "x": "2570 + 2030 − 1 = 4599 (geen jaar 0; 4600 telt ook goed).", "bk": "blz. 70, opdr. 3a"},
-    {"k": "order", "q": "Zet de gebeurtenissen uit de tijdbalk in de goede volgorde.", "items": ["begin landbouwstedelijke samenleving", "Narmer maakt één staat van Egypte", "Egyptenaren ontwikkelen een schrift", "bouw van de drie piramides op de vlakte van Gizeh", "overlijden farao Toetanchamon", "Egypte wordt onderdeel van het Romeinse Rijk"], "x": "3500 v.C. · 3100 v.C. · 3000 v.C. · 2550-2510 v.C. · 1323 v.C. · 30 v.C.", "bk": "blz. 124-125"},
-    {"k": "mc", "q": "Wat is een verklaring?", "opts": ["uitleg waardoor of waarom iets gebeurt", "een oude bron", "een bepaalde hoeveelheid tijd"], "a": 0, "x": "Voorbeeld uit het boek: in 1989 braken mensen in Oost-Berlijn de muur af, omdat ze vrijheid wilden.", "bk": "blz. 10"},
-]
-topics.append({"id": "tv", "nav": "Tijdvakken", "title": "De tien tijdvakken en rekenen met jaartallen", "pages": "blz. 10-11, 124-125, 376-379", "n": 12, "bron": [10, 11, 124, 125, 376, 377, 378, 379],
-    "doelen": ["Je kent de tien tijdvakken op volgorde, met hun jaartallen.", "Je kent de vijf perioden en weet welke tijdvakken erbij horen.", "Je kunt rekenen met jaartallen voor en na Christus."],
-    "kern": ["De geschiedenis is ingedeeld in **vijf perioden**: prehistorie, oudheid, middeleeuwen, vroegmoderne tijd en moderne tijd. Daaronder de **tien tijdvakken**, elk met een eigen naam en pictogram.",
-             "1 **Tijd van jagers en boeren** – tot 3000 v.C. (prehistorie) · 2 **Tijd van Grieken en Romeinen** – 3000 v.C. – 500 (oudheid)",
-             "3 **Tijd van monniken en ridders** – 500 – 1000 · 4 **Tijd van steden en staten** – 1000 – 1500 (middeleeuwen)",
-             "5 **Tijd van ontdekkers en hervormers** – 1500 – 1600 · 6 **Tijd van regenten en vorsten** – 1600 – 1700 · 7 **Tijd van pruiken en revoluties** – 1700 – 1800 (vroegmoderne tijd)",
-             "8 **Tijd van burgers en stoommachines** – 1800 – 1900 · 9 **Tijd van de wereldoorlogen** – 1900 – 1950 · 10 **Tijd van televisie en computer** – vanaf 1950 (moderne tijd)",
-             "Ezelsbruggetje (eerste letters J-G-M-S-O-R-P-B-W-T): *Jan Gaat Met Sara Op Reis Per Boot Want Treinen staken.*",
-             "**Jaartelling:** de christelijke jaartelling begint bij de geboorte van Jezus (jaar 1). Het jaar ervoor is 1 v.C. Er is **geen jaar 0**. Van een jaar v.C. naar een jaar n.C.: optellen en 1 aftrekken. Twee jaren v.C.: aftrekken. Een eeuw = 100 jaar."],
-    "fig": [["fig/oudheid.jpg", "Prehistorie en oudheid (blz. 376)"], ["fig/tijdvakken.jpg", "Vroegmoderne en moderne tijd (blz. 379)"], ["fig/tijdbalk1.jpg", "Tijdbalk H2 (blz. 124)"], ["fig/tijdbalk2.jpg", "Tijdbalk H2 (blz. 125)"]],
-    "let": ["Het oude Egypte begint in tijdvak 1 en loopt door in tijdvak **2**: de grens is het **schrift** (3000 v.C.).", "**Geen jaar 0**: van 1323 v.C. tot 1922 n.C. is 1323 + 1922 − 1 = 3244 jaar.",
-            "De **middeleeuwen** zijn tijdvak 3 en 4 (500 – 1500)."],
-    "beg": B0, "qs": q6})
+# ================= tien tijdvakken: alleen jaartallen en namen
+TV = [("Tijd van jagers en boeren", "tot 3000 v.C.", "-3000"), ("Tijd van Grieken en Romeinen", "3000 v.C. – 500", "3000vc-500"),
+      ("Tijd van monniken en ridders", "500 – 1000", "500-1000"), ("Tijd van steden en staten", "1000 – 1500", "1000-1500"),
+      ("Tijd van ontdekkers en hervormers", "1500 – 1600", "1500-1600"), ("Tijd van regenten en vorsten", "1600 – 1700", "1600-1700"),
+      ("Tijd van pruiken en revoluties", "1700 – 1800", "1700-1800"), ("Tijd van burgers en stoommachines", "1800 – 1900", "1800-1900"),
+      ("Tijd van de wereldoorlogen", "1900 – 1950", "1900-1950"), ("Tijd van televisie en computer", "vanaf 1950", "1950-")]
+VC = ["v.C.", "v.C", "vC", "v.Chr.", "v. Chr.", "v. C.", "voor Christus"]
+SEP = ["-", " - ", "–", " – ", " tot ", " t/m "]
+def years(code):
+    """alle gangbare schrijfwijzen van een periode (open vraag, niet streng)"""
+    out = set()
+    if code == "-3000":
+        for v in VC: out |= {f"tot 3000 {v}", f"voor 3000 {v}", f"tot -3000"}
+    elif code == "1950-":
+        out |= {"vanaf 1950", "na 1950", "sinds 1950", "1950-nu", "1950 - nu", "1950 tot nu", "van 1950 tot nu", "1950 tot heden", "vanaf 1950 tot nu"}
+    else:
+        a, b = code.split("-")
+        starts = [f"3000 {v}" for v in VC] + ["-3000"] if a == "3000vc" else [a]
+        ends = [b, f"{b} n.C.", f"{b} nC", f"{b} n.Chr."] if a == "3000vc" else [b]
+        for x in starts:
+            for sp in SEP:
+                for y in ends: out |= {f"{x}{sp}{y}", f"van {x}{sp.strip() if sp.strip() == 'tot' else sp.strip()} {y}".replace("  ", " ")}
+    return sorted(out)
+TJ = {"-3000": "tot 3000 v.C. | tot 3000 vC | tot 3000 v.Chr | tot 3000 voor Christus", "3000vc-500": "3000 v.C. – 500 | 3000 vC – 500 | 3000 v.C. tot 500 | 3000 v.C. – 500 n.C. | 3000 vC – 500 nC | 3000 voor Christus tot 500", "1950-": "vanaf 1950 | na 1950 | sinds 1950 | 1950 – nu"}
+NM = lambda name: [name, name[9:]]
+TABLES = {"tvnaam": {"title": "De tien tijdvakken", "rows": [[y, f"{name} | {name[9:]}", ""] for name, y, c in TV]},
+          "tvjaar": {"title": "Jaartallen van de tijdvakken", "rows": [[name, TJ.get(c, f"{y} | {y.replace(' – ', ' tot ')}"), ""] for name, y, c in TV]}}
+q6 = [{"k": "conj", "tab": "tvnaam", "q": "Vul de tabel in: schrijf bij elke periode de naam van het tijdvak (je mag ‘Tijd van’ weglaten).", "bk": "blz. 376-379"},
+      {"k": "conj", "tab": "tvjaar", "q": "Vul de tabel in: schrijf bij elk tijdvak de jaartallen (bijv. 1500 – 1600).", "bk": "blz. 376-379"},
+      {"k": "order", "q": "Zet de tien tijdvakken op de goede plek op de tijdlijn (van oud naar nieuw).", "items": [t[0] for t in TV], "bk": "blz. 376-379"},
+      {"k": "order", "q": "Zet de jaartallen van de tijdvakken op de tijdlijn (van oud naar nieuw).", "items": [t[1] for t in TV], "bk": "blz. 376-379"}]
+for i, (name, y, c) in enumerate(TV):
+    q6.append({"k": "type", "q": f"Welk tijdvak hoort bij **{y}**?", "a": NM(name), "show": name, "tab": "tvnaam", "row": i, "bk": "blz. 376-379"})
+    q6.append({"k": "type", "q": f"Wat zijn de jaartallen van de **{name}**?", "a": years(c), "show": y, "tab": "tvjaar", "row": i, "bk": "blz. 376-379"})
+for i in range(len(TV) - 1):
+    q6.append({"k": "type", "q": f"Welk tijdvak komt ná de **{TV[i][0]}**?", "a": NM(TV[i + 1][0]), "show": TV[i + 1][0], "tab": "tvnaam", "row": i + 1, "bk": "blz. 376-379"})
+for yr, k in [("1650", 5), ("1250", 3), ("750", 2), ("1850", 7), ("1500 v.C.", 1), ("1925", 8), ("1550", 4), ("1750", 6)]:
+    q6.append({"k": "type", "q": f"In welk tijdvak valt het jaar **{yr}**?", "a": NM(TV[k][0]), "show": TV[k][0], "tab": "tvnaam", "row": k, "bk": "blz. 376-379"})
+topics.append({"id": "tv", "nav": "Tijdvakken", "title": "De tien tijdvakken", "pages": "blz. 376-379", "n": 12, "bron": [376, 377, 378, 379],
+    "doelen": ["Je kent de jaartallen van de tien tijdvakken.", "Je kent de namen van de tien tijdvakken en hun volgorde."],
+    "kern": [f"{i + 1}. **{name}** – {y}" for i, (name, y, c) in enumerate(TV)] + [
+             "Ezelsbruggetje voor de volgorde (eerste letters J-G-M-S-O-R-P-B-W-T): *Jan Gaat Met Sara Op Reis Per Boot Want Treinen staken.*",
+             "Ezelsbruggetje voor de jaartallen: eerst 3000 v.C., dan stappen van **500** (500, 1000, 1500), daarna elke **100** jaar een nieuw tijdvak (1600, 1700, 1800, 1900), en dan **1950**."],
+    "fig": [["fig/oudheid.jpg", "Prehistorie en oudheid (blz. 376)"], ["fig/tijdvakken.jpg", "Vroegmoderne en moderne tijd (blz. 379)"]],
+    "let": ["Tijdvak 2 begint in **3000 v.C.** (vóór Christus) en loopt door tot **500** (na Christus).", "Na 1500 duurt elk tijdvak **100 jaar**, behalve de wereldoorlogen: **1900 – 1950**.", "Tijdvak 10 heeft geen eindjaar: **vanaf 1950**."],
+    "beg": [], "qs": q6})
 
 for t in topics:
     t["bronTitle"] = "Boek en PPT " + t["pages"]
@@ -263,7 +276,7 @@ data = {
     "extra": "Tip uit het boek: oefen ook met de Begrippentrainer en de Oefentoets van hoofdstuk 2 op Geschiedeniswerkplaats online.",
     "tables": TABLES,
     "bronLabel": "Boekpagina's, PPT en instructie",
-    "bronnen": {"pages": [10, 11] + list(range(68, 126)) + [376, 377, 378, 379] + [S(i, f"dia {i}") for i in range(1, 19)]},
+    "bronnen": {"pages": list(range(68, 126)) + [376, 377, 378, 379] + [S(i, f"dia {i}") for i in range(1, 19)]},
     "topics": topics,
 }
 json.dump(data, open(f"{M}/data.json", "w"), ensure_ascii=False, indent=1)

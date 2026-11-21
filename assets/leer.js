@@ -31,7 +31,7 @@ const save=()=>{S.pct=ready();const all=T.flatMap(t=>scored(t.id));S.stats={seen
 function header(){$('#lvlName').textContent='Klaar: '+ready()+'%';$('#lvlBar').style.width=ready()+'%'}
 const grade=p=>Math.max(1,Math.round((1+9*p)*10)/10).toFixed(1).replace('.',',');
 /* NFC: accenten als één teken; alle soorten apostrof tellen als ' */
-const nrm=s=>String(s||'').normalize('NFC').trim().toLowerCase().replace(/[’‘ʼ`´′]/g,"'").replace(/'\s+/g,"'").replace(/[.!?,;:]+$/,'').replace(/\s+/g,' ');
+const nrm=s=>String(s||'').normalize('NFC').trim().toLowerCase().replace(/[’‘ʼ`´′]/g,"'").replace(/'\s+/g,"'").replace(/[.!?,;:]+$/,'').replace(/\s+/g,' ').replace(/[–—]/g,'-').replace(/ ?- ?/g,'-'); /* streepjes: – — - met of zonder spaties tellen gelijk */
 const nrmS=s=>nrm(s).replace(/[,.!?;:]/g,'').replace(/\s+/g,' ').trim(); /* streng: alleen leestekens tellen niet */
 const deacc=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/œ/g,'oe');
 /* breuken: '-1 1/18', '−19/18', '2,75', '7' -> {n,d,simple} of null */
@@ -115,8 +115,9 @@ V.bron=function(id){const t=T.find(x=>x.id===id),B=D.bronnen||{},pages=(t?t.bron
   act()};
 
 /* vervoegingstabel uit D.tables; de rij die gevraagd werd is gemarkeerd */
-const conjTable=(tab,row)=>{const T=D.tables[tab];return `<table class="lr-conj lr-show"><caption>${esc(T.title)}</caption>${T.rows.map((r,i)=>`<tr class="${i===row?'hl':''}"><th>${esc(r[0])}</th><td><b>${esc(r[1])}</b></td><td class="small mut">${esc(r[2])}</td></tr>`).join('')}</table>`};
-const conjForms=r=>[...r[1].split(/\s*\/\s*/),r[1],...(r[1].includes(' et ')?[r[1].replace(/ /g,'-')]:[]),...r[0].split(' / ').map(x=>x.endsWith("'")?x+r[1]:x+' '+r[1])]; /* ook 1990-spelling (vingt-et-un) */
+const conjTable=(tab,row)=>{const T=D.tables[tab];return `<table class="lr-conj lr-show"><caption>${esc(T.title)}</caption>${T.rows.map((r,i)=>`<tr class="${i===row?'hl':''}"><th>${esc(r[0])}</th><td><b>${esc(shown(r[1]))}</b></td><td class="small mut">${esc(r[2])}</td></tr>`).join('')}</table>`};
+const shown=f=>f.split('|')[0].trim(); /* na | : ook goed, maar niet tonen */
+const conjForms=r=>[...r[1].split(/\s*[\/|]\s*/),r[1],...(r[1].includes(' et ')?[r[1].replace(/ /g,'-')]:[]),...r[0].split(' / ').map(x=>x.endsWith("'")?x+r[1]:x+' '+r[1])]; /* ook 1990-spelling (vingt-et-un) */
 /* accentknoppen bij vreemde-taalvragen: voegen de letter in op de plek van de cursor */
 const ACC=`<div class="lr-acc" aria-label="Letters met accent">${(Array.isArray(D.meta.acc)?D.meta.acc:['é','è','ê','ë','à','â','ç','î','ï','ô','û','ù','œ']).map(c=>`<button type="button" class="chip" data-ac="${c}">${c}</button>`).join('')}</div>`;
 const useAcc=()=>D.meta.acc!==false; /* meta.acc:false = geen accentknoppen (bv. Engels); een lijst = eigen letters (bv. ü ë voor Nederlands) */
@@ -150,7 +151,7 @@ function part(p,box,done){
     box.innerHTML=`${Q}<table class="lr-conj">${T.rows.map((r,i)=>`<tr><th>${esc(r[0])}</th><td><input type="text" class="ti" data-r="${i}" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="${esc(r[0])}"></td><td class="small mut">${esc(r[2])}</td></tr>`).join('')}</table>${useAcc()?ACC:''}<button class="btn" id="tk">Controleer</button>`;accBar(box);
     const ins=$$('.ti',box),ck=()=>{if(!$('#tk',box))return;let ok=0;
       ins.forEach((inp,i)=>{const r=T.rows[i],g=conjForms(r).some(w=>nrmS(w)===nrmS(inp.value));if(g)ok++;inp.readOnly=true;inp.classList.add(g?'yok':'yno');
-        if(!g)inp.insertAdjacentHTML('afterend',`<div class="tfix">${esc(r[1])}</div>`)});
+        if(!g)inp.insertAdjacentHTML('afterend',`<div class="tfix">${esc(shown(r[1]))}</div>`)});
       $('#tk',box).remove();$$('[data-ac]',box).forEach(b=>b.disabled=true);fb(ok===T.rows.length,ok===T.rows.length?'De hele tabel goed!':ok+' van de '+T.rows.length+' goed. Schrijf de rode rijen nog een keer over.');done(ok/T.rows.length)};
     ins.forEach((inp,i)=>inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();ins[i+1]?ins[i+1].focus():ck()}}));$('#tk',box).onclick=ck;return}
   if(p.k==='type'||p.k==='num'){box.innerHTML=`${Q}<div class="btns"><input type="text" class="ti" ${p.k==='num'?'inputmode="decimal"':''} autocomplete="off" autocapitalize="off" spellcheck="false" style="flex:1 1 160px">${p.unit?`<span class="lr-unit">${esc(p.unit)}</span>`:''}<button class="btn" id="tk">Controleer</button></div>${p.strict&&useAcc()?ACC:''}`;
